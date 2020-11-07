@@ -69,25 +69,27 @@
                     </div>
                 </div>
                 <div class="bottom-header">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light px-0">
-                        <div class="shopping-bag">
-                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}" href="">
-                                <div class="text-center">
-                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                    <p class="my-0">
-                                        {% if grand_total %}
-                                            €{{ grand_total|floatformat:2 }}
-                                        {% else %}
-                                            €0.00
-                                        {% endif %}
-                                    </p>
-                                </div>
-                            </a>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 position-relative">
+                        <div class="bag-toggle">
+                            <div class="shopping-bag">
+                                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}" href="">
+                                    <div class="text-center">
+                                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                        <p class="my-0">
+                                            {% if grand_total %}
+                                                €{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                                €0.00
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                                aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
                         </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-                            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
                         <div class="collapse navbar-collapse p-3" id="main-nav">
                             <div class="user-account-mob d-lg-none">
                                 <h3><i class="fas fa-user-circle"></i> Your Account</h3>

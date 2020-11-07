@@ -1,10 +1,24 @@
 .navbar-brand.logo img {
     max-width: 50%;
 }
+.bag-toggle {
+    position: absolute;
+    right: 0;
+    top: -100px;
+    width: 165px;
+}
+.shopping-bag,
+.navbar-toggler {
+    display: inline-block;
+}
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 992px) {
     .navbar-brand.logo img {
         max-width: 100%;
+    }
+    .bag-toggle {
+        position: relative;
+        width: auto;
     }
 }
