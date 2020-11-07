@@ -17,6 +17,7 @@
     {% block corecss %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock corecss %}
 
     {% block extra_css %}
@@ -39,7 +40,7 @@
     <header class="fixed-top px-0">
         <div class="row no-gutters">
             <div class="col-12 col-lg-2 ">
-                <a class="navbar-brand logo" href="#">Power Fitness</a>
+                <a class="navbar-brand logo" href="#"><img src="media/power-fitness-logo.svg" alt="Power Fitness Gym"></a>
             </div>
             <div class="col-12 col-lg-10 ">
                 <div class="top-header d-none d-lg-block">

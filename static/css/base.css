@@ -1,0 +1,10 @@
+.navbar-brand.logo img {
+    max-width: 50%;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 992px) {
+    .navbar-brand.logo img {
+        max-width: 100%;
+    }
+}
