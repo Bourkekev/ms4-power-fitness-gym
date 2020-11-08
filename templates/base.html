@@ -27,6 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" integrity="sha512-ubuT8Z88WxezgSqf3RLuNi5lmjstiJcyezx34yIU2gAHonIi27Na7atqzUZCOoY4CExaoFumzOsFQ2Ch+I/HCw==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous"></script>
+        <script src="{% static 'js/global.js' %}"></script>
     {% endblock corejs %}
 
     {% block extra_js %}
@@ -40,14 +41,14 @@
     <header class="fixed-top px-0">
         <div class="row no-gutters">
             <div class="col-12 col-lg-2 ">
-                <a class="navbar-brand logo" href="#"><img src="media/power-fitness-logo.svg" alt="Power Fitness Gym"></a>
+                <a class="navbar-brand logo" href="#"><img src="{% static 'images/power-fitness-logo.svg' %}" alt="Power Fitness Gym"></a>
             </div>
             <div class="col-12 col-lg-10 ">
                 <div class="top-header d-none d-lg-block">
                     <a href="tel:0035312334567" class="d-block"><i class="fas fa-phone"></i> +353 1 233 4567</a>
                     <a href="mailto:info@power-fitness.ie" class="d-block"><i class="fas fa-envelope"></i> info@power-fitness.ie</a>
                     <div class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
@@ -72,7 +73,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 position-relative">
                         <div class="bag-toggle">
                             <div class="shopping-bag">
-                                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}" href="">
+                                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %}" href="">
                                     <div class="text-center">
                                         <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                         <p class="my-0">
@@ -146,7 +147,13 @@
             </div>
         </div>
     </header>
- 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae lacinia diam, ut varius turpis. Morbi sed nulla hendrerit, faucibus eros id, accumsan magna. Donec bibendum quis justo non fermentum. Nam aliquam pharetra sodales. Maecenas ullamcorper tristique urna quis placerat. Duis et feugiat enim. Sed sit amet ex viverra, imperdiet dolor eu, pharetra neque. Ut elit urna, imperdiet sed luctus nec, posuere nec ex. Vivamus non urna venenatis, dignissim ante in, pulvinar est. Nullam iaculis enim eu turpis congue accumsan. In hac habitasse platea dictumst. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque eget efficitur arcu, nec porttitor nisl.</p>
+
+    <p>Ut nisl urna, vehicula sit amet malesuada porta, pretium nec sem. Fusce lacus risus, lacinia in tristique vel, pulvinar quis elit. Pellentesque id lacus venenatis, consequat eros ut, laoreet est. Nulla ut convallis nibh. Morbi eleifend nibh orci. Fusce tortor quam, dapibus eget dapibus eu, porttitor ut orci. Aenean vel dignissim odio. In hac habitasse platea dictumst.
+        
+        Quisque quis orci a dui auctor laoreet. Pellentesque varius turpis ut eros efficitur, hendrerit tincidunt lectus posuere. Phasellus feugiat eros laoreet enim imperdiet, id pretium sapien maximus. Mauris porta quam nec suscipit commodo. Etiam nec lobortis nisi. Cras volutpat egestas enim tempus placerat. Integer accumsan ipsum ac ex convallis luctus. Fusce tincidunt, tellus vel consequat posuere, risus nunc ultricies eros, sed convallis nibh enim sed enim. Curabitur luctus ipsum a erat finibus, rutrum condimentum quam viverra. Sed a tempor nisi. Phasellus vehicula urna vitae egestas suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc congue arcu lacus, quis facilisis odio bibendum laoreet. Nullam nec quam rutrum massa dignissim commodo. Aliquam laoreet, arcu ac interdum condimentum, arcu risus aliquam risus, eleifend consectetur dui mi ut tortor. Suspendisse potenti.</p>
+        
+        <p>Curabitur eu nisi eget nisi porttitor eleifend. Sed lorem mi, convallis nec massa pellentesque, lobortis auctor diam. Donec aliquet lorem nibh, ut imperdiet turpis rutrum sit amet. Cras id nulla nec nisi sagittis tincidunt. Morbi non convallis felis. Pellentesque semper massa turpis, sagittis scelerisque enim aliquet consectetur. Suspendisse auctor in tortor eget condimentum. In placerat bibendum massa sit amet vestibulum. Pellentesque at nisl porttitor sapien consectetur aliquet. Aenean a lobortis massa, in consequat purus. Morbi in convallis purus. Integer scelerisque massa magna, eget hendrerit mi feugiat et.</p>
     {% if messages %}
         <div class="message-container"></div>
     {% endif %}

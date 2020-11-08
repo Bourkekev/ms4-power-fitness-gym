@@ -1,11 +1,24 @@
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+/* Fix header */
+
+/* .navbar-brand.logo {
+    height: 6.5rem;
+} */
 .navbar-brand.logo img {
-    max-width: 50%;
+    width: 16rem;
 }
 .bag-toggle {
     position: absolute;
     right: 0;
-    top: -100px;
-    width: 165px;
+    top: -5rem;
+    width: 10.5rem;
 }
 .shopping-bag,
 .navbar-toggler {
