@@ -124,6 +124,9 @@ header.sticky {
         width: auto;
         max-width: 100%;
     }
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: flex-end;
+    }
     .push-flex-right {
         margin-left: auto;
     }
