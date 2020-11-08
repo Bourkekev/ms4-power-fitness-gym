@@ -32,6 +32,23 @@ header.sticky {
             transform: translate(0, 0);
     top:0;
 }
+.top-header {
+    background: #111;
+    font-size: 1.2rem;
+}
+.top-header a {
+    color: #fff;
+}
+.top-header a:hover {
+    color: red;
+}
+.top-header a.dropdown-item {
+    color: #111;
+}
+.top-header > a {
+    padding: 1.4rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
 /* Navbar */
 .navbar {
     padding: 0;
@@ -50,6 +67,7 @@ header.sticky {
     display: flex;
     justify-content: flex-end;
     padding: 0 1rem;
+    order: 2;
 }
 .shopping-bag,
 .navbar-toggler {
@@ -96,11 +114,22 @@ header.sticky {
 }
 /* MEDIA QUERIES */
 @media only screen and (min-width: 992px) {
+    body {
+        padding-top: 0;
+    }
+    header {
+        position: relative;
+    }
     .navbar-brand.logo img {
+        width: auto;
         max-width: 100%;
+    }
+    .push-flex-right {
+        margin-left: auto;
     }
     .bag-toggle {
         position: relative;
         width: auto;
+        top:0;
     }
 }

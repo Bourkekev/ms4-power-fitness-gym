@@ -39,23 +39,23 @@
 
 <body>
     <header class="px-0">
-        <div class="row no-gutters">
-            <div class="col-12 col-lg-2 ">
+        <div class="row no-gutters align-items-center">
+            <div class="col-12 col-lg-3 col-xl-2 ">
                 <a class="navbar-brand logo" href="#"><img src="{% static 'images/power-fitness-logo.svg' %}" alt="Power Fitness Gym"></a>
             </div>
-            <div class="col-12 col-lg-10 ">
-                <div class="top-header d-none d-lg-block">
-                    <a href="tel:0035312334567" class="d-block"><i class="fas fa-phone"></i> +353 1 233 4567</a>
-                    <a href="mailto:info@power-fitness.ie" class="d-block"><i class="fas fa-envelope"></i> info@power-fitness.ie</a>
-                    <div class="list-inline-item dropdown">
-                        <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+            <div class="col-12 col-lg-9 col-xl-10 ">
+                <div class="top-header d-none d-lg-flex">
+                    <a href="tel:0035312334567" class=""><i class="fas fa-phone"></i> +353 1 233 4567</a>
+                    <a href="mailto:info@power-fitness.ie" class=""><i class="fas fa-envelope"></i> info@power-fitness.ie</a>
+                    <div class="push-flex-right dropdown">
+                        <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
+                                <div><i class="fas fa-user-circle fa-lg"></i></div>
+                                <p class="my-0">Your Account</p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                     <a href="" class="dropdown-item">Product Management</a>
@@ -164,7 +164,6 @@
     {% block content %}
     {% endblock %}
     <a href="#" class="back-to-top" title="Back To Top">
-        <i class="fas fa-arrow-up text-white"></i>
     </a>
     {% block postloadjs %}
     {% endblock %}
