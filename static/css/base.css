@@ -7,10 +7,28 @@ body {
     font-weight: 400;
 }
 /* Fix header */
-
-/* .navbar-brand.logo {
-    height: 6.5rem;
-} */
+header {
+    position: absolute;
+    z-index: 997;
+    width: 100%;
+    top: -5.6rem;
+    -webkit-transform: translate(0, 5.6rem);
+        -ms-transform: translate(0, 5.6rem);
+            transform: translate(0, 5.6rem);
+    -webkit-transition:top 0.2s ease-in;
+    -o-transition:top 0.2s ease-in;
+    transition:top 0.2s ease-in;
+}
+header.sticky {
+    background: #fff;
+    position: fixed;
+    width:100%;
+    z-index: 997;
+    -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+            transform: translate(0, 0);
+    top:0;
+}
 .navbar-brand.logo img {
     width: 16rem;
 }
@@ -24,7 +42,24 @@ body {
 .navbar-toggler {
     display: inline-block;
 }
-
+/* Back to top */
+.back-to-top {
+    background: #e78036;
+    height: 4rem;
+    width: 4rem;
+    display: inline-block;
+    position: fixed;
+    z-index: 2000;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+.back-to-top.visible {
+    opacity: 1;
+}
 /* MEDIA QUERIES */
 @media only screen and (min-width: 992px) {
     .navbar-brand.logo img {

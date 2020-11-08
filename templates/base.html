@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <header class="fixed-top px-0">
+    <header class="px-0">
         <div class="row no-gutters">
             <div class="col-12 col-lg-2 ">
                 <a class="navbar-brand logo" href="#"><img src="{% static 'images/power-fitness-logo.svg' %}" alt="Power Fitness Gym"></a>
@@ -163,7 +163,9 @@
  
     {% block content %}
     {% endblock %}
- 
+    <a href="#" class="back-to-top" title="Back To Top">
+        <i class="fas fa-arrow-up text-white"></i>
+    </a>
     {% block postloadjs %}
     {% endblock %}
 
