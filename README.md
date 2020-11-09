@@ -19,7 +19,6 @@ I wanted the site to have 3 main overarching features.
 This section provides insight into the UX process, focusing on who this website is for, what it is that they want to achieve and how this project is the best way to help them achieve these things. It expands on the main features as were listed above.
 
 
-
 #### As admin or the site owner I would like to do all the above as well as:
 
 - [ ] Edit or Remove products.
@@ -74,24 +73,26 @@ I sketched up some very rough ideas on paper and then designed the final wirefra
 
 This is the sensory design section of a website, or how it looks, feels and sounds. I wanted the design to be . I created a moodboard with Adobe Spark from research of colours, styles and components to visually illustrate the style I wished to pursue. You can see that [moodboard here.](README_resources/mood-board.png) 
 
-Orange is about creativity, enthusiasm, energy, creativity and youth according to this [99designs article](https://99designs.ie/blog/tips/color-psychology/).
+I decided my main colour would be orange. Orange is about creativity, enthusiasm, energy and youth according to this [99designs article](https://99designs.ie/blog/tips/color-psychology/). Similary [this article about the psychology of orange](https://www.rcwilley.com/blogs/Room-To-Talk/34/2017/10/7197/Color-Psychology-Orange-and-Black) also says it's energergetic, happy and is associated with celebrations, and stimulation. It is a strong colour that pops and is great for drawing the eye to things like buttons or headings.  I also like how the orange, black and white worked together on [Ben Dunne Gyms](https://www.bendunnegyms.com/), though I would probably want to use a lot more white, so it would not seem like a Halloween theme.
 
-I wanted the site to be clean and bright. The [Yummly](https://www.yummly.com/) is a good example of this, it is mostly white with green and orange contrasting colours for buttons and other icons.
+I searched shutterstock for a gym logo wth orange, and there were a number of logos that used orange and black, from experience fitting a vertical logo into a header can be tricky if you don't want the header to be too tall. With this in mind I chose the power fitness logo which has the logo text horizontal and to the right.
 
-I researched colour combinations, particularly looking for orange and another contrasting colour. I liked the number 17 "Teal, coral, turquoise and grey" palette on this [article](https://99designs.ie/blog/creative-inspiration/color-combinations/),  I used [Coolors](https://coolors.co/) and picked 
+I like how [Planet Fitness](https://www.planetfitness.com/gyms/manhattan-27th-st-ny) used their bright complementary colours of purple and yellow, along with light and dark greys. I researched colour combinations, particularly looking for orange and another cooloer complementing colour, which would most likey be a shade of blue. I used [Adobe Color](https://color.adobe.com/create/color-wheel) and set the logo orange in the middle and used the 'Complementary' colour harmony rule to determine the other colours. This gave me my complementary blue colours:
+
+![Adobe Complementary colours](README_resources/adobe-color-orange-complementary.png)
+
+I did not think I would need the additional orange colours so I brought the main orange and the complementary blues into [Coolors](https://coolors.co/), and added a dark grey and a light grey. Along with white and black these would be my colours. Coloors generates a nice pdf palette with lots of differents shades of those colours.
 
 This was my final palette:
 
-![Colour palette](README_resources/palette-power-fitneess-gym.png)
+![Colour palette](README_resources/palette-power-fitness-gym.png)
 
-You can also see it completely in [PDF format here](README_resources/colour-palette-power-fitneess-gym.pdf).
-
-Colours for some buttons, like edit and delete were based on different shades of materialize colours.
+You can also see it completely in [PDF format here](README_resources/colour-palette-power-fitness-gym.pdf).
 
 #### Fonts
 
-On all the gym and shop websites I researched, I liked the font used on  as a heading, Google fonts has suggestions for font pairings that would work for each particular font, so I looked through these for a nice body font. I wanted this font to be wider and easier to read at small sizes and had a bit of a contrast with the headings, so I decided {font} would work well.
-This [canva article](https://www.canva.com/learn/the-ultimate-guide-to-font-pairing/) also shows 
+On all the gym and shop websites I researched, I liked the font used on [Ben Dunne Gyms](https://www.bendunnegyms.com/westpoint.aspx) as a heading, as it is strong and bold. 
+This [canva article](https://www.canva.com/learn/the-ultimate-guide-to-font-pairing/) also shows a very bold heading font to help represent Sports or Activity (under 03. Sports/active), which is a Google Font called [Archivo Black](https://fonts.google.com/specimen/Archivo+Black), and there is also an [Archivo Narrow](https://fonts.google.com/specimen/Archivo+Narrow) which I thought might work well as a secondary heading. Google fonts has suggestions for pairing fonts, and from those I decided on Source Sans Pro, which is a good sans-serif font for body text, as it is easy to read at smaller sizes.
 
 ### Database Schema
 
