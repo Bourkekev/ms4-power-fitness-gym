@@ -1,0 +1,18 @@
+[
+ {
+   "pk": 1,
+   "model": "products.product",
+   "fields": {
+      "sku": "pp5002820069",
+      "name": "Nike 3-pk. Performance Crew Socks - Men Size 7-11",
+      "description": "Keep him moving in comfort all day with quality Nike crew socks.  arch support reinforced toe and heel cotton/polyester/spandex washable imported",
+      "has_sizes": false,
+      "price": 19.99,
+      "sale_price": 15.99,
+      "category": 1,
+      "rating": 4.6,
+      "image_url": "http://s7d2.scene7.com/is/image/JCPenney/DP0510201317010521M.tif?wid=65&hei=65&fmt=jpg&op_usm=.4,.8,0,0&resmode=sharp2",
+      "image": "DP0510201317010521M.jpg"
+   }
+}
+]
