@@ -5,7 +5,7 @@ body {
     font-size: 1.6rem;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    padding-top: 7rem;
+    padding-top: 5.9rem;
 }
 /* Defaults */
 img {
@@ -19,12 +19,10 @@ h3, h4, h5, h6 {
     font-family: 'Archivo Narrow', sans-serif;
 }
 h1 {
-    font-size: 6.2rem;
+    font-size: 4.2rem;
 }
-h4 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+h2 {
+
 }
 a {
     color: #f39200;
@@ -78,11 +76,15 @@ header.sticky {
 }
 .top-header > a,
 .your-account {
-    padding: 1.2rem 1.4rem;
+    padding: 1.2rem 1.15rem;
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 .your-account {
     border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.fa-phone,
+.fa-envelope {
+    margin-right: 10px;
 }
 /* Navbar */
 .navbar {
@@ -139,7 +141,7 @@ header.sticky {
     min-width: 20rem;
     padding: .9rem;
 }
-.btn.drop-search {
+.btn.btn-search {
     background: #000;
     color: #fff;
     font-size: 2rem;
@@ -158,7 +160,7 @@ header.sticky {
     line-height: 4rem;
     height: 4rem;
 }
-/* Hide and show search icons */
+/* Hide and show toggle bars and search icons */
 .navbar-toggler .fa-bars {
     display: none;
 }
@@ -197,7 +199,58 @@ header.sticky {
     margin-left: 1.5rem;
     width: 5.8rem;
 }
-/**/
+/* Mobile nav */
+.user-account-mob,
+.mobile-search-contact {
+    border-bottom: 1px solid #4a4a49;
+    padding: 1.5rem 0;
+}
+.mobile-search-contact a {
+    padding: 1rem 0;
+}
+.user-account-mob a {
+    display: block;
+}
+.mobile-search-input.form-control {
+    font-size: 1.4rem;
+    line-height: 4rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+}
+/* Homepage hero */
+.home-hero {
+    background-color: #000;
+    color: #fff;
+}
+p.hero-text {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 3rem;
+}
+/* Dark overlay */
+.dark-overlay {
+    position: relative;
+}
+.dark-overlay:before {
+    content: "";
+    background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.dark-overlay > .content-section {
+    position: relative;
+    z-index: 2;
+}
+.section-1 {
+    background-image: url(../images/home-hero-576x500.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    padding: 10rem 1rem 5rem;
+}
 
 /* Back to top */
 .back-to-top {
@@ -231,7 +284,24 @@ header.sticky {
 .back-to-top.visible {
     opacity: 1;
 }
-/* MEDIA QUERIES */
+/* -------------------- MEDIA QUERIES ----------------- */
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+    .section-1 {
+        background-image: url(../images/home-hero-768x700.jpg);
+        background-position: top right;
+        padding: 9rem 26rem 5rem 1rem;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .section-1 {
+        background-image: url(../images/home-hero-768x700.jpg);
+        
+        padding: 9rem 5rem 5rem 1rem;
+    }
+}
+/* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     body {
         padding-top: 0;
@@ -263,6 +333,7 @@ header.sticky {
         top:0;
     }
 }
+/* Extra large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 1.5rem;
