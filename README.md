@@ -121,6 +121,7 @@ An important part of UX is making sure users cannot cause errors, and that they 
 9.  [Font Awesome](https://fontawesome.com/)
 11. Google Fonts
 12. [JQuery](https://jquery.com) - The project uses **JQuery** to simplify DOM manipulation, and animation of certain elements.
+13. [RealFaviconGenerator](https://realfavicongenerator.net/) - to quickly generate favicons for all browsers.
     
 
 ### Tools Used
