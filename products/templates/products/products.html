@@ -20,9 +20,15 @@
                     {% for product in products %}
                         <div class="card-deck col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card">
-                                <a href="{% url 'product_detail' product.id %}">
-                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                </a>
+                                {% if product.image %}
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                                    </a>
+                                {% endif %}
                                 <div class="card-body">
                                     <h3 class="card-title">{{ product.name }}</h3>
                                     <!-- Category-->
