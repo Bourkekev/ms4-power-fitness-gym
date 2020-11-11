@@ -56,6 +56,8 @@
                         <div class="dropdown-divider"></div>
                         <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Sort By Price (low to high)</a>
                         <a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Sort By Price (high to low)</a>
+                        <a href="{% url 'products' %}?sort=sale_price&direction=asc" class="dropdown-item">On Sale (low to high)</a>
+                        <a href="{% url 'products' %}?sort=sale_price&direction=desc" class="dropdown-item">On Sale (high to low)</a>
                     </div>
                 </li>
                 <li class="nav-item">

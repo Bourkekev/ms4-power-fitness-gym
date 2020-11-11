@@ -14,6 +14,8 @@ def all_products(request):
     sort = None
     direction = None
 
+    #for product in products:
+
 
     if request.GET:
         if 'sort' in request.GET:
@@ -24,6 +26,11 @@ def all_products(request):
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
             
+            #exclude products with no sale price
+            if sortkey == 'sale_price':
+                print('on sale')
+                products = products.exclude(sale_price__isnull=True)
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
