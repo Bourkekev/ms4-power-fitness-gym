@@ -42,6 +42,10 @@ a.btn-large:hover {
     background-color: #f39200;
     border-color: #f39200;
 }
+.btn-primary:hover {
+    background-color: #0072AB;
+    border-color: #0072AB;
+}
 /* Fix header */
 header {
     background: #fff;
