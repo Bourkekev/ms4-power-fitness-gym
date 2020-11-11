@@ -188,7 +188,7 @@ Expand the sections below for more info on details:
 ### Features to consider implementing in the future
 
  - Allow products to be tagged within multiple categories.
- - Allow users only view products that are on sale.
+ - 
 
 ## Testing
 
