@@ -12,7 +12,8 @@ img {
     max-width: 100%;
     height:auto;
 }
-h1, h2 {
+h1, h2,
+.font-archivo-black {
     font-family: 'Archivo Black', sans-serif;
 }
 h3, h4, h5, h6 {
@@ -45,6 +46,12 @@ a.btn-large:hover {
 .btn-primary:hover {
     background-color: #0072AB;
     border-color: #0072AB;
+}
+.bg-primary {
+    background-color: #f39200!important;
+}
+.display-4 {
+    font-size: 2rem;
 }
 /* Fix header */
 header {

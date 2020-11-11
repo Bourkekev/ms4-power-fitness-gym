@@ -2,6 +2,13 @@
 {% load static %}
 
 {% block page_header %}
+    <div class="container-fluid bg-primary text-white py-3">
+        <div class="row text-center">
+            <div class="col">
+                <p class="my-1 font-archivo-black display-4">Free delivery on orders over €{{ free_delivery_threshold }}!</p>
+            </div>
+        </div>
+    </div>
     <div class="container header-container">
         <div class="row text-center">
             <div class="col">
