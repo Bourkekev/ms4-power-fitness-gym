@@ -37,14 +37,34 @@ a.btn-small:hover,
 a.btn-large:hover {
     color: #fff;
 }
+.btn,
+.form-control {
+    font-size: 1.8rem;
+}
 .btn-primary {
     color: #fff;
-    font-size: 1.8rem;
     background-color: #f39200;
     border-color: #f39200;
 }
 .btn-primary:hover {
     background-color: #0072AB;
+    border-color: #0072AB;
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #0072AB;
+    border-color: #0072AB;
+}
+.btn-secondary:hover {
+    background-color: #f39200;
+    border-color: #f39200;
+}
+.btn-outline-primary {
+    color: #f39200;
+    border-color: #f39200;
+}
+.btn-outline-secondary {
+    color: #0072AB;
     border-color: #0072AB;
 }
 .bg-primary {
