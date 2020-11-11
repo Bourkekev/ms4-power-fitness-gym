@@ -42,8 +42,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Membership</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products' %}">Products</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="productsdropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <div class="dropdown-menu" aria-labelledby="productsdropdown">
+                        <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'products' %}?category=clothing" class="dropdown-item">Clothing</a>
+                        <a href="{% url 'products' %}?category=trainers" class="dropdown-item">Trainers</a>
+                        <a href="{% url 'products' %}?category=free_weights" class="dropdown-item">Free Weights</a>
+                        <a href="{% url 'products' %}?category=strengthening" class="dropdown-item">Strengthening</a>
+                        <a href="{% url 'products' %}?category=aerobic" class="dropdown-item">Aerobic</a>
+                        <a href="{% url 'products' %}?category=best_sellers" class="dropdown-item">Best Sellers</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Sort By Price</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">News</a>
