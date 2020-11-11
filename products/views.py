@@ -25,7 +25,6 @@ def all_products(request):
 
             # exclude products with no sale price
             if sortkey == 'sale_price':
-                print('on sale')
                 products = products.exclude(sale_price__isnull=True)
 
             if 'direction' in request.GET:
