@@ -257,6 +257,10 @@ p.hero-text {
     background-position: top center;
     padding: 10rem 1rem 5rem;
 }
+/* Common */
+.header-container {
+    padding-top: 50px;
+}
 /* Products */
 .product-col {
     display: -ms-flexbox;

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 position-relative">
         <div class="bag-toggle">
             <div class="shopping-bag">
-                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %}" href="">
+                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %}" href="{% url 'view_bag' %}">
                     <div class="text-center">
                         <i class="fas fa-shopping-bag fa-lg"></i>
                         <p class="bag-amount my-0">
