@@ -18,7 +18,7 @@
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
                     {% for product in products %}
-                        <div class="card-deck col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="product-col col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card">
                                 {% if product.image %}
                                     <a href="{% url 'product_detail' product.id %}">
@@ -30,7 +30,16 @@
                                     </a>
                                 {% endif %}
                                 <div class="card-body">
+                                    <!-- Name and price -->
                                     <h3 class="card-title">{{ product.name }}</h3>
+                                    <p class="product-price text-left font-weight-bold">
+                                        <span class="regular-price {% if product.sale_price %}on-sale{% endif %}">€{{ product.price }}</span>
+                                        {% if product.sale_price %}
+                                            <span class="sale-price"> €{{ product.sale_price }}</span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-white border-0">
                                     <!-- Category-->
                                     {% if product.category %}
                                         <p class="small mt-1 mb-0">
@@ -45,9 +54,9 @@
                                     {% else %}
                                         <small class="text-muted">No Rating</small>
                                     {% endif %}
-                                </div>
-                                <div class="card-footer bg-white border-0">
-                                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View</a>
+                                    <div class="product-btn">
+                                        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
