@@ -43,6 +43,14 @@
                                             <img class="img-fluid bag-product-image d-none d-sm-inline-block" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                                         {% endif %}
                                         <h3 class="bag-product-name">{{ item.product.name }}</h3>
+                                        <p class="my-0"><strong>Size: </strong>
+                                            {% if item.product.clothing_sizes %}
+                                                {{ item.clothes_size|upper }}
+                                            {% elif item.product.shoe_sizes %}
+                                                {{ item.shoe_size|upper }}
+                                            {% else %}
+                                            N/A
+                                            {% endif %}</p>
                                         <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td>
