@@ -10,6 +10,7 @@ def add_to_bag(request, item_id):
     """ Add item and quantity to bag """
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    shoesize = None
     if 'shoe_size' in request.POST:
         shoesize = request.POST['shoe_size']
 
