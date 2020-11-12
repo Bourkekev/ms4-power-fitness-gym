@@ -38,11 +38,11 @@
                                 <tr>
                                     <td>
                                         {% if item.product.image %}
-                                            <img class="img-fluid cart-product-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                            <img class="img-fluid bag-product-image d-none d-sm-inline-block" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                         {% else %}
-                                            <img class="img-fluid cart-product-image" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                                            <img class="img-fluid bag-product-image d-none d-sm-inline-block" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                                         {% endif %}
-                                        <h3 class="cart-product-name">{{ item.product.name }}</h3>
+                                        <h3 class="bag-product-name">{{ item.product.name }}</h3>
                                         <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td>
@@ -72,7 +72,7 @@
                                 <td class="text-right p-4"><strong> €{{ delivery|floatformat:2 }}</strong></td>
                             </tr>
                             {% if left_to_free_delivery > 0 %}
-                                <tr class="mb-1 text-danger">
+                                <tr class="mb-1 text-warning">
                                     <td colspan="2">You could get free delivery by spending just <strong>€{{ left_to_free_delivery }}</strong> more!</td>
                                 </tr>
                             {% endif %}

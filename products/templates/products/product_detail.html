@@ -17,8 +17,8 @@
                     <a href="{{ product.image.url }}" target="_blank">
                         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                     </a>
-                    {% else %}
-                    <a href="{{ product.image.url }}">
+                {% else %}
+                    <a href="{{ MEDIA_URL }}no-image.png">
                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     </a>
                 {% endif %}
@@ -53,6 +53,30 @@
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
+                        {% with product.shoe_sizes as ss %}
+                            {% if ss %}
+                                <div class="col-12">
+                                    <p><strong>Select Shoe Size:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="shoe_size" id='id_shoe_size'>
+                                        {% for choice in product.shoe_sizes %}
+                                            <option value="{{ choice }}">{{ choice }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        {% with product.clothing_sizes as cs %}
+                            {% if cs %}
+                                <div class="col-12">
+                                    <p><strong>Select Size:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="clothing_size" id='id_clothing_size'>
+                                        {% for choice in product.clothing_sizes %}
+                                            <option value="{{ choice }}">{{ choice }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
                         <div class="col-6">
                             <p class="mt-3"><strong>Quantity:</strong></p>
                             <div class="form-group w-50">
