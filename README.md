@@ -188,7 +188,7 @@ Expand the sections below for more info on details:
 ### Features to consider implementing in the future
 
  - Allow products to be tagged within multiple categories.
- - 
+ - Generate thumbnail images for use in shopping bag to prevent loading full size images.
 
 ## Testing
 
