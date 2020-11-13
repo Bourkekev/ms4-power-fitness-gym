@@ -385,6 +385,11 @@ p.hero-text {
     color: #b2b2b2;
     background: transparent;
 }
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 /* Back to top */
 .back-to-top {
     background: transparent;

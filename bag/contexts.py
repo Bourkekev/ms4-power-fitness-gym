@@ -11,7 +11,6 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
-
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
@@ -25,7 +24,8 @@ def bag_contents(request):
         else:
             if 'items_by_shoesize' in item_data.keys():
                 product = get_object_or_404(Product, pk=item_id)
-                for shoesize, quantity in item_data['items_by_shoesize'].items():
+                for shoesize, quantity in item_data[
+                        'items_by_shoesize'].items():
                     total += quantity * product.price
                     product_count += quantity
                     bag_items.append({
@@ -36,7 +36,8 @@ def bag_contents(request):
                     })
             elif 'items_by_clothing_size' in item_data.keys():
                 product = get_object_or_404(Product, pk=item_id)
-                for clothing_size, quantity in item_data['items_by_clothing_size'].items():
+                for clothing_size, quantity in item_data[
+                        'items_by_clothing_size'].items():
                     total += quantity * product.price
                     product_count += quantity
                     bag_items.append({
@@ -45,7 +46,6 @@ def bag_contents(request):
                         'product': product,
                         'clothing_size': clothing_size,
                     })
-
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)

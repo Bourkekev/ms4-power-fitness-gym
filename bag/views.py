@@ -31,12 +31,16 @@ def add_to_bag(request, item_id):
                 bag[item_id] = {'items_by_shoesize': {shoesize: quantity}}
         elif clothing_size:
             if item_id in list(bag.keys()):
-                if clothing_size in bag[item_id]['items_by_clothing_size'].keys():
-                    bag[item_id]['items_by_clothing_size'][clothing_size] += quantity
+                if (clothing_size in
+                        bag[item_id]['items_by_clothing_size'].keys()):
+                    bag[item_id][
+                        'items_by_clothing_size'][clothing_size] += quantity
                 else:
-                    bag[item_id]['items_by_clothing_size'][clothing_size] = quantity
+                    bag[item_id][
+                        'items_by_clothing_size'][clothing_size] = quantity
             else:
-                bag[item_id] = {'items_by_clothing_size': {clothing_size: quantity}}
+                bag[item_id] = {
+                    'items_by_clothing_size': {clothing_size: quantity}}
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
