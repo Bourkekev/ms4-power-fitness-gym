@@ -5,6 +5,11 @@
         let itemId = $(allQtyInputs[i]).data('item_id');
         handleEnableDisable(itemId);
     }
+    // Check  enable/disable when input changes
+    $('.qty_input').change(function(){
+        let itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
 
     $('.qty-plus').click(function(e){
         e.preventDefault();
