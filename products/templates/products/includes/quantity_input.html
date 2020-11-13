@@ -13,15 +13,17 @@
 
     $('.qty-plus').click(function(e){
         e.preventDefault();
-        let currentValue = parseInt($('.qty_input').val());
-        $('.qty_input').val(currentValue + 1);
+        let lineItemInput = $(this).siblings('.qty_input')[0];
+        let currentValue = parseInt($(lineItemInput).val());
+        $(lineItemInput).val(currentValue + 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
     })
     $('.qty-minus').click(function(e){
         e.preventDefault();
-        let currentValue = parseInt($('.qty_input').val());
-        $('.qty_input').val(currentValue - 1);
+        let lineItemInput = $(this).siblings('.qty_input')[0];
+        let currentValue = parseInt($(lineItemInput).val());
+        $(lineItemInput).val(currentValue - 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
     })
