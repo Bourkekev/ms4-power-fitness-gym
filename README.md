@@ -192,7 +192,7 @@ Expand the sections below for more info on details:
 
 ## Testing
 
-For the purposes of testing, you can use the image urls provided in the [Testing Document](TESTING.md), which also has the information on all my testing and issues I had to overcome.
+For detail on all my testing and issues I had to overcome see the [Testing Document](TESTING.md).
 
 ## Deployment
 
