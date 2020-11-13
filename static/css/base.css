@@ -7,6 +7,31 @@ body {
     font-weight: 400;
     padding-top: 5.9rem;
 }
+/* screen reader only */
+.sr-only {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+.screen-reader-link:focus {
+    clip: auto !important;
+    height: auto;
+    width: auto;
+    display: block;
+    font-weight: bold;
+    padding: 1.5rem 2.5rem 1.5rem;
+    color: #333;
+    background: #fff;
+    z-index: 100000;
+    text-decoration: none;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
+            box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
+}
 /* Defaults */
 img {
     max-width: 100%;
