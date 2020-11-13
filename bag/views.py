@@ -14,16 +14,29 @@ def add_to_bag(request, item_id):
     if 'shoe_size' in request.POST:
         shoesize = request.POST['shoe_size']
 
+    clothing_size = None
+    if 'clothing_size' in request.POST:
+        clothing_size = request.POST['clothing_size']
+
     bag = request.session.get('bag', {})
 
-    if shoesize:
-        if item_id in list(bag.keys()):
-            if shoesize in bag[item_id]['items_by_shoesize'].keys():
-                bag[item_id]['items_by_shoesize'][shoesize] += quantity
+    if shoesize or clothing_size:
+        if shoesize:
+            if item_id in list(bag.keys()):
+                if shoesize in bag[item_id]['items_by_shoesize'].keys():
+                    bag[item_id]['items_by_shoesize'][shoesize] += quantity
+                else:
+                    bag[item_id]['items_by_shoesize'][shoesize] = quantity
             else:
-                bag[item_id]['items_by_shoesize'][shoesize] = quantity
-        else:
-            bag[item_id] = {'items_by_shoesize': {shoesize: quantity}}
+                bag[item_id] = {'items_by_shoesize': {shoesize: quantity}}
+        elif clothing_size:
+            if item_id in list(bag.keys()):
+                if clothing_size in bag[item_id]['items_by_clothing_size'].keys():
+                    bag[item_id]['items_by_clothing_size'][clothing_size] += quantity
+                else:
+                    bag[item_id]['items_by_clothing_size'][clothing_size] = quantity
+            else:
+                bag[item_id] = {'items_by_clothing_size': {clothing_size: quantity}}
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
