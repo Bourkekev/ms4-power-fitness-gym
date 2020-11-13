@@ -355,8 +355,9 @@ p.hero-text {
 }
 /* Quantity Buttons */
 .qty-btn {
-    cursor: pointer;
+    border-style: solid;
     display: inline-block;
+    font-size: 1.3rem;
     width: 3.6rem;
     padding: 6px 0;
     text-align: center;
@@ -376,6 +377,10 @@ p.hero-text {
 }
 .bag-totals tr {
     border: 1px solid #dee2e6;
+}
+.qty-btn.btn-secondary:disabled:hover {
+    color: #b2b2b2;
+    background: transparent;
 }
 /* Back to top */
 .back-to-top {
@@ -448,6 +453,9 @@ p.hero-text {
         border: 1px solid #b2b2b2;
         border-left-width: 0;
         color: #b2b2b2;
+    }
+    .qty-btn.btn-secondary:hover {
+        color: #0072AB;
     }
     .qty-btn {
         font-size: 90%;

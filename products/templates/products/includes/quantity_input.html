@@ -1,12 +1,28 @@
 <script type="text/javascript">
     $('.qty-plus').click(function(e){
+        e.preventDefault();
         let currentValue = parseInt($('.qty_input').val());
         console.log(currentValue);
         $('.qty_input').val(currentValue + 1);
+        let itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
     })
     $('.qty-minus').click(function(e){
+        e.preventDefault();
         let currentValue = parseInt($('.qty_input').val());
         console.log(currentValue);
         $('.qty_input').val(currentValue - 1);
+        let itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
     })
+    /* Handle enabling and disable of qty buttons outside range 1-98 */
+    function handleEnableDisable(itemId) {
+        let currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        let minusDisabled = currentValue < 2;
+        let plusDisabled = currentValue > 98;
+
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+
 </script>
