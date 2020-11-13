@@ -1,0 +1,12 @@
+<script type="text/javascript">
+    $('.qty-plus').click(function(e){
+        let currentValue = parseInt($('.qty_input').val());
+        console.log(currentValue);
+        $('.qty_input').val(currentValue + 1);
+    })
+    $('.qty-minus').click(function(e){
+        let currentValue = parseInt($('.qty_input').val());
+        console.log(currentValue);
+        $('.qty_input').val(currentValue - 1);
+    })
+</script>
