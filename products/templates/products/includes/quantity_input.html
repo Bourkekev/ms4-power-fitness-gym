@@ -1,8 +1,14 @@
 <script type="text/javascript">
+    // Check inputs on page load
+    const allQtyInputs = $('.qty_input');
+    for(let i = 0; i < allQtyInputs.length; i++){
+        let itemId = $(allQtyInputs[i]).data('item_id');
+        handleEnableDisable(itemId);
+    }
+
     $('.qty-plus').click(function(e){
         e.preventDefault();
         let currentValue = parseInt($('.qty_input').val());
-        console.log(currentValue);
         $('.qty_input').val(currentValue + 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
@@ -10,7 +16,6 @@
     $('.qty-minus').click(function(e){
         e.preventDefault();
         let currentValue = parseInt($('.qty_input').val());
-        console.log(currentValue);
         $('.qty_input').val(currentValue - 1);
         let itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
