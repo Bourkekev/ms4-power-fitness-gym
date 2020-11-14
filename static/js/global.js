@@ -30,7 +30,7 @@
         });
 
         /** Enable toasts */
-        //$('.toast').toast('show');
+        $('.toast').toast('show');
 
     }); // end of document ready
 })(jQuery); // end of jQuery name space

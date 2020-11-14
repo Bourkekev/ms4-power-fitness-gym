@@ -198,8 +198,8 @@ header.sticky {
 }
 .bag-toggle a {
     display: inline-block;
-    padding: .4rem 1.4rem;
-    width: 6rem;
+    padding: .4rem .4rem;
+    width: 6.5rem;
 }
 .search-block .btn {
     border: none;
@@ -461,11 +461,42 @@ footer {
     opacity: 1;
 }
 /* Toasts*/
-.message-container {
-    position: fixed;
-    top: 72px;
-    right: 15px;
+.toast-container {
+    position: absolute;
+    top: 62px;
+    right: 0;
+    margin: 0 5px;
     z-index: 999999999;
+}
+.sticky + .toast-container {
+    position: fixed;
+}
+.toast {
+    border: 1px solid #a6a6a6;
+    font-size: 1.3rem;
+}
+/* toast up arrow */
+.toast:before,
+.toast:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 100px;
+    margin: -1px -6px;
+    border: solid 6px transparent;
+    border-bottom-color: #717171;
+    border-top: 0;
+    opacity: 1;
+}
+.toast:after {
+    margin: -2px -6px;
+    border-bottom-color: #fff;
+}
+.toast-header {
+    font-size: 1.6rem;
+}
+.toast button.close {
+    font-size: 2.5rem;
 }
 
 /* -------------------- MEDIA QUERIES ----------------- */
@@ -573,6 +604,17 @@ footer {
         position: relative;
         width: auto;
         top:0;
+    }
+    /* Toasts*/
+    .toast-container {
+        position: absolute;
+        top: 110px;
+        right: 15px;
+        margin: 0;
+    }
+    .toast:before,
+    .toast:after {
+        right:18px;
     }
 }
 /* Extra large devices (large desktops, 1200px and up) */
