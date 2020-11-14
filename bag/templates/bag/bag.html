@@ -169,9 +169,10 @@
     $('.remove-item').click(function(e) {
         let csrfToken = "{{ csrf_token }}";
         let itemId = $(this).attr('id').split('remove_')[1];
-        let size = $(this).data('product_size');
+        let shoe_size = $(this).data('shoe_size');
+        let clothing_size = $(this).data('clothing_size');
         let url = `/bag/remove/${itemId}/`;
-        let data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+        let data = {'csrfmiddlewaretoken': csrfToken, 'shoe_size': shoe_size, 'clothing_size': clothing_size };
 
         $.post(url, data)
          .done(function() {
