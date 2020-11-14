@@ -367,6 +367,11 @@ p.hero-text {
     text-align: center;
 }
 /* Shopping bag */
+.shopping-bag-table.table-bordered td,
+.shopping-bag-table.table-bordered th {
+    border-right: none;
+    border-left: none;
+}
 .bag-product-image {
     float: left;
     max-width: 100px;

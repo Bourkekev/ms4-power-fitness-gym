@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container-fluid bg-primary text-white py-3">
@@ -24,7 +25,7 @@
         <div class="col">
             {% if bag_items %}
                 <div class="table-responsive mt-5">
-                    <table class="table table-bordered">
+                    <table class="table shopping-bag-table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Product</th>
@@ -87,7 +88,7 @@
                                         <a class="update-link text-info"><small>Update</small></a>
                                     </td>
                                     <td>
-                                        <p class="my-0">${{ item.product.price }}</p>
+                                        <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                             <a class="remove-item text-danger float-right" 
                                             id="remove_{{ item.item_id }}" 
                                             {% if item.product.shoe_sizes %}
