@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 
 def view_bag(request):
@@ -92,6 +92,8 @@ def adjust_bag(request, item_id):
                 bag[item_id]['items_by_shoesize'][shoesize] = quantity
             else:
                 del bag[item_id]['items_by_shoesize'][shoesize]
+                if not bag[item_id]['items_by_shoesize']:
+                    bag.pop(item_id)
         elif clothing_size:
             if quantity > 0:
                 bag[item_id][
@@ -99,6 +101,8 @@ def adjust_bag(request, item_id):
             else:
                 del bag[item_id][
                         'items_by_clothing_size'][clothing_size]
+                if not bag[item_id]['items_by_clothing_size']:
+                    bag.pop(item_id)
     else:
         if quantity > 0:
             bag[item_id] = quantity
@@ -109,3 +113,46 @@ def adjust_bag(request, item_id):
     request.session['bag'] = bag
 
     return redirect(reverse('view_bag'))
+
+
+def remove_from_bag(request, item_id):
+    """ remove_from_bag:
+
+    * Removes the item from the bag
+
+    \n Args:
+    1. request: the POST request data from the form
+    2. item_id: the ID of the item to be removed
+
+    \n Returns:
+    * 200 http response
+    """
+    try:
+        shoesize = None
+        if 'shoe_size' in request.POST:
+            shoesize = request.POST['shoe_size']
+
+        clothing_size = None
+        if 'clothing_size' in request.POST:
+            clothing_size = request.POST['clothing_size']
+
+        bag = request.session.get('bag', {})
+        if shoesize or clothing_size:
+            if shoesize:
+                del bag[item_id]['items_by_shoesize'][shoesize]
+                if not bag[item_id]['items_by_shoesize']:
+                    bag.pop(item_id)
+            elif clothing_size:
+                del bag[item_id][
+                        'items_by_clothing_size'][clothing_size]
+                if not bag[item_id]['items_by_clothing_size']:
+                    bag.pop(item_id)
+        else:
+            bag.pop(item_id)
+
+        # put bag into session
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
