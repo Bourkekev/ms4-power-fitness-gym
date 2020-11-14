@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
+
+from products.models import Product
 
 
 def view_bag(request):
@@ -18,6 +21,7 @@ def add_to_bag(request, item_id):
     \n Redirects:
     * User back to same page (or reloads current page)
     """
+    product = Product.objects.get(pk=item_id)  # needed for toast
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     shoesize = None
@@ -54,8 +58,10 @@ def add_to_bag(request, item_id):
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
+            messages.success(request, f'Added {product.name} to your shopping bag')
         else:
             bag[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your shopping bag')
 
     # put bag into session
     request.session['bag'] = bag

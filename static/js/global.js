@@ -29,5 +29,8 @@
             );
         });
 
+        /** Enable toasts */
+        //$('.toast').toast('show');
+
     }); // end of document ready
 })(jQuery); // end of jQuery name space

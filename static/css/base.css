@@ -460,6 +460,14 @@ footer {
 .back-to-top.visible {
     opacity: 1;
 }
+/* Toasts*/
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 999999999;
+}
+
 /* -------------------- MEDIA QUERIES ----------------- */
 /* Small devices (landscape phones, 576px and up) */
 @media only screen and (min-width: 576px) {

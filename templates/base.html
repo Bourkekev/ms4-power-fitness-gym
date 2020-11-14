@@ -61,7 +61,11 @@
         </div>
     </header>
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages %}
+                {% include 'includes/toasts/toast_success.html' %}
+            {% endfor %}
+        </div>
     {% endif %}
     
     {% block page_header %}
@@ -75,6 +79,9 @@
     <a href="#" class="back-to-top" title="Back To Top">
     </a>
     {% block postloadjs %}
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
     {% endblock %}
 
 </body>
