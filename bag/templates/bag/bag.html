@@ -88,20 +88,16 @@
                                     </td>
                                     <td>
                                         <p class="my-0">${{ item.product.price }}</p>
-                                        {% if item.product.shoe_sizes %}
                                             <a class="remove-item text-danger float-right" 
                                             id="remove_{{ item.item_id }}" 
-                                            data-shoe_size="{{ item.shoesize }}"
+                                            {% if item.product.shoe_sizes %}
+                                                data-shoe_size="{{ item.shoesize }}"
+                                            {% endif %}
+                                            {% if item.product.clothing_sizes %}
+                                                data-clothing_size="{{ item.clothing_size }}"
+                                            {% endif %}
                                             aria-label="Remove this item"
                                             title="Remove this item"><i class="fas fa-trash-alt"></i></a>
-                                        {% endif %}
-                                        {% if item.product.clothing_sizes %}
-                                            <a class="remove-item text-danger float-right" 
-                                            id="remove_{{ item.item_id }}" 
-                                            data-clothing_size="{{ item.clothing_size }}"
-                                            aria-label="Remove this item"
-                                            title="Remove this item"><i class="fas fa-trash-alt"></i></a>
-                                        {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}
