@@ -6,13 +6,21 @@ Power Fitness Gym is a website where users can search for and purchase fitness p
 
 The live deployed site can be found here - 
 
+## Research
+
+I researched numerous gym and eCommerce websites for inspiration for site structure, features and style. A list of the most relevant inspiring sites can be found at the bottom of this document [here](#Design-and-Research). 
+
+I also found a couple of very interesting case studies for designing an eCommerce store, one for a [sporting goods](https://medium.com/swlh/designing-my-first-e-commerce-website-ux-case-study-9c1cd1a9a95) website and another for a [toy store](https://uxdesign.cc/designing-an-e-commerce-site-for-a-toy-store-a-ux-case-study-d244f891d028) site. These gave some great insight into how a professional team of UX designers would approach designing an eCommerce website, from the brief all the way through to layout wireframes.
+
+I tried to keep all of what I liked or learned in mind while going through the following UX process.
+
 ## UX
 
 I wanted the site to have 3 main overarching features.
  - [x] Users should be able to browse by category or search the site for products.
  - [x] Users should be able to purchase these products.
  - [x] If they like, users should be able to register and login to the site.
- - [x] Users should ahve the option to manage their gym membership.
+ - [x] Users should have the option to manage their gym membership.
 
 ### User Stories
 
@@ -37,6 +45,7 @@ I include this here to explain what I, as a developer, wanted to get out of this
  - To learn to deploy the web app through Heroku, and store media on Amazon Web Services.
 
 
+
 ### Strategy
 
 The goals of this type of website are to:
@@ -48,7 +57,7 @@ The goals of this type of website are to:
 This section determines what the users should be able to do on the website. Users should be able to:
 
 - [x] Browse products by text search.
-- [x] Browse products by food category.
+- [x] Browse products by category.
 
 
 ### Structure
@@ -71,17 +80,17 @@ I sketched up some very rough ideas on paper and then designed the final wirefra
 
 ### Surface
 
-This is the sensory design section of a website, or how it looks, feels and sounds. I wanted the design to be . I created a moodboard with Adobe Spark from research of colours, styles and components to visually illustrate the style I wished to pursue. You can see that [moodboard here.](README_resources/mood-board.png) 
+This is the sensory design section of a website, or how it looks, feels and sounds. I wanted the design to be . I created a moodboard with Adobe Spark from research of colours, styles and components to visually illustrate the style I wished to pursue. You can see that [moodboard here.](README_resources/mood-board.png)
 
-I decided my main colour would be orange. Orange is about creativity, enthusiasm, energy and youth according to this [99designs article](https://99designs.ie/blog/tips/color-psychology/). Similary [this article about the psychology of orange](https://www.rcwilley.com/blogs/Room-To-Talk/34/2017/10/7197/Color-Psychology-Orange-and-Black) also says it's energergetic, happy and is associated with celebrations, and stimulation. It is a strong colour that pops and is great for drawing the eye to things like buttons or headings.  I also like how the orange, black and white worked together on [Ben Dunne Gyms](https://www.bendunnegyms.com/), though I would probably want to use a lot more white, so it would not seem like a Halloween theme.
+I decided my main colour would be orange. Orange is about creativity, enthusiasm, energy and youth according to this [99designs article](https://99designs.ie/blog/tips/color-psychology/). Similarly [this article about the psychology of orange](https://www.rcwilley.com/blogs/Room-To-Talk/34/2017/10/7197/Color-Psychology-Orange-and-Black) also says it's energetic, happy and is associated with celebrations, and stimulation. It is a strong colour that pops and is great for drawing the eye to things like buttons or headings.  I also like how the orange, black and white worked together on [Ben Dunne Gyms](https://www.bendunnegyms.com/), though I would probably want to use a lot more white, so it would not seem like a Halloween theme.
 
-I searched shutterstock for a gym logo wth orange, and there were a number of logos that used orange and black, from experience fitting a vertical logo into a header can be tricky if you don't want the header to be too tall. With this in mind I chose the power fitness logo which has the logo text horizontal and to the right.
+I searched Shutterstock for a gym logo wth orange, and there were a number of logos that used orange and black, from experience fitting a vertical logo into a header can be tricky if you don't want the header to be too tall. With this in mind I chose the power fitness logo which has the logo text horizontal and to the right.
 
-I like how [Planet Fitness](https://www.planetfitness.com/gyms/manhattan-27th-st-ny) used their bright complementary colours of purple and yellow, along with light and dark greys. I researched colour combinations, particularly looking for orange and another cooloer complementing colour, which would most likey be a shade of blue. I used [Adobe Color](https://color.adobe.com/create/color-wheel) and set the logo orange in the middle and used the 'Complementary' colour harmony rule to determine the other colours. This gave me my complementary blue colours:
+I like how [Planet Fitness](https://www.planetfitness.com/gyms/manhattan-27th-st-ny) used their bright complementary colours of purple and yellow, along with light and dark greys. I researched colour combinations, particularly looking for orange and another cooler complementing colour, which would most likely be a shade of blue. I used [Adobe Color](https://color.adobe.com/create/color-wheel) and set the logo orange in the middle and used the 'Complementary' colour harmony rule to determine the other colours. This gave me my complementary blue colours:
 
 ![Adobe Complementary colours](README_resources/adobe-color-orange-complementary.png)
 
-I did not think I would need the additional orange colours so I brought the main orange and the complementary blues into [Coolors](https://coolors.co/), and added a dark grey and a light grey. Along with white and black these would be my colours. Coloors generates a nice pdf palette with lots of differents shades of those colours.
+I did not think I would need the additional orange colours so I brought the main orange and the complementary blues into [Coolors](https://coolors.co/), and added a dark grey and a light grey. Along with white and black these would be my colours. Coloors generates a nice pdf palette with lots of different shades of those colours.
 
 This was my final palette:
 
@@ -199,8 +208,8 @@ For detail on all my testing and issues I had to overcome see the [Testing Docum
 ### 1. Clone from github 
 To run locally, you can clone this repository directly into the editor of your choice. Open a folder where you want to save the project to and then in the terminal paste `git clone `. To cut ties with this GitHub repository, type `git remote rm origin` into the terminal. The project will be now cloned into your folder.
 
-### 2. Create database on MongoDB
-Create an account on [MongoDb](https://www.mongodb.com/), create a cluster and a database (keeping a note of all passwords) and construct the 5 collections as shown in my database [diagram](#Database-Schema).
+### 2. Create database on 
+
 
 ### 3. Install requirements
 
@@ -297,6 +306,15 @@ You should be able to open the app now, or you might need to Restart all Dynos u
 
 ### Design and Research
  I took inspiration for this site from the following places:
+ * https://medium.com/swlh/designing-my-first-e-commerce-website-ux-case-study-9c1cd1a9a95
+ * https://uxdesign.cc/designing-an-e-commerce-site-for-a-toy-store-a-ux-case-study-d244f891d028
+ * https://www.bendunnegyms.com/westpoint.aspx
+ * https://www.planetfitness.com/gyms/manhattan-27th-st-ny
+ * https://www.decathlon.ie/
+ * https://topfit.qodeinteractive.com/product/equipment/
+ * http://gymster.peacefulqode.com/fitness-home/
+ * https://www.puregym.com/membership-options/
+ * https://apollofitness.ie/collections/home-gym-essentials/products/wooden-gym-rings
 
 
 ### Technical
