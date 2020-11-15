@@ -106,7 +106,10 @@ a.btn-large:hover {
     color: #f39200!important;
 }
 .text-info {
-    color: #0072ab!important;
+    color: #1eaff7!important;
+}
+.border-info {
+    border-color: #1eaff7!important;
 }
 /* Fix header */
 header {
@@ -491,6 +494,15 @@ footer {
 .toast:after {
     margin: -2px -6px;
     border-bottom-color: #fff;
+}
+.toast.border-danger:before {
+    border-bottom-color: #dc3545;
+}
+.toast.border-warning:before {
+    border-bottom-color: #ffc107;
+}
+.toast.border-info:before {
+    border-bottom-color: #1eaff7;
 }
 .toast-header {
     font-size: 1.6rem;
