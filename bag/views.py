@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404
+)
 from django.contrib import messages
 
 from products.models import Product
@@ -21,7 +23,7 @@ def add_to_bag(request, item_id):
     \n Redirects:
     * User back to same page (or reloads current page)
     """
-    product = Product.objects.get(pk=item_id)  # needed for toast
+    product = get_object_or_404(Product, pk=item_id)  # needed for toast
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     shoesize = None
@@ -109,7 +111,7 @@ def adjust_bag(request, item_id):
     \n Redirects:
     * User back to bag page (or reloads bag page)
     """
-    product = Product.objects.get(pk=item_id)  # needed for toast
+    product = get_object_or_404(Product, pk=item_id)  # needed for toast
     quantity = int(request.POST.get('quantity'))
     shoesize = None
     if 'shoe_size' in request.POST:
@@ -188,7 +190,7 @@ def remove_from_bag(request, item_id):
     * 200 or 500 http response
     """
     try:
-        product = Product.objects.get(pk=item_id)  # needed for toast
+        product = get_object_or_404(Product, pk=item_id)  # needed for toast
         shoesize = None
         if 'shoe_size' in request.POST:
             shoesize = request.POST['shoe_size']
