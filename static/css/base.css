@@ -106,7 +106,10 @@ a.btn-large:hover {
     color: #f39200!important;
 }
 .text-info {
-    color: #1eaff7!important;
+    color: #089EE9!important;
+}
+a.text-info:focus, a.text-info:hover {
+    color:#0072ab!important;
 }
 .border-info {
     border-color: #1eaff7!important;

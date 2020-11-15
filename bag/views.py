@@ -39,29 +39,57 @@ def add_to_bag(request, item_id):
             if item_id in list(bag.keys()):
                 if shoesize in bag[item_id]['items_by_shoesize'].keys():
                     bag[item_id]['items_by_shoesize'][shoesize] += quantity
+                    messages.success(request,
+                                     (f'Updated size {shoesize.upper()} '
+                                      f'{product.name} quantity to '
+                                      f'{bag[item_id]["items_by_shoesize"][shoesize]}'),
+                                     extra_tags='Shopping bag updated')
                 else:
                     bag[item_id]['items_by_shoesize'][shoesize] = quantity
+                    messages.success(request,
+                                     (f'Added size {shoesize.upper()} '
+                                      f'{product.name} to your bag'))
             else:
                 bag[item_id] = {'items_by_shoesize': {shoesize: quantity}}
+                messages.success(request,
+                                 (f'Added size {shoesize.upper()} '
+                                  f'{product.name} to your bag'))
         elif clothing_size:
             if item_id in list(bag.keys()):
                 if (clothing_size in
                         bag[item_id]['items_by_clothing_size'].keys()):
                     bag[item_id][
                         'items_by_clothing_size'][clothing_size] += quantity
+                    messages.success(request,
+                                     (f'Updated size {clothing_size.upper()} '
+                                      f'{product.name} quantity to '
+                                      f'{bag[item_id]["items_by_clothing_size"][clothing_size]}'),
+                                     extra_tags='Shopping bag updated')
                 else:
                     bag[item_id][
                         'items_by_clothing_size'][clothing_size] = quantity
+                    messages.success(request,
+                                     (f'Added size {clothing_size.upper()} '
+                                      f'{product.name} to your bag'),
+                                     extra_tags='Shopping bag updated')
             else:
                 bag[item_id] = {
                     'items_by_clothing_size': {clothing_size: quantity}}
+                messages.success(request,
+                                 (f'Added size {clothing_size.upper()} '
+                                  f'{product.name} to your bag'),
+                                 extra_tags='Shopping bag updated')
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
-            messages.success(request, f'Added {product.name} to your shopping bag')
+            messages.success(request,
+                             f'Added {product.name} to your shopping bag',
+                             extra_tags='Quantity changed in shopping bag')
         else:
             bag[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your shopping bag')
+            messages.success(request,
+                             f'Added {product.name} to your shopping bag',
+                             extra_tags='Add to shopping bag')
 
     # put bag into session
     request.session['bag'] = bag
@@ -81,6 +109,7 @@ def adjust_bag(request, item_id):
     \n Redirects:
     * User back to bag page (or reloads bag page)
     """
+    product = Product.objects.get(pk=item_id)  # needed for toast
     quantity = int(request.POST.get('quantity'))
     shoesize = None
     if 'shoe_size' in request.POST:
@@ -95,25 +124,50 @@ def adjust_bag(request, item_id):
     if shoesize or clothing_size:
         if shoesize:
             if quantity > 0:
+                size_of_shoe = bag[item_id]["items_by_shoesize"][shoesize]
                 bag[item_id]['items_by_shoesize'][shoesize] = quantity
+                messages.success(request,
+                                 (f'Updated size {shoesize.upper()} '
+                                  f'{product.name} quantity to '
+                                  f'{size_of_shoe}'),
+                                 extra_tags='Shopping bag updated')
             else:
                 del bag[item_id]['items_by_shoesize'][shoesize]
                 if not bag[item_id]['items_by_shoesize']:
                     bag.pop(item_id)
+                messages.success(request,
+                                 f'Removed {product.name} from your bag',
+                                 extra_tags='Shopping bag updated')
         elif clothing_size:
             if quantity > 0:
                 bag[item_id][
                     'items_by_clothing_size'][clothing_size] = quantity
+                messages.success(request,
+                                 (f'Updated size {clothing_size.upper()} '
+                                  f'{product.name} quantity to '
+                                  f'{bag[item_id]["items_by_clothing_size"][clothing_size]}'),
+                                 extra_tags='Shopping bag updated')
             else:
                 del bag[item_id][
                         'items_by_clothing_size'][clothing_size]
                 if not bag[item_id]['items_by_clothing_size']:
                     bag.pop(item_id)
+                messages.success(request,
+                                 f'Removed {product.name} from your bag',
+                                 extra_tags='Shopping bag updated')
+
     else:
         if quantity > 0:
             bag[item_id] = quantity
+            messages.success(request,
+                             f'Updated {product.name} quantity '
+                             f'to {bag[item_id]}',
+                             extra_tags='Shopping bag updated')
         else:
             bag.pop(item_id)
+            messages.success(request,
+                             f'Removed {product.name} from your bag',
+                             extra_tags='Shopping bag updated')
 
     # put bag into session
     request.session['bag'] = bag
@@ -131,9 +185,10 @@ def remove_from_bag(request, item_id):
     2. item_id: the ID of the item to be removed
 
     \n Returns:
-    * 200 http response
+    * 200 or 500 http response
     """
     try:
+        product = Product.objects.get(pk=item_id)  # needed for toast
         shoesize = None
         if 'shoe_size' in request.POST:
             shoesize = request.POST['shoe_size']
@@ -148,13 +203,22 @@ def remove_from_bag(request, item_id):
                 del bag[item_id]['items_by_shoesize'][shoesize]
                 if not bag[item_id]['items_by_shoesize']:
                     bag.pop(item_id)
+                messages.success(request,
+                                 f'Removed {product.name} from your bag',
+                                 extra_tags='Shopping bag updated')
             elif clothing_size:
                 del bag[item_id][
                         'items_by_clothing_size'][clothing_size]
                 if not bag[item_id]['items_by_clothing_size']:
                     bag.pop(item_id)
+                messages.success(request,
+                                 f'Removed {product.name} from your bag',
+                                 extra_tags='Shopping bag updated')
         else:
             bag.pop(item_id)
+            messages.success(request,
+                             f'Removed {product.name} from your bag',
+                             extra_tags='Shopping bag updated')
 
         # put bag into session
         request.session['bag'] = bag
