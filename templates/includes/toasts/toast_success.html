@@ -10,6 +10,64 @@
         </button>
     </div>
     <div class="toast-body">
-        {{ message }}
+        <div class="row">
+            <div class="col">
+                {{ message }}
+            </div>
+        </div>
+        {% if grand_total %}
+        <div class="container bag-items-container">
+            {% for item in bag_items %}
+                <div class="row">
+                    <div class="col-3 my-1">
+                        {% if item.product.image %}
+                            <a href="{% url 'product_detail' item.product.id %}">
+                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            </a>
+                        {% else %}
+                            <a href="{% url 'product_detail' item.product.id %}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-9">
+                        <p class=""><strong>{{ item.product.name }}</strong></p>
+                        <p class="">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                        <p class="">Qty: {{ item.quantity }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container bag-totals">
+            <div class="row">
+                <div class="col">
+                    <p>
+                        Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
+                        <span class="float-right">${{ total|floatformat:2 }}</span>
+                    </p>
+                    {% if free_delivery_delta > 0 %}
+                        <p class="">
+                            Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
+                        </p>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'view_bag' %}" class="btn">
+                        <span class="text-uppercase">View Bag</span>
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="" class="btn">
+                        <span class="text-uppercase">Checkout</span>
+                        <i class="fas fa-lock"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
