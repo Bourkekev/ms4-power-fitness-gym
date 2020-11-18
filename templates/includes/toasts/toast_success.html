@@ -1,3 +1,4 @@
+{% load bag_tools %}
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false" data-delay="10000">
     <div class="toast-header">
         {% if message.tags %} 
@@ -10,7 +11,7 @@
         </button>
     </div>
     <div class="toast-body">
-        <div class="row">
+        <div class="row toast-message">
             <div class="col">
                 {{ message }}
             </div>
@@ -18,7 +19,7 @@
         {% if grand_total %}
         <div class="container bag-items-container">
             {% for item in bag_items %}
-                <div class="row">
+                <div class="row bag-item">
                     <div class="col-3 my-1">
                         {% if item.product.image %}
                             <a href="{% url 'product_detail' item.product.id %}">
@@ -31,19 +32,38 @@
                         {% endif %}
                     </div>
                     <div class="col-9">
-                        <p class=""><strong>{{ item.product.name }}</strong></p>
-                        <p class="">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                        <p class="">Qty: {{ item.quantity }}</p>
+                        <p class="m-0"><strong>{{ item.product.name }}</strong>
+                            <a class="remove-item text-danger float-right" 
+                            id="remove_{{ item.item_id }}" 
+                            {% if item.product.shoe_sizes %}
+                                data-shoe_size="{{ item.shoesize }}"
+                            {% endif %}
+                            {% if item.product.clothing_sizes %}
+                                data-clothing_size="{{ item.clothing_size }}"
+                            {% endif %}
+                            aria-label="Remove this item"
+                            title="Remove this item"><i class="fas fa-trash-alt"></i></a></p>
+                        <p class="m-0">Size: 
+                            {% if item.product.clothing_sizes %}
+                                {{ item.clothing_size|upper }}
+                            {% elif item.product.shoe_sizes %}
+                                {{ item.shoesize|upper }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </p>
+                        <p class="float-right">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        <p>Qty: {{ item.quantity }}</p>
                     </div>
                 </div>
             {% endfor %}
         </div>
-        <div class="container bag-totals">
+        <div class="container bag-total">
             <div class="row">
                 <div class="col">
-                    <p>
+                    <p class="float-right">
                         Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
-                        <span class="float-right">${{ total|floatformat:2 }}</span>
+                        <span>${{ total|floatformat:2 }}</span>
                     </p>
                     {% if free_delivery_delta > 0 %}
                         <p class="">
@@ -55,13 +75,13 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <a href="{% url 'view_bag' %}" class="btn">
-                        <span class="text-uppercase">View Bag</span>
+                    <a href="{% url 'view_bag' %}" class="btn btn-outline-secondary w-100">
+                        <span class="text-uppercase">Edit Bag</span>
                         <i class="fas fa-shopping-bag"></i>
                     </a>
                 </div>
                 <div class="col-6">
-                    <a href="" class="btn">
+                    <a href="#" class="btn btn-primary w-100">
                         <span class="text-uppercase">Checkout</span>
                         <i class="fas fa-lock"></i>
                     </a>
