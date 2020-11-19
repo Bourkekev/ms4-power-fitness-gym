@@ -36,6 +36,32 @@ class Order(models.Model):
     )
 
 
+def _generate_order_number(self):
+    """
+    Generate a random, unique order number using UUID
+    """
+    return uuid.uuid4().hex.upper()
+
+
+def save(self, *args, **kwargs):
+    """ save:
+
+    * Override save method to set the order number
+    if it has not been set already.
+
+    \n Args:
+    1. self: the order
+    2. *args: 
+    3. **kwargs
+
+    \n Save:
+    * saves the order with the arguments
+    """
+    if not self.order_number:
+        self.order_number = self._generate_order_number()
+    super().save(*args, **kwargs)
+
+
 class OrderLineItem(models.Model):
     order = models.ForeignKey(
         Order,
