@@ -3,7 +3,7 @@
 {% load bag_tools %}
 
 {% block page_header %}
-    <div class="container-fluid bg-primary text-white py-3">
+    <div class="container-fluid bg-secondary text-white py-3">
         <div class="row text-center">
             <div class="col">
                 <p class="my-1 font-archivo-black display-4">Free delivery on orders over €{{ free_delivery_threshold }}!</p>
@@ -118,7 +118,7 @@
                                 <td class="text-right p-4"><strong> €{{ delivery|floatformat:2 }}</strong></td>
                             </tr>
                             {% if left_to_free_delivery > 0 %}
-                                <tr class="mb-1 text-warning">
+                                <tr class="mb-1 text-info">
                                     <td colspan="2">You could get free delivery by spending just <strong>€{{ left_to_free_delivery }}</strong> more!</td>
                                 </tr>
                             {% endif %}

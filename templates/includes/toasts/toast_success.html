@@ -11,10 +11,8 @@
         </button>
     </div>
     <div class="toast-body">
-        <div class="row toast-message">
-            <div class="col">
-                {{ message }}
-            </div>
+        <div class="toast-message">
+            {{ message }}
         </div>
         {% if grand_total %}
         <div class="container bag-items-container">
@@ -61,16 +59,19 @@
         <div class="container bag-total">
             <div class="row">
                 <div class="col">
-                    <p class="float-right">
-                        Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: 
-                        <span>${{ total|floatformat:2 }}</span>
-                    </p>
-                    {% if free_delivery_delta > 0 %}
-                        <p class="">
-                            Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
+                    {% if left_to_free_delivery > 0 %}
+                        <p class="text-center mb-0 bg-secondary text-white">
+                            Spend <strong>${{ left_to_free_delivery }}</strong> more to get free delivery!
                         </p>
                     {% endif %}
-                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="float-right">
+                        Total{% if left_to_free_delivery > 0 %} (Exc. delivery){% endif %}: 
+                        <span>${{ total|floatformat:2 }}</span>
+                    </p>
                 </div>
             </div>
             <div class="row">
@@ -83,7 +84,7 @@
                 <div class="col-6">
                     <a href="#" class="btn btn-primary w-100">
                         <span class="text-uppercase">Checkout</span>
-                        <i class="fas fa-lock"></i>
+                        <i class="far fa-credit-card"></i>
                     </a>
                 </div>
             </div>

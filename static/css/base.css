@@ -99,6 +99,9 @@ a.btn-large:hover {
 .bg-primary {
     background-color: #f39200!important;
 }
+.bg-secondary {
+    background-color: #0072ab!important;
+}
 .display-4 {
     font-size: 2rem;
 }
@@ -106,7 +109,7 @@ a.btn-large:hover {
     color: #f39200!important;
 }
 .text-info {
-    color: #089EE9!important;
+    color: #0072ab!important;
 }
 a.text-info:focus, a.text-info:hover {
     color:#0072ab!important;
