@@ -35,53 +35,53 @@ class Order(models.Model):
         null=False, default=0
     )
 
+    def _generate_order_number(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
 
-def _generate_order_number(self):
-    """
-    Generate a random, unique order number using UUID
-    """
-    return uuid.uuid4().hex.upper()
+    def update_total(self):
+        """ update_total:
 
+        * Update grand total when a line item is added,
+        check if order value requires delivery cost and adding delivery if needed.
 
-def update_total(self):
-    """ update_total:
+        \n Args:
+        1. self: the order
 
-    * Update grand total when a line item is added,
-    check if order value requires delivery cost and adding delivery if needed.
+        \n Saves:
+        * saves the updated grand_total
+        """
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum']
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
+            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        else:
+            self.delivery_cost = 0
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
 
-    \n Args:
-    1. self: the order
+    def save(self, *args, **kwargs):
+        """ save:
 
-    \n Save:
-    * saves the updated grand_total
-    """
-    self.order_total = self.lineitems.aggregate(
-        Sum('lineitem_total'))['lineitem_total__sum']
-    if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-        self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-    else:
-        self.delivery_cost = 0
-    self.grand_total = self.order_total + self.delivery_cost
-    self.save()
+        * Override save method to set the order number
+        if it has not been set already.
 
+        \n Args:
+        1. self: the order
+        2. *args:
+        3. **kwargs
 
-def save(self, *args, **kwargs):
-    """ save:
+        \n Save:
+        * saves the order with the arguments
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
 
-    * Override save method to set the order number
-    if it has not been set already.
-
-    \n Args:
-    1. self: the order
-    2. *args:
-    3. **kwargs
-
-    \n Save:
-    * saves the order with the arguments
-    """
-    if not self.order_number:
-        self.order_number = self._generate_order_number()
-    super().save(*args, **kwargs)
+    def __str__(self):
+        return self.order_number
 
 
 class OrderLineItem(models.Model):
@@ -115,3 +115,22 @@ class OrderLineItem(models.Model):
         blank=False,
         editable=False
     )
+
+    def save(self, *args, **kwargs):
+        """ save:
+
+    * Override save method to set the line-item total
+
+    \n Args:
+    1. self: the order
+    2. *args:
+    3. **kwargs
+
+    \n Save:
+    * saves line-item with args
+    """
+        self.lineitem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'SKU {self.product.sku} on order {self.order.order_number}'
