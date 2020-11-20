@@ -30,3 +30,19 @@ let style = {
 let card = elements.create('card', {style: style});
 // Mount on div in checkout.html
 card.mount('#card-element');
+
+//Check validation when card element changes 
+card.addEventListener('change', function(event){
+    let errorDiv = document.getElementById('card-errors');
+    if (event.error){
+        let html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+    }
+});
