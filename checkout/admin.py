@@ -4,10 +4,8 @@ from .models import Order, OrderLineItem
 
 class OrderLineItemAdminInline(admin.TabularInline):
     """
-
     Allows adding and editing of line items in the
     admin right from inside the order model.
-
     """
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
@@ -15,9 +13,7 @@ class OrderLineItemAdminInline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     """
-
     Create the admin interface for Orders
-
     """
     #  Make OrderLineItem model accessible
     inlines = (OrderLineItemAdminInline,)
