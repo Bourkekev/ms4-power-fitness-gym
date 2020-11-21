@@ -115,6 +115,7 @@ An important part of UX is making sure users cannot cause errors, and that they 
  - Required Form inputs give warnings or feedback if not filled, or filled correctly.
  - A user is given feedback if they are not allowed to do something, like register an already existing username.
  - A custom '404 page not found' page.
+ - Ensure that all orders are entered into our database even in the event of a user error during the checkout process. If the payment form is not submitted for some reason like a user closes the page before the payment is complete, the webhook handler will have this information and create the order in the database.
 
 ## Technologies Used
 
