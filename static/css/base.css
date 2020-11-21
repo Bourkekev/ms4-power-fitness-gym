@@ -117,6 +117,9 @@ a.text-info:focus, a.text-info:hover {
 .border-info {
     border-color: #1eaff7!important;
 }
+.border-secondary {
+    border-color: #0072ab!important;
+}
 /* Fix header */
 header {
     background: #fff;
