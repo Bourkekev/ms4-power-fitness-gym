@@ -47,7 +47,10 @@ card.addEventListener('change', function(event){
     }
 });
 
-// Handle submitting payment to Stripe
+/**
+ *  Handle submitting payment to Stripe
+ *  base on https://stripe.com/docs/payments/accept-a-payment#web-submit-payment
+ */
 const form = document.getElementById("payment-form");
 
 form.addEventListener("submit", function (ev) {

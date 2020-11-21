@@ -11,7 +11,9 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
+    # iterate through each bag item
     for item_id, item_data in bag.items():
+        # if no size
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
             total += item_data * product.price
