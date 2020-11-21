@@ -55,7 +55,7 @@ class Order(models.Model):
         * saves the updated grand_total
         """
         self.order_total = self.lineitems.aggregate(
-            Sum('lineitem_total'))['lineitem_total__sum']
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             del_per = settings.STANDARD_DELIVERY_PERCENTAGE
             self.delivery_cost = self.order_total * del_per / 100
