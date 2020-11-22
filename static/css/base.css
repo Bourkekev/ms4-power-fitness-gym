@@ -93,7 +93,7 @@ a.btn-large:hover {
 }
 .btn-group-lg>.btn,
 .btn-lg {
-    padding: 1rem 3rem;
+    padding: 1.4rem 3rem;
     font-size: 2rem;
 }
 .bg-primary {
@@ -119,6 +119,9 @@ a.text-info:focus, a.text-info:hover {
 }
 .border-secondary {
     border-color: #0072ab!important;
+}
+.form-control:focus {
+    border-color: #1eaff7;
 }
 /* Fix header */
 header {
@@ -411,6 +414,11 @@ p.hero-text {
 .remove-item {
     cursor: pointer;
 }
+/* Checkout */
+.checkout-col-container {
+    border: 1px solid #d0d0d0;
+    padding: 1.5rem;
+}
 /* Footer */
 footer {
     background: #2e2e2e;
@@ -562,6 +570,9 @@ footer {
     .w-sm-auto {
         width: auto!important;
     }
+    .w-sm-50 {
+        width: 50% !important;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -573,6 +584,13 @@ footer {
     /* override BS width */
     .w-md-auto {
         width: auto!important;
+    }
+    .w-md-50 {
+        width: 50% !important;
+    }
+    /* New BS style buttons */
+    .btn-md-lg {
+        padding: 1.55rem 3rem;
     }
     /* Quantity Buttons */
     .qty-btns .input-group {
@@ -677,5 +695,8 @@ footer {
     /* override BS width */
     .w-xl-auto {
         width: auto!important;
+    }
+    .btn[value="Add to Bag"] {
+        max-width: 30rem;
     }
 }
