@@ -76,7 +76,18 @@ I also listed out the features I wanted on the homepage:
 
 I sketched up some very rough ideas on paper and then designed the final wireframes, which were created in Balsamiq:
 
-
+- [Home page on desktop wireframe](README_resources/wireframes/homepage-desktop.png)
+- [Home page on mobile wireframe](README_resources/wireframes/homepage-mobile.png)
+- [Mobile navigation wireframe](README_resources/wireframes/mobile-nav-open.png)
+- [Membership page on desktop wireframe](README_resources/wireframes/membership-desktop.png)
+- [Membership page on mobile wireframe](README_resources/wireframes/membership-mobile.png)
+- [Products page on desktop wireframe](README_resources/wireframes/products-desktop.png)
+- [Single product page on desktop wireframe](README_resources/wireframes/product-single-desktop.png)
+- [Single product page on mobile wireframe](README_resources/wireframes/product-single-mobile.png)
+- [Shopping bag page on desktop wireframe](README_resources/wireframes/shopping-bag-desktop.png)
+- [Shopping bag page on mobile wireframe](README_resources/wireframes/shopping-bag-mobile.png)
+- [Checkout page on desktop wireframe](README_resources/wireframes/checkout-desktop.png)
+- [Checkout page on mobile wireframe](README_resources/wireframes/checkout-mobile.png)
 
 ### Surface
 
