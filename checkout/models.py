@@ -6,6 +6,7 @@ from django.db.models import Sum
 from django.conf import settings
 
 from products.models import Product
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
@@ -42,6 +43,8 @@ class Order(models.Model):
         blank=False,
         default=''
     )
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                     null=True, blank=True, related_name='orders')
 
     def _generate_order_number(self):
         """
