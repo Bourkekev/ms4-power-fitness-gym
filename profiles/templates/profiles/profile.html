@@ -16,10 +16,10 @@
     <div class="container header-container">
         <div class="row text-center mb-5">
             <div class="col">
-                <h1>Checkout</h1>
+                <h1>Your Profile</h1>
                 <div class="checkout-login-toggle">
                     {% if user.is_authenticated %}
-                        <h3>Welcome User</h3>
+                        <h2>Welcome {{ profile }}</h2>
                     {% else %}
                         <a class="text-info d-block" href="{% url 'account_signup' %}">Create an account</a> 
                         <div class="text-uppercase lead"><strong>or</strong></div>

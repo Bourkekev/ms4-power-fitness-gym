@@ -28,7 +28,7 @@
                     {% if request.user.is_superuser %}
                         <a href="" class="acc-item">Product Management</a>
                     {% endif %}
-                        <a href="" class="acc-item">My Profile</a>
+                        <a href="{% url 'profile' %}" class="acc-item">My Profile</a>
                         <a href="{% url 'account_logout' %}" class="acc-item">Logout</a>
                     {% else %}
                         <a href="{% url 'account_signup' %}" class="acc-item">Register</a>
