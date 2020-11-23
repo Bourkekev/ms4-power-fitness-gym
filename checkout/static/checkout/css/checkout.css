@@ -45,6 +45,10 @@
     margin: 0;
     height: 100%;
 }
+select,
+select option {
+    color: #000;
+}
 select:invalid,
 select option[value=""] {
     color: #aaa!important;
