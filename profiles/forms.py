@@ -18,7 +18,6 @@ class EditUserProfile(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'default_email': 'Email Address',
             'default_phone_number': 'Phone Number',
             'default_postcode': 'Postal Code',
             'default_town_or_city': 'Town or City',
@@ -37,8 +36,8 @@ class EditUserProfile(forms.ModelForm):
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
-            # set placeholder values
-            self.fields[field].widget.attrs['placeholder'] = placeholder
+                # set placeholder values
+                self.fields[field].widget.attrs['placeholder'] = placeholder
             # add stripe class
             self.fields[field].widget.attrs['class'] = 'profile-form'
             self.fields[field].label = False
