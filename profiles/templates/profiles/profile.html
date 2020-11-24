@@ -21,9 +21,7 @@
                     {% if user.is_authenticated %}
                         <h2>Welcome {{ profile }}</h2>
                     {% else %}
-                        <a class="text-info d-block" href="{% url 'account_signup' %}">Create an account</a> 
-                        <div class="text-uppercase lead"><strong>or</strong></div>
-                        <a class="text-info d-block" href="{% url 'account_login' %}">login</a> to save this information
+                        <a class="text-info d-block" href="{% url 'account_signup' %}">Create an account</a>
                     {% endif %}
                 </div>
             </div>
@@ -34,7 +32,18 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        
+        <div class="col-12 col-lg-6">
+            <h3>Default Delivery Information</h3>
+            <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-secondary float-right">Update Information</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h3>Order History</h3>
+            <p>{{ orders }}</p>
+        </div>
     </div>
 </div>
 

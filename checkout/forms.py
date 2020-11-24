@@ -41,7 +41,6 @@ class OrderForm(forms.ModelForm):
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
             # set placeholder values
             self.fields[field].widget.attrs['placeholder'] = placeholder
             # add stripe class
