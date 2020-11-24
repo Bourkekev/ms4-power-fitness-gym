@@ -9,8 +9,12 @@
     <div class="container header-container">
         <div class="row text-center mb-5">
             <div class="col">
-                <h1>Thank you</h1>
-                <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+                {% if from_profile %}
+                    <h1 class="display-3">Completed Order Details</h1>
+                {% else %}
+                    <h1>Thank you</h1>
+                {% endif%}
+                <p>Your order information is below. A confirmation email {% if from_profile %}was sent {% else %}will be sent {% endif%} to <strong>{{ order.email }}</strong></p>
             </div>
         </div>
     </div>
@@ -183,5 +187,12 @@
             </div>
         </div>
     </div>
+    {% if from_profile %}
+        <div class="row text-center my-5">
+            <div class="col">
+                <a href="{% url 'profile' %}" class="btn btn-primary"><i class="fas fa-angle-double-left"></i> Back to your profile</a>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
