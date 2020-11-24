@@ -19,7 +19,7 @@
                 <h1>Your Profile</h1>
                 <div class="checkout-login-toggle">
                     {% if user.is_authenticated %}
-                        <h2>Welcome {{ profile }}</h2>
+                        <h2>Welcome {{ profile_name }}</h2>
                     {% else %}
                         <a class="text-info d-block" href="{% url 'account_signup' %}">Create an account</a>
                     {% endif %}

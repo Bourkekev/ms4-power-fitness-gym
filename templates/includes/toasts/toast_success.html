@@ -14,7 +14,7 @@
         <div class="toast-message">
             {{ message }}
         </div>
-        {% if grand_total %}
+        {% if grand_total and not on_profile_page %}
         <div class="container bag-items-container">
             {% for item in bag_items %}
                 <div class="row bag-item">
