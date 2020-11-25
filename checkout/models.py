@@ -43,8 +43,11 @@ class Order(models.Model):
         blank=False,
         default=''
     )
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-                                     null=True, blank=True, related_name='orders')
+    user_profile = models.ForeignKey(UserProfile,
+                                     on_delete=models.SET_NULL,
+                                     null=True,
+                                     blank=True,
+                                     related_name='orders')
 
     def _generate_order_number(self):
         """

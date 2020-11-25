@@ -33,7 +33,6 @@ class StripeWH_Handler:
             [customer_email]
         )
 
-
     def handle_event(self, event):
         """
         Handle a generic/unknown/unexpected webhook event
@@ -61,7 +60,7 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         # Update profile information if save_info checked
-        profile = None # Allows guest checkout
+        profile = None  # Allows guest checkout
         username = intent.metadata.username
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
