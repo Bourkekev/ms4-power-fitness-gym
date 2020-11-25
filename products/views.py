@@ -108,11 +108,26 @@ def edit_product(request, product_id):
     * The form, the product
 
     \n Redirects
-    * User back to same page (or reloads current page)
+    * User back to product page
     """
     product = get_object_or_404(Product, pk=product_id)
-    form = ProductForm(instance=product)
-    messages.info(request, f'You are now editing {product.name}')
+    if request.method == 'POST':
+        form = ProductForm(
+            request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request,
+                             'Updated product successfully.')
+            return redirect(reverse('product_detail',
+                                    args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product. \
+                Please ensure the form is valid.')
+
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are now editing {product.name}')
+
     template = 'products/edit_product.html'
     context = {
         'form': form,
