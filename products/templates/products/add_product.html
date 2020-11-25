@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center mb-5">
+            <div class="col">
+                <h1>Add a new product</h1>
+                <div class="checkout-login-toggle">
+                    {% if user.is_authenticated %}
+                        <h3>Welcome </h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
+            
+        </div>
+        <div class="col-12 col-lg-6">
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
