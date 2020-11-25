@@ -93,3 +93,30 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """ edit_product:
+
+    * Edits an existing product
+
+    \n Args:
+    1. request: the POST request data from the form
+    2. product_id: the ID of the product to be edited
+
+    \n Returns:
+    * The form, the product
+
+    \n Redirects
+    * User back to same page (or reloads current page)
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    form = ProductForm(instance=product)
+    messages.info(request, f'You are now editing {product.name}')
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
