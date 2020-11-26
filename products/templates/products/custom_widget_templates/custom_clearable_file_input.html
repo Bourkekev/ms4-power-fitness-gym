@@ -1,10 +1,10 @@
 {% if widget.is_initial %}
-    <p>{{ widget.initial_text }}:</p>
+    {{ widget.initial_text }}:
     <a href="{{ widget.value.url }}">
         <img width="80" height="80" class="rounded shadow-sm" src="{{ widget.value.url }}">
     </a>
     {% if not widget.required %}
-        <div class="form-check mt-2">
+        <div class="form-check mt-4 d-block">
             <input class="form-check-input" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}"{% if widget.attrs.disabled %} disabled{% endif %}>
             <label class="form-check-label" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
         </div>
