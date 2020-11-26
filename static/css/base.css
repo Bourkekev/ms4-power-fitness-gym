@@ -59,7 +59,24 @@ a.btn-small:hover,
 a.btn-large:hover {
     color: #fff;
 }
-/* --- Bootstrap overrides ---*/
+label {
+    font-weight: 700;
+}
+/* ----- Bootstrap overrides -----*/
+/* Checkboxes */
+.form-check {
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: 1.2;
+}
+.form-check-label {
+    font-weight: 400;
+    padding-left: 5px;
+}
+/* Controls and buttons */
+.form-group {
+    margin-bottom: 1.5rem;
+}
 .btn,
 .form-control {
     font-size: 1.8rem;
@@ -118,6 +135,7 @@ a.btn-large:hover {
 .display-4 {
     font-size: 2rem;
 }
+/* Colors */
 .text-warning {
     color: #f39200!important;
 }
