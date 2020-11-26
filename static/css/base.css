@@ -87,9 +87,17 @@ a.btn-large:hover {
     color: #f39200;
     border-color: #f39200;
 }
+.btn-outline-primary:hover {
+    background-color: #0072ab;
+    border-color: #0072ab;
+}
 .btn-outline-secondary {
     color: #0072AB;
     border-color: #0072AB;
+}
+.btn-outline-secondary:hover {
+    color: #f39200;
+    border-color: #f39200;
 }
 .btn-group-lg>.btn,
 .btn-lg {
@@ -351,10 +359,15 @@ p.hero-text {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    padding: 0 .75rem;
+    margin-bottom: 1.5rem;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
+}
+.product-col .card {
+    box-shadow: 1px 1px 1px 0 rgba(92, 92, 92, 0.2);
 }
 .product-col .product-price {
     font-size: 1.6rem;
