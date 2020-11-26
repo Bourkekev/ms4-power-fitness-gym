@@ -28,6 +28,9 @@
             <div class="product-details-container mb-5 mt-md-5">
                 <!-- Name and price -->
                 <h1 class="product-title">{{ product.name }}</h1>
+                {% if request.user.is_superuser %}
+                    <a class="btn btn-small btn-outline-primary" href="{% url 'edit_product' product.id %}">Edit Product</a>
+                {% endif %}
                 <p class="product-price text-left font-weight-bold">
                     <span class="regular-price {% if product.sale_price %}on-sale{% endif %}">€{{ product.price }}</span>
                     {% if product.sale_price %}
