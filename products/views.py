@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -73,6 +76,7 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+@staff_member_required
 def add_product(request):
     """ Adds a product to the shop """
     if request.method == 'POST':
@@ -95,6 +99,7 @@ def add_product(request):
     return render(request, template, context)
 
 
+@staff_member_required
 def edit_product(request, product_id):
     """ edit_product:
 
@@ -137,6 +142,7 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@staff_member_required
 def delete_product(request, product_id):
     """ Delete a product """
 
