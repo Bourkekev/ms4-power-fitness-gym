@@ -62,8 +62,10 @@ a.btn-large:hover {
 /* --- Bootstrap overrides ---*/
 .btn,
 .form-control {
-    border-color: #b2b2b2;
     font-size: 1.8rem;
+}
+.form-control {
+    border-color: #b2b2b2;
 }
 .btn-primary {
     color: #fff;
