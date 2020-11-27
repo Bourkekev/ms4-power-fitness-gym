@@ -3,5 +3,3 @@
 __pycache__
 .vscode/
 env.py
-Pipfile
-Pipfile.lock
