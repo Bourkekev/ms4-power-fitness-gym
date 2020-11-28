@@ -116,7 +116,7 @@ This [canva article](https://www.canva.com/learn/the-ultimate-guide-to-font-pair
 
 ### Stripe Checkout Functionality
 
-I mapped out in a visual diagram, the process for checkout via Stripe. I have tried to show how data gets passed between Stripe, the views and the webhook handler, and how it is stored in the database. While this is quite broad strokes and lacks a lot of detail, it helped me understand the checkout process much better. You can see a [pdf of the checkout process here](README_resources/checkout-process-map.pdf) or see an image of it below:
+I mapped out in a visual diagram, the process for checkout via Stripe. I have tried to show how data gets passed between Stripe, the views and the webhook handler, and how it is stored in the database. While this is quite broad strokes and lacks a lot of detail, it helped me understand the checkout process much better. Checkout starts when the form is submitted on the /checkout/ page (so starts at checkout.html template). You can see a [pdf of the checkout process here](README_resources/checkout-process-map.pdf) or see an image of it below:
 
 ![Checkout process map](README_resources/checkout-process-map.png)
 
