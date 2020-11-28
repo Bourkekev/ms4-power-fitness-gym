@@ -4,7 +4,7 @@
 
 Power Fitness Gym is a website where users can search for and purchase fitness products via text search or categories. 
 
-The live deployed site can be found here - 
+The live deployed site can be found here - https://power-fitness.herokuapp.com/
 
 ## Research
 
@@ -114,10 +114,15 @@ You can also see it completely in [PDF format here](README_resources/colour-pale
 On all the gym and shop websites I researched, I liked the font used on [Ben Dunne Gyms](https://www.bendunnegyms.com/westpoint.aspx) as a heading, as it is strong and bold. 
 This [canva article](https://www.canva.com/learn/the-ultimate-guide-to-font-pairing/) also shows a very bold heading font to help represent Sports or Activity (under 03. Sports/active), which is a Google Font called [Archivo Black](https://fonts.google.com/specimen/Archivo+Black), and there is also an [Archivo Narrow](https://fonts.google.com/specimen/Archivo+Narrow) which I thought might work well as a secondary heading. Google fonts has suggestions for pairing fonts, and from those I decided on Source Sans Pro, which is a good sans-serif font for body text, as it is easy to read at smaller sizes.
 
+### Stripe Checkout Functionality
+
+I mapped out in a visual diagram, the process for checkout via Stripe. I have tried to show how data gets passed between Stripe, the views and the webhook handler, and how it is stored in the database. While this is quite broad strokes and lacks a lot of detail, it helped me understand the checkout process much better. You can see a [pdf of the checkout process here](README_resources/checkout-process-map.pdf) or see an image of it below:
+
+![Checkout process map](README_resources/checkout-process-map.png)
+
 ### Database Schema
 
 Based on the functionality required and the data to be stored, I created my database structure. 
-
 
 ### Defensive Design
 
@@ -333,7 +338,8 @@ You should be able to open the app now, or you might need to Restart all Dynos u
 ### Technical
  - For general references for Python and Django I used my Code Institute notes, [MDN web docs](https://developer.mozilla.org/en-US/), [w3schools](https://www.w3schools.com/js/default.asp), [Python Offical Docs](https://www.python.org/doc/), and [Django documentation](https://docs.djangoproject.com/en/3.1/).
  - I also used Django for Beginners book by William S. Vincent for reference.
- - Stripe Documentation examples - [Listen for Stripe webhook handler](https://stripe.com/docs/payments/handling-payment-events#signature-checking)
+ - Stripe Webhook Handler - The base code for this came from Stripe's documentation - [Handle webhook events](https://stripe.com/docs/payments/handling-payment-events#signature-checking)
+ - Javascript Stripe payment logic - Base code for this came from (Stripe documentation)[https://stripe.com/docs/payments/accept-a-payment]
  
 ### Content
 
