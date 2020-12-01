@@ -31,3 +31,8 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script src="{% static 'js/stripe-membership.js' %}"></script>
+{% endblock %}
