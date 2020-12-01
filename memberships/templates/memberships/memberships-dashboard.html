@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Memberships</h1>
+                <p>Select a membership options to sign up to.</p>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row row w-lg-75 mx-auto my-5">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">Gold Membership</div>
+                    <div class="card-body">
+                        <h4 class="card-title">€29</h4>
+                        <p class="card-text">Just the basics. Get access to the gym, all our equipment and a personalised fitness plan with an instructor.</p>
+                        <p class="card-text">Per month</p>
+                        <p class="card-text">Billed monthly</p>
+                        <button type="submit" class="btn btn-primary" id="submitBtnGold">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
