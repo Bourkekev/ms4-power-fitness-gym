@@ -715,6 +715,9 @@ footer {
     .w-lg-auto {
         width: auto!important;
     }
+    .w-lg-75 {
+        width: 75%!important;
+    }
     .push-flex-right {
         margin-left: auto;
     }

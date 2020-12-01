@@ -28,7 +28,7 @@
                     {% if request.user.is_superuser %}
                         <a href="{% url 'add_product' %}" class="acc-item">Add a Product</a>
                     {% endif %}
-                        <a href="{% url 'profile' %}" class="acc-item">My Profile</a>
+                        <a href="{% url 'profile' %}" class="acc-item">Your Profile</a>
                         <a href="{% url 'account_logout' %}" class="acc-item">Logout</a>
                     {% else %}
                         <a href="{% url 'account_signup' %}" class="acc-item">Register</a>
@@ -40,7 +40,7 @@
                     <a class="nav-link" href="{% url 'home'%}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Membership</a>
+                    <a class="nav-link" href="{% url 'gym-memberships'%}">Memberships</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="productsdropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
