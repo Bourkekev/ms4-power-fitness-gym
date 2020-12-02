@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['power-fitness.herokuapp.com', '7f55b0700ecf.ngrok.io', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['power-fitness.herokuapp.com', '036f794230ce.ngrok.io', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -222,5 +222,6 @@ STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_SUB_WH_SECRET = os.getenv('STRIPE_SUB_WH_SECRET', '')
 STRIPE_GOLD_PRICE_ID = os.getenv('STRIPE_GOLD_PRICE_ID', '')
 DEFAULT_FROM_EMAIL = 'info@power-fitness-gym.ie'

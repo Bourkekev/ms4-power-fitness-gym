@@ -217,7 +217,7 @@ Expand the sections below for more info on details:
  - Allow products to be tagged within multiple categories.
  - Generate thumbnail images for use in shopping bag to prevent loading full size images.
 
-## Testing
+## Testing and Issues
 
 For detail on all my testing and issues I had to overcome see the [Testing Document](TESTING.md).
 
@@ -336,10 +336,11 @@ You should be able to open the app now, or you might need to Restart all Dynos u
 
 
 ### Technical
- - For general references for Python and Django I used my Code Institute notes, [MDN web docs](https://developer.mozilla.org/en-US/), [w3schools](https://www.w3schools.com/js/default.asp), [Python Offical Docs](https://www.python.org/doc/), and [Django documentation](https://docs.djangoproject.com/en/3.1/).
+ - For general references for Python and Django I used my Code Institute notes, [MDN web docs](https://developer.mozilla.org/en-US/), [w3schools](https://www.w3schools.com/js/default.asp), [Python Official Docs](https://www.python.org/doc/), and [Django documentation](https://docs.djangoproject.com/en/3.1/).
  - I also used Django for Beginners book by William S. Vincent for reference.
  - Stripe Webhook Handler - The base code for this came from Stripe's documentation - [Handle webhook events](https://stripe.com/docs/payments/handling-payment-events#signature-checking)
  - Javascript Stripe payment logic - Base code for this came from (Stripe documentation)[https://stripe.com/docs/payments/accept-a-payment]
+ - Stripe Subscriptions with Checkout - Base code for this came from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/checkout]
  
 ### Content
 

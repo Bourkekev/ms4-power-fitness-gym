@@ -25,6 +25,9 @@ I was able to get a single size attribute (e.g. shoe size) to be stored in the s
 
 So in the view, I had to check did shoe or clothing size exist in the POST object, check which one it was and then add (or increment) the item to the bag session. In the bag context file, I commented out the erroring code and worked out some simple if statements, so if the specific size key is in the bag item, print out what size is present and the value. I could see the dictionary that was being printed out and used [JSON Formatter](https://jsonformatter.org/) to view the structure clearer. This helped me determine how to access the correct key, value pairs. Once that was working I could place the code for adding the items to the bag within the 'if key' structure.
 
+### Unable to get Stripe CLI to run
+For testing locally, Stripe recommends using Stripe CLI for testing webhook responses. But following installation instructions for Windows the program would just not run on my computer. If I tried running the .exe file it would open and then just close immediately (both 32 bit and 64 bit). I tried running it from the terminal, command line, moving the .exe file in to my project folder, my virtual environment, but nothing worked and I was unable to use the 'stripe login' command. Luckily the Ngrok program did work for me and allowed me to test webhooks in local development, but I had to manually create webhooks in the Stripe dashboard for the url that ngrok provided for me.
+
 ## Testing
 
 ### Testing Save info in webhook handler
