@@ -14,9 +14,9 @@ def membership_dashboard(request):
 
 @csrf_exempt
 def stripe_config(request):
-    # if request.method == 'GET':
-    stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
-    return JsonResponse(stripe_config, safe=False)
+    if request.method == 'GET':
+        stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
+        return JsonResponse(stripe_config, safe=False)
 
 
 @csrf_exempt

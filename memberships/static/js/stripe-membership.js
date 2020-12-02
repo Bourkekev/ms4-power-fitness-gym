@@ -1,12 +1,14 @@
 // Get Stripe publishable key
-fetch("/config/")
-    .then((result) => {
-        return result.json();
-    })
-    .then((data) => {
-        // Initialize Stripe.js
-        const stripe = Stripe(data.publicKey);
-    });
+fetch("/memberships/config/")
+    .then(res => res.text())          // convert to plain text
+    .then(text => console.log(text))  // then log it out
+    // .then((result) => {
+    //     return result.json();
+    // })
+    // .then((data) => {
+    //     // Initialize Stripe.js
+    //     const stripe = Stripe(data.publicKey);
+    // });
 
 // Create a Checkout Session with the selected plan ID
 let createCheckoutSession = function (priceId) {
