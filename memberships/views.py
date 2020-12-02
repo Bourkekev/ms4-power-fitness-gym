@@ -21,27 +21,23 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
-    if request.method == 'POST':
-        data = json.loads(request.data)
+    if request.method == 'GET':
+        domain_url = 'http://127.0.0.1:8000/'
+        stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
-            # See https://stripe.com/docs/api/checkout/sessions/create
-            # for additional parameters to pass.
-            # {CHECKOUT_SESSION_ID} is a string literal; do not change it!
-            # the actual Session ID is returned in the query parameter when your customer
-            # is redirected to the success page.
             checkout_session = stripe.checkout.Session.create(
-                success_url="http://127.0.0.1:8000/success.html?session_id={CHECKOUT_SESSION_ID}",
-                cancel_url="http://127.0.0.1:8000/canceled.html",
-                payment_method_types=["card"],
-                mode="subscription",
+                client_reference_id=request.user.id if request.user.is_authenticated else None,
+                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=domain_url + 'cancel/',
+                payment_method_types=['card'],
+                mode='subscription',
                 line_items=[
                     {
-                        "price": data['priceId'],
-                        # For metered billing, do not pass quantity
-                        "quantity": 1
+                        'price': settings.STRIPE_GOLD_PRICE_ID,
+                        'quantity': 1,
                     }
-                ],
+                ]
             )
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
-            return JsonResponse({'error': {'message': str(e)}}), 400
+            return JsonResponse({'error': str(e)})
