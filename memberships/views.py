@@ -25,7 +25,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'http://127.0.0.1:8000/'
+        domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -77,8 +77,8 @@ def subscription_webhook(request):
 
     # Handle the customer.subscription.created event
     if event['type'] == 'checkout.session.completed':
-        # session = event['data']['object']
-        session = event.data.object
+        session = event['data']['object']
+        # session = event.data.object
 
         # Fetch all the required data from session
         client_reference_id = session.get('client_reference_id')
