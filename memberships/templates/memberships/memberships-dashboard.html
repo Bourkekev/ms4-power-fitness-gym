@@ -15,6 +15,24 @@
 
 {% block content %}
     <div class="container mt-5">
+        {% if subscription.status == "active" %}
+        <h4>Your subscription:</h4>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">
+                    {{ product.description }}<br>
+                    Signed up on: {{ product.created }}<br>
+                    Renews {{ subscription.current_period_end }}<br>
+                    </p>
+            </div>
+            <div class="card-footer">
+                <p>Cancel your membership.</p>
+                <a href="#" class="btn btn-primary" id="cancelBtn">Cancel</a>
+            </div>
+        </div>
+        {% else %}
+        <p>You have no active Membership</p>
         <div class="row row w-lg-75 mx-auto my-5">
             <div class="col-sm-6">
                 <div class="card">
@@ -29,6 +47,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock content %}
 

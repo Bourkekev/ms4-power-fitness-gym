@@ -12,7 +12,16 @@ import stripe
 
 @login_required
 def membership_dashboard(request):
-    return render(request, 'memberships/memberships-dashboard.html')
+    # Retrieve the subscription & product
+    stripe_customer = StripeSubscription.objects.get(user=request.user)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+    product = stripe.Product.retrieve(subscription.plan.product)
+
+    return render(request, 'memberships/memberships-dashboard.html', {
+        'subscription': subscription,
+        'product': product,
+    })
 
 
 @csrf_exempt
