@@ -7,4 +7,5 @@ urlpatterns = [
     path('create-checkout-session/', views.create_checkout_session),
     path('success/', views.subscription_success),
     path('cancel/', views.subscription_cancel),
+    path('subwh/', views.subscription_webhook),
 ]
