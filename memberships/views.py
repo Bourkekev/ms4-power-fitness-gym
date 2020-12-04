@@ -22,11 +22,13 @@ def membership_dashboard(request):
         product = stripe.Product.retrieve(subscription.plan.product)
         subscrip_id = subscription.id
 
-        return render(request, 'memberships/memberships-dashboard.html', {
+        template = 'memberships/memberships-dashboard.html'
+        context = {
             'subscription': subscription,
             'product': product,
             'subscrip_id': subscrip_id,
-        })
+        }
+        return render(request, template, context)
     except StripeSubscription.DoesNotExist:
         return render(request, 'memberships/memberships-dashboard.html')
 
