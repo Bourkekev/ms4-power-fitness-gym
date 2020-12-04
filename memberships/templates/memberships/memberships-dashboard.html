@@ -17,18 +17,19 @@
     <div class="container mt-5">
         {% if subscription.status == "active" %}
         <h4>Your subscription:</h4>
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">
                     {{ product.description }}<br>
                     Signed up on: {{ product.created }}<br>
                     Renews {{ subscription.current_period_end }}<br>
+                    Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
                     </p>
             </div>
             <div class="card-footer">
                 <p>Cancel your membership.</p>
-                <a href="#" class="btn btn-primary" id="cancelBtn">Cancel</a>
+                <a href="{% url 'cancel-subscription' subscrip_id %}" class="btn btn-primary" id="cancelBtn">Cancel</a>
             </div>
         </div>
         {% else %}

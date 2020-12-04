@@ -12,16 +12,18 @@ import stripe
 
 @login_required
 def membership_dashboard(request):
-    # Retrieve the subscription & product
     try:
+        # Retrieve the subscription & product
         stripe_customer = StripeSubscription.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
         product = stripe.Product.retrieve(subscription.plan.product)
+        subscrip_id = subscription.id
 
         return render(request, 'memberships/memberships-dashboard.html', {
             'subscription': subscription,
             'product': product,
+            'subscrip_id': subscrip_id,
         })
     except StripeSubscription.DoesNotExist:
         return render(request, 'memberships/memberships-dashboard.html')
@@ -65,7 +67,32 @@ def subscription_success(request):
 
 @login_required
 def subscription_cancel(request):
+    """Handle if subscription checkout cancelled before payment"""
     return render(request, 'memberships/cancelled.html')
+
+
+@login_required
+def cancel_subscription(request, subscrip_id):
+    """ cancel_subscription:
+
+    * Cancels a users membership subscription \
+      in Stripe and delete from database
+
+    \n Args:
+    1. request: The request
+    2. subscrip_id: the ID of the subscription to be deleted
+
+    \n Renders:
+    * Subscription cancelled template
+    """
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    # delete subscription in stripe
+    stripe.Subscription.delete(subscrip_id)
+
+    # Delete subscription in database
+    subId = StripeSubscription.objects.get(stripeSubscriptionId=subscrip_id)
+    subId.delete()
+    return render(request, 'memberships/sub-cancelled.html')
 
 
 @csrf_exempt
