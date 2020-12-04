@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.urls import resolve
 from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -12,6 +13,7 @@ import stripe
 
 @login_required
 def membership_dashboard(request):
+    print(request.build_absolute_uri())
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeSubscription.objects.get(user=request.user)

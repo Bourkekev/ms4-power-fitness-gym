@@ -338,9 +338,10 @@ You should be able to open the app now, or you might need to Restart all Dynos u
 ### Technical
  - For general references for Python and Django I used my Code Institute notes, [MDN web docs](https://developer.mozilla.org/en-US/), [w3schools](https://www.w3schools.com/js/default.asp), [Python Official Docs](https://www.python.org/doc/), and [Django documentation](https://docs.djangoproject.com/en/3.1/).
  - I also used Django for Beginners book by William S. Vincent for reference.
- - Stripe Webhook Handler - The base code for this came from Stripe's documentation - [Handle webhook events](https://stripe.com/docs/payments/handling-payment-events#signature-checking)
+ - Stripe Webhooks and Webhook Handler - The base code for these came from Stripe's documentation - [Handle webhook events](https://stripe.com/docs/payments/handling-payment-events#signature-checking) and my Code Institute notes.
  - Javascript Stripe payment logic - Base code for this came from (Stripe documentation)[https://stripe.com/docs/payments/accept-a-payment]
- - Stripe Subscriptions with Checkout - Base code for this came from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/checkout]
+ - Stripe Subscriptions with Checkout - Base code for this came from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/checkout] and also referenced this (tutorial)[https://testdriven.io/blog/django-stripe-subscriptions/] for Subscriptions JavaScript Fetch API, checkout session view and saving Stripe subscription data to database.
+ - Stripe Cancel a Subscription - Referenced (Stripe documentation)[https://stripe.com/docs/api/subscriptions/cancel]
  
 ### Content
 
