@@ -28,6 +28,9 @@ So in the view, I had to check did shoe or clothing size exist in the POST objec
 ### Unable to get Stripe CLI to run
 For testing locally, Stripe recommends using Stripe CLI for testing webhook responses. But following installation instructions for Windows the program would just not run on my computer. If I tried running the .exe file it would open and then just close immediately (both 32 bit and 64 bit). I tried running it from the terminal, command line, moving the .exe file in to my project folder, my virtual environment, but nothing worked and I was unable to use the 'stripe login' command. Luckily the Ngrok program did work for me and allowed me to test webhooks in local development, but I had to manually create webhooks in the Stripe dashboard for the url that ngrok provided for me.
 
+### Get return domain url for Stripe Subscriptions Checkout
+I tried to get the return domain_url from the create_checkout_session view using the build_absolute_uri method and splitting it, in order to not have to set the variable DOMAIN_URL in settings. This worked locally, but testing in the likes of Gitpod only returned http://locahost:8000/ probably because of a proxy server, so this is not likely to work in all situations. I decided to leave the DOMAIN_URL as a setting to be changed upon deployment and made a note about it under the deployment section in the readme file.
+
 ## Testing
 
 ### Testing Save info in webhook handler

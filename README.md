@@ -251,12 +251,11 @@ os.environ["MONGO_URI"] = ""
 Replace YOUR_SECRET_KEY_HERE with a random string.
 Replace YOUR_DATABASE_NAME with your database name.
 
-You need to get your mongo uri from mongodb. In MongoDB, go to your cluster and click 'connect' button. Select 'Connect your application' from the options. Then select the version of Python you are using, and click the copy button in step 2 to copy the connection string:
+### 5. Settings
 
-![mongodb connect](README_resources/mongo-connect.png)
-
-Paste it into the right side of the MONGO_URI variable in the env file, and replace `<password>` with the password for your username. Replace `<dbname>` with the name of the database.
-
+In the settings file, set the DOMAIN_URL to your environment url (like http://127.0.0.1:8000/ on local development server). If DEVELOPMENT is not set in the env.py or environment variables, also set DOMAIN_URL in the `else` part of the `if 'DEVELOPMENT'` statement.
+Change the EMAIL_HOST if deploying to a live server environment.
+Add your host to the ALLOWED_HOSTS list.
 
 
 ### 6. If you want to turn on debug
