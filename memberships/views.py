@@ -127,7 +127,6 @@ def subscription_webhook(request):
         client_reference_id = session.get('client_reference_id')
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
-        print(client_reference_id)
 
         # Get the user and create a new StripeCustomer
         user = User.objects.get(id=client_reference_id)
