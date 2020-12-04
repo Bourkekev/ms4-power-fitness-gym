@@ -177,7 +177,7 @@ class StripeWH_Handler:
             return HttpResponse(
                 content=f'Webhook received: '
                         f'{event["type"]} | '
-                        f'No bag',
+                        f'Subscription payment, not handled with this webhook',
                 status=200)
 
     def handle_payment_intent_payment_failed(self, event):

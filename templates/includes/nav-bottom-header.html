@@ -29,6 +29,7 @@
                         <a href="{% url 'add_product' %}" class="acc-item">Add a Product</a>
                     {% endif %}
                         <a href="{% url 'profile' %}" class="acc-item">Your Profile</a>
+                        <a href="{% url 'memberships-dashboard' %}" class="acc-item">View Membership</a>
                         <a href="{% url 'account_logout' %}" class="acc-item">Logout</a>
                     {% else %}
                         <a href="{% url 'account_signup' %}" class="acc-item">Register</a>

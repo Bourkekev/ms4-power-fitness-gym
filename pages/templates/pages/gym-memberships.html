@@ -16,13 +16,12 @@
         </div>
     </div>
     <div class="row w-lg-75 mx-auto my-5">
-        <div class="col-sm-6">
+        <div class="col-sm-6 my-3">
             <div class="card">
                 <div class="card-header">Gold Membership</div>
                 <div class="card-body">
                     <h4 class="card-title">€29 per month</h4>
                     <p class="card-text">Just the basics. Get access to the gym, all our equipment and a personalised fitness plan with an instructor.</p>
-                    <a href="{% url 'memberships-dashboard' %}" class="btn btn-primary">Sign up <i class="far fa-arrow-alt-circle-right"></i></a>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Benefits</small>
@@ -34,14 +33,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 my-3">
             <div class="card">
                 <div class="card-header">Platinum Membership</div>
                 <div class="card-body">
                     <h4 class="card-title">€39 per month</h4>
                     <p class="card-text">In addition to all the Gold plan benefits you also get access to our classes and use of the steam room, and updated fitness plans.</p>
-                    <a href="{% url 'memberships-dashboard' %}" class="btn btn-primary">Sign up <i class="far fa-arrow-alt-circle-right"></i></a>
-                    <small class="text-muted">You must register to sign-up</small>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Benefits</small>
@@ -55,6 +52,12 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="{% url 'memberships-dashboard' %}" class="btn btn-primary btn-lg">Become a Member <i class="far fa-arrow-alt-circle-right"></i></a>
+            <small class="d-block text-muted my-2">You must register/login to join</small>
         </div>
     </div>
 </div>
