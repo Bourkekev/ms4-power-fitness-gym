@@ -13,12 +13,19 @@ import stripe
 
 @login_required
 def membership_dashboard(request):
-    print(request.build_absolute_uri())
+    host = request.get_host()
+    print(host)
+    full_url = request.build_absolute_uri()
+    print(full_url)
+    domain_parts = full_url.split(host)
+    print(domain_parts[0] + host)
+
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeSubscription.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId)
         product = stripe.Product.retrieve(subscription.plan.product)
         subscrip_id = subscription.id
 
