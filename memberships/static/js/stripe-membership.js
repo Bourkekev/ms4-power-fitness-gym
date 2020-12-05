@@ -7,12 +7,14 @@ fetch("/memberships/config/")
     // Initialize Stripe.js
     const stripe = Stripe(data.publicKey);
 
-    // Event handler
-    let submitBtn = document.querySelector("#submitBtnGold");
-    if (submitBtn !== null) {
-        submitBtn.addEventListener("click", () => {
+    // Event handler for Gold plan
+    const submitBtnGold = document.querySelector("#submitBtnGold");
+    if (submitBtnGold !== null) {
+        submitBtnGold.addEventListener("click", () => {
+            price_id = (submitBtnGold.dataset.price_id);
+            console.log(price_id);
             // Get Checkout Session ID
-            fetch("/memberships/create-checkout-session/")
+            fetch(`/memberships/create-checkout-session/${price_id}`)
             .then((result) => { return result.json(); })
             .then((data) => {
                 console.log(data);

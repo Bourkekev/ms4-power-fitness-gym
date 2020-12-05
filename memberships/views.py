@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.urls import resolve
 from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -9,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from memberships.models import StripeSubscription
 
 import stripe
-import json
 
 
 @login_required
@@ -46,8 +44,10 @@ def stripe_config(request):
 
 
 @csrf_exempt
-def create_checkout_session(request):
+def create_checkout_session(request, price_id):
     if request.method == 'GET':
+        stripe_price_id = price_id
+        print(stripe_price_id)
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
@@ -59,7 +59,7 @@ def create_checkout_session(request):
                 mode='subscription',
                 line_items=[
                     {
-                        'price': settings.STRIPE_GOLD_PRICE_ID,
+                        'price': stripe_price_id,
                         'quantity': 1,
                     }
                 ]
