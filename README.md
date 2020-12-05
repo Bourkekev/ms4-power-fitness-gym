@@ -42,6 +42,7 @@ I include this here to explain what I, as a developer, wanted to get out of this
  - To provide an easy to use, online fitness shop, which and provides the shop owner with full CRUD functionality on products.
  - To improve my knowledge of Python and Django with a practical project.
  - To learn about Stripe and webhooks.
+ - To learn more about passing data from the font-end to the back-end and vice-versa, using AJAX and JSON. 
  - To learn to deploy the web app through Heroku, and store media on Amazon Web Services.
 
 
@@ -341,6 +342,8 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - Javascript Stripe payment logic - Base code for this came from (Stripe documentation)[https://stripe.com/docs/payments/accept-a-payment]
  - Stripe Subscriptions with Checkout - Base code for this came from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/checkout] and also referenced this (tutorial)[https://testdriven.io/blog/django-stripe-subscriptions/] for Subscriptions JavaScript Fetch API, checkout session view and saving Stripe subscription data to database.
  - Stripe Cancel a Subscription - Referenced (Stripe documentation)[https://stripe.com/docs/api/subscriptions/cancel]
+ - General information about fetching data with Ajax and Django - https://www.brennantymrak.com/articles/fetching-data-with-ajax-and-django.html
+ - Discovered you can pass a variable via JavaScript's Fetch from this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method)
  
 ### Content
 

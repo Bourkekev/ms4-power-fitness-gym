@@ -7,3 +7,7 @@ class HomePageView(TemplateView):
 
 class GymMemberships(TemplateView):
     template_name = 'pages/gym-memberships.html'
+
+
+class ContactPage(TemplateView):
+    template_name = 'pages/contact.html'
