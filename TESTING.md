@@ -31,6 +31,13 @@ For testing locally, Stripe recommends using Stripe CLI for testing webhook resp
 ### Get return domain url for Stripe Subscriptions Checkout
 I tried to get the return domain_url from the create_checkout_session view using the build_absolute_uri method and splitting it, in order to not have to set the variable DOMAIN_URL in settings. This worked locally, but testing in the likes of Gitpod only returned http://locahost:8000/ probably because of a proxy server, so this is not likely to work in all situations. I decided to leave the DOMAIN_URL as a setting to be changed upon deployment and made a note about it under the deployment section in the readme file.
 
+### Sending different Subscription Plan Prices
+When I got one Subscription Plan set up and working, I wanted to add another plan as an option for customers to sign up to. I obviously wanted to not have to repeat the code in the create_checkout_session view, which at that point was getting the Stripe Price Id from the settings. I wanted it to work so that the button clicked (on memberships page) would send the price to the view. 
+
+I tried using JavaScript's Fetch api and sending the price_id, gotten from button's data attribute, via Fetch's POST method to the view but this required a POST method in the create_checkout_session view. I set up an `if request.method == 'POST'` and was able to get the price_id sent from the button by JavaScript. But I then realised I could not get the data/variable from the POST request to the GET request. It would also have caused a problem with the @csrf_excempt decorator on the view, as it would now require a csrf token. 
+
+So I had to think then if I cannot do it server side, then maybe Javascript can work out the correct price_id before it is retrieved by the create_checkout_session. At first I was thinking I could put it in the url as a parameter and get it from the view. But then I was thinking about how views pass data to each other and could I pass the variable through the fetch url. After some research this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method) suggested that a variable can be passed with Fetch by using template literals (or backticks). So I just needed to adjust my create_checkout_session view and url to look for a price_id and use that as my stripe price_id. Once I had a different event listener for each button, this worked so depending on which button was clicked, the subscription price would be different.
+
 ## Testing
 
 ### Testing Save info in webhook handler

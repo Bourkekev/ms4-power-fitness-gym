@@ -12,7 +12,6 @@ fetch("/memberships/config/")
     const submitBtnPlat = document.querySelector("#submitBtnPlat");
     submitBtnGold.addEventListener("click", () => {
         price_id = (submitBtnGold.dataset.price_id);
-        console.log(price_id);
         // Get Checkout Session ID
         fetch(`/memberships/create-checkout-session/${price_id}`)
         .then((result) => { return result.json(); })
@@ -25,10 +24,9 @@ fetch("/memberships/config/")
             console.log(res);
         });
     });
-    // Event handler for Gold plan
+    // Event handler for Platinum plan
     submitBtnPlat.addEventListener("click", () => {
         price_id = (submitBtnPlat.dataset.price_id);
-        console.log(price_id);
         // Get Checkout Session ID
         fetch(`/memberships/create-checkout-session/${price_id}`)
         .then((result) => { return result.json(); })
