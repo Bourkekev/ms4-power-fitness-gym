@@ -11,7 +11,22 @@
     </div>
     <div class="row my-5">
         <div class="col-12 col-md-6">
-            <p>Form</p>
+            <p>Please fill out the form below to contact us.</p>
+                <form action="{% url 'contact' %}" method="POST" id="contact-form">
+                    {% csrf_token %}
+                    {{ contact_form.first_name | as_crispy_field }}
+                    {{ contact_form.last_name | as_crispy_field }}
+                    {{ contact_form.email | as_crispy_field }}
+                    {{ contact_form.phone_number | as_crispy_field }}
+                    {{ contact_form.subject | as_crispy_field }}
+                    {{ contact_form.your_message | as_crispy_field }}
+                    <div class="submit-button text-right mt-5 mb-2">                    
+                        <button id="submit-button" class="btn btn-lg btn-primary ml-sm-3 mt-3 w-100 w-sm-auto">
+                            <span class="font-weight-bold">Submit Message</span>
+                            <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                </form>
         </div>
         <div class="col-12 col-md-6">
             <p>Map</p>
