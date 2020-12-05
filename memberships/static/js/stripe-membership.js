@@ -25,14 +25,3 @@ fetch("/memberships/config/")
         });
     }
 });
-// fetch("/memberships/create-checkout-session/")
-
-// Handle any errors returned from Checkout
-// let handleResult = function (result) {
-//     if (result.error) {
-//         let displayError = document.getElementById("error-message");
-//         displayError.textContent = result.error.message;
-//     }
-// };
-
-
