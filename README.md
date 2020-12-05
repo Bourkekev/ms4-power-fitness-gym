@@ -360,4 +360,5 @@ The photos and vectors used in this site were obtained from:
 ### Acknowledgements
 
  - Thanks to my mentor Anthony Ngene for his suggestions and his time.
+ - Thanks to Chris Zielinski from Code Institute, for teaching us django.
  - Thanks to those on Slack for reviewing my project and making suggestions.

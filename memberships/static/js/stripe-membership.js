@@ -9,7 +9,6 @@ fetch("/memberships/config/")
 
     // Event handler for Gold plan
     const submitBtnGold = document.querySelector("#submitBtnGold");
-    const submitBtnPlat = document.querySelector("#submitBtnPlat");
     submitBtnGold.addEventListener("click", () => {
         price_id = (submitBtnGold.dataset.price_id);
         // Get Checkout Session ID
@@ -25,6 +24,7 @@ fetch("/memberships/config/")
         });
     });
     // Event handler for Platinum plan
+    const submitBtnPlat = document.querySelector("#submitBtnPlat");
     submitBtnPlat.addEventListener("click", () => {
         price_id = (submitBtnPlat.dataset.price_id);
         // Get Checkout Session ID

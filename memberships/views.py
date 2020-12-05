@@ -48,7 +48,6 @@ def stripe_config(request):
 def create_checkout_session(request, price_id):
     if request.method == 'GET':
         stripe_price_id = price_id
-        print(stripe_price_id)
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
