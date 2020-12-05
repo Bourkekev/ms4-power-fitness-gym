@@ -31,7 +31,8 @@ def membership_dashboard(request):
     except StripeSubscription.DoesNotExist:
         template = 'memberships/memberships-dashboard.html'
         context = {
-            'price_id': settings.STRIPE_GOLD_PRICE_ID,
+            'gold_price_id': settings.STRIPE_GOLD_PRICE_ID,
+            'plat_price_id': settings.STRIPE_PLAT_PRICE_ID,
         }
         return render(request, template, context)
 

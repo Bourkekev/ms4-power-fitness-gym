@@ -9,21 +9,36 @@ fetch("/memberships/config/")
 
     // Event handler for Gold plan
     const submitBtnGold = document.querySelector("#submitBtnGold");
-    if (submitBtnGold !== null) {
-        submitBtnGold.addEventListener("click", () => {
-            price_id = (submitBtnGold.dataset.price_id);
-            console.log(price_id);
-            // Get Checkout Session ID
-            fetch(`/memberships/create-checkout-session/${price_id}`)
-            .then((result) => { return result.json(); })
-            .then((data) => {
-                console.log(data);
-                // Redirect to Stripe Checkout
-                return stripe.redirectToCheckout({sessionId: data.sessionId})
-            })
-            .then((res) => {
-                console.log(res);
-            });
+    const submitBtnPlat = document.querySelector("#submitBtnPlat");
+    submitBtnGold.addEventListener("click", () => {
+        price_id = (submitBtnGold.dataset.price_id);
+        console.log(price_id);
+        // Get Checkout Session ID
+        fetch(`/memberships/create-checkout-session/${price_id}`)
+        .then((result) => { return result.json(); })
+        .then((data) => {
+            console.log(data);
+            // Redirect to Stripe Checkout
+            return stripe.redirectToCheckout({sessionId: data.sessionId})
+        })
+        .then((res) => {
+            console.log(res);
         });
-    }
+    });
+    // Event handler for Gold plan
+    submitBtnPlat.addEventListener("click", () => {
+        price_id = (submitBtnPlat.dataset.price_id);
+        console.log(price_id);
+        // Get Checkout Session ID
+        fetch(`/memberships/create-checkout-session/${price_id}`)
+        .then((result) => { return result.json(); })
+        .then((data) => {
+            console.log(data);
+            // Redirect to Stripe Checkout
+            return stripe.redirectToCheckout({sessionId: data.sessionId})
+        })
+        .then((res) => {
+            console.log(res);
+        });
+    });
 });
