@@ -118,6 +118,18 @@
         </div>
     </div>
 </div>
+<div class="container reviews">
+    <div class="row">
+        <div class="col">
+            <h3>Reviews</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'review_product' product.id %}" class="btn btn-danger ml-3">Review this product</a>
+        </div>
+    </div>
+</div>
 <!-- Delete Product Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog">
