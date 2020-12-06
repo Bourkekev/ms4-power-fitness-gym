@@ -1,6 +1,8 @@
-console.log("sanity check");
+// Submit contact form via ajax
 $(document).on('submit', '#contact-form', function(e){
     e.preventDefault();
+    $('.submit-icon').hide();
+    $('.submit-spinner').css('display', 'inline-block');
 
     $.ajax({
         type: 'POST',
@@ -15,7 +17,6 @@ $(document).on('submit', '#contact-form', function(e){
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function(){
-            console.log("Form submitted successfully")
         },
         statusCode: {
             404: function() {
@@ -26,9 +27,14 @@ $(document).on('submit', '#contact-form', function(e){
             }
         }
     }).done(function(msg) {
-        console.log( "Data Saved: " + msg );
         $("#contact-form").trigger("reset");
-        $('.form-messages').html( "<p>Your message has been submitted successfully. We will respond to your message as soon as possible.</p>" );
+        $('.form-messages').html( `<p>${msg} We will respond to your message as soon as possible.</p>` );
         $('.form-messages').fadeIn( "slow" );
+        $('html').animate({
+            scrollTop: $('.form-messages').offset().top -70
+            }, 500
+        );
+        $('.submit-spinner').hide();
+        $('.submit-check').show();
     });
 })

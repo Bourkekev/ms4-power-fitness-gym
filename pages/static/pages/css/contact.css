@@ -6,3 +6,7 @@
     background-color: #4CAF50;
     border-color: #009688;
 }
+.submit-spinner,
+.submit-check {
+    display: none;
+}

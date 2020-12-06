@@ -64,4 +64,4 @@ def contact_submit(request):
             your_message=your_message,
             date_sent=date_sent,
         )
-        return HttpResponse('Form submitted!')
+        return HttpResponse('Your message has been submitted successfully.')
