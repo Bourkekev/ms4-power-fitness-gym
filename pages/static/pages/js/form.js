@@ -25,5 +25,10 @@ $(document).on('submit', '#contact-form', function(e){
                 console.log("No response from server after submission." );
             }
         }
+    }).done(function(msg) {
+        console.log( "Data Saved: " + msg );
+        $("#contact-form").trigger("reset");
+        $('.form-messages').html( "<p>Your message has been submitted successfully. We will respond to your message as soon as possible.</p>" );
+        $('.form-messages').fadeIn( "slow" );
     });
 })

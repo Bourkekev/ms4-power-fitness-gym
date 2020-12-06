@@ -1,0 +1,8 @@
+.form-messages {
+    display: none;
+    margin-top: 1rem;
+}
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #4CAF50;
+    border-color: #009688;
+}
