@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .forms import ContactUsForm
 
 
@@ -25,6 +25,11 @@ def contact(request):
         contact_form = ContactUsForm(form_data)
         if contact_form.is_valid():
             contact_form.save()
+            return redirect(reverse('contact'))
+        else:
+            # if form not valid
+            messages.error(request, 'There was an error with your form. \
+                Please double check the information submitted.')
 
     else:
         contact_form = ContactUsForm()
