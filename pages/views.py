@@ -1,6 +1,9 @@
+from django.db import models
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from .forms import ContactUsForm
+from .models import ContactForm
 
 
 class HomePageView(TemplateView):
@@ -39,3 +42,25 @@ def contact(request):
     }
     template = 'pages/contact.html'
     return render(request, template, context)
+
+
+def contact_submit(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        phone_number = request.POST['phone_number']
+        subject = request.POST['subject']
+        your_message = request.POST['your_message']
+        date_sent = models.DateTimeField(auto_now_add=True)
+
+        ContactForm.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone_number=phone_number,
+            subject=subject,
+            your_message=your_message,
+            date_sent=date_sent,
+        )
+        return HttpResponse('')
