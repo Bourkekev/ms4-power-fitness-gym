@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
