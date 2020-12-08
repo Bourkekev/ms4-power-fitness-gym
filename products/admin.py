@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Review
+
+
+class ReviewInline(admin.TabularInline):
+    model = Review
 
 
 class ProductsAdmin(admin.ModelAdmin):
@@ -13,6 +17,10 @@ class ProductsAdmin(admin.ModelAdmin):
 
     ordering = ('name',)
 
+    inlines = [
+        ReviewInline,
+    ]
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -23,3 +31,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductsAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review)

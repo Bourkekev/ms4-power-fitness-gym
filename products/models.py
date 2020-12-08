@@ -61,3 +61,6 @@ class Review(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     review_title = models.CharField(max_length=50, null=False, blank=False)
     review = models.TextField(max_length=1024, null=False, blank=False)
+
+    def __str__(self):
+        return self.review_title
