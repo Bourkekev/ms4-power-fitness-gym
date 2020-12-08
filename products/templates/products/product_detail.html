@@ -122,11 +122,20 @@
     <div class="row">
         <div class="col">
             <h3>Reviews</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <a href="{% url 'review_product' product.id %}" class="btn btn-danger ml-3">Review this product</a>
+                <div>
+                    <a href="{% url 'review_product' product.id %}" class="btn btn-danger ml-0 my-3">Review this product</a>
+                </div>
+            <div class="review-container">
+                {% for review in product.reviews.all %}
+                    <div class="reviewer">
+                        <h4>{{ review.reviewer }}</h4>
+                        <small class="text-muted">{{ review.date }}</small>
+                    </div>
+                    <div class="review-body">
+                        {{ review.review }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
