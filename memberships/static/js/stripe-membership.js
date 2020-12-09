@@ -14,17 +14,16 @@ fetch("/memberships/config/")
         fetch(`/memberships/create-checkout-session/${price_id}`)
         .then((result) => { return result.json(); })
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             // Redirect to Stripe Checkout
             return stripe.redirectToCheckout({sessionId: data.sessionId})
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         });
     }
     // Get buttons if exits and listen for click on button
     if (document.querySelector("#membership-select")) {
-        console.log('Membership select present')
         const submitBtnGold = document.querySelector("#submitBtnGold");
         const submitBtnPlat = document.querySelector("#submitBtnPlat");
         

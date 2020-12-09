@@ -5,12 +5,16 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import EditUserProfile
 from checkout.models import Order
+from products.models import Review
 
 
 @login_required
 def profile(request):
     """ Display user's profile """
     profile = get_object_or_404(UserProfile, user=request.user)
+    print(profile)
+    user_reviews = Review.objects.filter(reviewer__username=profile)
+    print(user_reviews)
 
     if request.method == 'POST':
         form = EditUserProfile(request.POST, instance=profile)
@@ -26,7 +30,8 @@ def profile(request):
         'form': form,
         'orders': orders,
         'profile_name': profile,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'user_reviews': user_reviews,
     }
 
     return render(request, template, context)
