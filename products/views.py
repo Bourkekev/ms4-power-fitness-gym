@@ -68,9 +68,11 @@ def product_detail(request, product_id):
     """ A view to show individual product detail """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(product=product)
 
     context = {
         'product': product,
+        'reviews': reviews,
     }
     return render(request, 'products/product_detail.html', context)
 
@@ -156,7 +158,7 @@ def review_product(request, product_id):
     print(product)
     if request.method == 'POST':
         print(request.user)
-        form = ReviewForm(request.POST, instance=product)
+        form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.reviewer = request.user
