@@ -153,10 +153,16 @@ def delete_product(request, product_id):
 
 def review_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    print(product)
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        print(request.user)
+        form = ReviewForm(request.POST, instance=product)
         if form.is_valid():
-            product = form.save()
+            review = form.save(commit=False)
+            review.reviewer = request.user
+            print(product.id)
+            review.product = product
+            review.save()
             messages.success(request, 'Product review successfully submitted')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -164,7 +170,7 @@ def review_product(request, product_id):
                            'Failed to add product review. \
                             Please ensure the form is valid.')
     else:
-        form = ReviewForm()
+        form = ReviewForm(instance=product)
     template = 'products/add_review.html'
     context = {
         'form': form,
