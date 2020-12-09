@@ -6,8 +6,7 @@
         <div class="row text-center">
             <div class="col">
                 <h1>Memberships</h1>
-                <p>Here you can view your active Memberships or subscribe to one.</p>
-                <p>Select a membership option to sign up to.</p>
+                <p>Here you can view your active Membership or subscribe to one.</p>
             </div>
         </div>
     </div>
@@ -60,29 +59,34 @@
             </div>
         </div>
         {% else %}
-        <p>You have no active Membership</p>
-        <div class="row row w-lg-75 mx-auto my-5">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">Gold Membership</div>
-                    <div class="card-body">
-                        <h4 class="card-title">€29</h4>
-                        <p class="card-text">Just the basics. Get access to the gym, all our equipment and a personalised fitness plan with an instructor.</p>
-                        <p class="card-text">Per month</p>
-                        <p class="card-text">Billed monthly</p>
-                        <button type="submit" class="btn btn-primary" id="submitBtnGold" data-price_id="{{ gold_price_id }}">Subscribe</button>
+        <div class="row">
+            <div class="col text-center">
+                <h2 >You have no active Membership</h2>
+                <p>Select a membership option to sign up to.</p>
+                <div id="membership-select" class="row w-lg-75 mx-auto my-5">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">Gold Membership</div>
+                            <div class="card-body">
+                                <h3 class="card-title">€29</h3>
+                                <p class="card-text">Just the basics. Get access to the gym, all our equipment and a personalised fitness plan with an instructor.</p>
+                                <p class="card-text">Per month</p>
+                                <p class="card-text">Billed monthly</p>
+                                <button type="submit" class="btn btn-primary" id="submitBtnGold" data-price_id="{{ gold_price_id }}">Subscribe</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">Platinum Membership</div>
-                    <div class="card-body">
-                        <h4 class="card-title">€39</h4>
-                        <p class="card-text">In addition to all the Gold plan benefits you also get access to our classes and use of the steam room, and updated fitness plans.</p>
-                        <p class="card-text">Per month</p>
-                        <p class="card-text">Billed monthly</p>
-                        <button type="submit" class="btn btn-primary" id="submitBtnPlat" data-price_id="{{ plat_price_id }}">Subscribe</button>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">Platinum Membership</div>
+                            <div class="card-body">
+                                <h3 class="card-title">€39</h3>
+                                <p class="card-text">In addition to all the Gold plan benefits you also get access to our classes and use of the steam room, and updated fitness plans.</p>
+                                <p class="card-text">Per month</p>
+                                <p class="card-text">Billed monthly</p>
+                                <button type="submit" class="btn btn-primary" id="submitBtnPlat" data-price_id="{{ plat_price_id }}">Subscribe</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

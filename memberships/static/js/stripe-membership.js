@@ -7,39 +7,28 @@ fetch("/memberships/config/")
     // Initialize Stripe.js
     const stripe = Stripe(data.publicKey);
 
-    // Event handler for Gold plan
-    if (document.querySelector("#submitBtnGold")) {
+    // Subscription checkout, pass in button that was clicked
+    const subCheckout = function(btn) {
+        let price_id = (btn.dataset.price_id);
+        // Get Checkout Session ID
+        fetch(`/memberships/create-checkout-session/${price_id}`)
+        .then((result) => { return result.json(); })
+        .then((data) => {
+            console.log(data);
+            // Redirect to Stripe Checkout
+            return stripe.redirectToCheckout({sessionId: data.sessionId})
+        })
+        .then((res) => {
+            console.log(res);
+        });
+    }
+    // Get buttons if exits and listen for click on button
+    if (document.querySelector("#membership-select")) {
+        console.log('Membership select present')
         const submitBtnGold = document.querySelector("#submitBtnGold");
-        console.log(submitBtnGold.length);
-        submitBtnGold.addEventListener("click", () => {
-            price_id = (submitBtnGold.dataset.price_id);
-            // Get Checkout Session ID
-            fetch(`/memberships/create-checkout-session/${price_id}`)
-            .then((result) => { return result.json(); })
-            .then((data) => {
-                console.log(data);
-                // Redirect to Stripe Checkout
-                return stripe.redirectToCheckout({sessionId: data.sessionId})
-            })
-            .then((res) => {
-                console.log(res);
-            });
-        });
-        // Event handler for Platinum plan
         const submitBtnPlat = document.querySelector("#submitBtnPlat");
-        submitBtnPlat.addEventListener("click", () => {
-            price_id = (submitBtnPlat.dataset.price_id);
-            // Get Checkout Session ID
-            fetch(`/memberships/create-checkout-session/${price_id}`)
-            .then((result) => { return result.json(); })
-            .then((data) => {
-                console.log(data);
-                // Redirect to Stripe Checkout
-                return stripe.redirectToCheckout({sessionId: data.sessionId})
-            })
-            .then((res) => {
-                console.log(res);
-            });
-        });
+        
+        submitBtnGold.addEventListener("click", function(btn) { return subCheckout(submitBtnGold) });
+        submitBtnPlat.addEventListener("click", function(btn) { return subCheckout(submitBtnPlat) });
     }
 });
