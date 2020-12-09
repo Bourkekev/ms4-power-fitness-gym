@@ -84,7 +84,14 @@
     </div>
     <div class="row">
         <div class="col">
-            {{ user_reviews }}
+            <h2>Your Product Reviews</h2>
+            {% if user_reviews %}
+                {% for review in user_reviews %}
+                <h4>{{ review.review_title }} on {{ review.product }}</h4>
+                {% endfor %}
+            {% else %}
+                <p>You have not reviewed any products.</p>
+            {% endif %}
         </div>
     </div>
 </div>
