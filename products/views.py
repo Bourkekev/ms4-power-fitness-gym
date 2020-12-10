@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -153,16 +154,15 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
 def review_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    print(product)
+
     if request.method == 'POST':
-        print(request.user)
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.reviewer = request.user
-            print(product.id)
             review.product = product
             review.save()
             messages.success(request, 'Product review successfully submitted')
@@ -177,6 +177,31 @@ def review_product(request, product_id):
     context = {
         'form': form,
         'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product review successfully edited')
+            return redirect(reverse('profile'))
+        else:
+            messages.error(request,
+                           'Failed to edit product review. \
+                            Please ensure the form is valid.')
+    else:
+        form = ReviewForm(instance=review)
+    template = 'products/edit_review.html'
+    context = {
+        'form': form,
+        'review': review,
     }
 
     return render(request, template, context)

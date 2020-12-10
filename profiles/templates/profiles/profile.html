@@ -87,7 +87,8 @@
             <h2>Your Product Reviews</h2>
             {% if user_reviews %}
                 {% for review in user_reviews %}
-                <h4>{{ review.review_title }} on {{ review.product }}</h4>
+                <h4><strong>{{ review.review_title }}</strong> for {{ review.product }}</h4>
+                <a class="btn btn-small btn-outline-primary" href="{% url 'edit_review' review.id %}">Edit your review</a>
                 {% endfor %}
             {% else %}
                 <p>You have not reviewed any products.</p>
