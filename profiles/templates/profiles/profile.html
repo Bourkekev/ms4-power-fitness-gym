@@ -89,6 +89,30 @@
                 {% for review in user_reviews %}
                 <h4><strong>{{ review.review_title }}</strong> for {{ review.product }}</h4>
                 <a class="btn btn-small btn-outline-primary" href="{% url 'edit_review' review.id %}">Edit your review</a>
+                <!-- Delete review trigger modal -->
+                <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteReview-{{ review.id }}">
+                    Delete This Review
+                </button>
+                <!-- Delete Review Modal -->
+                <div class="modal fade" id="deleteReview-{{ review.id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-danger font-weight-bold" id="deleteLabel">Warning! This will delete this review!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete the review "<strong>{{ review.review_title }}</strong>"? This action cannot be undone.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                <a href="{% url 'delete_review' review.id %}" class="btn btn-danger ml-3">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
             {% else %}
                 <p>You have not reviewed any products.</p>
