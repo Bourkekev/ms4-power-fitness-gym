@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'pages/css/contact.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container my-5">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Add a new Topic</h1>
+                <p>Add a topic to have a discussion with other Gym users. A new topic must not be the same as any existing topic.</p>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <form method="POST" action="{% url 'add_topic' %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-center">
+                    <a href="{% url 'community_topics' %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-lg btn-primary rounded-0 mt-3">Add a Topic</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
