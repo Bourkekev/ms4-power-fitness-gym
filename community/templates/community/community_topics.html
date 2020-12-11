@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'pages/css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    {% for topic in topics %}
+      {{ topic.subject }} <br>
+    {% endfor %}
+</div>
+    
+{% endblock %}

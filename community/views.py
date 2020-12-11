@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from .models import MessageTopic
 
-# Create your views here.
+
+def community_topics(request):
+    topics = MessageTopic.objects.all()
+    context = {
+        'topics': topics,
+    }
+    return render(request, 'community/community_topics.html', context)
