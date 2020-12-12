@@ -10,7 +10,7 @@
         <div class="row text-center">
             <div class="col">
                 <h1>Community</h1>
-                <p>Chat with other Power Fitness gym users about anything gym or fitness related.</p>
+                <p>Chat with other Power Fitness gym users about anything gym or fitness related. You must be signed in to view or participate in chats.</p>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     {% for topic in topics %}
                         <tr>
                             <td>
-                                {{ topic.subject }}
+                                <a href="{% url 'view_topic' topic.id %}">{{ topic.subject }}</a>
                             </td>
                             <td>
                                 {{ topic.started_by }}

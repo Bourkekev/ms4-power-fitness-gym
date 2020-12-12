@@ -14,6 +14,7 @@ def community_topics(request):
     return render(request, 'community/community_topics.html', context)
 
 
+@login_required
 def view_topic(request, topic_id):
     """ A view to show individual topic posts """
 
@@ -23,6 +24,7 @@ def view_topic(request, topic_id):
         'topic': topic,
     }
     return render(request, template, context)
+
 
 @login_required
 def add_topic(request):
