@@ -22,12 +22,12 @@ def view_topic(request, topic_id):
     print(topic)
     # messages = MessagePost.objects.get(pk=topic_id)
     # print(messages)
-    messages = MessagePost.objects.filter(topic__subject=topic)
-    print(messages)
+    topic_messages = MessagePost.objects.filter(topic__subject=topic)
+    print(topic_messages)
     template = 'community/view_topic.html'
     context = {
         'topic': topic,
-        'messages': messages,
+        'topic_messages': topic_messages,
     }
     return render(request, template, context)
 
