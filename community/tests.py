@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User
 from django.urls import reverse, resolve
-from django.test import TestCase
+from django.test import TestCase, Client
 
 from .views import community_topics, view_topic
 from .models import MessagePost, MessageTopic
@@ -42,6 +42,8 @@ class ViewTopicTests(TestCase):
         self.response = self.client.get(url)
 
     def test_status_code(self):
+        c = Client()
+        c.login(username='john', password='123')
         self.assertEquals(self.response.status_code, 200)
 
     def test_view_function(self):

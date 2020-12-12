@@ -26,7 +26,9 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            {{ topic.subject }}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
         </div>
     </div>
 </div>

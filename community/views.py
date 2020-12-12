@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import MessageTopic
+from .models import MessageTopic, MessagePost
 from .forms import MessageTopicForm
 
 
@@ -17,11 +17,17 @@ def community_topics(request):
 @login_required
 def view_topic(request, topic_id):
     """ A view to show individual topic posts """
-
+    print(topic_id)
     topic = get_object_or_404(MessageTopic, pk=topic_id)
+    print(topic)
+    # messages = MessagePost.objects.get(pk=topic_id)
+    # print(messages)
+    messages = MessagePost.objects.filter(topic__subject=topic)
+    print(messages)
     template = 'community/view_topic.html'
     context = {
         'topic': topic,
+        'messages': messages,
     }
     return render(request, template, context)
 
