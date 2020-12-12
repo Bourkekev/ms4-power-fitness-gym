@@ -11,7 +11,7 @@
     <div class="container header-container my-5">
         <div class="row text-center">
             <div class="col">
-                <h1>{{ topic.subject }} Topic</h1>
+                <h1>Reply to {{ topic.subject }} Topic</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,18 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mb-3">
             <a href="{% url 'community_topics' %}">Back to all Topics</a>
-            <a href="{% url 'reply_topic' topic.id %}" class="btn btn-primary">Post a reply</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form method="POST" action="{% url 'reply_topic' topic.id %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-center">
+                    <a href="{% url 'community_topics' %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-lg btn-primary rounded-0 mt-3">Reply to Topic</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row">

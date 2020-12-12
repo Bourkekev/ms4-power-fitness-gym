@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import MessageTopic, MessagePost
-from .forms import MessageTopicForm
+from .forms import MessageTopicForm, MessagePostForm
 
 
 def community_topics(request):
@@ -28,6 +28,27 @@ def view_topic(request, topic_id):
     context = {
         'topic': topic,
         'topic_messages': topic_messages,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def reply_topic(request, topic_id):
+    topic = get_object_or_404(MessageTopic, pk=topic_id)
+    if request.method == 'POST':
+        form = MessagePostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.topic = topic
+            post.created_by = request.user
+            post.save()
+            return redirect('view_topic',  topic_id=topic_id)
+    else:
+        form = MessagePostForm()
+    template = 'community/reply_topic.html'
+    context = {
+        'topic': topic,
+        'form': form,
     }
     return render(request, template, context)
 
