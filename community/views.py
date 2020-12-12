@@ -14,6 +14,16 @@ def community_topics(request):
     return render(request, 'community/community_topics.html', context)
 
 
+def view_topic(request, topic_id):
+    """ A view to show individual topic posts """
+
+    topic = get_object_or_404(MessageTopic, pk=topic_id)
+    template = 'community/view_topic.html'
+    context = {
+        'topic': topic,
+    }
+    return render(request, template, context)
+
 @login_required
 def add_topic(request):
     if request.method == 'POST':
