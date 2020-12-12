@@ -1,8 +1,10 @@
 
+from django.contrib.auth.models import User
 from django.urls import reverse, resolve
 from django.test import TestCase
 
-from .views import community_topics
+from .views import community_topics, view_topic
+from .models import MessagePost, MessageTopic
 
 
 class MessageBoardTests(TestCase):
@@ -21,3 +23,27 @@ class MessageBoardTests(TestCase):
         add_topic_url = reverse('add_topic')
         response = self.client.get(community_topics_url)
         self.assertContains(response, 'href="{0}"'.format(add_topic_url))
+
+
+class ViewTopicTests(TestCase):
+    def setUp(self):
+        user = User.objects.create_user(
+            username='john',
+            email='john@doe.com',
+            password='123')
+        topic = MessageTopic.objects.create(
+            subject='Hello, world',
+            started_by=user)
+        MessagePost.objects.create(
+            message='Lorem ipsum dolor sit amet',
+            topic=topic,
+            created_by=user)
+        url = reverse('view_topic', kwargs={'topic_id': topic.pk})
+        self.response = self.client.get(url)
+
+    def test_status_code(self):
+        self.assertEquals(self.response.status_code, 200)
+
+    def test_view_function(self):
+        view = resolve('/community/topic/1/')
+        self.assertEquals(view.func, view_topic)

@@ -10,6 +10,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="user-options">
             {% if request.user.is_authenticated %}
+                <p class="px-4">Hi {{ user.username }},</p>
                 {% if request.user.is_superuser %}
                     <a href="{% url 'add_product' %}" class="dropdown-item">Add a Product</a>
                 {% endif %}
