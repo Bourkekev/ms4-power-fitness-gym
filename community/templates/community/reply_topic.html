@@ -21,16 +21,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mb-3">
-            <a href="{% url 'community_topics' %}">Back to all Topics</a>
+            <a href="{% url 'view_topic' topic.id %}">Back to {{ topic.subject }} Topic</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row mb-5">
+        <div class="col-12 col-md-8 offset-md-2">
             <form method="POST" action="{% url 'reply_topic' topic.id %}" class="form mb-2">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-center">
-                    <a href="{% url 'community_topics' %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <a href="{% url 'view_topic' topic.id %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
                     <button type="submit" class="btn btn-lg btn-primary rounded-0 mt-3">Reply to Topic</button>
                 </div>
             </form>
@@ -39,6 +39,10 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
             {% for message in topic_messages %}
+                <div class="card mb-2 {% if forloop.first %}border border-secondary{% endif %}">
+                {% if forloop.first %}
+                    <div class="card-header text-white bg-secondary py-2 px-3">{{ topic.subject }}</div>
+                {% endif %}
                 <div class="card mb-2">
                     <div class="card-body p-3">
                         <div class="row mb-1">

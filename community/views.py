@@ -17,13 +17,9 @@ def community_topics(request):
 @login_required
 def view_topic(request, topic_id):
     """ A view to show individual topic posts """
-    print(topic_id)
     topic = get_object_or_404(MessageTopic, pk=topic_id)
-    print(topic)
-    # messages = MessagePost.objects.get(pk=topic_id)
-    # print(messages)
     topic_messages = MessagePost.objects.filter(topic__subject=topic)
-    print(topic_messages)
+
     template = 'community/view_topic.html'
     context = {
         'topic': topic,
@@ -35,6 +31,8 @@ def view_topic(request, topic_id):
 @login_required
 def reply_topic(request, topic_id):
     topic = get_object_or_404(MessageTopic, pk=topic_id)
+    topic_messages = MessagePost.objects.filter(topic__subject=topic)
+
     if request.method == 'POST':
         form = MessagePostForm(request.POST)
         if form.is_valid():
@@ -48,6 +46,7 @@ def reply_topic(request, topic_id):
     template = 'community/reply_topic.html'
     context = {
         'topic': topic,
+        'topic_messages': topic_messages,
         'form': form,
     }
     return render(request, template, context)
