@@ -81,10 +81,13 @@ def edit_post(request, post_id, topic_id):
 @login_required
 def delete_post(request, post_id, topic_id):
     post = get_object_or_404(MessagePost, pk=post_id)
-    # topic = get_object_or_404(MessageTopic, pk=topic_id)
-    post.delete()
-    messages.success(request, 'Message deleted!')
-    return redirect('view_topic',  topic_id=topic_id)   
+    if request.user == post.created_by:
+        post.delete()
+        messages.success(request, 'Message deleted!')
+        return redirect('view_topic',  topic_id=topic_id)
+    else:
+        messages.error(request, 'This is not your post, you cannot delete it.')
+        return redirect('view_topic',  topic_id=topic_id)
 
 
 @login_required
