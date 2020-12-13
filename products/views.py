@@ -210,6 +210,10 @@ def edit_review(request, review_id):
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-    review.delete()
-    messages.success(request, 'Review deleted!')
-    return redirect(reverse('profile'))
+    if request.user == review.reviewer:
+        review.delete()
+        messages.success(request, 'Review deleted!')
+        return redirect(reverse('profile'))
+    else:
+        messages.error(request, 'You cannot delete other people\'s reviews!')
+        return redirect(reverse('profile'))
