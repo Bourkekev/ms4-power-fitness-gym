@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2 mb-3">
-            <a href="">Back to {{ topic.subject }} Topic</a>
+            <a href="{% url 'view_topic' topic.id %}">Back to {{ topic.subject }} Topic</a>
         </div>
     </div>
     <div class="row mb-5">
@@ -30,7 +30,7 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-center">
-                    <a href="" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <a href="{% url 'view_topic' topic.id %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
                     <button type="submit" class="btn btn-lg btn-primary rounded-0 mt-3">Edit post</button>
                 </div>
             </form>
