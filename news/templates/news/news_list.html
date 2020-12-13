@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+{% endblock %}
+
+{% block extra_title %} - News{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            {% for post in object_list %}
+                <div class="card text-center">
+                    <div class="card-header">
+                        <span class="font-weight-bold">{{ post.title }}</span> &middot;
+                        <span class="text-muted">by {{ post.author }} on {{ post.created_on}}</span>
+                    </div>
+                    <div class="card-body">
+                        {{ post.body }}
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a href="#" class="btn btn-outline-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

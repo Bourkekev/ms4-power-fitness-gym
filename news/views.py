@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import NewsPost
 
-# Create your views here.
+
+class NewsListView(ListView):
+    model = NewsPost
+    template_name = 'news/news_list.html'
