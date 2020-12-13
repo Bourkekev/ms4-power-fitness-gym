@@ -48,8 +48,7 @@
                                 <small>Posts: {{ message.created_by.posts.count }}</small>
                             </div>
                             <div class="col-12 col-md-10">
-                                
-                                {{ message.message }}{{ message.id}}
+                                {{ message.message }}
                                 {% if message.created_by == user %}
                                 <div class="mt-3">
                                     <a href="{% url 'edit_post' topic.id message.id %}" class="btn btn-primary btn-sm" role="button">Edit</a>

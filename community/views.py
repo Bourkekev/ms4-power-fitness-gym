@@ -61,8 +61,6 @@ def edit_post(request, post_id, topic_id):
         form = MessagePostForm(request.POST, instance=post)
         if form.is_valid():
             post_form = form.save(commit=False)
-            # post_form.topic = topic
-            # post_form.created_by = request.user
             post_form.save()
             return redirect('view_topic',  topic_id=topic_id)
     else:

@@ -38,6 +38,11 @@ I tried using JavaScript's Fetch api and sending the price_id, gotten from butto
 
 So I had to think then if I cannot do it server side, then maybe Javascript can work out the correct price_id before it is retrieved by the create_checkout_session. At first I was thinking I could put it in the url as a parameter and get it from the view. But then I was thinking about how views pass data to each other and could I pass the variable through the fetch url. After some research this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method) suggested that a variable can be passed with Fetch by using template literals (or back-ticks). So I just needed to adjust my create_checkout_session view and url to look for a price_id and use that as my stripe price_id. Once I had a different event listener for each button, this worked so depending on which button was clicked, the subscription price would be different.
 
+### The community message board Edit Post urls
+When viewing a topic I have the url as something like `/community/topic/1/`. THe number is the topic id. But to allow the user to edit a message they have already posted, I first tried with just the url as `edit_post/1/`. This allowed me to edit the message but then I could not return the user to that topic because the view_topic view required a topic id. Also the url was not consistent, as it did not have `community/topic/` in it. I did not know if I could even pass the topic id as well as the message id through the template tag.
+But through trial an error I figured out how to do that and was able to get my edit message url to look like `community/topic/1/edit_post/6/` and return the user to the topic page.
+
+
 ## Testing
 
 ### Testing Save info in webhook handler
