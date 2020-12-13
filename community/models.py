@@ -13,6 +13,9 @@ class MessageTopic(models.Model):
     def __str__(self):
         return self.subject
 
+    def get_posts_count(self):
+        return MessagePost.objects.filter(topic__subject=self).count()
+
 
 class MessagePost(models.Model):
     message = models.TextField(max_length=4000)

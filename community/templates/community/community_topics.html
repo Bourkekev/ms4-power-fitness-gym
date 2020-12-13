@@ -34,7 +34,7 @@
                   <tr>
                     <th scope="col">Topic</th>
                     <th scope="col">Started by</th>
-                    <th scope="col">Replies</th>
+                    <th scope="col">Messages</th>
                     <th scope="col">Last update</th>
                   </tr>
                 </thead>
@@ -48,7 +48,7 @@
                                 {{ topic.started_by }}
                             </td>
                             <td>
-                                count replies here
+                                {{ topic.get_posts_count }}
                             </td>
                             <td>
                                 {{ topic.last_update }}
