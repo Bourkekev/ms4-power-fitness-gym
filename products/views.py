@@ -185,26 +185,29 @@ def review_product(request, product_id):
 @login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-
-    if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Product review successfully edited')
-            return redirect(reverse('profile'))
+    if request.user == review.reviewer:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Product review successfully edited')
+                return redirect(reverse('profile'))
+            else:
+                messages.error(request,
+                            'Failed to edit product review. \
+                                Please ensure the form is valid.')
         else:
-            messages.error(request,
-                           'Failed to edit product review. \
-                            Please ensure the form is valid.')
-    else:
-        form = ReviewForm(instance=review)
-    template = 'products/edit_review.html'
-    context = {
-        'form': form,
-        'review': review,
-    }
+            form = ReviewForm(instance=review)
+        template = 'products/edit_review.html'
+        context = {
+            'form': form,
+            'review': review,
+        }
 
-    return render(request, template, context)
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You cannot edit other people\'s reviews!')
+        return redirect(reverse('profile'))
 
 
 @login_required

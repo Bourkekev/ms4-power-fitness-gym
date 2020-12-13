@@ -12,9 +12,7 @@ from products.models import Review
 def profile(request):
     """ Display user's profile """
     profile = get_object_or_404(UserProfile, user=request.user)
-    print(profile)
     user_reviews = Review.objects.filter(reviewer__username=profile)
-    print(user_reviews)
 
     if request.method == 'POST':
         form = EditUserProfile(request.POST, instance=profile)

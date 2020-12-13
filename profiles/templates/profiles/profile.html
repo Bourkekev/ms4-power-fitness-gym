@@ -87,7 +87,7 @@
             <h2>Your Product Reviews</h2>
             {% if user_reviews %}
                 {% for review in user_reviews %}
-                <h4><strong>{{ review.review_title }}</strong> for {{ review.product }}</h4>
+                <h4><strong>{{ review.review_title }}</strong> for <a href="{% url 'product_detail' review.product.id %}">{{ review.product }}</a></h4>
                 <a class="btn btn-small btn-outline-primary" href="{% url 'edit_review' review.id %}">Edit your review</a>
                 <!-- Delete review trigger modal -->
                 <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteReview-{{ review.id }}">
