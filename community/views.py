@@ -57,20 +57,24 @@ def edit_post(request, post_id, topic_id):
     post = get_object_or_404(MessagePost, pk=post_id)
     topic = get_object_or_404(MessageTopic, pk=topic_id)
 
-    if request.method == 'POST':
-        form = MessagePostForm(request.POST, instance=post)
-        if form.is_valid():
-            post_form = form.save(commit=False)
-            post_form.save()
-            return redirect('view_topic',  topic_id=topic_id)
+    if request.user == post.created_by:
+        if request.method == 'POST':
+            form = MessagePostForm(request.POST, instance=post)
+            if form.is_valid():
+                post_form = form.save(commit=False)
+                post_form.save()
+                return redirect('view_topic',  topic_id=topic_id)
+        else:
+            form = MessagePostForm(instance=post)
+        template = 'community/edit_post.html'
+        context = {
+            'post': post,
+            'form': form,
+            'topic': topic,
+        }
     else:
-        form = MessagePostForm(instance=post)
-    template = 'community/edit_post.html'
-    context = {
-        'post': post,
-        'form': form,
-        'topic': topic,
-    }
+        messages.error(request, 'This is not your post, you cannot edit it.')
+        return redirect('view_topic',  topic_id=topic_id)
     return render(request, template, context)
 
 
