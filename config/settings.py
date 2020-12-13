@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'memberships',
     'community',
+    'news',
 
     # Other
     'multiselectfield',

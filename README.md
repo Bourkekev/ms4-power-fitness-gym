@@ -44,6 +44,7 @@ I include this here to explain what I, as a developer, wanted to get out of this
  - To learn about Stripe and webhooks.
  - To learn more about passing data from the font-end to the back-end and vice-versa, using AJAX and JSON. 
  - To learn to deploy the web app through Heroku, and store media on Amazon Web Services.
+ - Using a virtual environment on a local computer.
 
 
 
