@@ -124,18 +124,22 @@
         <div class="col">
             <h2>Reviews</h2>
                 <div>
-                    <a href="{% url 'review_product' product.id %}" class="btn btn-danger ml-0 my-3">Review this product</a>
+                    <a href="{% url 'review_product' product.id %}" class="btn btn-secondary ml-0 my-3">Review this product</a>
                 </div>
             <div class="review-container">
-                {% for review in product.reviews.all %}
-                    <div class="reviewer">
-                        <h3>{{ review.review_title }} <small class="text-muted">by {{ review.reviewer }}</small></h3>
-                        <small class="text-muted">{{ review.date }}</small>
-                    </div>
-                    <div class="review-body">
-                        {{ review.review }}
-                    </div>
-                {% endfor %}
+                {% if product.reviews.count > 0 %}
+                    {% for review in product.reviews.all %}
+                        <div class="reviewer">
+                            <h3>{{ review.review_title }} <small class="text-muted">by {{ review.reviewer }}</small></h3>
+                            <small class="text-muted">{{ review.date }}</small>
+                        </div>
+                        <div class="review-body">
+                            {{ review.review }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No product reviews.</p>
+                {% endif %}
             </div>
         </div>
     </div>
