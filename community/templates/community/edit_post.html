@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'pages/css/contact.css' %}">
+{% endblock %}
+
+{% block extra_title %} - Community - {{ topic.subject }} Topic{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container my-5">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Edit to {{ topic.subject }} Post</h1>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <a href="">Back to {{ topic.subject }} Topic</a>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12 col-md-8 offset-md-2">
+            <form method="POST" action="{% url 'edit_post' topic.id post.id %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-center">
+                    <a href="" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <button type="submit" class="btn btn-lg btn-primary rounded-0 mt-3">Edit post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

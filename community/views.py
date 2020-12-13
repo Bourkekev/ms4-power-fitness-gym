@@ -29,7 +29,7 @@ def view_topic(request, topic_id):
 
 
 @login_required
-def reply_topic(request, topic_id):
+def reply_post(request, topic_id):
     topic = get_object_or_404(MessageTopic, pk=topic_id)
     topic_messages = MessagePost.objects.filter(topic__subject=topic)
 
@@ -48,6 +48,30 @@ def reply_topic(request, topic_id):
         'topic': topic,
         'topic_messages': topic_messages,
         'form': form,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def edit_post(request, post_id, topic_id):
+    post = get_object_or_404(MessagePost, pk=post_id)
+    topic = get_object_or_404(MessageTopic, pk=topic_id)
+
+    if request.method == 'POST':
+        form = MessagePostForm(request.POST, instance=post)
+        if form.is_valid():
+            post_form = form.save(commit=False)
+            # post_form.topic = topic
+            # post_form.created_by = request.user
+            post_form.save()
+            return redirect('view_topic',  topic_id=topic_id)
+    else:
+        form = MessagePostForm(instance=post)
+    template = 'community/edit_post.html'
+    context = {
+        'post': post,
+        'form': form,
+        'topic': topic,
     }
     return render(request, template, context)
 
