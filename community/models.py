@@ -16,6 +16,10 @@ class MessageTopic(models.Model):
     def get_posts_count(self):
         return MessagePost.objects.filter(topic__subject=self).count()
 
+    def get_last_post(self):
+        return MessagePost.objects.filter(
+            topic__subject=self).order_by('-created_at').first()
+
 
 class MessagePost(models.Model):
     message = models.TextField(max_length=4000)

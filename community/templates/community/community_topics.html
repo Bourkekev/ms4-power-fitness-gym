@@ -51,7 +51,9 @@
                                 {{ topic.get_posts_count }}
                             </td>
                             <td>
-                                {{ topic.last_update }}
+                                {% with post=topic.get_last_post %}
+                                    {{ post.created_at }}
+                                {% endwith %}
                             </td>
                         </tr>
                     {% endfor %}
