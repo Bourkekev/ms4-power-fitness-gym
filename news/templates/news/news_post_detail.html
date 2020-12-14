@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+{% endblock %}
+
+{% block extra_title %} - News{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col article-entry">
+            <h1>{{ object.title }}</h1>
+            <p>{{ object.author }} | {{ object.created_on }}</p>
+            <p>{{ object.body }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Back to <a href="{% url 'news_list' %}">All News</a></p>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
