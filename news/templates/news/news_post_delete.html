@@ -5,17 +5,18 @@
     <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
 {% endblock %}
 
-{% block extra_title %} - News{% endblock %}
+{% block extra_title %} - Edit News Post{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
         <div class="col article-entry">
-            <h1>{{ object.title }}</h1>
-            <a href="{% url 'news_post_edit' object.pk %}" class="btn btn-outline-primary">Edit</a>
-            <a href="{% url 'news_post_delete' object.pk %}" class="btn btn-danger">Delete</a>
-            <p>{{ object.author }} | {{ object.created_on }}</p>
-            <p>{{ object.body }}</p>
+            <h1>Delete {{ object.title }}</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>Are you sure you want to delete the news item <em>{{ object.title }}</em>?</p>
+                <button class="btn btn-danger" type="submit">Yes, Delete news post</button>
+            </form>
         </div>
     </div>
     <div class="row">
