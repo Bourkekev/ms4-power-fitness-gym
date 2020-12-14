@@ -5,17 +5,18 @@
     <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
 {% endblock %}
 
-{% block extra_title %} - News{% endblock %}
+{% block extra_title %} - Edit News Post{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row">
         <div class="col article-entry">
-            <h1>{{ object.title }}</h1>
-            <a href="{% url 'news_post_edit' object.pk %}" class="btn btn-outline-primary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
-            <p>{{ object.author }} | {{ object.created_on }}</p>
-            <p>{{ object.body }}</p>
+            <h1>Editing {{ object.title }}</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button class="btn btn-secondary" type="submit">Update news post</button>
+            </form>
         </div>
     </div>
     <div class="row">
