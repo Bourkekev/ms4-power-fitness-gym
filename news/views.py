@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
@@ -8,6 +8,7 @@ from .models import NewsPost
 
 
 class NewsListView(ListView):
+    # queryset = NewsPost.objects.filter(status=1).order_by('-created_on')
     model = NewsPost
     template_name = 'news/news_list.html'
 
