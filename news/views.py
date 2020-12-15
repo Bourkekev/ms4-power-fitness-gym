@@ -29,5 +29,9 @@ class NewsPostDeleteView(DeleteView):
 
 class NewsPostCreateView(CreateView):
     model = NewsPost
-    fields = ('title', 'body', 'author',)
+    fields = ('title', 'body',)
     template_name = 'news/news_post_new.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
