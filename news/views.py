@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.edit import (
+    UpdateView, DeleteView, CreateView
+)
 from django.urls import reverse_lazy
 from .models import NewsPost
 
@@ -23,3 +25,9 @@ class NewsPostEditView(UpdateView):
 class NewsPostDeleteView(DeleteView):
     model = NewsPost
     success_url = reverse_lazy('news_list')
+
+
+class NewsPostCreateView(CreateView):
+    model = NewsPost
+    fields = ('title', 'body', 'author',)
+    template_name = 'news/news_post_new.html'

@@ -13,6 +13,7 @@
                 <p class="px-4">Hi {{ user.username }},</p>
                 {% if request.user.is_superuser %}
                     <a href="{% url 'add_product' %}" class="dropdown-item">Add a Product</a>
+                    <a href="{% url 'news_post_create' %}" class="dropdown-item">Create News Post</a>
                 {% endif %}
                 <a href="{% url 'profile' %}" class="dropdown-item">Your Profile</a>
                 <a href="{% url 'memberships-dashboard' %}" class="dropdown-item">View Membership</a>

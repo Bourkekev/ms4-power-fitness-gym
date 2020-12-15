@@ -33,6 +33,7 @@
                         {{ post.body | truncatewords:50 }}
                     </div>
                     <div class="card-footer text-muted">
+                        <a href="{% url 'news_post_detail' post.pk %}" class="btn btn-primary">Read more <i class="fas fa-chevron-circle-right"></i></a>
                         <a href="{% url 'news_post_edit' post.pk %}" class="btn btn-outline-primary">Edit</a>
                     </div>
                 </div>

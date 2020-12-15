@@ -28,6 +28,7 @@
                     <p>Hi {{ user.username }},</p>
                     {% if request.user.is_superuser %}
                         <a href="{% url 'add_product' %}" class="acc-item">Add a Product</a>
+                        <a href="{% url 'news_post_create' %}" class="acc-item">Create News Post</a>
                     {% endif %}
                         <a href="{% url 'profile' %}" class="acc-item">Your Profile</a>
                         <a href="{% url 'memberships-dashboard' %}" class="acc-item">View Membership</a>
