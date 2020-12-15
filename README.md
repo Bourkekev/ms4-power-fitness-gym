@@ -348,6 +348,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - Discovered you can pass a variable via JavaScript's Fetch from this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method)
  - jQuery AJAX Form submission - Referenced (this video)[https://www.youtube.com/watch?v=KgnPSmrQrXI&list=PLv8BNhFDiq8HyRRYhRsMZGU_ITu7KFhxe&index=7] and (jQuery Docs[https://api.jquery.com/jquery.ajax/])
  - This (series of articles on Simple is Better than Complex)[https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/] was useful for structuring how the message board would work, even though the series used Django 1.11, and he used multiple boards, whereas I only had 1 board.
+ - How to use DeleteView without confirmation template - This post on [stackoverflow](https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template) helped me understand how to skip the _confirm_delete template when using DeleteView in a class based view.
  
 ### Content
 

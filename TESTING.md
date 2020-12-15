@@ -42,6 +42,8 @@ So I had to think then if I cannot do it server side, then maybe Javascript can 
 When viewing a topic I have the url as something like `/community/topic/1/`. THe number is the topic id. But to allow the user to edit a message they have already posted, I first tried with just the url as `edit_post/1/`. This allowed me to edit the message but then I could not return the user to that topic because the view_topic view required a topic id. Also the url was not consistent, as it did not have `community/topic/` in it. I did not know if I could even pass the topic id as well as the message id through the template tag.
 But through trial an error I figured out how to do that and was able to get my edit message url to look like `community/topic/1/edit_post/6/` and return the user to the topic page.
 
+### Delete News Post without needing the confirmation template
+When using class based views for the news section I wanted to delete a post without needing the default _confirm_delete template, so it would match with how other items on the site are deleted, with a pop-up warning. - This post on [stackoverflow](https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template) helped me understand how to skip the _confirm_delete template when using DeleteView in a class based view.
 
 ## Testing
 

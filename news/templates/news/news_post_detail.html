@@ -13,7 +13,10 @@
         <div class="col article-entry">
             <h1>{{ object.title }}</h1>
             <a href="{% url 'news_post_edit' object.pk %}" class="btn btn-outline-primary">Edit</a>
-            <a href="{% url 'news_post_delete' object.pk %}" class="btn btn-danger">Delete</a>
+            <!-- Delete trigger modal -->
+            <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteModal">
+                Delete
+            </button>
             <p>{{ object.author }} | {{ object.created_on }}</p>
             <p>{{ object.body }}</p>
         </div>
@@ -24,5 +27,27 @@
         </div>
     </div>
 </div>
-    
+<!-- Delete Post Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-danger font-weight-bold" id="deleteLabel">Warning! This will delete this new post!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong>{{ object.title }}</strong> post? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{% url 'news_post_delete' object.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Yes, Delete news post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
