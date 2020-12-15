@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Page not found {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-12 col-sm-8 offset-sm-2">
+            <h1>You are not allowed to do that!</h1>
+            {% if exception %}
+                <h3 class="font-bold">{{ exception }}</h3>
+            {% endif %}
+            <p>Back to <a href="{% url 'home' %}">Home</a></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

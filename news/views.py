@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
@@ -16,18 +17,27 @@ class NewsPostDetailView(DetailView):
     template_name = 'news/news_post_detail.html'
 
 
-class NewsPostEditView(UpdateView):
+class NewsPostEditView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'user.is_staff'
+    permission_denied_message = 'Your access level does \
+        not allow you to edit a news item!'
     model = NewsPost
     fields = ('title', 'body',)
     template_name = 'news/news_post_edit.html'
 
 
-class NewsPostDeleteView(DeleteView):
+class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'user.is_staff'
+    permission_denied_message = 'Your access level does \
+        not allow you to delete a news item!'
     model = NewsPost
     success_url = reverse_lazy('news_list')
 
 
-class NewsPostCreateView(CreateView):
+class NewsPostCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'user.is_staff'
+    permission_denied_message = 'Your access level does \
+        not allow you to add a news item!'
     model = NewsPost
     fields = ('title', 'body',)
     template_name = 'news/news_post_new.html'

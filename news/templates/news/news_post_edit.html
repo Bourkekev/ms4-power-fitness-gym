@@ -10,18 +10,21 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row">
+        <div class="col">
+            <p>Back to <a href="{% url 'news_list' %}">All News</a></p>
+        </div>
+    </div>
+    <div class="row">
         <div class="col article-entry">
             <h1>Editing {{ object.title }}</h1>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <button class="btn btn-secondary" type="submit">Update news post</button>
+                <div class="text-center">
+                    <a href="{% url 'news_list' %}" class="btn btn-lg btn-outline-secondary rounded-0 mr-sm-4 mt-3">Cancel</a>
+                    <button class="btn btn-lg btn-primary rounded-0 mt-3" type="submit">Update news post</button>
+                </div>
             </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p>Back to <a href="{% url 'news_list' %}">All News</a></p>
         </div>
     </div>
 </div>

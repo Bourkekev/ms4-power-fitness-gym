@@ -349,6 +349,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - jQuery AJAX Form submission - Referenced (this video)[https://www.youtube.com/watch?v=KgnPSmrQrXI&list=PLv8BNhFDiq8HyRRYhRsMZGU_ITu7KFhxe&index=7] and (jQuery Docs[https://api.jquery.com/jquery.ajax/])
  - This (series of articles on Simple is Better than Complex)[https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/] was useful for structuring how the message board would work, even though the series used Django 1.11, and he used multiple boards, whereas I only had 1 board.
  - How to use DeleteView without confirmation template - This post on [stackoverflow](https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template) helped me understand how to skip the _confirm_delete template when using DeleteView in a class based view.
+ - For sending custom message to 403 page template from a restricted class view, I referenced this [Stack overflow question](https://stackoverflow.com/questions/25376741/send-custom-message-in-django-permissiondenied/#answer-53926606) and Django [documentation](https://docs.djangoproject.com/en/3.1/topics/auth/default/#the-permissionrequiredmixin-mixin)
  
 ### Content
 
