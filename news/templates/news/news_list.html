@@ -7,18 +7,30 @@
 
 {% block extra_title %} - News{% endblock %}
 
+{% block page_header %}
+    <div class="container header-container my-5">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Latest News</h1>
+                <p>Keep up to date with Power Fitness Gym news by checking back regularly.</p>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
 {% block content %}
 <div class="container mt-5">
     <div class="row">
         <div class="col">
             {% for post in object_list %}
-                <div class="card text-center mb-4">
+                <div class="card mb-4">
                     <div class="card-header">
-                        <a href="{% url 'news_post_detail' post.pk %}"><span class="font-weight-bold">{{ post.title }}</span></a> &middot;
-                        <span class="text-muted">by {{ post.author }} on {{ post.created_on}}</span>
+                        <i class="far fa-user-circle"></i>
+                        <span class="text-muted">{{ post.author }} on <i class="far fa-calendar-alt ml-4"></i> {{ post.created_on}}</span>
                     </div>
                     <div class="card-body">
-                        {{ post.body }}
+                        <h2 class="article-title"><a href="{% url 'news_post_detail' post.pk %}">{{ post.title }}</a></h2>
+                        {{ post.body | truncatewords:50 }}
                     </div>
                     <div class="card-footer text-muted">
                         <a href="{% url 'news_post_edit' post.pk %}" class="btn btn-outline-primary">Edit</a>
