@@ -8,7 +8,7 @@ from .models import NewsPost
 
 
 class NewsListView(ListView):
-    # queryset = NewsPost.objects.filter(status=1).order_by('-created_on')
+    queryset = NewsPost.objects.filter(status=1)
     model = NewsPost
     template_name = 'news/news_list.html'
 
@@ -23,7 +23,7 @@ class NewsPostEditView(PermissionRequiredMixin, UpdateView):
     permission_denied_message = 'Your access level does \
         not allow you to edit a news item!'
     model = NewsPost
-    fields = ('title', 'body',)
+    fields = ('title', 'body', 'status')
     template_name = 'news/news_post_edit.html'
 
 
@@ -32,6 +32,7 @@ class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
     permission_denied_message = 'Your access level does \
         not allow you to delete a news item!'
     model = NewsPost
+    fields = ('title', 'body', 'status')
     success_url = reverse_lazy('news_list')
 
 
