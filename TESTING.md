@@ -45,6 +45,9 @@ But through trial an error I figured out how to do that and was able to get my e
 ### Delete News Post without needing the confirmation template
 When using class based views for the news section I wanted to delete a post without needing the default _confirm_delete template, so it would match with how other items on the site are deleted, with a pop-up warning. - This post on [stackoverflow](https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template) helped me understand how to skip the _confirm_delete template when using DeleteView in a class based view.
 
+### Using slugs instead of ids in news posts urls
+I have news posts in my project, and I had it all working (CRUD), but I wanted to change the url to use a slug based on the page title instead of just an id like /news/1/, as having numbers in a url is very dated. I had auto generation of the slug from the title working and could view the news post using the slug, but for some reason when I went to create a new post (front-end) I got a 404 page not found error, even though the slug url was only used when viewing the post detail. The id or slug is not passed to the NewsPostCreateView so I don't know why that happens. If I change the url for the NewsPostDetailView view to use <int:pk> instead of <slug:slug>, everything works fine. But for some reason the slug affects the NewsPostCreateView. There were no other errors in the terminal and I was unable to find an answer for this in a reasonable time, so due to time constraints had to move on so have just reverted to use the <int:pk>. I have left the slug field in the model in case I have time to revisit this again later.
+
 ## Testing
 
 ### Testing Save info in webhook handler
