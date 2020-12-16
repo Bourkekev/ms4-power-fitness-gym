@@ -32,7 +32,6 @@ class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
     permission_denied_message = 'Your access level does \
         not allow you to delete a news item!'
     model = NewsPost
-    fields = ('title', 'body', 'status')
     success_url = reverse_lazy('news_list')
 
 
@@ -41,7 +40,7 @@ class NewsPostCreateView(PermissionRequiredMixin, CreateView):
     permission_denied_message = 'Your access level does \
         not allow you to add a news item!'
     model = NewsPost
-    fields = ('title', 'body',)
+    fields = ('title', 'body', 'status')
     template_name = 'news/news_post_new.html'
 
     def form_valid(self, form):
