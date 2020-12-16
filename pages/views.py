@@ -6,9 +6,18 @@ from django.contrib import messages
 from .forms import ContactUsForm
 from .models import ContactForm
 
+from products.models import Product
+
 
 class HomePageView(TemplateView):
     template_name = 'pages/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        products = Product.objects.all()
+        best_sellers = products.filter(category__name='best_sellers')
+        context["best_sellers"] = best_sellers
+        return context
 
 
 class GymMemberships(TemplateView):

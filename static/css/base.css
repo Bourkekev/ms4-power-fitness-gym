@@ -37,11 +37,11 @@ img {
     max-width: 100%;
     height:auto;
 }
-h1, h2,
+h1, h2, h3
 .font-archivo-black {
     font-family: 'Archivo Black', sans-serif;
 }
-h3, h4, h5, h6 {
+h4, h5, h6 {
     font-family: 'Archivo Narrow', sans-serif;
 }
 h1 {
@@ -629,6 +629,9 @@ footer {
 }
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    h2 {
+        font-size: 3rem;
+    }
     .section-1 {
         background-image: url(../images/home-hero-768x700.jpg);
         
