@@ -25,18 +25,27 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12 col-lg-6">
             <h2>About us</h2>
             <p>At Power Fitness Gym, we strive to create a workout environment where everyone feels accepted and respected. That’s why we take care to make sure our club is clean and welcoming, our staff are friendly, and our certified trainers are ready to help. Whether you’re a first-time gym user or a fitness veteran, you’ll always have a home in our all-inclusive gym.</p>
+            <p>Come in anytime, take a look around and see if we're the right fitness for you.</p>
+            <p>Keep up to date with our <a href="{% url 'news_list' %}">latest news here &raquo;</a>.</p>
         </div>
-        <div class="col-12 col-lg-6">Image</div>
+        <div class="col-12 col-lg-6">
+            <picture>
+                <source media="(max-width: 575px)" srcset="{{ MEDIA_URL }}gym-treadmills-576x360.jpg">
+                <source media="(max-width: 991px)" srcset="{{ MEDIA_URL }}gym-treadmills-720x450.jpg">
+                <source media="(min-width: 992px)" srcset="{{ MEDIA_URL }}gym-treadmills-576x360.jpg">
+                <img src="{{ MEDIA_URL }}gym-treadmills-576x360.jpg" class="w-100" alt="Gym with treadmills">
+            </picture>
+        </div>
     </div>
 </div>
-<div class="container-fluid bg-secondary text-white py-4 mt-5">
+<div class="container-fluid bg-secondary py-4 mt-5">
     <div class="row text-center">
         <div class="col">
-            <h2>Best Sellers</h2>
+            <h2 class="text-white">Best Sellers</h2>
         </div>
     </div>
 </div>
@@ -84,10 +93,34 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row ">
-        <div class="col-md-6 bg-light-darker">
-            <h2>Opening Hours</h2>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-6 bg-light-darker text-uppercase font-weight-bold px-3 py-5 p-sm-5">
+            <h2 class="text-center text-md-left mb-5">Opening Hours</h2>
+            <div class="row opening-hours">
+                <div class="col-6">
+                    <ul class="opening-days">
+                        <li>Monday</li>
+                        <li>Tuesday</li>
+                        <li>Wednesday</li>
+                        <li>Thursday</li>
+                        <li>Friday</li>
+                        <li>Saturday</li>
+                        <li>Sunday &amp; Bank Holidays</li>
+                    </ul>
+                </div>
+                <div class="col-6 pl-0">
+                    <ul class="opening-times">
+                        <li>5:45 to 22:00</li>
+                        <li>5:45 to 22:00</li>
+                        <li>5:45 to 22:00</li>
+                        <li>5:45 to 22:00</li>
+                        <li>5:45 to 22:00</li>
+                        <li>7:45 to 19:00</li>
+                        <li>8:45 to 17:30</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <h2>Map</h2>

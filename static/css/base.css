@@ -41,6 +41,9 @@ h1, h2, h3
 .font-archivo-black {
     font-family: 'Archivo Black', sans-serif;
 }
+h2 {
+    color:#f39200;
+}
 h4, h5, h6 {
     font-family: 'Archivo Narrow', sans-serif;
 }
@@ -167,6 +170,12 @@ label {
     font-size: 2rem;
 }
 /* Colors */
+.text-primary {
+    color: #f39200!important;
+}
+.text-secondary {
+    color: #0072ab!important;
+}
 .text-warning {
     color: #f39200!important;
 }
@@ -410,6 +419,17 @@ p.hero-text {
 /* Common */
 .header-container {
     padding-top: 50px;
+}
+/* opening hours */
+.opening-hours {
+    font-size: 2rem;
+}
+.opening-hours ul {
+    list-style: none;
+    padding-left: 2rem;
+}
+.opening-times {
+    font-weight: 400;
 }
 /* Products */
 .product-col {
