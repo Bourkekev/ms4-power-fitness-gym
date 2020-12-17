@@ -48,7 +48,7 @@ h1 {
     font-size: 4.2rem;
 }
 a {
-    color: #f39200;
+    color: #0072ab;
     transition: all 0.15s ease-in-out;
 }
 a:hover {
@@ -84,10 +84,31 @@ label {
 .form-control {
     border-color: #b2b2b2;
 }
+.btn {
+    padding: .75rem 2rem;
+    margin-top: 15px;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    -webkit-transition: all .2s ease-in-out;
+         -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+}
+.btn:hover {
+    -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+            transform: scale(1.03);
+}
+.no-shadow {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
 .btn-primary {
-    color: #fff;
-    background-color: #f39200;
-    border-color: #f39200;
+    color: #343A40;
+    background-color: #F8A239;
+    border-color: #F8A239;
 }
 .btn-primary:hover {
     background-color: #0072AB;
@@ -103,8 +124,8 @@ label {
     border-color: #f39200;
 }
 .btn-outline-primary {
-    color: #f39200;
-    border-color: #f39200;
+    color: #A65E06;
+    border-color: #A65E06;
 }
 .btn-outline-primary:hover {
     background-color: #0072ab;
@@ -124,10 +145,20 @@ label {
     font-size: 2rem;
 }
 .bg-primary {
-    background-color: #f39200!important;
+    background-color: #F8A239!important;
 }
 .bg-secondary {
     background-color: #0072ab!important;
+}
+.bg-light-darker {
+    background-color: #ececec;
+}
+/* additional bg colours */
+.bg-secondary-darker {
+    background-color: #005782;
+}
+.bg-secondary-darker-2 {
+    background-color: #00486C;
 }
 .display-3 {
     font-size: 3rem;
@@ -153,6 +184,10 @@ a.text-info:focus, a.text-info:hover {
 }
 .form-control:focus {
     border-color: #1eaff7;
+}
+/* Alt padding option */
+.p-2r {
+    padding: 2rem;
 }
 /* Fix header */
 header {
@@ -252,6 +287,7 @@ header.sticky {
     font-size: 2rem;
     line-height: 4.7rem;
     padding: .4rem 1.9rem;
+    margin-top: .375rem;
     width: 6rem;
 }
 .search-block .dropdown-menu {
@@ -266,6 +302,7 @@ header.sticky {
     font-size: 2rem;
     line-height: 3.3rem;
     padding: .4rem 1.5rem;
+    margin-top: 0;
     width: 5rem;
 }
 .btn.drop-search:hover {
@@ -471,6 +508,10 @@ p.hero-text {
 .checkout-col-container {
     border: 1px solid #d0d0d0;
     padding: 1.5rem;
+}
+/* Policy Links */
+.policy-links h3 {
+    margin-top: .5rem;
 }
 /* Footer */
 footer {
