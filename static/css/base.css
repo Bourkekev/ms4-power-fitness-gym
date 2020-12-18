@@ -110,8 +110,8 @@ label {
 }
 .btn-primary {
     color: #343A40;
-    background-color: #F8A239;
-    border-color: #F8A239;
+    background-color: #F7941E;
+    border-color: #F7941E;
 }
 .btn-primary:hover {
     background-color: #0072AB;
@@ -123,8 +123,8 @@ label {
     border-color: #0072AB;
 }
 .btn-secondary:hover {
-    background-color: #f39200;
-    border-color: #f39200;
+    background-color: #F7941E;
+    border-color: #F7941E;
 }
 .btn-outline-primary {
     color: #A65E06;
@@ -405,16 +405,33 @@ p.hero-text {
     top: 0;
     z-index: 1;
 }
+.dark-overlay.darker:before {
+    background-color: rgba(0,0,0,0.6);
+}
 .dark-overlay > .content-section {
     position: relative;
     z-index: 2;
 }
+/* Homepage Banner images */
 .section-1 {
     background-image: url(../images/home-hero-576x500.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
     padding: 10rem 1rem 5rem;
+}
+.section-2,
+.section-3 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 10rem 1rem 5rem;
+}
+.section-2 {
+    background-image: url(../images/dumbbells-gym-products-576x384.jpg);
+}
+.section-3 {
+    background-image: url(../images/man-and-woman-doing-pushups-576x384.jpg);
 }
 /* Common */
 .header-container {
@@ -680,6 +697,12 @@ footer {
         background-position: top right;
         padding: 9rem 26rem 5rem 1rem;
     }
+    .section-2 {
+        background-image: url(../images/dumbbells-gym-products-768x238.jpg);
+    }
+    .section-3 {
+        background-image: url(../images/man-and-woman-doing-pushups-768x238.jpg);
+    }
     /* override BS width */
     .w-sm-auto {
         width: auto!important;
@@ -695,8 +718,17 @@ footer {
     }
     .section-1 {
         background-image: url(../images/home-hero-768x700.jpg);
-        
         padding: 9rem 5rem 5rem 1rem;
+    }
+    .section-2 {
+        background-image: url(../images/dumbbells-gym-products-496x286.jpg);
+    }
+    .section-3 {
+        background-image: url(../images/man-and-woman-doing-pushups-496x286.jpg);
+    }
+    .section-2 h2,
+    .section-3 h2 {
+        font-size: 2rem;
     }
     /* override BS width */
     .w-md-auto {
@@ -758,6 +790,19 @@ footer {
 }
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .section-1 {
+        padding: 28rem 5rem 5rem 2rem;
+    }
+    .section-2 {
+        background-image: url(../images/dumbbells-gym-products-600x300.jpg);
+    }
+    .section-3 {
+        background-image: url(../images/man-and-woman-doing-pushups-600x300.jpg);
+    }
+    .section-2,
+    .section-3 {
+        padding: 10rem 1rem 10.5rem;
+    }
     body {
         padding-top: 0;
     }
@@ -808,6 +853,15 @@ footer {
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    .section-1 {
+        background-image: url(../images/home-hero-960x600.jpg);
+    }
+    .section-2 {
+        background-image: url(../images/dumbbells-gym-products-960x300.jpg);
+    }
+    .section-3 {
+        background-image: url(../images/man-and-woman-doing-pushups-960x300.jpg);
+    }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 1.5rem;
         padding-left: 1.5rem;

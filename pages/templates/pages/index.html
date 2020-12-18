@@ -10,15 +10,17 @@
                 <p class="hero-text">A little progress each day adds up to Big Results</p>
             </div>
         </div>
-        <div class="col-12 col-md-6 text-center text-md-left">
-            <div class="row section-2">
-                <div class="col">
-                    <h2 class="">See our range of gym equipment</h2>
+        <div class="col-12 col-md-6 text-center">
+            <div class="row section-2 dark-overlay darker">
+                <div class="col content-section">
+                    <h2 class="text-white">See our range of gym equipment</h2>
+                    <a href="{% url 'products' %}" class="btn btn-primary font-weight-bold">Shop Gym Products</a>
                 </div>
             </div>
-            <div class="row section-3">
-                <div class="col-12 col-md-6 text-center text-md-left">
-                    <h2 class="">View our memberships</h2>
+            <div class="row section-3 dark-overlay">
+                <div class="col-12 content-section text-center">
+                    <h2 class="text-white">View our memberships</h2>
+                    <a href="{% url 'gym-memberships' %}" class="btn btn-primary font-weight-bold">Join Gym</a>
                 </div>
             </div>
         </div>
@@ -34,10 +36,10 @@
         </div>
         <div class="col-12 col-lg-6">
             <picture>
-                <source media="(max-width: 575px)" srcset="{{ MEDIA_URL }}gym-treadmills-576x360.jpg">
-                <source media="(max-width: 991px)" srcset="{{ MEDIA_URL }}gym-treadmills-720x450.jpg">
-                <source media="(min-width: 992px)" srcset="{{ MEDIA_URL }}gym-treadmills-576x360.jpg">
-                <img src="{{ MEDIA_URL }}gym-treadmills-576x360.jpg" class="w-100" alt="Gym with treadmills">
+                <source media="(max-width: 575px)" srcset="{% static 'images/gym-treadmills-576x360.jpg' %}">
+                <source media="(max-width: 991px)" srcset="{% static 'images/gym-treadmills-720x450.jpg' %}">
+                <source media="(min-width: 992px)" srcset="{% static 'images/gym-treadmills-576x360.jpg' %}">
+                <img src="{% static 'images/gym-treadmills-576x360.jpg' %}" class="w-100" alt="Gym with treadmills">
             </picture>
         </div>
     </div>
