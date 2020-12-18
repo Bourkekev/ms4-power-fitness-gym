@@ -9,9 +9,9 @@
             </div>
         </div>
     </div>
-    <div class="container header-container">
-        <div class="row text-center">
-            <div class="col">
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
                 <h1>Products</h1>
             </div>
         </div>
@@ -19,7 +19,7 @@
 {% endblock page_header%}
 
 {% block content %}
-    <div class="container">
+    <div class="container mb-4">
         <div class="row">
             <div class="col text-center mt-3">
                 {% for c in requested_categories %}
@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-    
+    {% include 'includes/four-policies.html' %}
 {% endblock content %}
 
 {% block postloadjs %}

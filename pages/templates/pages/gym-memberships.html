@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="container mt-5">
-    <div class="row text-center w-lg-75 mx-auto">
-        <div class="col-12">
-            <h1>Gym Memberships</h1>
-            <p>Get a Power Fitness gym membership now, and join a squeaky clean and spacious club!  We offer the Platinum Membership and Gold Membership.  Both get you access to our all-inclusive gym, and tons of cardio and strength equipment.</p>
+{% block extra_title %} - Gym Memberships{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Gym Memberships</h1>
+                <p>Get a Power Fitness gym membership now, and join a squeaky clean and spacious club!  We offer the Platinum Membership and Gold Membership.  Both get you access to our all-inclusive gym, and tons of cardio and strength equipment.</p>
+            </div>
         </div>
     </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="container my-5">
     <div class="row text-center mt-5">
         <div class="col">
             <h2>Select the right gym membership for you</h2>
@@ -54,12 +61,12 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-12 text-center">
             <small class="d-block text-muted my-2">You must register/login to join</small>
             <a href="{% url 'memberships-dashboard' %}" class="btn btn-primary btn-lg">Become a Member <i class="far fa-arrow-alt-circle-right"></i></a>
         </div>
     </div>
 </div>
-    
+{% include 'includes/membership-policies.html' %}
 {% endblock %}

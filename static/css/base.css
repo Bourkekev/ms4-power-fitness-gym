@@ -148,7 +148,7 @@ label {
     font-size: 2rem;
 }
 .bg-primary {
-    background-color: #F8A239!important;
+    background-color: #F7941E!important;
 }
 .bg-secondary {
     background-color: #0072ab!important;
@@ -168,6 +168,7 @@ label {
 }
 .display-4 {
     font-size: 2rem;
+    font-weight: 700;
 }
 /* Colors */
 .text-primary {
@@ -438,8 +439,12 @@ p.hero-text {
     background-image: url(../images/man-and-woman-doing-pushups-576x384.jpg);
 }
 /* Common */
-.header-container {
-    padding-top: 50px;
+.page-title-panel {
+    background-image: url(../images/ropes-title-panel-image-576x260.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 7rem 1.5rem;
 }
 /* opening hours */
 .opening-hours {
@@ -707,6 +712,10 @@ footer {
     .section-3 {
         background-image: url(../images/man-and-woman-doing-pushups-768x238.jpg);
     }
+    .page-title-panel {
+        background-image: url(../images/ropes-title-panel-image-768x260.jpg);
+        padding: 7rem 7.5rem;
+    }
     /* override BS width */
     .w-sm-auto {
         width: auto!important;
@@ -733,6 +742,9 @@ footer {
     .section-2 h2,
     .section-3 h2 {
         font-size: 2rem;
+    }
+    .page-title-panel {
+        background-image: url(../images/ropes-title-panel-image-992x332.jpg);
     }
     /* override BS width */
     .w-md-auto {
@@ -807,6 +819,10 @@ footer {
     .section-3 {
         padding: 10rem 1rem 10.5rem;
     }
+    .page-title-panel {
+        background-image: url(../images/ropes-title-panel-image-1920x646.jpg);
+        padding: 11rem;
+    }
     body {
         padding-top: 0;
     }
@@ -830,6 +846,9 @@ footer {
     }
     .w-lg-75 {
         width: 75%!important;
+    }
+    .w-lg-50 {
+        width: 50%!important;
     }
     .push-flex-right {
         margin-left: auto;

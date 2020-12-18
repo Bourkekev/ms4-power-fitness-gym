@@ -5,14 +5,21 @@
     <link rel="stylesheet" href="{% static 'pages/css/contact.css' %}">
 {% endblock %}
 
-{% block content %}
-<div class="container mt-5">
-    <div class="row text-center w-lg-75 mx-auto">
-        <div class="col-12">
-            <h1>Contact us</h1>
-            <p>Get in touch with Power Fitness gym using the form, or find us with the map below.</p>
+{% block extra_title %} - Contact Us{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Contact us</h1>
+                <p>Get in touch with Power Fitness gym using the form, or find us with the map below.</p>
+            </div>
         </div>
     </div>
+{% endblock page_header%}
+
+{% block content %}
+<div class="container mt-5">
     <div class="row my-5">
         <div class="col-12 col-md-6">
             <p>Please fill out the form below to contact us.</p>

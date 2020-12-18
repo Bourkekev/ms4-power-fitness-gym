@@ -8,15 +8,15 @@
 {% block extra_title %} - Community{% endblock %}
 
 {% block page_header %}
-    <div class="container header-container my-5">
-        <div class="row text-center">
-            <div class="col">
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
                 <h1>Community</h1>
                 <p>Chat with other Power Fitness gym users about anything gym or fitness related. You must be signed in to view or participate in chats.</p>
                 {% if request.user.is_authenticated %}
-                    <p>You are signed in as <strong>{{ user.username }}</strong>.</p>
+                    <p class="lead">You are signed in as <strong>{{ user.username }}</strong>.</p>
                 {% else %}
-                    <p>You are not signed in. If you have an account you can <a href="{% url 'account_login' %}">login here</a>.</p>
+                    <p class="lead">You are not signed in. If you have an account you can <a href="{% url 'account_login' %}">login here</a>.</p>
                 {% endif %}
             </div>
         </div>
