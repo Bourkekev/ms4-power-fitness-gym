@@ -7,7 +7,12 @@ from products.models import Product
 
 
 def view_bag(request):
-    """ Return the shopping bag page """
+    """ view_bag
+
+    * Sends the user to the shopping bag page
+
+    \n No Args
+    """
     return render(request, 'bag/bag.html')
 
 

@@ -198,6 +198,10 @@ a.text-info:focus, a.text-info:hover {
 .p-2r {
     padding: 2rem;
 }
+/* Lead text */
+.lead {
+    font-size: 2rem;
+}
 /* Fix header */
 header {
     background: #fff;

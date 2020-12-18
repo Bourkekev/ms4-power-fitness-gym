@@ -13,10 +13,15 @@ def bag_contents(request):
 
     # iterate through each bag item
     for item_id, item_data in bag.items():
+        product = get_object_or_404(Product, pk=item_id)
+        if product.sale_price:
+            price = product.sale_price
+        else:
+            price = product.price
+
         # if no size
         if isinstance(item_data, int):
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
+            total += item_data * price
             product_count += item_data
             bag_items.append({
                 'item_id': item_id,
@@ -25,10 +30,9 @@ def bag_contents(request):
             })
         else:
             if 'items_by_shoesize' in item_data.keys():
-                product = get_object_or_404(Product, pk=item_id)
                 for shoesize, quantity in item_data[
                         'items_by_shoesize'].items():
-                    total += quantity * product.price
+                    total += quantity * price
                     product_count += quantity
                     bag_items.append({
                         'item_id': item_id,
@@ -37,10 +41,9 @@ def bag_contents(request):
                         'shoesize': shoesize,
                     })
             elif 'items_by_clothing_size' in item_data.keys():
-                product = get_object_or_404(Product, pk=item_id)
                 for clothing_size, quantity in item_data[
                         'items_by_clothing_size'].items():
-                    total += quantity * product.price
+                    total += quantity * price
                     product_count += quantity
                     bag_items.append({
                         'item_id': item_id,

@@ -56,7 +56,14 @@
                                         <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td>
-                                        <p class="my-0">€{{ item.product.price }}</p>
+                                        <p class="my-0">€
+                                            {% if item.product.sale_price %}
+                                                {{ item.product.sale_price }}
+                                                <div class="regular-price on-sale">€{{ item.product.price }}</div>
+                                            {% else %}
+                                                {{ item.product.price }}
+                                            {% endif %}
+                                            </p>
                                     </td>
                                     <td>
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
@@ -89,17 +96,24 @@
                                         <a class="update-link text-info"><small>Update</small></a>
                                     </td>
                                     <td>
-                                        <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                            <a class="remove-item text-danger float-right" 
-                                            id="remove_{{ item.item_id }}" 
-                                            {% if item.product.shoe_sizes %}
-                                                data-shoe_size="{{ item.shoesize }}"
+                                        <p class="my-0">€
+                                            {% if item.product.sale_price %}
+                                                {{ item.product.sale_price | calc_subtotal:item.quantity }}
+                                            {% else %}
+                                                {{ item.product.price | calc_subtotal:item.quantity }}
                                             {% endif %}
-                                            {% if item.product.clothing_sizes %}
-                                                data-clothing_size="{{ item.clothing_size }}"
-                                            {% endif %}
-                                            aria-label="Remove this item"
-                                            title="Remove this item"><i class="fas fa-trash-alt"></i></a>
+                                        </p>
+                                        <a class="remove-item text-danger float-right" 
+                                        id="remove_{{ item.item_id }}" 
+                                        {% if item.product.shoe_sizes %}
+                                            data-shoe_size="{{ item.shoesize }}"
+                                        {% endif %}
+                                        {% if item.product.clothing_sizes %}
+                                            data-clothing_size="{{ item.clothing_size }}"
+                                        {% endif %}
+                                        aria-label="Remove this item"
+                                        title="Remove this item"><i class="fas fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -146,7 +160,7 @@
                 </div>
             {% else %}
                 <p class="lead mb-5">Your bag is empty.</p>
-                <a href="{% url 'products' %}" class="btn btn-primary rounded-0 btn-lg">
+                <a href="{% url 'products' %}" class="btn btn-primary rounded-0 btn-lg mb-5">
                     <i class="fas fa-chevron-left"></i>
                     <span class="text-uppercase">Keep Shopping</span>
                 </a>
