@@ -344,6 +344,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - Javascript Stripe payment logic - Base code for this came from (Stripe documentation)[https://stripe.com/docs/payments/accept-a-payment]
  - Stripe Subscriptions with Checkout - Base code for this came from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/checkout] and also referenced this (tutorial)[https://testdriven.io/blog/django-stripe-subscriptions/] for Subscriptions JavaScript Fetch API, checkout session view and saving Stripe subscription data to database.
  - Stripe Cancel a Subscription - Referenced (Stripe documentation)[https://stripe.com/docs/api/subscriptions/cancel]
+ - Upgrading a Stripe subscription - Code mostly from (Stripe documentation)[https://stripe.com/docs/billing/subscriptions/upgrade-downgrade]
  - General information about fetching data with Ajax and Django - https://www.brennantymrak.com/articles/fetching-data-with-ajax-and-django.html
  - Discovered you can pass a variable via JavaScript's Fetch from this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method)
  - jQuery AJAX Form submission - Referenced (this video)[https://www.youtube.com/watch?v=KgnPSmrQrXI&list=PLv8BNhFDiq8HyRRYhRsMZGU_ITu7KFhxe&index=7] and (jQuery Docs[https://api.jquery.com/jquery.ajax/])

@@ -8,5 +8,8 @@ urlpatterns = [
     path('success/', views.subscription_success),
     path('cancel/', views.subscription_cancel),
     path('subwh/', views.subscription_webhook),
-    path('cancel-subscription/<subscrip_id>', views.cancel_subscription, name='cancel-subscription'),
+    path('cancel-subscription/<subscrip_id>',
+         views.cancel_subscription, name='cancel-subscription'),
+    path('upgrade-subscription/<subscrip_id>',
+         views.upgrade_subscription, name='upgrade-subscription'),
 ]

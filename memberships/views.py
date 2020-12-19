@@ -71,6 +71,7 @@ def create_checkout_session(request, price_id):
 
 @login_required
 def subscription_success(request):
+    """Handle if subscription checkout was successfull"""
     return render(request, 'memberships/successful.html')
 
 
@@ -102,6 +103,36 @@ def cancel_subscription(request, subscrip_id):
     subId = StripeSubscription.objects.get(stripeSubscriptionId=subscrip_id)
     subId.delete()
     return render(request, 'memberships/sub-cancelled.html')
+
+
+@login_required
+def upgrade_subscription(request, subscrip_id):
+    """ upgrade_subscription:
+
+    * Upgrade a users membership subscription \
+      from Gold to Platinum in Stripe
+
+    \n Args:
+    1. request: The request
+    2. subscrip_id: the ID of the subscription to be upgraded from
+
+    \n Returns:
+    * User to membership dahsboard
+    """
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    # update_from_sub = subscrip_id
+    subscription = stripe.Subscription.retrieve(subscrip_id)
+
+    stripe.Subscription.modify(
+        subscription.id,
+        cancel_at_period_end=False,
+        proration_behavior='create_prorations',
+        items=[{
+            'id': subscription['items']['data'][0].id,
+            'price': settings.STRIPE_PLAT_PRICE_ID,
+        }]
+    )
+    return render(request, 'memberships/sub-upgraded.html')
 
 
 @csrf_exempt

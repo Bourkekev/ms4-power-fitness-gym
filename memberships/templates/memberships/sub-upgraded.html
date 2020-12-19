@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Upgrading of your membership to Platinum Membership was successful!</h1>
+                <p>Thank you. You have successfully upgraded.</p>
+                <p><a href="{% url 'memberships-dashboard' %}">Return to membership dashboard</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock page_header%}
+
+{% block content %}
+{% endblock content %}
