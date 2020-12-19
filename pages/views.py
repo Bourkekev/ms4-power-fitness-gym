@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
+
 from .forms import ContactUsForm
 from .models import ContactForm
 
@@ -27,17 +31,25 @@ class GymMemberships(TemplateView):
 def contact(request):
 
     if request.method == 'POST':
-        form_data = {
-            'first_name': request.POST['first_name'],
-            'last_name': request.POST['last_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'subject': request.POST['subject'],
-            'your_message': request.POST['your_message'],
-        }
-        contact_form = ContactUsForm(form_data)
+        contact_form = ContactUsForm(request.POST)
         if contact_form.is_valid():
+            # Send email
+            user_email = contact_form.cleaned_data['email']
+            user_name = contact_form.cleaned_data['first_name']
+            subject = "Form Submission received with subject " + contact_form.cleaned_data['subject']
+            body = render_to_string(
+                'pages/contact_emails/contact_email_body.txt',
+                {'contact_email': settings.DEFAULT_FROM_EMAIL})
+            send_mail(
+                subject,
+                f"Hi {user_name}," + body,
+                settings.DEFAULT_FROM_EMAIL,
+                [user_email]
+            )
+            if settings.EMAIL_HOST_USER:
+                admin_email = settings.EMAIL_HOST_USER
             contact_form.save()
+            messages.success(request, 'Message sent successfully')
             return redirect(reverse('contact'))
         else:
             # if form not valid
