@@ -103,13 +103,18 @@ def contact_submit(request):
         if settings.EMAIL_HOST_USER:
             admin_email = settings.EMAIL_HOST_USER
         else:
-            admin_email = 'bourkekev@gmail.com'
+            admin_email = settings.DEFAULT_FROM_EMAIL
 
         admin_body = render_to_string(
             'pages/contact_emails/admin_email_body.txt',
             {
                 'sender_email': user_email,
                 'first_name': first_name,
+                'last_name': last_name,
+                'phone_number': phone_number,
+                'subject': subject,
+                'your_message': your_message,
+                'date_sent': date_sent,
             })
         send_mail(
             subject,

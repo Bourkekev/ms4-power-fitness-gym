@@ -1,3 +1,9 @@
 Hi,
 
-You have received a message from {{ first_name }} with email {{ sender_email }}
+You have received a message from {{ first_name }} {{last_name}} with an email address of {{ sender_email }}.
+
+They submitted the following information:
+Subject: {{ subject }}
+Phone: {{ phone_number }}
+Their message: {{ your_message }}
+Date sent: {{ date_sent }}
