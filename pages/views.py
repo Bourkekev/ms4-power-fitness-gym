@@ -88,8 +88,8 @@ def contact_submit(request):
         )
         # Send email
         user_email = email
-        subject = ("Form Submission received with subject " +
-                    subject)
+        subject = ("Form Submission received: " +
+                   subject)
         body = render_to_string(
             'pages/contact_emails/contact_email_body.txt',
             {'contact_email': settings.DEFAULT_FROM_EMAIL})
@@ -99,6 +99,22 @@ def contact_submit(request):
             settings.DEFAULT_FROM_EMAIL,
             [user_email]
         )
+        # Send admin email
         if settings.EMAIL_HOST_USER:
             admin_email = settings.EMAIL_HOST_USER
+        else:
+            admin_email = 'bourkekev@gmail.com'
+
+        admin_body = render_to_string(
+            'pages/contact_emails/admin_email_body.txt',
+            {
+                'sender_email': user_email,
+                'first_name': first_name,
+            })
+        send_mail(
+            subject,
+            admin_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [admin_email]
+        )
         return HttpResponse('Your message has been submitted successfully.')

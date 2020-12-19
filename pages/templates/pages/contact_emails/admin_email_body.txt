@@ -1,0 +1,3 @@
+Hi,
+
+You have received a message from {{ first_name }} with email {{ sender_email }}
