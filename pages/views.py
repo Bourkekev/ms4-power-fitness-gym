@@ -36,7 +36,8 @@ def contact(request):
             # Send email
             user_email = contact_form.cleaned_data['email']
             user_name = contact_form.cleaned_data['first_name']
-            subject = "Form Submission received with subject " + contact_form.cleaned_data['subject']
+            subject = ("Form Submission received with subject " +
+                       contact_form.cleaned_data['subject'])
             body = render_to_string(
                 'pages/contact_emails/contact_email_body.txt',
                 {'contact_email': settings.DEFAULT_FROM_EMAIL})
@@ -85,4 +86,19 @@ def contact_submit(request):
             your_message=your_message,
             date_sent=date_sent,
         )
+        # Send email
+        user_email = email
+        subject = ("Form Submission received with subject " +
+                    subject)
+        body = render_to_string(
+            'pages/contact_emails/contact_email_body.txt',
+            {'contact_email': settings.DEFAULT_FROM_EMAIL})
+        send_mail(
+            subject,
+            f"Hi {first_name}," + body,
+            settings.DEFAULT_FROM_EMAIL,
+            [user_email]
+        )
+        if settings.EMAIL_HOST_USER:
+            admin_email = settings.EMAIL_HOST_USER
         return HttpResponse('Your message has been submitted successfully.')
