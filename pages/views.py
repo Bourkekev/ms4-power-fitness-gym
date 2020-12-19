@@ -33,10 +33,10 @@ def contact(request):
     if request.method == 'POST':
         contact_form = ContactUsForm(request.POST)
         if contact_form.is_valid():
-            # Send email
+            # Send user email
             user_email = contact_form.cleaned_data['email']
             user_name = contact_form.cleaned_data['first_name']
-            subject = ("Form Submission received with subject " +
+            subject = ("Form Submission received: " +
                        contact_form.cleaned_data['subject'])
             body = render_to_string(
                 'pages/contact_emails/contact_email_body.txt',
@@ -47,8 +47,31 @@ def contact(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [user_email]
             )
+            # Send admin email
             if settings.EMAIL_HOST_USER:
                 admin_email = settings.EMAIL_HOST_USER
+            else:
+                admin_email = settings.DEFAULT_FROM_EMAIL
+
+            last_name = contact_form.cleaned_data['last_name']
+            phone_number = contact_form.cleaned_data['phone_number']
+            your_message = contact_form.cleaned_data['your_message']
+            admin_body = render_to_string(
+                'pages/contact_emails/admin_email_body.txt',
+                {
+                    'sender_email': user_email,
+                    'first_name': user_name,
+                    'last_name': last_name,
+                    'phone_number': phone_number,
+                    'subject': subject,
+                    'your_message': your_message,
+                })
+            send_mail(
+                subject,
+                admin_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [admin_email]
+            )
             contact_form.save()
             messages.success(request, 'Message sent successfully')
             return redirect(reverse('contact'))
@@ -86,7 +109,7 @@ def contact_submit(request):
             your_message=your_message,
             date_sent=date_sent,
         )
-        # Send email
+        # Send user email
         user_email = email
         subject = ("Form Submission received: " +
                    subject)
@@ -114,7 +137,6 @@ def contact_submit(request):
                 'phone_number': phone_number,
                 'subject': subject,
                 'your_message': your_message,
-                'date_sent': date_sent,
             })
         send_mail(
             subject,

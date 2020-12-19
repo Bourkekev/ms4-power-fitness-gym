@@ -6,4 +6,3 @@ They submitted the following information:
 Subject: {{ subject }}
 Phone: {{ phone_number }}
 Their message: {{ your_message }}
-Date sent: {{ date_sent }}
