@@ -354,6 +354,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - To automatically populate a slug field for a news post - https://books.agiliq.com/projects/django-orm-cookbook/en/latest/slugfield.html
  - For elements of the News Posts especially to do with slugs, I referenced this article on [Django Central](https://djangocentral.com/building-a-blog-application-with-django/)
  - For how to return contexts in class based views I referenced this [article](https://www.agiliq.com/blog/2017/12/when-and-how-use-django-templateview/)
+ - To create the timestamp to datetime template tag filter I followed (but had to adjust) the second answer on this [stackoverflow question](https://stackoverflow.com/questions/9056016/how-do-i-convert-unix-timestamp-in-integer-to-human-readable-format-in-django-te)
  
 ### Content
 

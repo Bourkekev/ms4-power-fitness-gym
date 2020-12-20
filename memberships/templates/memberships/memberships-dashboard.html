@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load timestamp_to_time %}
 
 {% block page_header %}
     <div class="container header-container my-5">
@@ -23,8 +24,8 @@
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">
                             {{ product.description }}<br>
-                            Signed up on: {{ product.created }}<br>
-                            Renews {{ subscription.current_period_end }}<br>
+                            Signed up on: {{ product.created|timestamp_to_time|date:"d M, Y" }}<br>
+                            Renews {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}<br>
                             Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
                         </p>
                     </div>
