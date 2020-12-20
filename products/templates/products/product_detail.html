@@ -131,12 +131,14 @@
             <div class="review-container">
                 {% if product.reviews.count > 0 %}
                     {% for review in product.reviews.all %}
-                        <div class="reviewer">
-                            <h3>{{ review.review_title }} <small class="text-muted">by {{ review.reviewer }}</small></h3>
-                            <small class="text-muted">{{ review.date }}</small>
-                        </div>
-                        <div class="review-body">
-                            {{ review.review }}
+                        <div class="review-item border-top mt-3 pt-3">
+                            <div class="reviewer">
+                                <h3 class="font-weight-bold">{{ review.review_title }} <small class="text-muted">by {{ review.reviewer }}</small></h3>
+                                <small class="text-muted">{{ review.date }}</small>
+                            </div>
+                            <div class="review-body">
+                                {{ review.review }}
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}

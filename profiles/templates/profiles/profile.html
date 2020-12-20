@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="container header-container">
+    <div class="container header-container mt-5">
         <div class="row text-center mb-5">
             <div class="col">
                 <h1>Your Profile</h1>
@@ -89,10 +89,10 @@
             <h2>Your Product Reviews</h2>
             {% if user_reviews %}
                 {% for review in user_reviews %}
-                <h4><strong>{{ review.review_title }}</strong> for <a href="{% url 'product_detail' review.product.id %}">{{ review.product }}</a></h4>
-                <a class="btn btn-small btn-outline-primary" href="{% url 'edit_review' review.id %}">Edit your review</a>
+                <h4 class="border-top mt-3 pt-3"><strong>{{ review.review_title }}</strong> for <a href="{% url 'product_detail' review.product.id %}">{{ review.product }}</a></h4>
+                <a class="btn btn-small btn-outline-primary mr-3" href="{% url 'edit_review' review.id %}">Edit your review</a>
                 <!-- Delete review trigger modal -->
-                <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteReview-{{ review.id }}">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteReview-{{ review.id }}">
                     Delete This Review
                 </button>
                 <!-- Delete Review Modal -->
