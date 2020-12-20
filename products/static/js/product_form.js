@@ -5,15 +5,11 @@ $('#new-image').change(function() {
 
 // Hide sizes options depending on category selected
 const hideSizes = function(){
-    //console.log($(this));
-    //console.log($(this).find(":selected").text());
     if ($('#id_category').find(":selected").text()=="Clothing"){
-        console.log("Clothing selected");
         $('#div_id_shoe_sizes').hide();
         $('#div_id_clothing_sizes').show();
     }
     else if ($('#id_category').find(":selected").text()=="Trainers"){
-        console.log("Trainers selected");
         $('#div_id_clothing_sizes').hide();
         $('#div_id_shoe_sizes').show();
     }
