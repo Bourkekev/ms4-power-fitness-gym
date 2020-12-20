@@ -50,6 +50,7 @@ class Product(models.Model):
 
     clothing_sizes = MultiSelectField(choices=CLOTHING_SIZES,
                                       null=True, blank=True)
+    is_best_seller = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

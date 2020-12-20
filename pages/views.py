@@ -19,7 +19,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         products = Product.objects.all()
-        best_sellers = products.filter(category__name='best_sellers')
+        best_sellers = products.filter(is_best_seller='True')
         context['best_sellers'] = best_sellers
         return context
 

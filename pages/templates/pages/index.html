@@ -55,39 +55,37 @@
 </div>
 <div class="container my-5">
     <div class="row">
-        <div class="col">
-            {% for product in best_sellers %}
-                <div class="product-col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card">
-                        {% if product.image %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                            </a>
-                        {% else %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                            </a>
-                        {% endif %}
-                        <div class="card-body">
-                            <!-- Name and price -->
-                            <h3 class="card-title">{{ product.name }}</h3>
-                            <p class="product-price text-left font-weight-bold">
-                                <span class="regular-price {% if product.sale_price %}on-sale{% endif %}">€{{ product.price }}</span>
-                                {% if product.sale_price %}
-                                    <span class="sale-price"> €{{ product.sale_price }}</span>
-                                {% endif %}
-                            </p>
+        {% for product in best_sellers %}
+            <div class="product-col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    {% if product.image %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <!-- Name and price -->
+                        <h3 class="card-title">{{ product.name }}</h3>
+                        <p class="product-price text-left font-weight-bold">
+                            <span class="regular-price {% if product.sale_price %}on-sale{% endif %}">€{{ product.price }}</span>
+                            {% if product.sale_price %}
+                                <span class="sale-price"> €{{ product.sale_price }}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="product-btn text-center mt-3">
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View detail</a>
                         </div>
-                        <div class="card-footer bg-white border-0">
-                            <div class="product-btn text-center mt-3">
-                                <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View detail</a>
-                            </div>
-                            
-                        </div>
+                        
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 <div class="container">
