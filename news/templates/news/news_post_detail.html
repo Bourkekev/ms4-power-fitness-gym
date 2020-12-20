@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
 {% endblock %}
 
-{% block extra_title %} - News{% endblock %}
+{% block extra_title %} - {{ object.title }}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
