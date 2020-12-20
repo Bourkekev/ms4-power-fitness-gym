@@ -30,17 +30,9 @@
                         {% endif %}
                     </div>
                     <div class="col-9">
-                        <p class="m-0"><strong>{{ item.product.name }}</strong>
-                            <a class="remove-item text-danger float-right" 
-                            id="remove_{{ item.item_id }}" 
-                            {% if item.product.shoe_sizes %}
-                                data-shoe_size="{{ item.shoesize }}"
-                            {% endif %}
-                            {% if item.product.clothing_sizes %}
-                                data-clothing_size="{{ item.clothing_size }}"
-                            {% endif %}
-                            aria-label="Remove this item"
-                            title="Remove this item"><i class="fas fa-trash-alt"></i></a></p>
+                        <p class="m-0">
+                            <strong>{{ item.product.name }}</strong>
+                        </p>
                         <p class="m-0">Size: 
                             {% if item.product.clothing_sizes %}
                                 {{ item.clothing_size|upper }}
