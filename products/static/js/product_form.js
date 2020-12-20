@@ -7,12 +7,12 @@ $('#new-image').change(function() {
 const hideSizes = function(){
     //console.log($(this));
     //console.log($(this).find(":selected").text());
-    if ($(this).find(":selected").text()=="Clothing"){
+    if ($('#id_category').find(":selected").text()=="Clothing"){
         console.log("Clothing selected");
         $('#div_id_shoe_sizes').hide();
         $('#div_id_clothing_sizes').show();
     }
-    else if ($(this).find(":selected").text()=="Trainers"){
+    else if ($('#id_category').find(":selected").text()=="Trainers"){
         console.log("Trainers selected");
         $('#div_id_clothing_sizes').hide();
         $('#div_id_shoe_sizes').show();
@@ -21,6 +21,8 @@ const hideSizes = function(){
         $('#div_id_shoe_sizes').hide();
         $('#div_id_clothing_sizes').hide();
     }
-    
 }
+// run on page load
+hideSizes();
+// run when changed
 $('#id_category').change(hideSizes);
