@@ -21,6 +21,9 @@ class ProductsAdmin(admin.ModelAdmin):
         ReviewInline,
     ]
 
+    class Media:
+        js = ('/static/admin/js/assets_admin.js',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
