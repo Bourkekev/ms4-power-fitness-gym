@@ -16,24 +16,19 @@ I tried to keep all of what I liked or learned in mind while going through the f
 
 ## UX
 
-I wanted the site to have 3 main overarching features.
+I wanted the site to have the following main overarching features.
  - [x] Users should be able to browse by category or search the site for products.
  - [x] Users should be able to purchase these products.
  - [x] If they like, users should be able to register and login to the site.
  - [x] Users should have the option to manage their gym membership.
+ - [x] Users can review products.
+ - [x] Users can update other members on their successes.
 
 ### User Stories
 
-This section provides insight into the UX process, focusing on who this website is for, what it is that they want to achieve and how this project is the best way to help them achieve these things. It expands on the main features as were listed above.
+This section provides insight into the UX process, focusing on who this website is for, what it is that they want to achieve and how this project is the best way to help them achieve these things. It expands on the main features as were listed above. There are quite a lot of different user stories, depending on whether the user is a casual shopper, a Gym Member or the Store owner/manager. Instead of writing this list here I have linked to a spreadsheet that I created to help me make sure all the functionality was addressed. You can see this in the spreadsheet below:
 
-
-#### As admin or the site owner I would like to do all the above as well as:
-
-- [ ] Edit or Remove products.
-- [ ] Edit or remove all categories.
-
-
-These admin features are not currently developed, but are certainly something a site admin would want to have
+(User Stories Spreadsheet)[https://docs.google.com/spreadsheets/d/1crRy0zZcZ_VDK97j8zLyTicSSnBYAvQEznwdIqWQYkI/edit?usp=sharing]
 
 #### As a developer
 
