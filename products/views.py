@@ -43,6 +43,9 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
+        if 'best_sellers' in request.GET:
+            products = products.filter(is_best_seller='True')
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -194,7 +197,7 @@ def edit_review(request, review_id):
                 return redirect(reverse('profile'))
             else:
                 messages.error(request,
-                            'Failed to edit product review. \
+                               'Failed to edit product review. \
                                 Please ensure the form is valid.')
         else:
             form = ReviewForm(instance=review)
