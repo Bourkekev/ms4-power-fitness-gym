@@ -9,11 +9,18 @@ const hideSizes = function(){
     //console.log($(this).find(":selected").text());
     if ($(this).find(":selected").text()=="Clothing"){
         console.log("Clothing selected");
+        $('#div_id_shoe_sizes').hide();
+        $('#div_id_clothing_sizes').show();
     }
     else if ($(this).find(":selected").text()=="Trainers"){
         console.log("Trainers selected");
+        $('#div_id_clothing_sizes').hide();
+        $('#div_id_shoe_sizes').show();
     }
-    else {}
+    else {
+        $('#div_id_shoe_sizes').hide();
+        $('#div_id_clothing_sizes').hide();
+    }
     
 }
 $('#id_category').change(hideSizes);
