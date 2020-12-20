@@ -14,18 +14,22 @@
 {% endblock page_header%}
 
 {% block content %}
-    <div class="container mt-5">
+    <div class="container my-5">
         {% if subscription.status == "active" %}
         <div class="row justify-content-center">
             <div class="col-12 col-lg-4">
-                <h4>Your subscription:</h4>
+                <h3>Your subscription:</h3>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h2 class="card-title">{{ product.name }}</h2>
                         <p class="card-text">
                             {{ product.description }}<br>
-                            Signed up on: {{ product.created|timestamp_to_time|date:"d M, Y" }}<br>
-                            Renews {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}<br>
+                            <div class="border-bottom py-2">
+                                <strong>Signed up on:</strong> {{ product.created|timestamp_to_time|date:"d M, Y" }}
+                            </div>
+                            <div class="border-bottom py-2 bg-light mb-2">
+                                <strong>Your membership renews on:</strong> {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}
+                            </div>
                             Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
                         </p>
                     </div>
