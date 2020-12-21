@@ -11,6 +11,7 @@ class NewsListView(ListView):
     queryset = NewsPost.objects.filter(status=1)
     model = NewsPost
     template_name = 'news/news_list.html'
+    paginate_by = 3
 
 
 class NewsPostDetailView(DetailView):
