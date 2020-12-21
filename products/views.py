@@ -18,6 +18,7 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+    best_sellers = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -45,6 +46,7 @@ def all_products(request):
 
         if 'best_sellers' in request.GET:
             products = products.filter(is_best_seller='True')
+            best_sellers = True
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -64,6 +66,7 @@ def all_products(request):
         'search_term': query,
         'requested_categories': categories,
         'requested_sorting': requested_sorting,
+        'best_sellers': best_sellers,
     }
     return render(request, 'products/products.html', context)
 

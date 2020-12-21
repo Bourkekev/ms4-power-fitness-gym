@@ -14,7 +14,15 @@
     <div class="container-fluid dark-overlay page-title-panel mb-5">
         <div class="row text-center content-section w-lg-50 mx-auto text-white">
             <div class="col-12">
-                <h1>Products</h1>
+                <h1>
+                    {% if best_sellers %}
+                        Best Seller
+                    {% endif %}
+                    {% for c in requested_categories %}
+                        {{ c.friendly_name }}
+                    {% endfor %}
+                    Products
+                </h1>
             </div>
         </div>
     </div>
