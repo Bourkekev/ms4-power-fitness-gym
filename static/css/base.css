@@ -203,6 +203,10 @@ a.text-info:focus, a.text-info:hover {
 .lead {
     font-size: 2rem;
 }
+/* Pagination */
+.page-link {
+    color: #0072AB;
+}
 /* Fix header */
 header {
     background: #fff;

@@ -19,7 +19,7 @@
 {% endblock page_header%}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container my-5">
     <div class="row">
         <div class="col-md-9">
             {% for post in object_list %}
@@ -45,12 +45,17 @@
                 <nav aria-label="Page navigation container">
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}
-                            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"><i class="fas fa-chevron-left"></i> PREV </a></li>
+                            <li class="page-item"><a href="?page=1" class="page-link">&laquo; First</a></li>
+                            <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link"><i class="fas fa-chevron-left"></i> PREV </a></li>
                         {% endif %}
                         {% if page_obj.has_next %}
-                            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT <i class="fas fa-chevron-right"></i></a></li>
+                            <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT <i class="fas fa-chevron-right"></i></a></li>
+                            <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last &raquo;</a></li>
                         {% endif %}
                     </ul>
+                    <div class="current text-center">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </div>
                 </nav>
             {% endif %}
         </div>
