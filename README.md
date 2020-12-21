@@ -350,6 +350,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - For elements of the News Posts especially to do with slugs, I referenced this article on [Django Central](https://djangocentral.com/building-a-blog-application-with-django/)
  - For how to return contexts in class based views I referenced this [article](https://www.agiliq.com/blog/2017/12/when-and-how-use-django-templateview/)
  - To create the timestamp to datetime template tag filter I followed (but had to adjust) the second answer on this [stackoverflow question](https://stackoverflow.com/questions/9056016/how-do-i-convert-unix-timestamp-in-integer-to-human-readable-format-in-django-te)
+ - Getting jQuery to work in the Django Admin - I found how to add the Media class to load a js file [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false), and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects). Also learned to wrap the jQuery in an eventListener from [here](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message), as was getting $ is not a function error.
  
 ### Content
 
