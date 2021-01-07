@@ -355,7 +355,8 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  
 ### Content
 
-Text content for products was adapted from products from https://www.decathlon.ie/ and https://www.fitnessequipmentireland.ie
+Text content for products was adapted from products from https://www.decathlon.ie/ and https://www.fitnessequipmentireland.ie.
+Other text content was adapted from https://www.elverys.ie/, https://www.decathlon.ie/ and https://www.planetfitness.com/
 
  
 ### Media

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Cancellation Policy {% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Cancellation Policy</h1>
+            </div>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <h2>HOW DO I CANCEL MY GYM MEMBERSHIP?</h2>
+            <p>We hate to see you go! But if you must, the process is easy. Yopu can do one of the following 3 options:</p>
+            <ol>
+                <li>You can fill out a cancellation form at the front desk of your gym,</li>
+                <li>or send a letter (preferably via certified mail) to your gym requesting cancellation,</li>
+                <li>You can login into our website, and under Your Account >  View Memberships, you can view and cancel your membership.</li>
+            </ol>  </p>
+            <p>Memberships can’t, unfortunately, be cancelled by email or phone. Please remember that your cancellation request is subject to any obligations of your membership agreement. If you are cancelling because you’re unsatisfied with your Power Fitness membership for some reason, please speak with your local club manager before making your final decision. We love feedback and would love the opportunity to improve and hopefully change your mind!</p>
+        </div>
+    </div>
+</div>
+{% include 'includes/four-policies.html' %}
+{% endblock %}

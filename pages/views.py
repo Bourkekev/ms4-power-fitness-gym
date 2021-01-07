@@ -149,3 +149,19 @@ def contact_submit(request):
 
 class Delivery(TemplateView):
     template_name = 'pages/delivery.html'
+
+
+class ReturnPolicy(TemplateView):
+    template_name = 'pages/return-policy.html'
+
+
+class Guarantee(TemplateView):
+    template_name = 'pages/guarantee.html'
+
+
+class SecurePayment(TemplateView):
+    template_name = 'pages/secure-payment.html'
+
+
+class CancellationPolicy(TemplateView):
+    template_name = 'pages/cancellation-policy.html'

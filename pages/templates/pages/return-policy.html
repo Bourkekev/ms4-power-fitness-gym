@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Delivery Information{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Return Policy</h1>
+            </div>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <h2>RETURNS POLICY</h2>
+            <p>We hope you love your new purchase! We at Power Fitness are happy to offer a refund for any unsuitable items within 30 days provided they are in a resaleable condition.  This does not affect your statutory rights.</p>
+            <h2>FREE RETURNS</h2>
+            <p>Free in store/gym returns extended for 30 days after store re-opens after current Level 5 restrictions.</p>
+            <h2>FREE RETURNS WITH AN POST</h2>
+            <p>Power Fitness are now offering free returns on standard Online orders to our Distribution Centre with our partners in An Post.  You have a number of options as to how to return your purchase free of charge.</p>
+
+            <h3 class="my-4 font-weight-bold">FREE COLLECTION OR DROP OFF</h3>
+            <p>You can either schedule a free collection of your item or drop your item off at your local post office, parcel locker or Post Point location. (You will need a printer to print off a label for FREE DROP-OFF)</p>
+            <p><strong>FREE DROP-OFF:</strong> You can download and print a Free Return Label and find your local Drop-Off location here at www.anpost.com/Post-Parcels/Click-and-Post/Returns</p>
+            <p><strong>FREE COLLECTION:</strong> To arrange for your item to be collected by An Post for return, just fill out your returns details here at www.anpost.com/Post-Parcels/Click-and-Post/Returns 
+            Please note, your Retailer Order Reference is the 10-digit number on your Order Confirmation and on your Delivery Docket.</p> 
+            <p>For all returns of standard orders via An Post, please fill in and enclose the Returns Form on the back of your Delivery Docket that would have come with your Online Order.  You can use the original packaging from your purchase, or else use any other secure box or packaging.</p>
+        </div>
+    </div>
+</div>
+{% include 'includes/four-policies.html' %}
+{% endblock %}

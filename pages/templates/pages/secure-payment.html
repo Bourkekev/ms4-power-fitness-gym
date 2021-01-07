@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Delivery Information{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Secure Payment</h1>
+            </div>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <h2>MEANS OF PAYMENT</h2>
+            <p>At Power Fitness, we accept credit/debit cards such as Mastercard and Visa</p>
+            <h2>YOU CAN PURCHASE AT POWER FITNESS WITH PEACE OF MIND</h2>
+            <p>We use Stripe as our payment gateway. Stripe handles all the secure credit card transactions, and none of your financial details are saved on our website. Millions of businesses of all sizes—from startups to large enterprises—use Stripe’s software and APIs to accept payments, send payouts, and manage their businesses online.</p>
+            <h2>ABOUT STRIPE</h2>
+            <p>Anyone involved with the processing, transmission, or storage of card data must comply with the Payment Card Industry Data Security Standards (PCI DSS). Stripe has been audited by an independent PCI Qualified Security Assessor (QSA) and is certified as a PCI Level 1 Service Provider. This is the most stringent level of certification available in the payments industry.</p>
+        </div>
+    </div>
+</div>
+{% include 'includes/four-policies.html' %}
+{% endblock %}

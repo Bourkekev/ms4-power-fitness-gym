@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Delivery Information{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>1 Year Guarantee</h1>
+            </div>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <h2>THE GUARANTEE COVERS</h2>
+            <ol>
+                <li>Any material or manufacturing defect recognised by Power Fitness After Sales Service team.</li>
+                <li>Replacement of faulty parts with conform parts for the same use, and labour.</li>
+            </ol>
+            <h2>LENGTH OF THE GUARANTEE</h2>
+            <ol>
+                <li>Some of our products come with a 1 year guarantee from the date of purchase (your receipt establishes date of purchase).</li>
+            </ol>
+            <h2>APPLICATION OF THE GUARANTEE</h2>
+            <ol>
+                <li>The product may not have been subject to any shocks or abnormal use outside of normal use conditions.</li>
+                <li>The product must be used in conformity with instructions and be regularly maintained.</li>
+            </ol>
+            <h2>GUARANTEE EXCLUSIONS</h2>
+            <ol>
+                <li>Damage that are the responsibility of a third party or resulting from an intentional or fraudulent fault.</li>
+                <li>Damage resulting from use not conform with the manufacturer’s instructions, abnormal storage or working conditions, lack of proper maintenance, accident, negligence by you or by any third party.</li>
+                <li>Damage resulting from fair wear and tear.</li>
+                <li>Products that have been modified outside of the manufacturer’s instructions.</li>
+                <li>Failure to install, operate or use the Products in accordance with the user instructions, specifications or conditions made available to the Customer by Power Fitness or&nbsp;any alteration or repair by you or&nbsp;a third party who is not one of Power Fitness’s authorised repairers.</li>
+                <li>Only original parts are covered by the Power Fitness guarantee.</li>
+                <li>Damage resulting from fire, lightning, storms, vandalism, or non-secure transport.</li>
+            </ol>
+            <p>Depending on the nature of defect, Power Fitness shall at its option repair or replace the defective product. If despite Power Fitness’s reasonable efforts a defective product cannot be repaired or replaced, Power Fitness shall grant the Customer a credit equal to the original price paid by the Customer for the defective product and this shall be the only remedy that the Customer will be entitled to.</p>
+            <p>If a product is returned to Power Fitness without a valid reason or due to a defect arising from any one of the circumstances described above, Power Fitness reserves the right to dismiss the Customer’s request and return the product to the Customer at the Customer’s cost and expense.</p>
+        </div>
+    </div>
+</div>
+{% include 'includes/four-policies.html' %}
+{% endblock %}
