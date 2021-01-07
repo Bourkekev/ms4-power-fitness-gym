@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Delivery Information{% endblock %}
+
+{% block page_header %}
+    <div class="container-fluid dark-overlay page-title-panel mb-5">
+        <div class="row text-center content-section w-lg-50 mx-auto text-white">
+            <div class="col-12">
+                <h1>Delivery Information</h1>
+                <p>Please Note: Due to measures put in place to combat COVID-19 order processing and delivery will take longer than normal.</p>
+            </div>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-12 col-md-8 offset-md-2 mb-3">
+            <h2>HOW LONG DOES STANDARD DELIVERY TAKE?</h2>
+            <p>Standard delivery to Republic of Ireland at present is taking 2 to 7 working days. If your order does not meet these timings, it may be because your item(s) are being dispatched from a different location. In this case, we will contact you with an expected delivery date. Home Gym Equipment Delivery in the Republic of Ireland and International Delivery does take longer. Please refer to our delivery information above for more detail. We always endeavour to get your order to you as quick as possible!</p>
+            <h2>HOW MUCH DOES DELIVERY COST?</h2>
+            <p>Delivery is free on orders of €50 or over, otherwise standard delivery to anywhere in the Republic of Ireland is 10 percent of the order cost.</p>
+            <h2>I HAVEN’T RECEIVED ALL OF MY ORDER?</h2>
+            <p>If you find that your order has only been partially delivered, this may be because other items are being dispatched from a different location or we were out of stock on part of your order. If we are out of stock we will contact you with an expected delivery date or offer a full refund. If your order is obviously incomplete, please email info@power-fitness.ie or call +353 1 233 4567.</p>
+        </div>
+    </div>
+</div>
+{% include 'includes/four-policies.html' %}
+{% endblock %}

@@ -145,3 +145,7 @@ def contact_submit(request):
             [admin_email]
         )
         return HttpResponse('Your message has been submitted successfully.')
+
+
+class Delivery(TemplateView):
+    template_name = 'pages/delivery.html'

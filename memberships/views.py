@@ -8,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from memberships.models import StripeSubscription
 
 import stripe
-import datetime
 
 
 @login_required
