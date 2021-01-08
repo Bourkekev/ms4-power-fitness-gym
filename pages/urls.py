@@ -20,5 +20,6 @@ urlpatterns = [
     path('return-policy/', ReturnPolicy.as_view(), name='return-policy'),
     path('guarantee/', Guarantee.as_view(), name='guarantee'),
     path('secure-payment/', SecurePayment.as_view(), name='secure-payment'),
-    path('cancellation-policy/', CancellationPolicy.as_view(), name='cancellation-policy'),
+    path('cancellation-policy/', CancellationPolicy.as_view(),
+         name='cancellation-policy'),
 ]

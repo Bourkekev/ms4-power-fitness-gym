@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container mt-5">
+    <div class="container header-container my-5">
         <div class="row text-center mb-5">
             <div class="col">
                 <div class="checkout-login-toggle">
@@ -17,7 +17,7 @@
 {% endblock page_header%}
 
 {% block content %}
-<div class="container mb-5">
+<div class="container mb-5 my-5">
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">

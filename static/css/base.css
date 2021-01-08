@@ -163,6 +163,14 @@ label {
 .bg-secondary-darker-2 {
     background-color: #00486C;
 }
+.bg-gold {
+    background: rgb(212,175,55);
+    background: linear-gradient(25deg, rgba(212,175,55,1) 0%, rgba(250,243,165,1) 33%, rgba(219,146,0,1) 66%, rgba(212,175,55,1) 100%);
+}
+.bg-platinum {
+    background: rgb(229,228,226);
+    background: linear-gradient(25deg, rgba(229,228,226,1) 0%, rgba(239,239,239,1) 33%, rgba(198,198,198,1) 66%, rgba(229,228,226,1) 100%);
+}
 .display-3 {
     font-size: 3rem;
 }
@@ -189,11 +197,28 @@ a.text-info:focus, a.text-info:hover {
 .border-info {
     border-color: #1eaff7!important;
 }
+.border-primary {
+    border-color: #F7941E!important;
+}
 .border-secondary {
     border-color: #0072ab!important;
 }
+.border-gold {
+    border-color: #D4AF37!important;
+}
+.border-platinum {
+    border-color: #E5E4E2!important;
+}
 .form-control:focus {
     border-color: #1eaff7;
+}
+/* Card additions */
+.membership-card .card-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 5rem;
+}
+.membership-card .card-title small {
+    font-size: 50%;
 }
 /* Alt padding option */
 .p-2r {

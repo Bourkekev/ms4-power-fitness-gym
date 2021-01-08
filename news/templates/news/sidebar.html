@@ -1,10 +1,12 @@
 <!-- Sidebar Widgets Column -->
 <div class="col-md-3">
-    <div class="card mb-4">
-            <h3 class="card-header">About Power Fitness Gym</h3>
+    <div class="card mb-4 border border-primary">
+        <h3 class="card-header bg-primary text-white">About Power Fitness Gym</h3>
         <div class="card-body">
             <p class="card-text">We strive to create a workout environment where everyone feels accepted and respected. That’s why we take care to make sure our club is clean and welcoming, our staff are friendly, and our certified trainers are ready to help.</p>
             <a href="{% url 'contact' %}" class="btn btn-outline-primary">Contact us</a>
         </div>
     </div>
+    <a href="{% url 'products' %}" class="btn btn-primary btn-lg my-5 btn-block">Need Gym Equipment?</a>
+    <a href="{% url 'memberships-dashboard' %}" class="btn btn-secondary btn-lg my-5 btn-block">Become a member</a>
 </div>

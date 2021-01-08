@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'pages/css/contact.css' %}">
-{% endblock %}
-
 {% block page_header %}
     <div class="container header-container my-5">
         <div class="row text-center">
@@ -17,7 +13,7 @@
 {% endblock page_header%}
 
 {% block content %}
-<div class="container">
+<div class="container my-5">
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <form method="POST" action="{% url 'add_topic' %}" class="form mb-2">
