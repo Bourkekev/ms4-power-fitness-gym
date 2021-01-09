@@ -173,7 +173,6 @@ class StripeWH_Handler:
                 status=200)
 
         else:
-            print("No Bag so not handled")
             return HttpResponse(
                 content=f'Webhook received: '
                         f'{event["type"]} | '

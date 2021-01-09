@@ -6,10 +6,11 @@
 
 {% block page_header %}
     <div class="container header-container my-5">
-        <div class="row text-center">
+        <div class="row w-lg-75 mx-auto text-center">
             <div class="col">
                 <h1>Memberships</h1>
                 <p>Here you can view your active Membership or subscribe to one.</p>
+                <p>Once you sign up, you will be entitled to access to our Gym. You can then go to Power Fitness Gym and a member of staff will supply you with a membership access card.</p>
             </div>
         </div>
     </div>
@@ -17,83 +18,136 @@
 
 {% block content %}
     <div class="container my-5">
+        <!-- If user has subscription -->
         {% if subscription.status == "active" %}
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-4">
-                <h3>Your subscription:</h3>
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ product.name }}</h2>
-                        <p class="card-text">
-                            {{ product.description }}<br>
-                            <div class="border-bottom py-2">
-                                <strong>Signed up on:</strong> {{ product.created|timestamp_to_time|date:"d M, Y" }}
-                            </div>
-                            <div class="border-bottom py-2 bg-light mb-2">
-                                <strong>Your membership renews on:</strong> {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}
-                            </div>
-                            Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
-                        </p>
-                    </div>
-                    <div class="card-footer text-center">
-                        {% if product.name == "Gold Plan" %}
-                            <h3>Upgrade your subscription to Platinum </h3>
-                            <!-- Upgrade Sub trigger modal -->
-                            <button type="button" class="btn btn-lg btn-success ml-3" data-toggle="modal" data-target="#upgradeModal">
-                                Upgrade
-                            </button>
-                        {% else %}
-                            <p>To downgrade your membership plan to Gold, please <a href="{% url 'contact' %}">contact us!</a></p>
-                        {% endif %}
-                        <p class="mt-5">Cancel your membership.</p>
-                        <!-- Cancel Sub trigger modal -->
-                        <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#cancelModal">
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-                <!-- Cancel Membership Modal -->
-                <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title text-danger font-weight-bold" id="cancelLabel">Warning! This will cancel your membership!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-4">
+                    <h3>Your active subscription:</h3>
+                    <div class="card mb-4 border border-secondary">
+                        <div class="card-header bg-secondary">
+                            <h2 class="card-title text-white">{{ product.name }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ product.description }}<br>
+                                <div class="border-bottom py-2">
+                                    <strong>Signed up on:</strong> {{ product.created|timestamp_to_time|date:"d M, Y" }}
+                                </div>
+                                <div class="border-bottom py-2 bg-light mb-2">
+                                    <strong>Your membership renews on:</strong> {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}
+                                </div>
+                                Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            {% if product.name == "Gold Plan" %}
+                                <h3>Upgrade your subscription to Platinum </h3>
+                                <!-- Upgrade Sub trigger modal -->
+                                <button type="button" class="btn btn-lg btn-success ml-3" data-toggle="modal" data-target="#upgradeModal">
+                                    Upgrade
                                 </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to cancel your membership with <strong>Subscription ID: <span id="sub-id">{{ subscrip_id }}</span></strong>? This action cannot be undone.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Do not cancel</button>
-                                <a href="{% url 'cancel-subscription' subscrip_id %}" class="btn btn-danger ml-3" id="cancelBtn">Cancel Membership</a>
+                            {% else %}
+                                <p>To downgrade your membership plan to Gold, please <a href="{% url 'contact' %}">contact us!</a></p>
+                            {% endif %}
+                            <p class="mt-5">Cancel your membership.</p>
+                            <!-- Cancel Sub trigger modal -->
+                            <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#cancelModal">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Cancel Membership Modal -->
+                    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title text-danger font-weight-bold" id="cancelLabel">Warning! This will cancel your membership!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to cancel your membership with <strong>Subscription ID: <span id="sub-id">{{ subscrip_id }}</span></strong>? This action cannot be undone.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Do not cancel</button>
+                                    <a href="{% url 'cancel-subscription' subscrip_id %}" class="btn btn-danger ml-3" id="cancelBtn">Cancel Membership</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Upgrade Membership Modal -->
-                <div class="modal fade" id="upgradeModal" tabindex="-1" aria-labelledby="upgradeLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title text-danger font-weight-bold" id="upgradeLabel">Warning! This will upgrade your membership!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to upgrade your membership to the <strong>Platinum Plan</strong>? You will then be charged €39 per month.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Do not upgrade</button>
-                                <a href="{% url 'upgrade-subscription' subscrip_id %}" class="btn btn-success ml-3" id="upgradeBtn">Upgrade Membership</a>
+                    <!-- Upgrade Membership Modal -->
+                    <div class="modal fade" id="upgradeModal" tabindex="-1" aria-labelledby="upgradeLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title text-danger font-weight-bold" id="upgradeLabel">Warning! This will upgrade your membership!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to upgrade your membership to the <strong>Platinum Plan</strong>? You will then be charged €39 per month.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Do not upgrade</button>
+                                    <a href="{% url 'upgrade-subscription' subscrip_id %}" class="btn btn-success ml-3" id="upgradeBtn">Upgrade Membership</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- If subscription is Platinum -->
+            {% if product.name == "Platinum Plan" %}
+                <div class="row my-5">
+                    <div class="col text-center">
+                        <h2>Platinum Membership Benefits</h2>
+                        <p>Speak to us about your needs and we can tailor these plans for your specific requirements.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="card mb-4 border border-secondary">
+                            <div class="card-header text-white bg-secondary text-center">
+                                <h3 class="font-weight-bold">Timetable</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Timtabele</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card mb-4 border border-secondary">
+                            <div class="card-header text-white bg-secondary text-center">
+                                <h3 class="font-weight-bold">Workout Plans</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col plan-title">
+                                        <h4 class="align-middle">Beginner</h4>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#">
+                                            <img src="{% static 'images/gym-treadmills-576x360.jpg' %}" class="plan-icon" alt="Gym with treadmills">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card mb-4 border border-secondary">
+                            <div class="card-header text-white bg-secondary text-center">
+                                <h3 class="font-weight-bold">Nutrition Plans</h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Timtabele</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% else %}
         <div class="row">
             <div class="col text-center">
