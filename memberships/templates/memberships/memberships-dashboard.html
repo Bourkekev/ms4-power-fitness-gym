@@ -110,39 +110,120 @@
                     <div class="col-12 col-md-4">
                         <div class="card mb-4 border border-secondary">
                             <div class="card-header text-white bg-secondary text-center">
-                                <h3 class="font-weight-bold">Timetable</h3>
+                                <h3 class="font-weight-bold display-4">Timetable</h3>
                             </div>
                             <div class="card-body">
-                                <p>Timtabele</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card mb-4 border border-secondary">
-                            <div class="card-header text-white bg-secondary text-center">
-                                <h3 class="font-weight-bold">Workout Plans</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col plan-title">
-                                        <h4 class="align-middle">Beginner</h4>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/class-timetable-icon.png' %}" class="plan-icon" alt="Class Timetable icon">
                                     </div>
-                                    <div class="col">
-                                        <a href="#">
-                                            <img src="{% static 'images/gym-treadmills-576x360.jpg' %}" class="plan-icon" alt="Gym with treadmills">
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Classes Timetable</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/power-fitness-class-timetable.pdf' %}" title="Download Class Timetable" target="_blank">
+                                            <i class="fas fa-download fa-2x"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Workout plans-->
                     <div class="col-12 col-md-4">
                         <div class="card mb-4 border border-secondary">
                             <div class="card-header text-white bg-secondary text-center">
-                                <h3 class="font-weight-bold">Nutrition Plans</h3>
+                                <h3 class="font-weight-bold display-4">Workout Plans</h3>
                             </div>
                             <div class="card-body">
-                                <p>Timtabele</p>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/beginner-plan.svg' %}" class="plan-icon" alt="Beginner plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Beginner</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/workout-plan-beginner.pdf' %}" target="_blank" title="Download Beginner Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/intermediate-plan.svg' %}" class="plan-icon" alt="Intermediate plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Intermediate</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/workout-plan-intermediate.pdf' %}" target="_blank" title="Download Intermediate Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/advanced-plan.svg' %}" class="plan-icon" alt="Advanced plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Advanced</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/workout-plan-advanced.pdf' %}" target="_blank" title="Download Advanced Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nutrition Plans -->
+                    <div class="col-12 col-md-4">
+                        <div class="card mb-4 border border-secondary">
+                            <div class="card-header text-white bg-secondary text-center">
+                                <h3 class="font-weight-bold display-4">Nutrition Plans</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/beginner-nut-plan.svg' %}" class="plan-icon" alt="Beginner plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Beginner</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/nutrition-plan-beginner.pdf' %}" target="_blank" title="Download Beginner Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/intermediate-nut-plan.svg' %}" class="plan-icon" alt="Intermediate plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Intermediate</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/nutrition-plan-intermediate.pdf' %}" target="_blank" title="Download Intermediate Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center border-bottom mx-1 pb-3 mb-3">
+                                    <div class="col-4">
+                                        <img src="{% static 'images/advanced-nut-plan.svg' %}" class="plan-icon" alt="Advanced plan">
+                                    </div>
+                                    <div class="col-6 align-items-center plan-title">
+                                        <h4 class="align-middle">Advanced</h4>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{% static 'documents/nutrition-plan-advanced.pdf' %}" target="_blank" title="Download Advanced Plan">
+                                            <i class="fas fa-download fa-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
