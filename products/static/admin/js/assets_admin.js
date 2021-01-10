@@ -9,7 +9,7 @@ window.addEventListener("load", function() {
                 $('.field-shoe_sizes').hide();
                 $('.field-clothing_sizes').show();
             }
-            else if ($('#id_category').find(":selected").text()=="trainers"){
+            else if ($('#id_category').find(":selected").text()=="footwear"){
                 $('.field-clothing_sizes').hide();
                 $('.field-shoe_sizes').show();
             }

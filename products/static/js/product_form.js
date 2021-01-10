@@ -9,7 +9,7 @@ const hideSizes = function(){
         $('#div_id_shoe_sizes').hide();
         $('#div_id_clothing_sizes').show();
     }
-    else if ($('#id_category').find(":selected").text()=="Trainers"){
+    else if ($('#id_category').find(":selected").text()=="Footwear"){
         $('#div_id_clothing_sizes').hide();
         $('#div_id_shoe_sizes').show();
     }
