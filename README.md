@@ -2,7 +2,13 @@
 
 ![Power Fitness Gym Logo](README_resources/power-fitness-logo.png)
 
-Power Fitness Gym is a website where users can search for and purchase fitness products via text search or categories. 
+Power Fitness Gym is a website where users can search for and purchase fitness products via text search or categories. Users can create an account to save delivery information for future use, review their orders and logged in users are also able to leave reviews on products.
+
+A user can also subscribe to one of 2 gym memberships, Gold and Platinum. Then the user can have access to the gym, and if they choose the Platinum membership they will get more benefits like workout and nutrition plans. In real world use, there would need to be some administration done on the gym's side, such as organising a key card for new members, creating and updating workout and nutrition plans, as well as the classes timetable.
+
+Logged in users can also post short messages on a community message board, where they can post a topic for conversation and can respond to other users queries.
+
+Gym staff members (with the appropriate access) can add, edit and delete products, and create news posts for keeping their members up to date with latest information.
 
 The live deployed site can be found here - https://power-fitness.herokuapp.com/
 
@@ -365,7 +371,7 @@ The photos and vectors used in this site were obtained from:
 
  - Database Diagram designed on [QuickDBD](https://www.quickdatabasediagrams.com/).
  - Logo was purchased from [Shutterstock](https://www.shutterstock.com/image-vector/) and I edited the colours and added the logo text.
- - 
+ - The Platinum membership plan icons and demo PDFs were purchased from [Shutterstock](https://www.shutterstock.com/).
 
 ### Acknowledgements
 
