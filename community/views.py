@@ -7,7 +7,8 @@ from .forms import MessageTopicForm, MessagePostForm
 
 
 def community_topics(request):
-    topics = MessageTopic.objects.all()
+    # topics = MessageTopic.objects.all()
+    topics = MessageTopic.objects.all().order_by('-last_update')
     context = {
         'topics': topics,
     }
@@ -98,6 +99,11 @@ def add_topic(request):
             topic = form.save(commit=False)
             topic.started_by = request.user
             topic.save()
+            first_post = MessagePost.objects.create(
+                message=form.cleaned_data['first_message'],
+                topic=topic,
+                created_by=request.user,
+            )
             messages.success(request, 'Topic successfully created')
             return redirect(reverse('community_topics'))
         else:
