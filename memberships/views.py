@@ -170,12 +170,5 @@ def subscription_webhook(request):
             stripeCustomerId=stripe_customer_id,
             stripeSubscriptionId=stripe_subscription_id,
         )
-        print(user.username + ' just subscribed.')
-
-    elif event['type'] == 'payment_intent.succeeded':
-        print("Payment intent succeeded.")
-
-    else:
-        print("WH event not handled")
 
     return HttpResponse(status=200)
