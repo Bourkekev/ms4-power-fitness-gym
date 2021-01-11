@@ -224,6 +224,10 @@ a.text-info:focus, a.text-info:hover {
 .membership-card .card-title small {
     font-size: 50%;
 }
+/* Modals */
+.close {
+    font-size: 2rem;
+}
 /* Alt padding option */
 .p-2r {
     padding: 2rem;
@@ -504,6 +508,12 @@ p.hero-text {
 }
 .product-col .card {
     box-shadow: 1px 1px 1px 0 rgba(92, 92, 92, 0.2);
+    -webkit-transition: border-color .3s ease;
+    -o-transition: border-color .3s ease;
+    transition: border-color .3s ease;
+}
+.product-col .card:hover {
+    border-color: #1eaff7;
 }
 .product-col .product-price {
     font-size: 1.6rem;
