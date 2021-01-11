@@ -702,6 +702,9 @@ footer {
 .toast-header {
     font-size: 1.6rem;
 }
+.toast-header .text-success {
+    text-transform: capitalize;
+}
 .toast-body {
     padding: 0;
 }

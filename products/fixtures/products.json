@@ -1,0 +1,542 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "category": 2,
+    "sku": "mars",
+    "name": "Men's Ankle Running Socks - 1 Pair",
+    "description": "The plush loop zone is thicker and softer, offering greater durability and comfort. Your feet are wrapped in soft plush loop for maximum comfort and durability.\r\nA special piqué knit ventilation zone on the top of the foot lets your feet breathe when wearing shoes.",
+    "price": "7.99",
+    "sale_price": "6.99",
+    "rating": "4.60",
+    "image_url": null,
+    "image": "mens-ankle-running-sock-grey.jpg",
+    "shoe_sizes": "7,8,9,10,11,12",
+    "clothing_sizes": "",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "category": 2,
+    "sku": "mmt",
+    "name": "Men's Meindl Trainers - Green",
+    "description": "Want to boost your motivation? Discover the RUN SUPPORT WR, featuring two of our best skills: support and cushioning, as well as a newly added waterproof component. A patented system consisting of X-shaped straps stitched on both sides up to the sole, envelops your foot to control its movements and posture. The straps allow the laces to slide easily, optimising fastening.",
+    "price": "50.00",
+    "sale_price": null,
+    "rating": "4.50",
+    "image_url": null,
+    "image": "mens-green-meindl-trainers.jpg",
+    "shoe_sizes": "6,8,9,10",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "category": 1,
+    "sku": "wpes",
+    "name": "Women's Pink Exercise Shorts",
+    "description": "Lightweight, fluid shorts for optimal freedom of movement thanks to the fabric, cut and built-in briefs. High-cut on the side for wide amplitude with each stride. The fabric absorbs and wicks away perspiration for quick drying.",
+    "price": "19.99",
+    "sale_price": "15.99",
+    "rating": "3.00",
+    "image_url": null,
+    "image": "womens-shorts-pink.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "xs,s,m,l",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "sku": "wjswb",
+    "name": "Women's Run Comfort Jogging Shoes - White and Blue",
+    "description": "Designed for ensures absolute comfort* for your feet when running (1-3 times/week, up to 1 hour) on the road or treadmill.\r\nOur RUN COMFORT running shoes are equipped with reinforcements at the back of the foot, as well as synthetic bands on the forefoot to envelope and support your feet during exercise.",
+    "price": "49.99",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "womens-trainer-white-blue.jpg",
+    "shoe_sizes": "5,6,7",
+    "clothing_sizes": "",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "category": 1,
+    "sku": "was-bn",
+    "name": "Women's Athletic Shorts - Blue and Navy",
+    "description": "Lightweight, fluid shorts for optimal freedom of movement thanks to the fabric, cut and built-in briefs. High-cut on the side for wide amplitude with each stride.\r\nThe fabric absorbs and wicks away perspiration for quick drying.",
+    "price": "20.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "womens-shorts-navy-blue.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "s,m,l",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 9,
+  "fields": {
+    "category": 1,
+    "sku": "msb",
+    "name": "Men' Athletic Shorts - Blue",
+    "description": "With an elasticated and tied waist, mid-thigh length for good freedom of movement and a practical key pocket, these are the perfect shorts, with excellent value for money to boot.",
+    "price": "25.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "mens-shorts-blue.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "s,m,l",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "category": 1,
+    "sku": "msn",
+    "name": "Men' Athletic Shorts - Navy",
+    "description": "With an elasticated and tied waist, mid-thigh length for good freedom of movement and a practical key pocket, these are the perfect shorts, with excellent value for money to boot.",
+    "price": "19.99",
+    "sale_price": "15.99",
+    "rating": "3.50",
+    "image_url": null,
+    "image": "mens-shorts-navy-long.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "xs,s,xl",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "sku": "wars",
+    "name": "Women's Ankle Running Socks Red - 1 Pair",
+    "description": "The plush loop zone is thicker and softer, offering greater durability and comfort. Your feet are wrapped in soft plush loop for maximum comfort and durability. A special piqué knit ventilation zone on the top of the foot lets your feet breathe when wearing shoes.",
+    "price": "8.99",
+    "sale_price": "6.99",
+    "rating": "4.00",
+    "image_url": null,
+    "image": "womens-ankle-running-sock-red.jpg",
+    "shoe_sizes": "5,6,7,8",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "category": 1,
+    "sku": "wptt",
+    "name": "Women's Training Top Pink",
+    "description": "The plush loop zone is thicker and softer, offering greater durability and comfort. Your feet are wrapped in soft plush loop for maximum comfort and durability. A special piqué knit ventilation zone on the top of the foot lets your feet breathe when wearing shoes.",
+    "price": "29.99",
+    "sale_price": null,
+    "rating": "3.50",
+    "image_url": null,
+    "image": "ladies-pink-training-top.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "s,m,l",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "category": 1,
+    "sku": "mbtt",
+    "name": "Men's Black Sleeveless Training Top",
+    "description": "When doing fitness activities, you move in all directions. That means you need a T-shirt or bottoms that are long enough to keep you covered when you raise your arms or bend over. Fabrics need to be stretchy and breathable to follow your every move and provide good moisture management. This top features a special cut at the shoulders to keep you moving freely.",
+    "price": "13.99",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "mens-black-training-top.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "s,m,l,xl",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "category": 1,
+    "sku": "mttls",
+    "name": "Men's Grey Sleeved Training Top",
+    "description": "Merino wool is a material with unbeatable comfort and natural properties that prevent unpleasant odours developing. Just some of the reasons why this t-shirt will become your new favourite!",
+    "price": "24.99",
+    "sale_price": null,
+    "rating": "3.00",
+    "image_url": null,
+    "image": "mens-grey-long-sleeve-training-top.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "s,m,xl",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "category": 2,
+    "sku": "mbtv",
+    "name": "Men's Variance Trainers- Blue",
+    "description": "Want to boost your motivation? Discover the RUN SUPPORT WR, featuring two of our best skills: support and cushioning, as well as a newly added waterproof component. A patented system consisting of X-shaped straps stitched on both sides up to the sole, envelops your foot to control its movements and posture. The straps allow the laces to slide easily, optimising fastening.",
+    "price": "45.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "mens-trainer-blue-variance-jpg.jpg",
+    "shoe_sizes": "8,9,10,11",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "category": 2,
+    "sku": "wttp",
+    "name": "Women's Transcend Trainers - Pink",
+    "description": "Designed for ensures absolute comfort* for your feet when running (1-3 times/week, up to 1 hour) on the road or treadmill. Our RUN COMFORT running shoes are equipped with reinforcements at the back of the foot, as well as synthetic bands on the forefoot to envelope and support your feet during exercise.",
+    "price": "35.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "womens-trainer-pink-transcend.jpg",
+    "shoe_sizes": "6,7,8",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "category": 2,
+    "sku": "watrs",
+    "name": "Women's Active Trail Running Shoes - Blue and Pink",
+    "description": "Designed for running for up to an hour on natural flat or hilly paths and happily accompanying runners for sections on roads.\r\nCS heel technology for superior shock absorption. 3mm lugged sole for better grip on flat or hilly paths.",
+    "price": "55.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "womens-trainer-blue-pink.jpg",
+    "shoe_sizes": "5,6,7,8",
+    "clothing_sizes": "",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "category": 4,
+    "sku": "RBPWH",
+    "name": "Resistance Ropes with Handles",
+    "description": "Resistance bands are the perfect piece of equipment for training in areas such as speed and agility, aerobics, flexibility and general conditioning but they are also perfect to use for stretching and injury rehabilitation and regular use will help to prevent injury. The Resistance Band pack comes with five different colours of resistance band which represent the different strengths of each one. This allows you to change the intensity of the exercises you perform with the resistance bands. The pack comes with handles for the resistance bands and they are a perfect item for any and all fitness levels in order to maintain and improve muscle strength.",
+    "price": "24.99",
+    "sale_price": null,
+    "rating": null,
+    "image_url": null,
+    "image": "resistance-ropes-with-handles.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 19,
+  "fields": {
+    "category": 4,
+    "sku": "RPBAD_red",
+    "name": "Resistance Power Bands - 5 Pack",
+    "description": "Take your weight-training to the next level with a Resistance Power Band by increasing muscular endurance and improving coordination. These high strength Resistance Power Bands are unique as they offer a constant resistance which intensifies the workout by challenging more muscle groups as you build strength. A unique feature of the Resistance Power Band is its versatility for a wide range of exercises using a single piece of equipment which allows you focus your attention on strengthening and toning a wide variety of muscles including the biceps, triceps, deltoids, pectorals, rhomboids, quads, calves, hamstrings and glutes.",
+    "price": "13.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "resistance-bands-5-pack.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 20,
+  "fields": {
+    "category": 4,
+    "sku": "dpub",
+    "name": "Doorway Pull Ups Bar",
+    "description": "Develop and strengthen your arms, shoulders and upper back muscles in the comfort of your own home or even when you're on the go.\r\nDoorway gym bar. \r\nFoam grips. \r\nFits into door frame 70cm to 92cm wide.",
+    "price": "18.00",
+    "sale_price": null,
+    "rating": "4.50",
+    "image_url": null,
+    "image": "",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 21,
+  "fields": {
+    "category": 4,
+    "sku": "exm",
+    "name": "Exercise/Yoga Mat - 170cm X 62cm X 8mm",
+    "description": "The more you exercise, the more you need a comfortable mat 1. Thickness - If you're doing a gentle activity (such as Pilates) and are barefoot and exercising on the ground: opt for a mat that is at least 10 mm thick with a soft, comfy texture - If you do mainly dynamic exercises for strength training, 7 mm is sufficient. 2. Length For Pilates or strength training, your mat should ideally be as long or longer than your height.",
+    "price": "20.00",
+    "sale_price": null,
+    "rating": "3.50",
+    "image_url": null,
+    "image": "exercise-mat.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 22,
+  "fields": {
+    "category": 4,
+    "sku": "wlg",
+    "name": "Weightlifting Gloves",
+    "description": "Weight lifting gloves are a great way to maintain your hands while working out. These gloves are stylish and comfortable and essential for anyone serious into weight lifting. Our gloves come in sizes small, medium and large feel free to give us a call to check stock or write your size request in the notes section of the order .\r\nOur Weight Lifting Gloves are suitable for use with dumbbells, kettlebells and olympic barbells and will prevent blisters or skin damage when carrying out your workout. This allows you to maintain a tighter grip and squeeze every last kg out of your excercise.",
+    "price": "10.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "weight-gloves.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 23,
+  "fields": {
+    "category": 5,
+    "sku": "swb",
+    "name": "Swiss Balls – 65cm Anti Burst",
+    "description": "Swiss Balls (or Gym Balls) are a great supplement to any gym. These balls allow for improvements in balance & stability, through a number of great exercises. Athletes can sit on or balance with a Swiss to develop and work their core area. Stability is one of the best ways to improve your performance in sports, and swiss balls are one of the most effective ways at working on your balance.\r\nThese 65 cm balls are anti-burst meaning if the surface of the ball was to tear the ball would deflate gradually rather than pop. This means the user is less likely to be harmed or injured when using an anit-burst swiss ball.",
+    "price": "14.50",
+    "sale_price": "13.50",
+    "rating": "4.00",
+    "image_url": null,
+    "image": "swiss-exercise-ball.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "category": 5,
+    "sku": "skip",
+    "name": "Skip Rope",
+    "description": "Skip ropes are an ideal tool to help with cardio and stamina. Commonly used by athletes, for sports such as boxing, Skip Ropes help to increase stamina while keeping the user light on their feet and constantly moving. Skip Ropes are an ideal piece of equipment for any fitness conscious person as they are portable and can be used virtually anywhere and are also extremely easy to store meaning that they won’t take up any space in a gym or home. The Skip rope is highly durable to last constant use and also turns with incredible ease allowing for maximum results.",
+    "price": "15.00",
+    "sale_price": null,
+    "rating": "3.50",
+    "image_url": null,
+    "image": "skipping-rope.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "category": 5,
+    "sku": "bas90",
+    "name": "Big Aerobic Step – 90cm",
+    "description": "This step is  adjustable to 3 different heights and offers a large landing space ideal for any user; novice or experienced athlete.\r\nThe steps bigger landing space allows it distribute weight better than a standard sized step allowing for great grip on any studio floor. The steps non-slip legs also create a balanced solid step which sticks to the floor better than a standard aerobic step.\r\nHeights: 12cm 17cm 22 cm Max weight: 200kg (440lbs)",
+    "price": "45.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "aerobic-steps.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "category": 5,
+    "sku": "dps",
+    "name": "Digital Personal Scales",
+    "description": "This scale offers easy weighing with the step- off function- this means the scale is immediately able to be used without being switched on. The advantage is that the scale automatically adjusts to zero without load at each weighing. This will ensure reliable results.\r\nIt also offers easy to read LSD and a safety- glass platform. The results are displayed digitally at 29mm which allows for quick and easy readable results. The safety glass function is also highly shock resistance\r\nThe power saving function is constantly on so it automatically switches off. Should the capacity of the batteries decrease, a corresponding symbol appears in the display.",
+    "price": "30.00",
+    "sale_price": null,
+    "rating": "3.00",
+    "image_url": null,
+    "image": "weighing-scales.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "category": 3,
+    "sku": "td2kg",
+    "name": "Tone Dumbbells Twin Pack - 2kg",
+    "description": "Muscle toning helps to: ease back into sports, rebalance your figure and firm up your whole body (tummy, backside, arms and chest). Targeted toning exercises sculpt the body and get you into the habit of moving. These dumbbells are practical: won't roll across the floor!\r\nExcellent for surf training and physiotherapy on my arm to gently gain strength.",
+    "price": "10.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "2kg-pair-dumbbells.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 28,
+  "fields": {
+    "category": 3,
+    "sku": "cdb10",
+    "name": "Changeable Dumbbell - 10kg",
+    "description": "Dumbbells are easy to store and are a practical addition to any home or professional gym set. You can use them during rigorous exercise or casually while multitasking, lifting while watching television or talking on the phone.\r\nPerfect for all fitness levels, as the weight can be adjusted from with additional weights (sold separately).",
+    "price": "20.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "dumbell-10kg.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 29,
+  "fields": {
+    "category": 3,
+    "sku": "bbdb25",
+    "name": "Barbell/Dumbbell weights - 2.5kg Pair",
+    "description": "1 Inch Cast Iron Plates 2.5kg. These plates have a 1-inch in diameter standard hole which is great for most standard bars. These high-quality 1-inch cast iron plates are extremely durable with a wide range of uses ensuring a professional performance. They are great for many different types of workouts making this product an ideal training tool for all fitness levels. Weights can be used individually or combined using a barbell to increase resistance and intensify the workout.",
+    "price": "20.00",
+    "sale_price": null,
+    "rating": null,
+    "image_url": null,
+    "image": "barbell-weight-2-5kg.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 30,
+  "fields": {
+    "category": 3,
+    "sku": null,
+    "name": "Barbell Straight Bar with 20kg weights",
+    "description": "This bars offer a wide range of both upper and lower body exercises. The variation in weights is perfect for both home and studio/ gym use.\r\nAdditional weights can be purchased separately.",
+    "price": "69.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": true
+  }
+},
+{
+  "model": "products.product",
+  "pk": 31,
+  "fields": {
+    "category": 3,
+    "sku": "tdb05",
+    "name": "Tone Dumbbells Twin Pack - 0.5kg",
+    "description": "Muscle toning helps to: ease back into sports, rebalance your figure and firm up your whole body (tummy, backside, arms and chest). Targeted toning exercises sculpt the body and get you into the habit of moving. These dumbbells are practical: won't roll across the floor! Excellent for surf training and physiotherapy on my arm to gently gain strength.",
+    "price": "8.00",
+    "sale_price": null,
+    "rating": "4.00",
+    "image_url": null,
+    "image": "purple-weights-2-pack.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 32,
+  "fields": {
+    "category": 3,
+    "sku": "ketb",
+    "name": "Kettlebell Set - 4, 6, 8kg",
+    "description": "A great addition to your strength and weight training routine, Cast Iron Kettlebells are a versatile piece of equipment which can be used for a diverse combination of workouts including squats, lunges, crunches and presses giving the fitness user a full body workout. By design, the ergonomic style handles ensure comfort is paramount allowing you to focus on your repetitions to achieve your weight training goals. The portability of the Kettlebells is a key feature that appeals to fitness users as the Kettlebells can easily be moved and stored out of sight when the workout is complete making them ideal for home and gym use.",
+    "price": "120.00",
+    "sale_price": null,
+    "rating": "5.00",
+    "image_url": null,
+    "image": "kettlebell-set.jpg",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "category": 3,
+    "sku": "dtr",
+    "name": "Dumbbell Triangular Rack",
+    "description": "The triangular dumbbell stand for 1-10kg pairs holds 10 pairs of dumbbells. This stand is small and helps to save space. It would be ideal for any gym that does not have much room. The triangular dumbbell stand is extremely practical and convenient as it takes up less space. The stand is highly durable and perfect for any home gym or commercial gym.\r\nWeights are not included.",
+    "price": "99.00",
+    "sale_price": null,
+    "rating": "4.50",
+    "image_url": null,
+    "image": "",
+    "shoe_sizes": "",
+    "clothing_sizes": "",
+    "is_best_seller": false
+  }
+}
+]

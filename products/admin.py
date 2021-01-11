@@ -8,8 +8,8 @@ class ReviewInline(admin.TabularInline):
 
 class ProductsAdmin(admin.ModelAdmin):
     list_display = (
-        'sku',
         'name',
+        'sku',
         'price',
         'category',
         'image',
