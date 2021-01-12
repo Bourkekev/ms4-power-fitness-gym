@@ -14,7 +14,6 @@ fetch("/memberships/config/")
         fetch(`/memberships/create-checkout-session/${price_id}`)
         .then((result) => { return result.json(); })
         .then((data) => {
-            // console.log(data);
             // Redirect to Stripe Checkout
             return stripe.redirectToCheckout({sessionId: data.sessionId})
         })

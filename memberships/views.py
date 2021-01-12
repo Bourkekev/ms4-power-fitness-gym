@@ -12,6 +12,18 @@ import stripe
 
 @login_required
 def membership_dashboard(request):
+    """ membership_dashboard:
+
+    * Displays a user' membership dashboard and shows if \
+        they have a subscription
+
+    \n Args:
+    1. request: The request
+
+    \n Returns:
+    * Subscription, Stripe Product and subscription id to \
+        membership dashboard
+    """
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeSubscription.objects.get(user=request.user)
@@ -39,6 +51,7 @@ def membership_dashboard(request):
 
 @csrf_exempt
 def stripe_config(request):
+    """ stripe-membership.js fetches stripe public key from here"""
     if request.method == 'GET':
         stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
         return JsonResponse(stripe_config, safe=False)
@@ -46,6 +59,17 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request, price_id):
+    """ create_checkout_session:
+
+    * Creates the checkout session for Stripe subscription
+
+    \n Args:
+    1. request
+    2. price_id
+
+    \n Returns:
+    * JSON Response with session
+    """
     if request.method == 'GET':
         stripe_price_id = price_id
         domain_url = settings.DOMAIN_URL
@@ -71,7 +95,7 @@ def create_checkout_session(request, price_id):
 
 @login_required
 def subscription_success(request):
-    """Handle if subscription checkout was successfull"""
+    """Handle if subscription checkout was successful"""
     return render(request, 'memberships/successful.html')
 
 
@@ -137,6 +161,17 @@ def upgrade_subscription(request, subscrip_id):
 
 @csrf_exempt
 def subscription_webhook(request):
+    """ subscription_webhook:
+
+    * Listen for subscription webhooks from Stripe and handles \
+        checkout completed event
+
+    \n Args:
+    1. request
+
+    \n Returns:
+    * HttpResponse to Stripe
+    """
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_SUB_WH_SECRET
     payload = request.body
