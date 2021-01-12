@@ -91,6 +91,8 @@ I sketched up some very rough ideas on paper and then designed the final wirefra
 - [Shopping bag page on mobile wireframe](README_resources/wireframes/shopping-bag-mobile.png)
 - [Checkout page on desktop wireframe](README_resources/wireframes/checkout-desktop.png)
 - [Checkout page on mobile wireframe](README_resources/wireframes/checkout-mobile.png)
+- [Community Message Board page on desktop wireframe](README_resources/wireframes/community-message-board-desktop.png)
+- [Community Topic Posts on desktop wireframe](README_resources/wireframes/community-posts.png)
 
 ### Surface
 
