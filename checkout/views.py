@@ -18,6 +18,17 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
+    """ cache_checkout_data:
+
+    * Saves profile data if save_info is checked \
+        and adds it to payment intent metadata.
+
+    \n Args:
+    1. request: POST from stripe_elements.js
+
+    \n Returns:
+    * HttpResponse 200 or 400
+    """
     try:
         # get payment intent id
         pid = request.POST.get('client_secret').split('_secret')[0]
@@ -35,6 +46,17 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ checkout:
+
+    * Shows the checkout page and bag contents if GET, or if POST,\
+        sends the order amount to Stripe and saves the order.
+
+    \n Args:
+    1. request: POST or GET
+
+    \n Redirects:
+    * User to checkout_success view
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -162,8 +184,16 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
+    """ checkout_success:
+
+    * Shows the checkout successfull page with order details
+
+    \n Args:
+    1. request
+    2. order_number
+
+    \n Returns:
+    * checkout_success.html template
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)

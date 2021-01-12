@@ -51,7 +51,10 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-        Generate a random, unique order number using UUID
+        Generates a random, unique order number using UUID
+
+        \n Returns:
+        * the unique number
         """
         return uuid.uuid4().hex.upper()
 

@@ -7,7 +7,16 @@ from .forms import MessageTopicForm, MessagePostForm
 
 
 def community_topics(request):
-    # topics = MessageTopic.objects.all()
+    """ community_topics:
+
+    * Lists the Topics on the community message board
+
+    \n Args:
+    1. request
+
+    \n Returns:
+    * Topics to community_topics.html template
+    """
     topics = MessageTopic.objects.all().order_by('-last_update')
     context = {
         'topics': topics,
@@ -17,7 +26,17 @@ def community_topics(request):
 
 @login_required
 def view_topic(request, topic_id):
-    """ A view to show individual topic posts """
+    """ view_topic:
+
+    * A view to show individual topic posts
+
+    \n Args:
+    1. request
+    2. topic_id
+
+    \n Returns:
+    * Selected topic and topic messages to view_topic.html template
+    """
     topic = get_object_or_404(MessageTopic, pk=topic_id)
     topic_messages = MessagePost.objects.filter(topic__subject=topic)
 
@@ -31,6 +50,19 @@ def view_topic(request, topic_id):
 
 @login_required
 def reply_post(request, topic_id):
+    """ reply_post:
+
+    * A view to allow user to POST reply to a topic
+    * If POST, submits the message from form
+
+    \n Args:
+    1. request
+    2. topic_id
+
+    \n Returns:
+    * Selected topic, topic messages and MessagePostForm \
+        to reply_topic.html template
+    """
     topic = get_object_or_404(MessageTopic, pk=topic_id)
     topic_messages = MessagePost.objects.filter(topic__subject=topic)
 
@@ -55,6 +87,20 @@ def reply_post(request, topic_id):
 
 @login_required
 def edit_post(request, post_id, topic_id):
+    """ edit_post:
+
+    * A view to allow user to Edit a message
+    * If POST, submits edit message from form
+
+    \n Args:
+    1. request
+    2. post_id
+    3. topic_id
+
+    \n Returns:
+    * Post, topic and MessagePostForm \
+        to edit_post.html template
+    """
     post = get_object_or_404(MessagePost, pk=post_id)
     topic = get_object_or_404(MessageTopic, pk=topic_id)
 
@@ -81,6 +127,18 @@ def edit_post(request, post_id, topic_id):
 
 @login_required
 def delete_post(request, post_id, topic_id):
+    """ delete_post:
+
+    * Deletes the selected message
+
+    \n Args:
+    1. request
+    2. post_id
+    3. topic_id
+
+    \n Returns:
+    * User back to Topic (view_topic view)
+    """
     post = get_object_or_404(MessagePost, pk=post_id)
     if request.user == post.created_by:
         post.delete()
@@ -93,6 +151,16 @@ def delete_post(request, post_id, topic_id):
 
 @login_required
 def add_topic(request):
+    """ add_topic:
+
+    * Adds a new Topic and the first message
+
+    \n Args:
+    1. request
+
+    \n Returns:
+    * User back to Community message board (community_topics view)
+    """
     if request.method == 'POST':
         form = MessageTopicForm(request.POST)
         if form.is_valid():
