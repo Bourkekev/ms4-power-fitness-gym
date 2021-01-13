@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 html {
     font-size: 62.5%;
 }
@@ -56,6 +63,8 @@ h4 {
 }
 a {
     color: #0072ab;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
 }
 a:hover {
@@ -169,10 +178,12 @@ label {
 }
 .bg-gold {
     background: rgb(212,175,55);
+    background: -o-linear-gradient(65deg, rgba(212,175,55,1) 0%, rgba(250,243,165,1) 33%, rgba(219,146,0,1) 66%, rgba(212,175,55,1) 100%);
     background: linear-gradient(25deg, rgba(212,175,55,1) 0%, rgba(250,243,165,1) 33%, rgba(219,146,0,1) 66%, rgba(212,175,55,1) 100%);
 }
 .bg-platinum {
     background: rgb(229,228,226);
+    background: -o-linear-gradient(65deg, rgba(229,228,226,1) 0%, rgba(239,239,239,1) 33%, rgba(198,198,198,1) 66%, rgba(229,228,226,1) 100%);
     background: linear-gradient(25deg, rgba(229,228,226,1) 0%, rgba(239,239,239,1) 33%, rgba(198,198,198,1) 66%, rgba(229,228,226,1) 100%);
 }
 .display-3 {
@@ -243,7 +254,8 @@ a.text-info:focus, a.text-info:hover {
 /* Fix header */
 header {
     background: #fff;
-    box-shadow: 0px 5px 10px 0px rgb(85, 44, 0, 0.1);
+    -webkit-box-shadow: 0px 5px 10px 0px rgb(85, 44, 0, 0.1);
+            box-shadow: 0px 5px 10px 0px rgb(85, 44, 0, 0.1);
     padding-bottom: .5rem;
     position: absolute;
     z-index: 997;
@@ -293,7 +305,9 @@ header.sticky {
 /* Navbar */
 .navbar {
     padding: 0;
-    align-items: stretch;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
 }
 .navbar-brand.logo {
     margin-left: .5rem;
@@ -324,9 +338,15 @@ header.sticky {
     right: 0;
     top: -5.9rem;
     width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
-    order: 2;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
 }
 .bag-toggle a {
     display: inline-block;
@@ -343,7 +363,8 @@ header.sticky {
 }
 .search-block .dropdown-menu {
     background: #fff;
-    box-shadow: -0.25rem 0.125rem 1rem 0 rgba(0,0,0,.1);
+    -webkit-box-shadow: -0.25rem 0.125rem 1rem 0 rgba(0,0,0,.1);
+            box-shadow: -0.25rem 0.125rem 1rem 0 rgba(0,0,0,.1);
     min-width: 20rem;
     padding: .9rem;
 }
@@ -507,7 +528,8 @@ p.hero-text {
             flex-flow: row wrap;
 }
 .product-col .card {
-    box-shadow: 1px 1px 1px 0 rgba(92, 92, 92, 0.2);
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(92, 92, 92, 0.2);
+            box-shadow: 1px 1px 1px 0 rgba(92, 92, 92, 0.2);
     -webkit-transition: border-color .3s ease;
     -o-transition: border-color .3s ease;
     transition: border-color .3s ease;
@@ -880,7 +902,9 @@ footer {
         max-width: 100%;
     }
     .navbar-expand-lg .navbar-collapse {
-        justify-content: flex-end;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
     }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 1rem;
