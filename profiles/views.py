@@ -10,7 +10,15 @@ from products.models import Review
 
 @login_required
 def profile(request):
-    """ Display user's profile """
+    """
+    * Displays the user's profile page
+
+    \n Args:
+    1. request
+
+    \n Returns:
+    * request, template, context
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
     user_reviews = Review.objects.filter(reviewer__username=profile)
 
@@ -36,6 +44,16 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    """
+    * Shows details of a specific order
+
+    \n Args:
+    1. request
+    2. order_number
+
+    \n Returns:
+    * request, template, context
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (

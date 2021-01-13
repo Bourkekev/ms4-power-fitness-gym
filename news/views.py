@@ -11,6 +11,9 @@ class NewsListView(ListView):
     """
     * Creates a page with a list view of News Posts
 
+    \n Arguments:
+    1. Djangos ListView
+
     \n Attributes:
     1. queryset: the set of database objects
     2. The Model
@@ -28,6 +31,9 @@ class NewsPostDetailView(DetailView):
     """
     * Creates a page for the detail of the News Post
 
+    \n Arguments:
+    1. Djangos DetailView
+
     \n Attributes:
     1. The Model
     2. template_name: template to be used
@@ -41,6 +47,10 @@ class NewsPostEditView(PermissionRequiredMixin, UpdateView):
     """
     * Creates a page for editing a News Post and sets the \
         permission required for this.
+
+    \n Arguments:
+    1. PermissionRequiredMixin
+    2. Djangos UpdateView
 
     \n Attributes:
     1. permission_required: user permission
@@ -62,6 +72,10 @@ class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
     * Deletes a News Post and sets the \
         permission required for this.
 
+    \n Arguments:
+    1. PermissionRequiredMixin
+    2. Djangos DeleteView
+
     \n Attributes:
     1. permission_required: user permission
     2. The Model
@@ -79,6 +93,10 @@ class NewsPostCreateView(PermissionRequiredMixin, CreateView):
     """
     * Creates a new News Post and sets the \
         permission required for this.
+
+    \n Arguments:
+    1. PermissionRequiredMixin
+    2. Djangos CreateView
 
     \n Attributes:
     1. permission_required: user permission

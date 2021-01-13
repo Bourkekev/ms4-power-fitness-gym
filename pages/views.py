@@ -14,6 +14,21 @@ from products.models import Product
 
 
 class HomePageView(TemplateView):
+    """
+    * Creates the homepage
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    2. products: query the products
+    3. best_sellers: the set of products that are best sellers
+    4. context: to return to the template
+
+    \n Returns:
+    * context to the template
+    """
     template_name = 'pages/index.html'
 
     def get_context_data(self, **kwargs):
@@ -25,11 +40,33 @@ class HomePageView(TemplateView):
 
 
 class GymMemberships(TemplateView):
+    """
+    * Creates the Membership page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/gym-memberships.html'
 
 
 def contact(request):
+    """
+    * Creates contact page, and sends contact form message if \
+        form is submitted.
 
+    \n Args:
+    1. request
+
+    \n Attributes:
+    1. contact_form: form to be used
+
+    \n Returns:
+    * If GET: request, template, context
+    * If POST: Return user to (reload) contact page
+    """
     if request.method == 'POST':
         contact_form = ContactUsForm(request.POST)
         if contact_form.is_valid():
@@ -91,6 +128,15 @@ def contact(request):
 
 
 def contact_submit(request):
+    """
+    * Receives form posted via ajax
+
+    \n Args:
+    1. request
+
+    \n Returns:
+    * HttpResponse
+    """
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -148,20 +194,65 @@ def contact_submit(request):
 
 
 class Delivery(TemplateView):
+    """
+    * Creates the Delivery page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/delivery.html'
 
 
 class ReturnPolicy(TemplateView):
+    """
+    * Creates the Return Policy page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/return-policy.html'
 
 
 class Guarantee(TemplateView):
+    """
+    * Creates the Guarantee page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/guarantee.html'
 
 
 class SecurePayment(TemplateView):
+    """
+    * Creates the Secure Payment information page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/secure-payment.html'
 
 
 class CancellationPolicy(TemplateView):
+    """
+    * Creates the Cancellation Policy page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
     template_name = 'pages/cancellation-policy.html'

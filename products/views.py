@@ -11,8 +11,15 @@ from .forms import ProductForm, ReviewForm
 
 
 def all_products(request):
-    """ A view to show all products, sorting and search queries """
+    """
+    * Creates the products listing page, sorting and search queries
 
+    \n Arguments:
+    1. request
+
+    \n Returns:
+    * request, 'products/products.html', context
+    """
     products = Product.objects.all()
     query = None
     categories = None
@@ -72,8 +79,17 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product detail """
+    """
+    * Creates a page to show individual product detail
 
+    \n Arguments:
+    1. request
+    2. product_id
+
+    \n Returns:
+    * request, 'products/product_detail.html', context
+
+    """
     product = get_object_or_404(Product, pk=product_id)
     reviews = Review.objects.filter(product=product)
 
@@ -86,7 +102,17 @@ def product_detail(request, product_id):
 
 @staff_member_required
 def add_product(request):
-    """ Adds a product to the shop """
+    """
+    * Creates an Add product page and handles \
+        new product form submission.  Should require user to be staff_member.
+
+    \n Arguments:
+    1. request
+
+    \n Returns:
+    * If GET: request, template, form in context
+    * If POST: product.id to product_detail view
+    """
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -111,14 +137,15 @@ def add_product(request):
 def edit_product(request, product_id):
     """ edit_product:
 
-    * Edits an existing product
+    * Edits an existing product. Should require user to be staff_member.
 
     \n Args:
-    1. request: the POST request data from the form
+    1. request
     2. product_id: the ID of the product to be edited
 
     \n Returns:
-    * The form, the product
+    * If GET: request, template, context
+    * If POST: product.id to product_detail view
 
     \n Redirects
     * User back to product page
@@ -152,8 +179,20 @@ def edit_product(request, product_id):
 
 @staff_member_required
 def delete_product(request, product_id):
-    """ Delete a product """
+    """ delete_product:
 
+    * Deletes an existing product. Should require login.
+
+    \n Args:
+    1. request
+    2. product_id: the ID of the product to be deleted
+
+    \n Returns:
+    * redirect to products view
+
+    \n Redirects
+    * User back to products page
+    """
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
@@ -162,6 +201,21 @@ def delete_product(request, product_id):
 
 @login_required
 def review_product(request, product_id):
+    """ review_product:
+
+    * Reviews an existing product. Should require login.
+
+    \n Args:
+    1. request
+    2. product_id: the ID of the product to be reviewed
+
+    \n Returns:
+    * If GET: request, template, context
+    * If POST: product.id to product_detail view
+
+    \n Redirects
+    * User back to product page
+    """
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
@@ -190,6 +244,21 @@ def review_product(request, product_id):
 
 @login_required
 def edit_review(request, review_id):
+    """ edit_review:
+
+    * Edit an existing Review. Should require login.
+
+    \n Args:
+    1. request
+    2. review_id: the ID of the review to be edited
+
+    \n Returns:
+    * If GET: request, template, context
+    * If POST: redirect to profile view
+
+    \n Redirects
+    * User back to profile page
+    """
     review = get_object_or_404(Review, pk=review_id)
     if request.user == review.reviewer:
         if request.method == 'POST':
@@ -218,6 +287,20 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    """ delete_review:
+
+    * Delete an existing Review. Should require login.
+
+    \n Args:
+    1. request
+    2. review_id: the ID of the review to be deleted
+
+    \n Returns:
+    * redirect to profile view
+
+    \n Redirects:
+    * User back to profile page
+    """
     review = get_object_or_404(Review, pk=review_id)
     if request.user == review.reviewer:
         review.delete()
