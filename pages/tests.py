@@ -1,10 +1,10 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse, resolve
-from .views import HomePageView
 from . import views
+from .forms import ContactUsForm
 
 
-class SimpleTests(SimpleTestCase):
+class SimpleTests(TestCase):
     def test_home_page_status_code(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
@@ -20,4 +20,23 @@ class SimpleTests(SimpleTestCase):
 
     def test_contact_page_status_code(self):
         response = self.client.get('/contact/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_contact_form_validation_for_blank_items(self):
+        form = ContactUsForm(data={
+            'first_name': '',
+            'last_name': '',
+            })
+        self.assertFalse(form.is_valid())
+        self.assertEqual(
+            form.errors['first_name'],
+            ["This field is required."]
+        )
+        self.assertEqual(
+            form.errors['last_name'],
+            ["This field is required."]
+        )
+
+    def test_gym_memberships_page_status_code(self):
+        response = self.client.get('/gym-memberships/')
         self.assertEqual(response.status_code, 200)
