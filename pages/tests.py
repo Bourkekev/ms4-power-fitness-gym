@@ -22,10 +22,17 @@ class SimpleTests(TestCase):
         response = self.client.get('/contact/')
         self.assertEqual(response.status_code, 200)
 
+    def test_contact_page_uses_contact_form(self):
+        response = self.client.get('/contact/')
+        self.assertIsInstance(response.context['contact_form'], ContactUsForm)
+
     def test_contact_form_validation_for_blank_items(self):
         form = ContactUsForm(data={
             'first_name': '',
             'last_name': '',
+            'email': '',
+            'subject': '',
+            'your_message': '',
             })
         self.assertFalse(form.is_valid())
         self.assertEqual(
@@ -34,6 +41,18 @@ class SimpleTests(TestCase):
         )
         self.assertEqual(
             form.errors['last_name'],
+            ["This field is required."]
+        )
+        self.assertEqual(
+            form.errors['email'],
+            ["This field is required."]
+        )
+        self.assertEqual(
+            form.errors['subject'],
+            ["This field is required."]
+        )
+        self.assertEqual(
+            form.errors['your_message'],
             ["This field is required."]
         )
 

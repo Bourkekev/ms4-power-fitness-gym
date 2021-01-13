@@ -364,6 +364,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - To create the timestamp to datetime template tag filter I followed (but had to adjust) the second answer on this [stackoverflow question](https://stackoverflow.com/questions/9056016/how-do-i-convert-unix-timestamp-in-integer-to-human-readable-format-in-django-te)
  - Getting jQuery to work in the Django Admin - I found how to add the Media class to load a js file [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false), and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects). Also learned to wrap the jQuery in an eventListener from [here](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message), as was getting $ is not a function error.
  - Simple News list Pagination was based off this [Django Docs page](https://docs.djangoproject.com/en/3.1/topics/pagination/#paginating-a-listview)
+ - Form Testing - for testing the contact form I adapted the following examples - https://www.oreilly.com/library/view/test-driven-development-with/9781449365141/ch11.html
  
 ### Content
 
