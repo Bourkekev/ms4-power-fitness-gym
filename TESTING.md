@@ -6,7 +6,7 @@
 
 ### CSS
 I used the [Autoprefixer Tool](https://autoprefixer.github.io/) to apply browser prefixes.
-I validated the CSS with the [W3 CSS Validation Service](https://jigsaw.w3.org/css-validator/) for CSS Level 3 and no errors were found, though it warned me about the vendor prefixes that the Autoprefixer had added.
+I validated all the CSS files with the [W3 CSS Validation Service](https://jigsaw.w3.org/css-validator/) for CSS Level 3 + SVG and no errors were found, though it warned me about the vendor prefixes that the Autoprefixer had added.
 
 ### Javascript
 
