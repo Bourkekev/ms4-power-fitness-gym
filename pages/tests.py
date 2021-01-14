@@ -26,7 +26,7 @@ class SimpleTests(TestCase):
         response = self.client.get('/contact/')
         self.assertIsInstance(response.context['contact_form'], ContactUsForm)
 
-    def test_contact_form_validation_for_blank_items(self):
+    def test_contact_form_validation_for_blank_fields(self):
         form = ContactUsForm(data={
             'first_name': '',
             'last_name': '',
@@ -55,6 +55,16 @@ class SimpleTests(TestCase):
             form.errors['your_message'],
             ["This field is required."]
         )
+
+    def test_contact_form_validation_filled_fields(self):
+        form = ContactUsForm(data={
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 'email@example.com',
+            'subject': 'Test contact form',
+            'your_message': 'Test message here.',
+            })
+        self.assertTrue(form.is_valid())
 
     def test_gym_memberships_page_status_code(self):
         response = self.client.get('/gym-memberships/')
