@@ -15,6 +15,33 @@ I ran my javascript files through [JSHint](jshint.com)
 ## Colour Constrast Checking
 I used [WebAIM's](https://webaim.org/resources/contrastchecker/) contrast checker to ensure that text on coloured backgrounds is readable and to WCAG AA Standard, especially white text on coloured backgrounds.
 
+## Automatic Testing
+
+I have written a number of tests to test the key functionality of each app. These can be run with the command:
+
+`python manage.py test`
+
+Or to test an individual app:
+
+`python manage.py test <appname>`
+
+e.g. `python manage.py test pages`
+
+I have detailed some of the automatic tests that are run on each app below.
+
+### Pages App
+
+As most of these pages are just displaying content from a template, most tests are just to test that the pages load ok, or return a status code of 200.
+
+There is a test for the homepage to test that the homepage uses the class HomePageView view.
+
+The contact page has additional tests to test the form. There is a test to check that the contact page is using the ContactUsForm, and then 2 tests which test the form validation for blank fields, and submitting the form when required fields are filled in.
+
+## Manual Testing
+
+### Testing Save info in webhook handler
+I commented out the form.submit() action in the stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details has been updated too.
+
 ## Issues I had to overcome
 
 ### Allowing admin to set sizes
@@ -50,9 +77,3 @@ I have news posts in my project, and I had it all working (CRUD), but I wanted t
 
 ### Getting jQuery to work in the Django Admin
 I wanted to add JavaScript to the Django admin so I could hide the shoe or clothing sizes options depending on the category selected in the add product page. Following 1 article [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false) and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects), showed how to load the JavaScript file, and it was loading because I could get a console.log to show on the page. But it would not select the element and instead was showing an `Uncaught TypeError: $ is not a function`. It seemed that jQuery was not loaded before my script file. I wanted to use jQuery because I had used it quite simply on the front-end Add Product page, and did not want to have to re-write the same in native JavaScript. So I finally found something that worked, this [Stack Overflow question](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message) showed how to not fire your JavaScript until Django's jQuery was defined.
-
-
-## Testing
-
-### Testing Save info in webhook handler
-I commented out the form.submit() action in the stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details has been updated too.

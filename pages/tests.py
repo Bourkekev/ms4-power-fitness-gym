@@ -65,7 +65,28 @@ class SimpleTests(TestCase):
             'your_message': 'Test message here.',
             })
         self.assertTrue(form.is_valid())
+        form.save()
 
     def test_gym_memberships_page_status_code(self):
         response = self.client.get('/gym-memberships/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_delivery_information_page_status_code(self):
+        response = self.client.get('/delivery-information/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_return_policy_page_status_code(self):
+        response = self.client.get('/return-policy/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_guarantee_page_status_code(self):
+        response = self.client.get('/guarantee/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_secure_payment_page_status_code(self):
+        response = self.client.get('/secure-payment/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_cancellation_policy_page_status_code(self):
+        response = self.client.get('/cancellation-policy/')
         self.assertEqual(response.status_code, 200)
