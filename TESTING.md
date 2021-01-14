@@ -37,6 +37,10 @@ There is a test for the homepage to test that the homepage uses the class HomePa
 
 The contact page has additional tests to test the form. There is a test to check that the contact page is using the ContactUsForm, and then 2 tests which test the form validation for blank fields, and submitting the form when required fields are filled in.
 
+### News App
+
+The tests for the news app test creating a new news post. There is some set up for the tests, a test user and a test post are created, and the tests check for the new post content, status code 200 and correct template for the news listings and news post detail page. There is a test for a 404 response from a non-existing news post.
+
 ## Manual Testing
 
 ### Testing Save info in webhook handler

@@ -43,4 +43,3 @@ class NewsPostModelTest(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, 'A test title')
         self.assertTemplateUsed(response, 'news/news_post_detail.html')
-
