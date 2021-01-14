@@ -230,15 +230,33 @@ Expand the sections below for more info on details:
 
 For detail on all my testing and issues I had to overcome see the [Testing Document](TESTING.md).
 
-## Deployment
+# Deployment
+
+## Requirements
+
+For setting up all the functionality, the following are required:
+
+### Stripe
+ - [Stripe Account](https://dashboard.stripe.com/register)
+ - [Test Keys](https://stripe.com/docs/keys)
+ - [Webhook Secret](https://stripe.com/docs/webhooks/signatures)
+ - [Create 2 Stripe products](https://support.stripe.com/questions/how-to-create-products-and-prices) called Gold Plan and Platinum Plan with recurring prices. I set the prices to €29 and €39 respectively. Each of these will have a price ID which is also needed. You can copy these ids by opening the product, and you will find it under Pricing.
+ - Create 2 Webhook endpoints from your Stripe Dashboard (under Developers > Webhooks) that end in /memberships/subwh/ and /checkout/wh/. I had to use [Ngrok](https://ngrok.com/) tunnelling software for testing the webhooks locally, so my Webhook endpoints looked something like https://d68657d875d8.ngrok.io/memberships/subwh/ and https://d68657d875d8.ngrok.io/checkout/wh/. Alternatively, you may be able to use the [Stripe CLI](https://stripe.com/docs/stripe-cli) to create the webhooks secret keys that we need, but I could not get the CLI to work on my computer and so had to use Ngrok.
+
+### AWS
+ - [AWS Account](https://aws.amazon.com/)
+ - [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+
+### Email account for sending emails from
+
+I used my Gmail account for sending emails. If using Gmail you will need to set up an [app password](https://support.google.com/mail/answer/185833?hl=en-GB)
+
+## Local Deployment
 
 ### 1. Clone from github 
-To run locally, you can clone this repository directly into the editor of your choice. Open a folder where you want to save the project to and then in the terminal paste `git clone `. To cut ties with this GitHub repository, type `git remote rm origin` into the terminal. The project will be now cloned into your folder.
+To run locally, you can clone this repository directly into the editor of your choice. Open a folder where you want to save the project to and then in the terminal paste `git clone https://github.com/Bourkekev/ms4-power-fitness-gym.git`. To cut ties with this GitHub repository, type `git remote rm origin` into the terminal. The project will be now cloned into your folder.
 
-### 2. Create database on 
-
-
-### 3. Install requirements
+### 2. Install Python required modules
 
 In terminal type (you might need 'sudo' before the following on some environments):
 
@@ -246,34 +264,73 @@ In terminal type (you might need 'sudo' before the following on some environment
 $ pip3 install -r requirements.txt
 ```
 
-### 4. Create `env.py` file
+**Note:** I used a pip environment on my local computer which saved requirements to a [Pipfile](https://pipenv-fork.readthedocs.io/en/latest/basics.html). If this does not install requirements automatically you can use the requirements file as noted above.
+
+### 3. Create `env.py` file
 
 Create a file named `env.py` in the root directory of your project. This is the file you will use to define your environment variables. We need the following data in the env file:
 
 ```
 import os
 
-os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY_HERE")
-os.environ.setdefault("MONGO_DBNAME", "YOUR_DATABASE_NAME")
-os.environ["MONGO_URI"] = ""
+os.environ["STRIPE_PUBLIC_KEY"] = "YOUR_STRIPE_PUBLIC_KEY"
+os.environ["STRIPE_SECRET_KEY"] = "YOUR_STRIPE_SECRET_KEY"
+os.environ["STRIPE_WH_SECRET"] = "YOUR_STRIPE_WH_SECRET"
+os.environ["STRIPE_SUB_WH_SECRET"] = "YOUR_STRIPE_SUB_WH_SECRET"
+os.environ["STRIPE_GOLD_PRICE_ID"] = "YOUR_STRIPE_GOLD_PRICE_ID"
+os.environ["STRIPE_PLAT_PRICE_ID"] = "YOUR_STRIPE_PLAT_PRICE_ID"
+os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY_HERE"
+os.environ["DEVELOPMENT"] = "True"
+
 ```
 Replace YOUR_SECRET_KEY_HERE with a random string.
-Replace YOUR_DATABASE_NAME with your database name.
 
-### 5. Settings
+Replace YOUR_STRIPE_PUBLIC_KEY with your Stripe account's test public key.
 
-In the settings file, set the DOMAIN_URL to your environment url (like http://127.0.0.1:8000/ on local development server). If DEVELOPMENT is not set in the env.py or environment variables, also set DOMAIN_URL in the `else` part of the `if 'DEVELOPMENT'` statement.
+Replace YOUR_STRIPE_SECRET_KEY with your Stripe account's test secret key.
+
+Replace YOUR_STRIPE_GOLD_PRICE_ID with your Stripe Gold Product ID.
+
+Replace YOUR_STRIPE_PLAT_PRICE_ID with your Stripe Platinum Product ID.
+
+Replace YOUR_STRIPE_WH_SECRET with the Signing secret from the webhook that ends in /checkout/wh/.
+
+Replace YOUR_STRIPE_SUB_WH_SECRET with the Signing secret from the webhook that ends in /memberships/subwh/.
+
+The DEVELOPMENT variable turns on debug mode, and is only set on development servers.
+
+### 5. Migrate Database Models
+
+Migrate the models to create your database (in SQLite) using the following command:
+
+`python3 manage.py migrate`
+
+### 6. Settings
+
+In the settings file, under if 'DEVELOPMENT' in os.environ:, set the DOMAIN_URL to your environment url (like http://127.0.0.1:8000/ on local development server). If DEVELOPMENT is not set in the env.py or environment variables, also set DOMAIN_URL in the `else` part of the `if 'DEVELOPMENT'` statement. This DOMAIN_URL variable is used in the membership app.
+
 Change the EMAIL_HOST if deploying to a live server environment.
+
 Add your host to the ALLOWED_HOSTS list.
 
+### 7. Load Categories and Products
 
-### 6. If you want to turn on debug
+You can load the product fixtures using the following commands in this order:
 
-In the last line of app.py file change from `debug=False` to `debug=True`
+```
+python3 manage.py loaddata categories
+python3 manage.py loaddata products
+```
 
-### 7. Run the app
+### 8. Create SuperUser
 
-You will then be able to run the app locally by typing `python app.py` or  `flask run`. 
+Create a superuser to access the django admin back-end using the following command (then follow the instructions from the command line)
+
+`python3 manage.py createsuperuser`
+
+### 9. Run the app
+
+You will then be able to run the app locally by typing `python3 manage.py runserver`. 
 
 ## Deployment to Heroku
 
