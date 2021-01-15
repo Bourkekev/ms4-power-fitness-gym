@@ -305,6 +305,8 @@ Migrate the models to create your database (in SQLite) using the following comma
 
 `python3 manage.py migrate`
 
+Depending on your local system, you may need not need the 3 after python. If that is the case then all the following python3 commands would not have the 3 after it.
+
 ### 6. Settings
 
 In the settings file, under if 'DEVELOPMENT' in os.environ:, set the DOMAIN_URL to your environment url (like http://127.0.0.1:8000/ on local development server). If DEVELOPMENT is not set in the env.py or environment variables, also set DOMAIN_URL in the `else` part of the `if 'DEVELOPMENT'` statement. This DOMAIN_URL variable is used in the membership app.
@@ -315,7 +317,7 @@ Add your host to the ALLOWED_HOSTS list.
 
 ### 7. Load Categories and Products
 
-You can load the product fixtures using the following commands in this order:
+It's important to load the categories first because the products depend on the categories already existing. You can load the product fixtures using the following commands in this order:
 
 ```
 python3 manage.py loaddata categories
@@ -338,9 +340,48 @@ The web app is hosted on Heroku. The steps to deploy the local app to Heroku are
 
 ### 1. Sign up and log in to Heroku
 
-In Heroku, create an app.  
+In Heroku, create an app, iving it a name, and choosing the region closest to you.
+Then on the resources tab (in add-ons), create a new Postgres database for the app.
+The free plan is enough for this project.
 
-### 2. Install the Heroku CLI and login
+### 2. Prepare the database
+
+The settings file is set to use the remote Postgres database if the variable DATABASE_URL exists in the environment. So temporarily add
+
+`os.environ["DATABASE_URL"] = "<your_postgres_database_connection_here>"`
+
+to the env.py file. 
+Of course replace <your_postgres_database_connection_here> with your Postgres database url, which you can either get from your config variables in your app settings tab, or from the command line by typing Heroku config.
+
+Because we're connecting to Postgres now, you need to run all these migrations again, which is done with the command:
+
+`python3 manage.py migrate`
+
+If you were to run the local server now it would run using the remote Postgres database.
+
+#### Import the Product data
+
+As this is a new database it does not have the products loaded yet. You can use the fixtures again by first loading in the categories and then the products.
+
+To load the categories use:
+
+`python3 manage.py loaddata categories`
+
+And then do the same for products:
+
+`python3 manage.py loaddata products`
+
+### 3. Create a SuperUser for New Postgre Database
+
+Create a superuser to access the django admin back-end using the following command (then follow the instructions from the command line)
+
+`python3 manage.py createsuperuser`
+
+### 4. Remove the temporary DATABASE_URL variable
+
+Delete the os.environ["DATABASE_URL"] from the env.py file, and save. This will revert the local project to use the local sqlite3 database.
+
+### 5. Install the Heroku CLI and login
 If you do not have it already, download and install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 In terminal, login with:
 
@@ -350,7 +391,13 @@ $ heroku login
 
 and login through the browser/preview window. If you’d prefer to stay in the CLI to enter your credentials, you may run `heroku login -i`
 
-### 3. Connect repo to Heroku
+### 7. Add Heroku App to Allowed Hosts
+
+You need to add the hostname of your Heroku app to allowed hosts in settings.py. In my live project this is power-fitness.herokuapp.com. You can find the first part (before.herokuapp) in the Heroku settings, under App Name. Or if you click the 'Open app' button it will give you the full url. 
+
+With all that saved you can attempt to deploy our app, by adding and committing our changes.
+
+### 6. Connect repo to Heroku
 
 In Heroku go to Settings tab. You will find the Heroku git url here. Then in terminal type:
 
@@ -360,7 +407,7 @@ $ git remote add heroku <your heroku git url>
 
 Heroku is now set as a remote.  
 
-### 4. Push to Heroku
+### 7. Push to Heroku
 You can just push the code to Heroku with the command: 
 ```
 $ git push -u heroku master
@@ -369,13 +416,13 @@ $ git push -u heroku master
 Alternatively, you can also link a Github repository to Heroku to deploy automatically from GitHub, under the Deploy tab. 
 
 
-### 5. Set environment variables
+### 8. Set environment variables
 
 In the Settings tab, under Config Vars, add the env variables (SECRET_KEY, MONGO_DBNAME, MONGO_URI) we set in the local development, as well as IP to 0.0.0.0 ansd PORT to 5000. Like so:
 
 ![env variables](README_resources/conf-vars.png)
 
-### 6. Open the App
+### 9. Open the App
 
 Back in terminal type:
 
