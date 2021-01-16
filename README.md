@@ -416,13 +416,17 @@ $ git push -u heroku master
 Alternatively, you can also link a Github repository to Heroku to deploy automatically from GitHub, under the Deploy tab. 
 
 
-### 8. Set environment variables
+### 8. Set Heroku environment variables
 
-In the Settings tab, under Config Vars, add the env variables (SECRET_KEY, MONGO_DBNAME, MONGO_URI) we set in the local development, as well as IP to 0.0.0.0 ansd PORT to 5000. Like so:
+In the Settings tab, under Config Vars, add the env variables (SECRET_KEY, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, STRIPE_SUB_WH_SECRET, STRIPE_GOLD_PRICE_ID, STRIPE_PLAT_PRICE_ID) we set in the local development, as well as AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_HOST_PASS, EMAIL_HOST_USER and USE_AWS (set as True), like so:
 
 ![env variables](README_resources/conf-vars.png)
 
-### 9. Open the App
+### 9.Add Media Files to AWS S3
+
+Go to your s3 > Your-Bucket, and create a new folder called media. Inside it, click upload, Add files, and then select all the product images from your computer.
+
+### 10. Open the App
 
 Back in terminal type:
 

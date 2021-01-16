@@ -31,7 +31,7 @@
                             <p class="card-text">
                                 {{ product.description }}<br>
                                 <div class="border-bottom py-2">
-                                    <strong>Signed up on:</strong> {{ product.created|timestamp_to_time|date:"d M, Y" }}
+                                    <strong>Signed up on:</strong> {{ subscription.created|timestamp_to_time|date:"d M, Y" }}
                                 </div>
                                 <div class="border-bottom py-2 bg-light mb-2">
                                     <strong>Your membership renews on:</strong> {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}
