@@ -26,7 +26,7 @@ I wanted the site to have the following main overarching features.
  - [x] Users should be able to browse by category or search the site for products.
  - [x] Users should be able to purchase these products.
  - [x] If they like, users should be able to register and login to the site.
- - [x] Users should have the option to manage their gym membership.
+ - [x] Users should have the option to sign up for and manage their gym membership.
  - [x] Users can review products.
  - [x] Users can update other members on their successes.
 
@@ -43,17 +43,23 @@ I include this here to explain what I, as a developer, wanted to get out of this
  - To provide an easy to use, online fitness shop, which and provides the shop owner with full CRUD functionality on products.
  - To improve my knowledge of Python and Django with a practical project.
  - To learn about Stripe and webhooks.
- - To learn more about passing data from the font-end to the back-end and vice-versa, using AJAX and JSON. 
+ - To learn more about passing data from the front-end to the back-end and vice-versa, using AJAX and JSON. 
  - To learn to deploy the web app through Heroku, and store media on Amazon Web Services.
  - Using a virtual environment on a local computer.
-
-
 
 ### Strategy
 
 The goals of this type of website are to:
 
-1. 
+1. Be a source of information about the gym, opening times, location, membership costs etc.
+2. Allow users contact the gym with any queries.
+3. Be a source of decent gym accessory products for gym users, and the public in general.
+4. Allow users leave reviews of products.
+5. Create a small online community of gym users who can post messages and discuss things with other gym users.
+6. Allow users sign up for a gym membership, and upgrade or cancel their membership.
+7. To create an additional online income stream for the gym owners, through selling products and memberships.
+8. To give staff members the ability to add new products.
+9. To give admins full control in the back-end over everything that may be posted or created by users or staff.
 
 ### Scope
 
@@ -61,7 +67,19 @@ This section determines what the users should be able to do on the website. User
 
 - [x] Browse products by text search.
 - [x] Browse products by category.
+- [x] View total in their shopping bag.
+- [x] Register, login, logout.
+- [x] Save a profile.
+- [x] Review products, and manage their reviews.
+- [x] Purchase products securely.
+- [x] Subscribe to memberships securely, and upgrade or cancel their membership.
+- [x] Post messages to other users, and manage their messages.
 
+Staff Users should be able to do all the above and:
+- [x] Add, edit or delete a product.
+- [x] Post, edit or delete news updates for the gym.
+- [x] Mark a product as a Best Seller.
+- [x] Put products on sale with a separate sale price.
 
 ### Structure
 
@@ -71,9 +89,12 @@ To list the pages I needed and to visualise the site structure, I designed my vi
 
 I also listed out the features I wanted on the homepage:
 
-#### Obvious signposts to Products and Membership
-
-
+- Obvious signposts to Products and Membership.
+- Show a few Best Selling products, that actually can be selected by the Staff or admin.
+- Show openming hours.
+- Show a location map.
+- Have links to Social media accounts.
+- Have easy access to Delivery, Return, Guarantee and Payment policies to instill confidence in customers.
 
 ### Skeleton
 
@@ -225,6 +246,10 @@ Expand the sections below for more info on details:
 
  - Allow products to be tagged within multiple categories.
  - Generate thumbnail images for use in shopping bag to prevent loading full size images.
+ - When a user is reviewing, allow them to rate product by a number of stars, and average all the stars on a product for overall rating.
+ - Add a wysiwyg editor (like summernote) for news posts and product descriptions.
+ - Send users who start a topic notifications of a reply.
+ - Make it so only users with an active membership can post messages on the community board.
 
 ## Testing and Issues
 
@@ -239,13 +264,13 @@ For setting up all the functionality, the following are required:
 ### Stripe
  - [Stripe Account](https://dashboard.stripe.com/register)
  - [Test Keys](https://stripe.com/docs/keys)
- - [Webhook Secret](https://stripe.com/docs/webhooks/signatures)
  - [Create 2 Stripe products](https://support.stripe.com/questions/how-to-create-products-and-prices) called Gold Plan and Platinum Plan with recurring prices. I set the prices to €29 and €39 respectively. Each of these will have a price ID which is also needed. You can copy these ids by opening the product, and you will find it under Pricing.
  - Create 2 Webhook endpoints from your Stripe Dashboard (under Developers > Webhooks) that end in /memberships/subwh/ and /checkout/wh/. I had to use [Ngrok](https://ngrok.com/) tunnelling software for testing the webhooks locally, so my Webhook endpoints looked something like https://d68657d875d8.ngrok.io/memberships/subwh/ and https://d68657d875d8.ngrok.io/checkout/wh/. Alternatively, you may be able to use the [Stripe CLI](https://stripe.com/docs/stripe-cli) to create the webhooks secret keys that we need, but I could not get the CLI to work on my computer and so had to use Ngrok.
+ - [Webhook Secrets](https://stripe.com/docs/webhooks/)
 
-### AWS
+### AWS (required to Deploy to Heroku)
  - [AWS Account](https://aws.amazon.com/)
- - [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+ - [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html). You will need an S3 Bucket that is set to public, and will need to know the bucket name, the S3 region and have downloaded the Access Key and Secret Access Key.
 
 ### Email account for sending emails from
 
@@ -283,7 +308,7 @@ os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY_HERE"
 os.environ["DEVELOPMENT"] = "True"
 
 ```
-Replace YOUR_SECRET_KEY_HERE with a random string.
+Replace YOUR_SECRET_KEY_HERE with a random string. Yopu can use a secret key generator like [Djecrety](https://djecrety.ir/)
 
 Replace YOUR_STRIPE_PUBLIC_KEY with your Stripe account's test public key.
 
@@ -305,7 +330,7 @@ Migrate the models to create your database (in SQLite) using the following comma
 
 `python3 manage.py migrate`
 
-Depending on your local system, you may need not need the 3 after python. If that is the case then all the following python3 commands would not have the 3 after it.
+Depending on your local system, you may need not need the '3' after python. If that is the case then all the following python3 commands would not have the 3 after it.
 
 ### 6. Settings
 
@@ -391,13 +416,19 @@ $ heroku login
 
 and login through the browser/preview window. If you’d prefer to stay in the CLI to enter your credentials, you may run `heroku login -i`
 
-### 7. Add Heroku App to Allowed Hosts
+### 6. Settings
+
+#### AWS Bucket
+
+If you want to change the S3 bucket, under `if 'USE_AWS' in os.environ:` in settings.py you will need to change the AWS_STORAGE_BUCKET_NAME variable and possibly the AWS_S3_REGION_NAME variable, with the S3 Bucket Name and Region.
+
+#### Add Heroku App to Allowed Hosts
 
 You need to add the hostname of your Heroku app to allowed hosts in settings.py. In my live project this is power-fitness.herokuapp.com. You can find the first part (before.herokuapp) in the Heroku settings, under App Name. Or if you click the 'Open app' button it will give you the full url. 
 
 With all that saved you can attempt to deploy our app, by adding and committing our changes.
 
-### 6. Connect repo to Heroku
+### 7. Connect repo to Heroku
 
 In Heroku go to Settings tab. You will find the Heroku git url here. Then in terminal type:
 
@@ -407,24 +438,24 @@ $ git remote add heroku <your heroku git url>
 
 Heroku is now set as a remote.  
 
-### 7. Push to Heroku
+### 8. Add folders and Media Files to AWS S3
+
+Go to your s3 > Your-Bucket, and create a new folder called 'media'. Inside it, click upload, Add files, and then select all the media images from the repositiory on your computer.
+You should also create a new folder called 'static'. When the web app is deploy to Heroku, django will collectstatic files automatically and upload them to this s3 folder.
+
+### 9. Set Heroku environment variables
+
+In the Settings tab, under Config Vars, add the env variables (SECRET_KEY, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, STRIPE_SUB_WH_SECRET, STRIPE_GOLD_PRICE_ID, STRIPE_PLAT_PRICE_ID) we set in the local development, as well as AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_HOST_PASS, EMAIL_HOST_USER and USE_AWS (set as True), like so:
+
+![env variables](README_resources/conf-vars.png)
+
+### 10. Push to Heroku
 You can just push the code to Heroku with the command: 
 ```
 $ git push -u heroku master
 ```
 
 Alternatively, you can also link a Github repository to Heroku to deploy automatically from GitHub, under the Deploy tab. 
-
-
-### 8. Set Heroku environment variables
-
-In the Settings tab, under Config Vars, add the env variables (SECRET_KEY, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, STRIPE_SUB_WH_SECRET, STRIPE_GOLD_PRICE_ID, STRIPE_PLAT_PRICE_ID) we set in the local development, as well as AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_HOST_PASS, EMAIL_HOST_USER and USE_AWS (set as True), like so:
-
-![env variables](README_resources/conf-vars.png)
-
-### 9.Add Media Files to AWS S3
-
-Go to your s3 > Your-Bucket, and create a new folder called media. Inside it, click upload, Add files, and then select all the product images from your computer.
 
 ### 10. Open the App
 
