@@ -640,6 +640,12 @@ footer {
     background: #2e2e2e;
     color:#fff;
 }
+footer a {
+    color: #f7a600;
+}
+footer a:hover {
+    color: #1eaff7;
+}
 .footer-brand-logo {
     max-width: 200px;
     margin: 0 auto;
@@ -664,6 +670,9 @@ footer {
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
+}
+.social-icons-list li a:hover {
+    color: #f7a600;
 }
 .copyright {
     font-size: 1.4rem;

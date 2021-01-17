@@ -256,3 +256,16 @@ class CancellationPolicy(TemplateView):
     1. template_name: template to be used
     """
     template_name = 'pages/cancellation-policy.html'
+
+
+class ImageCredits(TemplateView):
+    """
+    * Creates the image credits page
+
+    \n Arguments:
+    1. Djangos TemplateView
+
+    \n Attributes:
+    1. template_name: template to be used
+    """
+    template_name = 'pages/image-credits.html'

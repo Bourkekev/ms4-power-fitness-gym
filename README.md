@@ -457,7 +457,7 @@ $ git push -u heroku master
 
 Alternatively, you can also link a Github repository to Heroku to deploy automatically from GitHub, under the Deploy tab. 
 
-### 10. Open the App
+### 11. Open the App
 
 Back in terminal type:
 
@@ -518,6 +518,7 @@ The photos and vectors used in this site were obtained from:
  - Database Diagram designed on [QuickDBD](https://www.quickdatabasediagrams.com/).
  - Logo was purchased from [Shutterstock](https://www.shutterstock.com/image-vector/) and I edited the colours and added the logo text.
  - The Platinum membership plan icons and demo PDFs were purchased from [Shutterstock](https://www.shutterstock.com/).
+ - For all other images see https://power-fitness.herokuapp.com/image-credits/
 
 ### Acknowledgements
 

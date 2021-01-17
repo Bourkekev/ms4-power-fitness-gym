@@ -7,6 +7,7 @@ from .views import (
     Guarantee,
     SecurePayment,
     CancellationPolicy,
+    ImageCredits,
 )
 from . import views
 
@@ -22,4 +23,5 @@ urlpatterns = [
     path('secure-payment/', SecurePayment.as_view(), name='secure-payment'),
     path('cancellation-policy/', CancellationPolicy.as_view(),
          name='cancellation-policy'),
+    path('image-credits/', ImageCredits.as_view(), name='image-credits'),
 ]
