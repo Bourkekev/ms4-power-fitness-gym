@@ -3,10 +3,12 @@ from .models import Product, Category, Review
 
 
 class ReviewInline(admin.TabularInline):
+    """ Allows view/edit of reviews from Product detail page """
     model = Review
 
 
 class ProductsAdmin(admin.ModelAdmin):
+    """ Creates the admin interface for Products """
     list_display = (
         'name',
         'sku',
@@ -26,6 +28,7 @@ class ProductsAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    """ Creates the admin interface for Product Categories """
     list_display = (
         'friendly_name',
         'name',
@@ -33,6 +36,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
+    """ Creates the admin interface for Product Reviews """
     list_display = (
         'review_title',
         'reviewer',

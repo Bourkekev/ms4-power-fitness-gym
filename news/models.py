@@ -10,6 +10,13 @@ STATUS = (
 
 
 class NewsPost(models.Model):
+    """
+    * Creates a news post in database.
+    * Meta class sets the ordering.
+
+    \n Returns __str__:
+    * Post title
+    """
     title = models.CharField(max_length=255)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

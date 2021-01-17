@@ -7,6 +7,12 @@ from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
+    """
+    * Creates a user profile in database.
+
+    \n Returns __str__:
+    * Username
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(max_length=20,
                                             null=True, blank=True)

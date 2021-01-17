@@ -10,6 +10,14 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    * Creates the order in database. Also contains functions to generate a \
+    random order number, update the grand total when a line item is added and \
+        override save method to set the order number if it has not been set
+
+    \n Returns __str__:
+    * the order number
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
@@ -104,6 +112,13 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+    * Creates the order line items. Also contains function to \
+         override the save method to set the line-item total
+
+    \n Returns __str__:
+    * the sku on order number
+    """
     order = models.ForeignKey(
         Order,
         null=False,

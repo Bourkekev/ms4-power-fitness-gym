@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 
 
 class MessageTopic(models.Model):
+    """
+    * Creates a message topic in database.
+
+    \n Returns __str__:
+    * the subject
+
+    \n Other functions return:
+    * the number of Messages in a topic
+    * the last post
+    """
     subject = models.CharField(max_length=255)
     last_update = models.DateTimeField(auto_now_add=True)
     started_by = models.ForeignKey(
@@ -22,6 +32,12 @@ class MessageTopic(models.Model):
 
 
 class MessagePost(models.Model):
+    """
+    * Creates a message post in database.
+
+    \n Returns __str__:
+    * message truncated to 50 characters
+    """
     message = models.TextField(max_length=4000)
     topic = models.ForeignKey(
         MessageTopic,

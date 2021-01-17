@@ -4,7 +4,13 @@ from multiselectfield import MultiSelectField
 
 
 class Category(models.Model):
+    """
+    * Creates a product category in database.
 
+    \n Returns :
+    * Product name __str__
+    * friendly_name
+    """
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -19,6 +25,13 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    * Creates a product in database.
+    * Options for sizes set here also.
+
+    \n Returns __str__:
+    * Product name
+    """
     category = models.ForeignKey('Category', null=True,
                                  blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
@@ -57,6 +70,12 @@ class Product(models.Model):
 
 
 class Review(models.Model):
+    """
+    * Creates a product review in database.
+
+    \n Returns __str__:
+    * Review title
+    """
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,

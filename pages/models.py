@@ -2,7 +2,12 @@ from django.db import models
 
 
 class ContactForm(models.Model):
+    """
+    * Saves a contact form submission in database.
 
+    \n Returns __str__:
+    * Subject
+    """
     class Meta:
         verbose_name_plural = 'Contact Form Submissions'
 
