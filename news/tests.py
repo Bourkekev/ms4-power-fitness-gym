@@ -34,7 +34,6 @@ class NewsPostModelTest(TestCase):
         response = self.client.get(reverse('news_list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Test body text')
-        self.assertTemplateUsed(response, 'news/news_list.html')
 
     def test_post_detail_view(self):
         response = self.client.get('/news/1/')

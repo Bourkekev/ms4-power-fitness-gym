@@ -49,7 +49,9 @@ Then it tests creating a new news post. There is some set up for the tests, a te
 
 ### Products App
 
-The tests for the products, check that the product page loads with status code of 200,
+The tests for the products, check that the product page loads with status code of 200, and uses the products template. 
+
+There are tests for the add products form. There is a test to check that the required fields return an error if the field is left blank and checks what the error message is.
 
 ## Manual Testing
 
