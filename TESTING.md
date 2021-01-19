@@ -41,6 +41,16 @@ The contact page has additional tests to test the form. There is a test to check
 
 The tests for the news app test creating a new news post. There is some set up for the tests, a test user and a test post are created, and the tests check for the new post content, status code 200 and correct template for the news listings and news post detail page. There is a test for a 404 response from a non-existing news post.
 
+### Community App
+
+The tests for the message board checks the status code of the page, that the /community/ url uses the correct view and that the Community Topics page contains an add_topic link. 
+
+Then it tests creating a new news post. There is some set up for the tests, a test user and a test topic and post are created, and the tests check for the new post content, author and that the community_topics view returns status 200, checks it contains the test content, and uses the correct template.
+
+### Products App
+
+The tests for the products, check that the product page loads with status code of 200,
+
 ## Manual Testing
 
 ### Testing Save info in webhook handler

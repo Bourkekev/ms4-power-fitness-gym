@@ -1,7 +1,7 @@
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.urls import reverse, resolve
-from django.test import TestCase, Client
+from django.test import TestCase
 
 from .views import community_topics, view_topic
 from .models import MessagePost, MessageTopic
@@ -27,25 +27,33 @@ class MessageBoardTests(TestCase):
 
 class ViewTopicTests(TestCase):
     def setUp(self):
-        user = User.objects.create_user(
+        self.user = get_user_model().objects.create_user(
             username='john',
             email='john@doe.com',
-            password='123')
-        topic = MessageTopic.objects.create(
-            subject='Hello, world',
-            started_by=user)
-        MessagePost.objects.create(
+            password='123',
+        )
+        self.topic = MessageTopic.objects.create(
+            subject='Test Create Topic',
+            started_by=self.user,
+        )
+        self.post = MessagePost.objects.create(
             message='Lorem ipsum dolor sit amet',
-            topic=topic,
-            created_by=user)
-        url = reverse('view_topic', kwargs={'topic_id': topic.pk})
-        self.response = self.client.get(url)
-
-    def test_status_code(self):
-        c = Client()
-        c.login(username='john', password='123')
-        self.assertEquals(self.response.status_code, 200)
+            topic=self.topic,
+            created_by=self.user,
+        )
 
     def test_view_function(self):
         view = resolve('/community/topic/1/')
         self.assertEquals(view.func, view_topic)
+
+    # Test for setUp MessagePost content
+    def test_post_content(self):
+        self.assertEqual(f'{self.post.topic}', 'Test Create Topic')
+        self.assertEqual(f'{self.post.message}', 'Lorem ipsum dolor sit amet')
+        self.assertEqual(f'{self.post.created_by}', 'john')
+
+    def test_message_board_view(self):
+        response = self.client.get(reverse('community_topics'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Test Create Topic')
+        self.assertTemplateUsed(response, 'community/community_topics.html')
