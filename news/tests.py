@@ -6,7 +6,7 @@ from .models import NewsPost
 
 
 class NewsPostModelTest(TestCase):
-    # Create test post
+    # Create test user
     def setUp(self):
         self.user = get_user_model().objects.create_user(
             username='testuser',

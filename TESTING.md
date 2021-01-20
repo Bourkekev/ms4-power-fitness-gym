@@ -53,6 +53,10 @@ The tests for the products, check that the product page loads with status code o
 
 There are tests for the add products form. There is a test to check that the required fields return an error if the field is left blank and checks what the error message is.
 
+### Profile App
+
+Tests for the profile app sets up a test user, then tests the profile view, status code and template used. There is also a test to check the string method returned is correct.
+
 ## Manual Testing
 
 ### Testing Save info in webhook handler

@@ -283,13 +283,16 @@ To run locally, you can clone this repository directly into the editor of your c
 
 ### 2. Install Python required modules
 
+**Note:** I used a pip environment on my local computer which saved requirements to a [Pipfile](https://pipenv-fork.readthedocs.io/en/latest/basics.html). If using a virtual environment, install the requirements from the pipfile with the following command (from outside the pipenv shell):
+
+`pipenv install`
+
+Alternatively, install modules from the requirements file as noted below.
 In terminal type (you might need 'sudo' before the following on some environments):
 
 ```
 $ pip3 install -r requirements.txt
 ```
-
-**Note:** I used a pip environment on my local computer which saved requirements to a [Pipfile](https://pipenv-fork.readthedocs.io/en/latest/basics.html). If this does not install requirements automatically you can use the requirements file as noted above.
 
 ### 3. Create `env.py` file
 
