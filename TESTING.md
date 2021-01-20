@@ -57,6 +57,14 @@ There are tests for the add products form. There is a test to check that the req
 
 Tests for the profile app sets up a test user, then tests the profile view, status code and template used. There is also a test to check the string method returned is correct.
 
+The EditUserProfile form is tested with a test user.
+
+### Checkout app
+
+For the Checkout tests a test product is created, saved to the 'bag' session and then follows the checkout view to make sure the status code is 200 and the correct template is loaded.
+
+Trying to checkout with an empty basket is tested and checks that the checkout view redirect to products and has an error message of 'There's nothing in your bag at the moment.' as per the view.
+
 ## Manual Testing
 
 ### Testing Save info in webhook handler
