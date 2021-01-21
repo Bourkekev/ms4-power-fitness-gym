@@ -167,6 +167,26 @@ class ProductsTests(TestCase):
             'Added product test description')
         self.assertEqual(response.status_code, 302)
 
+    def test_edit_product_view_logged_in_staff(self):
+        self.client.login(
+            username='staffuser',
+            password='secret3',
+        )
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.post(reverse(
+            'edit_product',
+            kwargs={'product_id': test_product.id}), {
+            'name': 'Edited Test product',
+            'price': '30',
+            'description': 'Edited product test description'
+        })
+        self.assertEqual(Product.objects.last().name, 'Edited Test product')
+        self.assertEqual(Product.objects.last().price, Decimal('30.00'))
+        self.assertEqual(
+            Product.objects.last().description,
+            'Edited product test description')
+        self.assertEqual(response.status_code, 302)
+
 
 class ReviewsTests(TestCase):
     def setUp(self):

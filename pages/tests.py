@@ -1,5 +1,6 @@
+from django.contrib.messages import get_messages
 from django.test import TestCase
-from django.urls import resolve
+from django.urls import resolve, reverse
 from . import views
 from .forms import ContactUsForm
 
@@ -66,6 +67,53 @@ class SimpleTests(TestCase):
             })
         self.assertTrue(form.is_valid())
         form.save()
+
+    def test_contact_form_submission(self):
+        response = self.client.post(reverse('contact'), {
+            'first_name': 'Test First name',
+            'last_name': 'Test last name',
+            'email': 'contact@email.com',
+            'phone_number': 'Phone number',
+            'subject': 'Contact form test',
+            'your_message': 'Test submitting contact form',
+        })
+        self.assertRedirects(response, '/contact/')
+        self.assertEqual(response.status_code, 302)
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('Message sent successfully')
+        self.assertEqual(messages[0].tags, 'success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+    def test_contact_form_submit_not_valid(self):
+        response = self.client.post(reverse('contact'), {
+            'first_name': '',
+            'last_name': '',
+            'email': '',
+            'phone_number': '',
+            'subject': '',
+            'your_message': '',
+        })
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('There was an error with your form. \
+                Please double check the information submitted.')
+        self.assertEqual(messages[0].tags, 'error')
+        self.assertEqual(str(messages[0]), expected_message)
+
+    def test_contact_submit_ajax_submission(self):
+        response = self.client.post(reverse('contact_submit'), {
+            'first_name': 'Test First name',
+            'last_name': 'Test last name',
+            'email': 'contact@email.com',
+            'phone_number': 'Phone number',
+            'subject': 'Contact form test',
+            'your_message': 'Test submitting contact form',
+        })
+        # self.assertRedirects(response, '/contact/')
+        # self.assertEqual(response.status_code, 302)
+        # messages = list(get_messages(response.wsgi_request))
+        # expected_message = ('Message sent successfully')
+        # self.assertEqual(messages[0].tags, 'success')
+        # self.assertEqual(str(messages[0]), expected_message)
 
     def test_gym_memberships_page_status_code(self):
         response = self.client.get('/gym-memberships/')
