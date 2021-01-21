@@ -1,9 +1,10 @@
 from django.contrib.auth import get_user_model
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse
 
 from .forms import ProductForm
-from .models import Product
+from .models import Product, Review
 
 
 # Test Products page loads
@@ -87,3 +88,134 @@ class ProductsTests(TestCase):
     #     response = self.client.get(f'/products/edit/{product.id}')
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, 'products/edit_product.html')
+
+
+class ReviewsTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            email='test@email.com',
+            password='secret'
+        )
+        self.product = Product.objects.create(
+            name='Test Product',
+            description='Test description',
+            price='10',
+        )
+        self.review = Review.objects.create(
+            product=self.product,
+            reviewer=self.user,
+            review_title='Test review title',
+            review='Test review content'
+        )
+        self.other_user = get_user_model().objects.create_user(
+            username='otheruser',
+            email='other@email.com',
+            password='secret2'
+        )
+
+    def test_review_product_login_required(self):
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.post(reverse(
+            'review_product',
+            kwargs={'product_id': test_product.id}),
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sign In')
+
+    def test_review_product_logged_in(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.post(reverse(
+            'review_product',
+            kwargs={'product_id': test_product.id})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Add a review')
+        self.assertTemplateUsed(response, 'products/add_review.html')
+
+    def test_edit_review_logged_in(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        response = self.client.post(reverse(
+            'edit_review',
+            kwargs={'review_id': self.review.id})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Edit your review')
+        self.assertTemplateUsed(response, 'products/edit_review.html')
+
+    def test_edit_review_logged_required(self):
+        response = self.client.post(reverse(
+            'edit_review',
+            kwargs={'review_id': self.review.id}),
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sign In')
+
+    def test_edit_review_of_other_user(self):
+        self.client.login(
+            username='otheruser',
+            password='secret2',
+        )
+        response = self.client.post(reverse(
+            'edit_review',
+            kwargs={'review_id': self.review.id}),
+            follow=True
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('You cannot edit other people\'s reviews!')
+        self.assertEqual(messages[0].tags, 'error')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertRedirects(response, '/profile/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_review_login_required(self):
+        response = self.client.post(reverse(
+            'delete_review',
+            kwargs={'review_id': self.review.id}),
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sign In')
+
+    def test_delete_review_logged_in(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        response = self.client.post(reverse(
+            'delete_review',
+            kwargs={'review_id': self.review.id}),
+            follow=True
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('Review deleted!')
+        self.assertEqual(messages[0].tags, 'success')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertRedirects(response, '/profile/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_review_of_other_user(self):
+        self.client.login(
+            username='otheruser',
+            password='secret2',
+        )
+        response = self.client.post(reverse(
+            'delete_review',
+            kwargs={'review_id': self.review.id}),
+            follow=True
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('You cannot delete other people\'s reviews!')
+        self.assertEqual(messages[0].tags, 'error')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertRedirects(response, '/profile/')
+        self.assertEqual(response.status_code, 200)
