@@ -3,6 +3,8 @@ from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse
 
+from decimal import Decimal
+
 from .forms import ProductForm
 from .models import Product, Review
 
@@ -19,6 +21,12 @@ class ProductsTests(TestCase):
             name='Test Product',
             description='Test description',
             price='10',
+        )
+        self.staff_user = get_user_model().objects.create_user(
+            username='staffuser',
+            email='staff@email.com',
+            password='secret3',
+            is_staff='1',
         )
 
     def test_string_representation(self):
@@ -48,19 +56,77 @@ class ProductsTests(TestCase):
         self.assertContains(response, 'Test Product')
         self.assertTemplateUsed(response, 'products/product_detail.html')
 
-    def test_product_edit_view(self):
-        response = self.client.post(reverse('edit_product', args='1'), {
-            'name': 'Updated Name',
-            'description': 'Updated description',
-            'price': '16'
-        })
-        self.assertEqual(response.status_code, 302)
-
-    def test_delete_product_view(self):
-        response = self.client.post(
-            reverse('delete_product', args='1')
+    def test_product_edit_view_logged_in_staff(self):
+        self.client.login(
+            username='staffuser',
+            password='secret3',
         )
-        self.assertEqual(response.status_code, 302)
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.get(reverse(
+            'edit_product',
+            kwargs={
+                'product_id': test_product.id,
+            }),
+            follow=True
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f'You are now editing {test_product.name}')
+        self.assertEqual(messages[0].tags, 'info')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/edit_product.html')
+
+    def test_product_edit_view_not_staff(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.get(reverse(
+            'edit_product',
+            kwargs={
+                'product_id': test_product.id,
+            }),
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'not authorized to access this page.')
+
+    def test_delete_product_view_logged_in_staff(self):
+        self.client.login(
+            username='staffuser',
+            password='secret3',
+        )
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.get(reverse(
+            'delete_product',
+            kwargs={
+                'product_id': test_product.id,
+            }),
+            follow=True
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('Product deleted!')
+        self.assertEqual(messages[0].tags, 'success')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertRedirects(response, '/products/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_product_view_not_staff(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        test_product = Product.objects.get(name='Test Product')
+        response = self.client.get(reverse(
+            'delete_product',
+            kwargs={
+                'product_id': test_product.id,
+            }),
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'not authorized to access this page.')
 
     def test_add_product_form_required_fields(self):
         form = ProductForm({'name': ''})
@@ -84,10 +150,22 @@ class ProductsTests(TestCase):
                         })
         self.assertTrue(form.is_valid())
 
-    # def test_get_edit_product_page(self):
-    #     response = self.client.get(f'/products/edit/{product.id}')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'products/edit_product.html')
+    def test_add_product_view_logged_in_staff(self):
+        self.client.login(
+            username='staffuser',
+            password='secret3',
+        )
+        response = self.client.post(reverse('add_product'), {
+            'name': 'Added Test product',
+            'price': '20',
+            'description': 'Added product test description'
+        })
+        self.assertEqual(Product.objects.last().name, 'Added Test product')
+        self.assertEqual(Product.objects.last().price, Decimal('20.00'))
+        self.assertEqual(
+            Product.objects.last().description,
+            'Added product test description')
+        self.assertEqual(response.status_code, 302)
 
 
 class ReviewsTests(TestCase):
