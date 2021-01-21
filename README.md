@@ -507,6 +507,8 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - Getting jQuery to work in the Django Admin - I found how to add the Media class to load a js file [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false), and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects). Also learned to wrap the jQuery in an eventListener from [here](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message), as was getting $ is not a function error.
  - Simple News list Pagination was based off this [Django Docs page](https://docs.djangoproject.com/en/3.1/topics/pagination/#paginating-a-listview)
  - Form Testing - for testing the contact form I adapted the following examples - https://www.oreilly.com/library/view/test-driven-development-with/9781449365141/ch11.html
+ - Django Testing - I used Code Institute tutorials, the [Django Documentation](https://docs.djangoproject.com/en/3.1/topics/testing/tools/), and Django for Beginners book by William S. Vincent for learning about testing.
+ - Django Testing Messages - I learned from and adjusted examples from [this page on Program Creek](https://www.programcreek.com/python/example/92511/django.contrib.messages.get_messages)
  
 ### Content
 
