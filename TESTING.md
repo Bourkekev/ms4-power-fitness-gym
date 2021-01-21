@@ -59,11 +59,15 @@ Tests for the profile app sets up a test user, then tests the profile view, stat
 
 The EditUserProfile form is tested with a test user.
 
-### Checkout app
+### Checkout App
 
 For the Checkout tests a test product is created, saved to the 'bag' session and then follows the checkout view to make sure the status code is 200 and the correct template is loaded.
 
 Trying to checkout with an empty basket is tested and checks that the checkout view redirect to products and has an error message of 'There's nothing in your bag at the moment.' as per the view.
+
+### Bag App
+
+The tests for the bag app include checking the status response and template, testing adding a Test Product to the bag and check the messages returned matches the expected message, testing updating the quantity of an item and deleting an item. This does not yet include testing different sizes.
 
 ## Manual Testing
 
