@@ -48,6 +48,49 @@ class ProductsTests(TestCase):
         self.assertContains(response, 'Test Product')
         self.assertTemplateUsed(response, 'products/products.html')
 
+    def test_all_products_view_sort_by_cat(self):
+        response = self.client.get('/products/?category=clothing')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'href="/products/?category=clothing"')
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_sort_by_sale_price_asc(self):
+        response = self.client.get('/products/?sort=sale_price&direction=asc')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_sort_by_name_asc(self):
+        response = self.client.get('/products/?sort=name&direction=asc')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_sort_by_name_desc(self):
+        response = self.client.get('/products/?sort=name&direction=desc')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_best_sellers(self):
+        response = self.client.get('/products/?best_sellers')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Best Seller')
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_text_search(self):
+        response = self.client.get('/products/?q=test+search')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Products found for')
+        self.assertContains(response, 'test search')
+        self.assertTemplateUsed(response, 'products/products.html')
+
+    def test_all_products_view_blank_search(self):
+        response = self.client.get('/products/?q=')
+        self.assertEqual(response.status_code, 302)
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = ('You did not enter any search terms!')
+        self.assertEqual(messages[0].tags, 'error')
+        self.assertEqual(str(messages[0]), expected_message)
+        self.assertRedirects(response, reverse('products'))
+
     def test_product_detail_page(self):
         response = self.client.get('/products/1/')
         no_response = self.client.get('/products/100000/')
