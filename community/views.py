@@ -176,7 +176,7 @@ def add_topic(request):
             return redirect(reverse('community_topics'))
         else:
             messages.error(request,
-                           'Failed to add product review. \
+                           'Failed to add topic. \
                             Please ensure the form is valid.')
     else:
         form = MessageTopicForm()

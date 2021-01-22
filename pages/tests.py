@@ -108,12 +108,8 @@ class SimpleTests(TestCase):
             'subject': 'Contact form test',
             'your_message': 'Test submitting contact form',
         })
-        # self.assertRedirects(response, '/contact/')
-        # self.assertEqual(response.status_code, 302)
-        # messages = list(get_messages(response.wsgi_request))
-        # expected_message = ('Message sent successfully')
-        # self.assertEqual(messages[0].tags, 'success')
-        # self.assertEqual(str(messages[0]), expected_message)
+        self.assertEqual(response.content,
+                         b'Your message has been submitted successfully.')
 
     def test_gym_memberships_page_status_code(self):
         response = self.client.get('/gym-memberships/')
