@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
                 $('.field-shoe_sizes').hide();
                 $('.field-clothing_sizes').hide();
             }
-        }
+        };
         
         // run on page load
         hideSizes();

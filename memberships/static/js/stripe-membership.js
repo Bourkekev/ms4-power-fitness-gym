@@ -15,18 +15,18 @@ fetch("/memberships/config/")
         .then((result) => { return result.json(); })
         .then((data) => {
             // Redirect to Stripe Checkout
-            return stripe.redirectToCheckout({sessionId: data.sessionId})
+            return stripe.redirectToCheckout({sessionId: data.sessionId});
         })
         .then((res) => {
             // console.log(res);
         });
-    }
+    };
     // Get buttons if exits and listen for click on button
     if (document.querySelector("#membership-select")) {
         const submitBtnGold = document.querySelector("#submitBtnGold");
         const submitBtnPlat = document.querySelector("#submitBtnPlat");
         
-        submitBtnGold.addEventListener("click", function(btn) { return subCheckout(submitBtnGold) });
-        submitBtnPlat.addEventListener("click", function(btn) { return subCheckout(submitBtnPlat) });
+        submitBtnGold.addEventListener("click", function(btn) { return subCheckout(submitBtnGold); });
+        submitBtnPlat.addEventListener("click", function(btn) { return subCheckout(submitBtnPlat); });
     }
 });
