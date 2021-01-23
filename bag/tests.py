@@ -47,12 +47,91 @@ class BagViewsTests(TestCase):
             kwargs={'item_id': test_product.id}),
             data=posted_data,
         )
-        print(posted_data['shoe_size'])
         messages = list(get_messages(response.wsgi_request))
         expected_message = (f"Added size {posted_data['shoe_size'].upper()} "
                             f"{test_product.name} to your bag")
         self.assertEqual(messages[0].tags, 'success')
         self.assertEqual(str(messages[0]), expected_message)
+
+    def test_add_to_bag_with_shoesize_another_item_view(self):
+        test_product = Product.objects.get(name='Test Product')
+        posted_data = {
+            'quantity': '1',
+            'redirect_url': '/',
+            'shoe_size': '7'
+        }
+        response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f"Added size {posted_data['shoe_size'].upper()} "
+                            f"{test_product.name} to your bag")
+        self.assertEqual(messages[0].tags, 'success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+        # Test add another of same item
+        another_response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(another_response.wsgi_request))
+        expected_message = (f"Updated size {posted_data['shoe_size'].upper()} "
+                            f"{test_product.name} quantity to "
+                            f"2")
+        self.assertEqual(messages[1].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[1]), expected_message)
+
+    def test_add_to_bag_with_clothing_size_view(self):
+        test_product = Product.objects.get(name='Test Product')
+        posted_data = {
+            'quantity': '1',
+            'redirect_url': '/',
+            'clothing_size': 'm'
+        }
+        response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+                            f"{test_product.name} to your bag")
+        self.assertEqual(messages[0].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+    def test_add_to_bag_with_clothing_size_another_item_view(self):
+        test_product = Product.objects.get(name='Test Product')
+        posted_data = {
+            'quantity': '1',
+            'redirect_url': '/',
+            'clothing_size': 'm'
+        }
+        response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+                            f"{test_product.name} to your bag")
+        self.assertEqual(messages[0].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+        # Test add another of same item
+        another_response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(another_response.wsgi_request))
+        expected_message = (f"Updated size {posted_data['clothing_size'].upper()} "
+                            f"{test_product.name} quantity to "
+                            f"2")
+        self.assertEqual(messages[1].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[1]), expected_message)
 
     def test_adjust_bag_view(self):
         # First add test product to bag
