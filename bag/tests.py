@@ -97,7 +97,8 @@ class BagViewsTests(TestCase):
             data=posted_data,
         )
         messages = list(get_messages(response.wsgi_request))
-        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+        expected_message = (f"Added size "
+                            f"{posted_data['clothing_size'].upper()} "
                             f"{test_product.name} to your bag")
         self.assertEqual(messages[0].tags, 'Shopping bag updated success')
         self.assertEqual(str(messages[0]), expected_message)
@@ -115,7 +116,8 @@ class BagViewsTests(TestCase):
             data=posted_data,
         )
         messages = list(get_messages(response.wsgi_request))
-        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+        expected_message = (f"Added size "
+                            f"{posted_data['clothing_size'].upper()} "
                             f"{test_product.name} to your bag")
         self.assertEqual(messages[0].tags, 'Shopping bag updated success')
         self.assertEqual(str(messages[0]), expected_message)
@@ -127,7 +129,8 @@ class BagViewsTests(TestCase):
             data=posted_data,
         )
         messages = list(get_messages(another_response.wsgi_request))
-        expected_message = (f"Updated size {posted_data['clothing_size'].upper()} "
+        expected_message = (f"Updated size "
+                            f"{posted_data['clothing_size'].upper()} "
                             f"{test_product.name} quantity to "
                             f"2")
         self.assertEqual(messages[1].tags, 'Shopping bag updated success')
@@ -190,7 +193,8 @@ class BagViewsTests(TestCase):
             data=qty_updated_data,
         )
         messages = list(get_messages(another_response.wsgi_request))
-        expected_message = (f"Updated size {qty_updated_data['shoe_size'].upper()} "
+        expected_message = (f"Updated size "
+                            f"{qty_updated_data['shoe_size'].upper()} "
                             f"{test_product.name} quantity to "
                             f"{qty_updated_data['quantity']}")
         self.assertEqual(messages[1].tags, 'Shopping bag updated success')
@@ -209,7 +213,8 @@ class BagViewsTests(TestCase):
             data=posted_data,
         )
         messages = list(get_messages(response.wsgi_request))
-        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+        expected_message = (f"Added size "
+                            f"{posted_data['clothing_size'].upper()} "
                             f"{test_product.name} to your bag")
         self.assertEqual(messages[0].tags, 'Shopping bag updated success')
         self.assertEqual(str(messages[0]), expected_message)
@@ -226,7 +231,8 @@ class BagViewsTests(TestCase):
             data=qty_updated_data,
         )
         messages = list(get_messages(another_response.wsgi_request))
-        expected_message = (f"Updated size {qty_updated_data['clothing_size'].upper()} "
+        expected_message = (f"Updated size "
+                            f"{qty_updated_data['clothing_size'].upper()} "
                             f"{test_product.name} quantity to "
                             f"{qty_updated_data['quantity']}")
         self.assertEqual(messages[1].tags, 'Shopping bag updated success')

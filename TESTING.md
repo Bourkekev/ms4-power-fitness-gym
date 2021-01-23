@@ -27,6 +27,24 @@ Or to test an individual app:
 
 e.g. `python manage.py test pages`
 
+### Coverage
+
+I used [Coverage](https://pypi.org/project/coverage/) to help show how much of the project has unit testing completed. I found this was also useful for discovering a few minor bugs that I had not noticed during manual testing, such as incorrect messages being returned for product's quantity being updated. There are 87 tests and 83% of the project is tested.
+
+Coverage can run all tests with the terminal command:
+
+`coverage run --source=. manage.py test`
+
+A coverage report can be viewed in the terminal with:
+
+`coverage report`
+
+Or a nicer way to browse a more detailed html version of the report is to run the command:
+
+`coverage html`
+
+This will create a folder in the project called 'htmlcov' which can be viewed in a browser, either by running `python3 -m http.server`, using your editor's Live Server extension and navigating to that folder in your project, or you could just find the htmlcov folder on your local computer filesystem and open the index.html file inside that folder.
+
 I have detailed some of the automatic tests that are run on each app below.
 
 ### Pages App
