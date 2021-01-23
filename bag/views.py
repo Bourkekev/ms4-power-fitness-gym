@@ -131,12 +131,12 @@ def adjust_bag(request, item_id):
     if shoesize or clothing_size:
         if shoesize:
             if quantity > 0:
-                size_of_shoe = bag[item_id]["items_by_shoesize"][shoesize]
                 bag[item_id]['items_by_shoesize'][shoesize] = quantity
+                qty = bag[item_id]['items_by_shoesize'][shoesize]
                 messages.success(request,
                                  (f'Updated size {shoesize.upper()} '
                                   f'{product.name} quantity to '
-                                  f'{size_of_shoe}'),
+                                  f'{qty}'),
                                  extra_tags='Shopping bag updated')
             else:
                 del bag[item_id]['items_by_shoesize'][shoesize]
@@ -149,10 +149,11 @@ def adjust_bag(request, item_id):
             if quantity > 0:
                 bag[item_id][
                     'items_by_clothing_size'][clothing_size] = quantity
+                qty = bag[item_id]['items_by_clothing_size'][clothing_size]
                 messages.success(request,
                                  (f'Updated size {clothing_size.upper()} '
                                   f'{product.name} quantity to '
-                                  f'{bag[item_id]["items_by_clothing_size"][clothing_size]}'),
+                                  f'{qty}'),
                                  extra_tags='Shopping bag updated')
             else:
                 del bag[item_id][

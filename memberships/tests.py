@@ -22,3 +22,19 @@ class TestMembershipViews(TestCase):
                             'active Membership or subscribe to one.')
         self.assertTemplateUsed(response,
                                 'memberships/memberships-dashboard.html')
+
+    def test_subscription_success_get(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        response = self.client.get('/memberships/success/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_cancel_subscription_get(self):
+        self.client.login(
+            username='testuser',
+            password='secret',
+        )
+        response = self.client.get('/memberships/cancel/')
+        self.assertEqual(response.status_code, 200)
