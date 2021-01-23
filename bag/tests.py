@@ -190,9 +190,45 @@ class BagViewsTests(TestCase):
             data=qty_updated_data,
         )
         messages = list(get_messages(another_response.wsgi_request))
-        expected_message = (f"Updated size {posted_data['shoe_size'].upper()} "
+        expected_message = (f"Updated size {qty_updated_data['shoe_size'].upper()} "
                             f"{test_product.name} quantity to "
-                            f"3")
+                            f"{qty_updated_data['quantity']}")
+        self.assertEqual(messages[1].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[1]), expected_message)
+
+    def test_adjust_bag_with_clothing_size_quantity_view(self):
+        test_product = Product.objects.get(name='Test Product')
+        posted_data = {
+            'quantity': '1',
+            'redirect_url': '/',
+            'clothing_size': 'm'
+        }
+        response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f"Added size {posted_data['clothing_size'].upper()} "
+                            f"{test_product.name} to your bag")
+        self.assertEqual(messages[0].tags, 'Shopping bag updated success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+        # Test adjust quantity same item
+        qty_updated_data = {
+            'quantity': '3',
+            'redirect_url': '/',
+            'clothing_size': 'm'
+        }
+        another_response = self.client.post(reverse(
+            'adjust_bag',
+            kwargs={'item_id': test_product.id}),
+            data=qty_updated_data,
+        )
+        messages = list(get_messages(another_response.wsgi_request))
+        expected_message = (f"Updated size {qty_updated_data['clothing_size'].upper()} "
+                            f"{test_product.name} quantity to "
+                            f"{qty_updated_data['quantity']}")
         self.assertEqual(messages[1].tags, 'Shopping bag updated success')
         self.assertEqual(str(messages[1]), expected_message)
 
