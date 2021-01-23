@@ -11,6 +11,8 @@ class BagViewsTests(TestCase):
             name='Test Product',
             description='Test description',
             price='10',
+            shoe_sizes='7',
+            clothing_sizes='m',
         )
 
     def test_view_bag_view(self):
@@ -31,6 +33,25 @@ class BagViewsTests(TestCase):
         messages = list(get_messages(response.wsgi_request))
         expected_message = (f'Added {test_product.name} to your shopping bag')
         self.assertEqual(messages[0].tags, 'Add to shopping bag success')
+        self.assertEqual(str(messages[0]), expected_message)
+
+    def test_add_to_bag_with_shoesize_view(self):
+        test_product = Product.objects.get(name='Test Product')
+        posted_data = {
+            'quantity': '1',
+            'redirect_url': '/',
+            'shoe_size': '7'
+        }
+        response = self.client.post(reverse(
+            'add_to_bag',
+            kwargs={'item_id': test_product.id}),
+            data=posted_data,
+        )
+        print(posted_data['shoe_size'])
+        messages = list(get_messages(response.wsgi_request))
+        expected_message = (f"Added size {posted_data['shoe_size'].upper()} "
+                            f"{test_product.name} to your bag")
+        self.assertEqual(messages[0].tags, 'success')
         self.assertEqual(str(messages[0]), expected_message)
 
     def test_adjust_bag_view(self):
