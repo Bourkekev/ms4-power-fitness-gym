@@ -167,7 +167,7 @@ def add_topic(request):
             topic = form.save(commit=False)
             topic.started_by = request.user
             topic.save()
-            first_post = MessagePost.objects.create(
+            MessagePost.objects.create(
                 message=form.cleaned_data['first_message'],
                 topic=topic,
                 created_by=request.user,

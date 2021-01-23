@@ -2,6 +2,13 @@
 
 ## Validation
 
+### Python
+
+I used the VS Code built in Linter Flake8, as well as checking all the Python files (except core settings files) with [PEP8 Online](http://pep8online.com/).
+
+The only outstanding issues are a few of lines that are slightly longer than the recommended length ( like in memberships app `client_reference_id=request.user.id if request.user.is_authenticated else None,`), because breaking them was proving difficult as it broke the functionality.
+
+
 ### HTML
 
 ### CSS
