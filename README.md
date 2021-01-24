@@ -249,6 +249,7 @@ Expand the sections below for more info on details:
  - When a user is reviewing, allow them to rate product by a number of stars, and average all the stars on a product for overall rating.
  - Add a wysiwyg editor (like summernote) for news posts and product descriptions.
  - Send users who start a topic notifications of a reply.
+ - Allow users edit or delete a topic they created. Currently only the admin can manage that.
  - Make it so only users with an active membership can post messages on the community board.
 
 ## Testing and Issues
