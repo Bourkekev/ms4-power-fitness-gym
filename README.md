@@ -83,7 +83,7 @@ Staff Users should be able to do all the above and:
 
 ### Structure
 
-To list the pages I needed and to visualise the site structure, I designed my visual sitemap in Gloomap. In the sitemap below, the pages marked in green represent site User (logged in) pages:
+To list the pages I needed and to visualise the site structure, I designed my visual sitemap in Gloomap. In the sitemap below, the pages marked in green represent site User (logged in) pages. Product Detail can be gotten to from all Products, product categories while Product Reviews is only accesible from the Product Detail page, or Profile:
 
 ![Sitemap](README_resources/gloomap-sitemap.png)
 
