@@ -35,7 +35,7 @@ I validated all the CSS files with the [W3 CSS Validation Service](https://jigsa
 I ran my javascript files through [JSHint](jshint.com). A few errors such as missing semi-colons were corrected, it mentioned about undefined variable $ and Stripe, but these are loaded separately, and notified of certain syntax that is only available from ES6.
 
 ## Colour Constrast Checking
-I used [WebAIM's](https://webaim.org/resources/contrastchecker/) contrast checker to ensure that text on coloured backgrounds is readable and to WCAG AA Standard, especially white text on coloured backgrounds.
+I used [WebAIM's](https://webaim.org/resources/contrastchecker/) contrast checker to ensure that text on coloured backgrounds is readable and to WCAG AA Standard, especially white text on coloured backgrounds. Originally I had wanted white text on the orange buttons but the contrast was not enough so instead had to use a darker colour.
 
 ## Automatic Testing
 

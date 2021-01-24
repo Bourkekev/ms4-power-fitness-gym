@@ -269,3 +269,8 @@ class ImageCredits(TemplateView):
     1. template_name: template to be used
     """
     template_name = 'pages/image-credits.html'
+
+
+def error_500_view(request):
+    # Return an "Internal Server Error" 500 response code.
+    raise Exception('Test response code 500!')

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} - Server Error 500 {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-12 col-sm-8 offset-sm-2">
+            <h1>Internal error problem. Please try again.</h1>
+            <p class="lead">If the problem persists, please <a href="{% url 'contact' %}">contact us</a> with the steps of what you were doing to get this error.</p>
+            <p>Back to <a href="{% url 'home' %}">Home</a></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

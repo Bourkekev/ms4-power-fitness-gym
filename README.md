@@ -160,8 +160,10 @@ An important part of UX is making sure users cannot cause errors, and that they 
  - A user cannot break the site (or cause an error appear on screen), by pressing buttons out of expected order, or using browser forward and back buttons.
  - Required Form inputs give warnings or feedback if not filled, or filled correctly.
  - A user is given feedback if they are not allowed to do something, like register an already existing username.
- - A custom '404 page not found' page.
  - Ensure that all orders are entered into our database even in the event of a user error during the checkout process. If the payment form is not submitted for some reason like a user closes the page before the payment is complete, the webhook handler will have this information and create the order in the database.
+ - A custom '404 page not found' page.
+ - A custom '403 Forbidden' page.
+ - A server '500' error should use the template '500.html' in the root template directory, as per the [Django Documentation](https://docs.djangoproject.com/en/3.1/ref/views/#the-500-server-error-view). It is difficult to test this particular error, as a HttpResponse of status 500 still just shows a blank page. So I was only able to test this manually by creating a view that raises an Exception (in pages app) and a url, and then visiting the url `/test_500/`. This can only be tested on a development envioronment if DEBUG is 'True', so changing DEBUG to be 'True' in the settings.py file is required to test locally.
 
 ## Technologies Used
 
@@ -174,7 +176,7 @@ An important part of UX is making sure users cannot cause errors, and that they 
 6. [PostgreSQL Database](https://www.postgresql.org/)
 7. [Heroku hosting platform](https://heroku.com)
 8. [Bootstrap Framework](https://getbootstrap.com/)
-9.  [Font Awesome](https://fontawesome.com/)
+9. [Font Awesome](https://fontawesome.com/)
 11. Google Fonts
 12. [JQuery](https://jquery.com) - The project uses **JQuery** to simplify DOM manipulation, and animation of certain elements.
 13. [RealFaviconGenerator](https://realfavicongenerator.net/) - to quickly generate favicons for all browsers.
@@ -245,12 +247,15 @@ Expand the sections below for more info on details:
 ### Features to consider implementing in the future
 
  - Allow products to be tagged within multiple categories.
+ - Allow staff to unpublish a product rather than just deleting it. It is already possible to do this on the news posts.
  - Generate thumbnail images for use in shopping bag to prevent loading full size images.
  - When a user is reviewing, allow them to rate product by a number of stars, and average all the stars on a product for overall rating.
  - Add a wysiwyg editor (like summernote) for news posts and product descriptions.
  - Send users who start a topic notifications of a reply.
  - Allow users edit or delete a topic they created. Currently only the admin can manage that.
  - Make it so only users with an active membership can post messages on the community board.
+ - Count the number of items in the shopping bag and display small number on the bag icon.
+ - Use slugs instead of ids in news posts urls.
 
 ## Testing and Issues
 
@@ -510,6 +515,7 @@ You should be able to open the app now, or you might need to Restart all Dynos u
  - Form Testing - for testing the contact form I adapted the following examples - https://www.oreilly.com/library/view/test-driven-development-with/9781449365141/ch11.html
  - Django Testing - I used Code Institute tutorials, the [Django Documentation](https://docs.djangoproject.com/en/3.1/topics/testing/tools/), and Django for Beginners book by William S. Vincent for learning about testing.
  - Django Testing Messages - I learned from and adjusted examples from [this page on Program Creek](https://www.programcreek.com/python/example/92511/django.contrib.messages.get_messages)
+ - Testing 500 error - I used the raise Exception method from the second answer on this [Stack Overflow question](https://stackoverflow.com/questions/24660406/how-can-i-trigger-a-500-error-in-django) to create a view to test for this error.
  
 ### Content
 

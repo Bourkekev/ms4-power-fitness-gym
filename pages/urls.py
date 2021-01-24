@@ -24,4 +24,6 @@ urlpatterns = [
     path('cancellation-policy/', CancellationPolicy.as_view(),
          name='cancellation-policy'),
     path('image-credits/', ImageCredits.as_view(), name='image-credits'),
+    path('test_500/', views.error_500_view, name='error-500'),
+
 ]
