@@ -96,11 +96,11 @@
                     Delete This Review
                 </button>
                 <!-- Delete Review Modal -->
-                <div class="modal fade" id="deleteReview-{{ review.id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteReview-{{ review.id }}" tabindex="-1" aria-labelledby="deleteLabel-{{ review.id }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title text-danger font-weight-bold" id="deleteLabel">Warning! This will delete this review!</h5>
+                                <h3 class="modal-title text-danger font-weight-bold" id="deleteLabel-{{ review.id }}">Warning! This will delete this review!</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
