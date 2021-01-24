@@ -526,6 +526,14 @@ p.hero-text {
 .opening-times {
     font-weight: 400;
 }
+.map-iframe {
+    border: 0;
+    width: 100%;
+    height: 370px;
+}
+.map-iframe.contact {
+    height: 445px;
+}
 /* Products */
 .product-col {
     display: -webkit-box;

@@ -28,7 +28,7 @@
                             <h2 class="card-title text-white">{{ product.name }}</h2>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">
+                            <div class="card-text">
                                 {{ product.description }}<br>
                                 <div class="border-bottom py-2">
                                     <strong>Signed up on:</strong> {{ subscription.created|timestamp_to_time|date:"d M, Y" }}
@@ -37,7 +37,7 @@
                                     <strong>Your membership renews on:</strong> {{ subscription.current_period_end|timestamp_to_time|date:"d M, Y" }}
                                 </div>
                                 Subscription ID: <span id="sub-id">{{ subscrip_id }}</span><br>
-                            </p>
+                            </div>
                         </div>
                         <div class="card-footer text-center">
                             {% if product.name == "Gold Plan" %}
@@ -61,13 +61,13 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title text-danger font-weight-bold" id="cancelLabel">Warning! This will cancel your membership!</h5>
+                                    <h3 class="modal-title text-danger font-weight-bold" id="cancelLabel">Warning! This will cancel your membership!</h3>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Are you sure you want to cancel your membership with <strong>Subscription ID: <span id="sub-id">{{ subscrip_id }}</span></strong>? This action cannot be undone.</p>
+                                    <p>Are you sure you want to cancel your membership with <strong>Subscription ID: <span id="sub-id-cancel">{{ subscrip_id }}</span></strong>? This action cannot be undone.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Do not cancel</button>
@@ -81,7 +81,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title text-danger font-weight-bold" id="upgradeLabel">Warning! This will upgrade your membership!</h5>
+                                    <h3 class="modal-title text-danger font-weight-bold" id="upgradeLabel">Warning! This will upgrade your membership!</h3>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

@@ -9,15 +9,15 @@
 
 {% block content %}
 <div class="container my-5">
-    <div class="row">
-        <div class="col">
+    <div class="row mb-4">
+        <div class="col-12 col-sm-8 offset-sm-2">
             <p>Back to <a href="{% url 'news_list' %}">All News</a></p>
         </div>
     </div>
     <div class="row">
-        <div class="col article-entry">
+        <div class="col-12 col-sm-8 offset-sm-2 article-entry">
             <h1>Editing {{ object.title }}</h1>
-            <form action="" method="POST">
+            <form action="{% url 'news_post_edit' object.id %}" method="POST">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-center">

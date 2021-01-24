@@ -18,8 +18,6 @@ class ProductForm(forms.ModelForm):
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
         # Use friendly names for cats
         self.fields['category'].choices = friendly_names
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'product-fields'
 
 
 class ReviewForm(forms.ModelForm):
