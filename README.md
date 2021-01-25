@@ -192,6 +192,8 @@ An important part of UX is making sure users cannot cause errors, and that they 
  - A custom '403 Forbidden' page.
  - A server '500' error should use the template '500.html' in the root template directory, as per the [Django Documentation](https://docs.djangoproject.com/en/3.1/ref/views/#the-500-server-error-view). It is difficult to test this particular error, as a HttpResponse of status 500 still just shows a blank page. So I was only able to test this manually by creating a view that raises an Exception (in pages app) and a url, and then visiting the url `/test_500/`. This can only be tested on a development envioronment if DEBUG is 'True', so changing DEBUG to be 'True' in the settings.py file is required to test locally.
 
+[Back to Table of Contents](#table-of-contents)
+
 ## Technologies Used
 
 ### Languages and Frameworks
@@ -220,6 +222,7 @@ An important part of UX is making sure users cannot cause errors, and that they 
 8. [Gloomaps](https://www.gloomaps.com/) - For creating my sitemap.
 9. [ngrok](https://ngrok.com/product) - For testing Stripe webhooks when working locally
 
+[Back to Table of Contents](#table-of-contents)
 
 ## Features
  
@@ -250,16 +253,18 @@ An important part of UX is making sure users cannot cause errors, and that they 
 
 
 
-#### Minor Features
+### Minor Features
 
-##### Back to top (of page) button
+<strong> Back to top (of page) button</strong>
 
 Expand the sections below for more info on details:
 
 <details>
   <summary><strong>Responsive images</strong></summary>
 
+When using the `<img>` tag, to allow me to use different size images for mobile I used the <picture> element with different sources for different screen widths. Otherwise CSS background images were optimised for different screen sizes and changed with media queries where appropriate.
 
+The Products only have one image size, as they are uploaded by the user, but have been optimised and they are not very large, averaging only about 39kb per image.
 
 </details>
 
@@ -283,10 +288,16 @@ Expand the sections below for more info on details:
  - Make it so only users with an active membership can post messages on the community board.
  - Count the number of items in the shopping bag and display small number on the bag icon.
  - Use slugs instead of ids in news posts urls.
+ - Have an option for adding another Product image size for mobile, or finding a solution for auto creating additional image sizes and saving in the database model for use in a view or template.
+ - Have an option when users cancel a membership, to get a refund or wait until the end of the billing period before their access gets cancelled.
+
+[Back to Table of Contents](#table-of-contents)
 
 ## Testing and Issues
 
 For detail on all my testing and issues I had to overcome see the [Testing Document](TESTING.md).
+
+[Back to Table of Contents](#table-of-contents)
 
 # Deployment
 
@@ -502,6 +513,8 @@ $ heroku ps:scale web=1
 ```
 
 You should be able to open the app now, or you might need to Restart all Dynos under the 'More' button on the top right in Heroku.
+
+[Back to Table of Contents](#table-of-contents)
 
 ## Credits and References
 
