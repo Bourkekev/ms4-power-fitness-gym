@@ -111,6 +111,16 @@ Trying to checkout with an empty basket is tested and checks that the checkout v
 
 The tests for the bag app include checking the status response and template, testing adding a Test Product to the bag and check the messages returned matches the expected message, testing updating the quantity of an item and deleting an item. This does not yet include testing different sizes.
 
+### Google Lighthouse Testing
+
+I tested the Heroku deployed site with Lighthouse and got the following scores on desktop:
+
+![Lighthouse Report](README_resources/google-lighthouse-desktop-report.png)
+
+The Perfomance and Best Practices drop to 70 and 86 respectively for mobile, yet the Accessibility increased to 96:
+
+![Lighthouse Report](README_resources/google-lighthouse-mobile-report.png)
+
 ## Manual Testing
 
 ### Testing Save info in webhook handler
