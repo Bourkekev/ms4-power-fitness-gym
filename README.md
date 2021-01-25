@@ -12,6 +12,33 @@ Gym staff members (with the appropriate access) can add, edit and delete product
 
 The live deployed site can be found here - https://power-fitness.herokuapp.com/
 
+## Table of Contents
+
+1. [Research](#research)
+2. [UX](#ux)
+   -  [User Stories](#user-stories)
+   -  [Strategy](#strategy)
+   -  [Scope](#scope)
+   -  [Structure](#structure)
+   -  [Skeleton](#skeleton)
+   -  [Surface](#surface)
+   -  [Stripe Checkout Functionality](#stripe-checkout-functionality)
+   -  [Database Schema](#database-schema)
+   -  [Defensive Design](#defensive-design)
+3. [Technologies Used](#technologies-used)
+   - [Languages and Frameworks](#languages-and-frameworks)
+   - [Tools Used](#tools-used)
+4. [Features](#features)
+   - [Existing Features](#existing-features)
+   - [Future Features](#features-to-consider-implementing-in-the-future)
+5. [Testing and Issues](#testing-and-issues)
+   - Testing and Issues are documented on the [Testing Document](TESTING.md)
+6. [Deployment](#deployment)
+   - [Requirements](#requirements)
+   - [Local Deployment](#local-deployment)
+   - [Deployment to Heroku](#deployment-to-heroku)
+7. [Credits and References](#credits-and-references)
+
 ## Research
 
 I researched numerous gym and eCommerce websites for inspiration for site structure, features and style. A list of the most relevant inspiring sites can be found at the bottom of this document [here](#Design-and-Research). 
