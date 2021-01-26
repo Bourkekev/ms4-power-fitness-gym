@@ -39,7 +39,7 @@ I used [WebAIM's](https://webaim.org/resources/contrastchecker/) contrast checke
 
 ## Automatic Testing
 
-I have written a number of tests to test the key functionality of each app. These can be run with the command:
+I have written a number of tests (87) to test the key functionality of each app. These can be run with the command:
 
 `python manage.py test`
 
@@ -67,9 +67,10 @@ Or a nicer way to browse a more detailed html version of the report is to run th
 
 This will create a folder in the project called 'htmlcov' which can be viewed in a browser, either by running `python3 -m http.server`, using your editor's Live Server extension and navigating to that folder in your project, or you could just find the htmlcov folder on your local computer filesystem and open the index.html file inside that folder.
 
-I have detailed some of the automatic tests that are run on each app below.
+I have detailed some of the automatic tests that are run on each app below. Expand the sections for more details.
 
-### Pages App
+<details>
+  <summary><strong>Pages App</strong></summary>
 
 As most of these pages are just displaying content from a template, most tests are just to test that the pages load ok, or return a status code of 200.
 
@@ -77,17 +78,10 @@ There is a test for the homepage to test that the homepage uses the class HomePa
 
 The contact page has additional tests to test the form. There is a test to check that the contact page is using the ContactUsForm, and then 2 tests which test the form validation for blank fields, and submitting the form when required fields are filled in.
 
-### News App
+</details>
 
-The tests for the news app test creating a new news post. There is some set up for the tests, a test user and a test post are created, and the tests check for the new post content, status code 200 and correct template for the news listings and news post detail page. There is a test for a 404 response from a non-existing news post.
-
-### Community App
-
-The tests for the message board checks the status code of the page, that the /community/ url uses the correct view and that the Community Topics page contains an add_topic link. 
-
-Then it tests creating a new news post. There is some set up for the tests, a test user and a test topic and post are created, and the tests check for the new post content, author and that the community_topics view returns status 200, checks it contains the test content, and uses the correct template.
-
-### Products App
+<details>
+  <summary><strong>Products App</strong></summary>
 
 The tests for the products, check that the product page loads with status code of 200, and uses the products template. 
 
@@ -95,21 +89,57 @@ There are tests for the add products form. There is a test to check that the req
 
 There are tests for adding and editing reviews, making sure the user must be logged in to do that, and test that a user cannot edit other people's reviews.
 
-### Profile App
+</details>
+
+<details>
+  <summary><strong>Memberships App</strong></summary>
+
+The tests for the memberships tests that the membership dashboard returns the right status code and template when a user is logged in.
+
+The success and cancel pages are tested for their status code.
+
+</details>
+
+<details>
+  <summary><strong>News App</strong></summary>
+
+The tests for the news app test creating a new news post. There is some set up for the tests, a test user and a test post are created, and the tests check for the new post content, status code 200 and correct template for the news listings and news post detail page. There is a test for a 404 response from a non-existing news post.
+
+</details>
+
+<details>
+  <summary><strong>Community App</strong></summary>
+
+The tests for the message board checks the status code of the page, that the /community/ url uses the correct view and that the Community Topics page contains an add_topic link. 
+
+Then it tests creating a new news post. There is some set up for the tests, a test user and a test topic and post are created, and the tests check for the new post content, author and that the community_topics view returns status 200, checks it contains the test content, and uses the correct template.
+
+</details>
+
+<details>
+  <summary><strong>Profile App</strong></summary>
 
 Tests for the profile app sets up a test user, then tests the profile view, status code and template used. There is also a test to check the string method returned is correct.
 
 The EditUserProfile form is tested with a test user.
 
-### Checkout App
+</details>
+
+<details>
+  <summary><strong>Checkout App</strong></summary>
 
 For the Checkout tests a test product is created, saved to the 'bag' session and then follows the checkout view to make sure the status code is 200 and the correct template is loaded.
 
 Trying to checkout with an empty basket is tested and checks that the checkout view redirect to products and has an error message of 'There's nothing in your bag at the moment.' as per the view.
 
-### Bag App
+</details>
+
+<details>
+  <summary><strong>Bag App</strong></summary>
 
 The tests for the bag app include checking the status response and template, testing adding a Test Product to the bag and check the messages returned matches the expected message, testing updating the quantity of an item and deleting an item. This does not yet include testing different sizes.
+
+</details>
 
 ### Google Lighthouse Testing
 
@@ -121,10 +151,28 @@ The Perfomance and Best Practices drop to 70 and 86 respectively for mobile, yet
 
 ![Lighthouse Report](README_resources/google-lighthouse-mobile-report.png)
 
-## Manual Testing
+## Manual Testing User Scenarios
+
+I also extensively manually tested all functionality of the site. The following steps can be used to test the site manually.
+
+### Register for an Account
+
+Users do not need to create an account to purchase products but there are other options to be tested for logged in users, so first register by clicking on Your Account in the top right. The register page is displayed. All fields are required, and forgetting to fill a field prompts you to check the field:
+
+![Fill in field](README_resources/testing/register-fill-in-field.png)
+
+Once registration is successfully submitted you will be notified that an email has been sent to you for verification. You can either click on the link (if your email client has automatically created a hyperlink) or copy the confirmation link and paste it into your browser. There you will be asked to confirm the email address. Clicking confirm, confirms the address and you can now login with the Username and Passsword you just created.
+
+Users are also given the option to register or login upon checkout if they are not currently logged in.
+
+![Register on checkout](README_resources/testing/register-on-checkout.png)
+
+### Purchasing Products
+
+
 
 ### Testing Save info in webhook handler
-I commented out the form.submit() action in the stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details has been updated too.
+I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
 
 ## Issues I had to overcome
 

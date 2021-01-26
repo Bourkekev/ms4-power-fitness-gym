@@ -203,13 +203,12 @@ An important part of UX is making sure users cannot cause errors, and that they 
 4. Python
 5. [Django Framework](https://docs.djangoproject.com/en/3.1/)
 6. [PostgreSQL Database](https://www.postgresql.org/)
-7. [Heroku hosting platform](https://heroku.com)
-8. [Bootstrap Framework](https://getbootstrap.com/)
-9. [Font Awesome](https://fontawesome.com/)
-11. Google Fonts
-12. [JQuery](https://jquery.com) - The project uses **JQuery** to simplify DOM manipulation, and animation of certain elements.
-13. [RealFaviconGenerator](https://realfavicongenerator.net/) - to quickly generate favicons for all browsers.
-    
+7. [Bootstrap Framework](https://getbootstrap.com/)
+8. [Font Awesome](https://fontawesome.com/)
+9.  Google Fonts
+10. [JQuery](https://jquery.com) - The project uses **JQuery** to simplify DOM manipulation, and animation of certain elements.
+11. [RealFaviconGenerator](https://realfavicongenerator.net/) - to quickly generate favicons for all browsers.
+
 
 ### Tools Used
 1. [VS Code](https://code.visualstudio.com/) and [Brackets](http://brackets.io/) code editors.
@@ -220,7 +219,10 @@ An important part of UX is making sure users cannot cause errors, and that they 
 6. [TinyPNG](https://tinypng.com/) - To keep transparent png sizes to a minimum I used the online png compressing service [TinyPNG](https://tinypng.com/), as well as the desktop application.
 7. [Coolor](https://coolors.co/) - Used top help determine the colour scheme.
 8. [Gloomaps](https://www.gloomaps.com/) - For creating my sitemap.
-9. [ngrok](https://ngrok.com/product) - For testing Stripe webhooks when working locally
+9. [QuickDBD](https://www.quickdatabasediagrams.com/) - Used to create the database schema/diagram.
+10. [ngrok](https://ngrok.com/product) - For testing Stripe webhooks when working locally
+11. [AWS](https://aws.amazon.com/) - An AWS Bucket was used to store static files and medis files.
+12. [Heroku](https://heroku.com/) - The site was deployed to Heroku.
 
 [Back to Table of Contents](#table-of-contents)
 
