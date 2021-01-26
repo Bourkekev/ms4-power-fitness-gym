@@ -230,28 +230,39 @@ An important part of UX is making sure users cannot cause errors, and that they 
 
 #### The ability to browse/search by product categories that are on the website.
 
-
+#### See product details, prices, image and available sizes, and add product to the shopping bag.
 
 #### The ability to search Products by text keyword. 
 
+#### The ability to search for Products that are on sale. 
 
-#### Users can register a profile on the site.
+#### Users can easily view total in the shopping bag.
 
+#### Users can easily edit their shopping bag.
 
+#### Users can make secure payments.
 
-#### Users can login and logout of the site.
+#### Users can view their order history.
 
-#### When logged in users get addition options in the navigation.
+#### Users can register a profile on the site, log in and out easily, and save default delivery information.
 
+#### Users can leave a review of products.
 
+#### When logged in users get addition options under 'Your Account' in the header to do with their account options. Staff users get additional options such as create a new product.
 
+#### Users can sign up for a monthly membership plan for the gym. They have a choice between 2 plans, with the Platinum plan giving them more content on their membership page such as Workout Plans.
 
-#### Logged in users can change their password.
+#### Users can easily upgrade or cancel their membership subscription.
 
-#### Logged in users can manage categories (but not ).
+#### Users can be part of the gym community, create discussion topics and post replies to other users. They can also edit and delete their own messages.
 
+#### Staff Users can add, edit or delete products.
 
+#### Staff Users can put products on sale with a sale price.
 
+#### Staff Users can mark products as best sellers.
+
+#### Staff Users can post news updates, and edit and delete their posts.
 
 ### Minor Features
 
@@ -280,7 +291,6 @@ The Products only have one image size, as they are uploaded by the user, but hav
 
  - Allow products to be tagged within multiple categories.
  - Allow staff to unpublish a product rather than just deleting it. It is already possible to do this on the news posts.
- - Generate thumbnail images for use in shopping bag to prevent loading full size images.
  - When a user is reviewing, allow them to rate product by a number of stars, and average all the stars on a product for overall rating.
  - Add a wysiwyg editor (like summernote) for news posts and product descriptions.
  - Send users who start a topic notifications of a reply.
@@ -288,8 +298,11 @@ The Products only have one image size, as they are uploaded by the user, but hav
  - Make it so only users with an active membership can post messages on the community board.
  - Count the number of items in the shopping bag and display small number on the bag icon.
  - Use slugs instead of ids in news posts urls.
+ - Generate thumbnail images for use in shopping bag to prevent loading full size images.
  - Have an option for adding another Product image size for mobile, or finding a solution for auto creating additional image sizes and saving in the database model for use in a view or template.
  - Have an option when users cancel a membership, to get a refund or wait until the end of the billing period before their access gets cancelled.
+ - Create a better way of ordering best seller marked products.
+ - Put the items ordered into the email the user receives.
 
 [Back to Table of Contents](#table-of-contents)
 
