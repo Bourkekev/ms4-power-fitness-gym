@@ -169,7 +169,54 @@ Users are also given the option to register or login upon checkout if they are n
 
 ### Purchasing Products
 
+Click on Products > All Products in the navigation menu. Different categories can be filtered for by selecting them in the dropdown.
 
+From the list of products click 'View Detail' button on a product. This goes to the product detail page. Click 'Add to bag' to put the item in the shopping bag. Repeat this for another product that has sizes (clothing or footwear), but also select the size and set quantity to a higher number like 3. Now the product and their quantity are in the bag.
+
+Click 'Edit bag' in the notification, or click the bag icon to be taken to the shopping bag page.
+
+![Edit bag](README_resources/testing/edit-bag.png)
+
+On the shopping bag page, increase or decrease the quantity and press 'Update' to change the item's quantity.
+
+![change qty](README_resources/testing/bag-qty.png)
+
+A notification shows the change in the bag.
+
+On one of the products click the Delete/Trashcan icon. The product will be removed from the bag. 
+
+Now click on 'Secure Checkout'. This goes to the checkout page, where you can enter your name and delivery details. Your user email address is already in place. Make sure the 'Save delivery information to profile' box is checked.
+
+The site does not take real payments so we need to use a test stripe card for the credit card details.
+
+Use '4242 4242 4242 4242' for the card number, any future date, any 3 numbers for CVC and any 5 numbers for ZIP:
+
+![credit card](README_resources/testing/credit-card-details.png)
+
+Click on 'Complete Order' button. The order will be processed and you will be presented with the confimation page. An email will be sent with the order information.
+
+### Check your profile
+
+To check your order history and default delivery information go to 'Your Account' > 'Your Profile' from the top navigation bar. The delivery information has been saved and the order is now in the Order History. Click the order number to view the order details again.
+
+![profile order history](README_resources/testing/profile-orders.png)
+
+### Add and Edit a Product review
+
+Now that you have a user profile you can leave a review of a product. Go to any product's detail page and below the product information click 'Review this product' button. You are taken to a page with a simple form for leaving a review, where you can leave a review title and the review itself. Click 'Add Review' and the review will be added to the product. Now when you look below the Reviews you will see your new review:
+
+![review](README_resources/testing/review.png)
+
+#### Edit a review
+As you may have numerous reviews and instead of having to search each individual product for your reviews, you can see all your reviews under your profile. Go to 'Your Account' > 'Your Profile' from the top navigation bar. Below your information and order history you will see your product reviews. It shows the review title and product it reviews. You can click the product name to go to that product, or click the 'Edit your review' button or 'Delete This Review' button to edit or delete the review.
+
+![your reviews](README_resources/testing/profile-reviews.png)
+
+### Try to edit another User's review
+
+When you go to edit your review, you can see in the address bar the id of the review, like `/products/edit_review/5/`. A savy user might try to edit a different review by changing the number here. Change this number in the address bar to 1, so it reads `/products/edit_review/1/` and hit enter. You will be returned to the profile page with the error notification 'You cannot edit other people's reviews' popping up.
+
+![other review error](README_resources/testing/other-review-error.png)
 
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
@@ -209,3 +256,9 @@ I have news posts in my project, and I had it all working (CRUD), but I wanted t
 
 ### Getting jQuery to work in the Django Admin
 I wanted to add JavaScript to the Django admin so I could hide the shoe or clothing sizes options depending on the category selected in the add product page. Following 1 article [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false) and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects), showed how to load the JavaScript file, and it was loading because I could get a console.log to show on the page. But it would not select the element and instead was showing an `Uncaught TypeError: $ is not a function`. It seemed that jQuery was not loaded before my script file. I wanted to use jQuery because I had used it quite simply on the front-end Add Product page, and did not want to have to re-write the same in native JavaScript. So I finally found something that worked, this [Stack Overflow question](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message) showed how to not fire your JavaScript until Django's jQuery was defined.
+
+## Oustanding Bugs
+
+### Bag items show in toast notification when logging in
+
+If you have an item in the bag when you are doing something that sends another success message, like logging in or editing a product, the notification toast shows the contents of the bag as well as the success message. I would prefer the bag does not show when these type of events occur.
