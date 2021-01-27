@@ -302,6 +302,7 @@ The Products only have one image size, as they are uploaded by the user, but hav
  - Use slugs instead of ids in news posts urls.
  - Generate thumbnail images for use in shopping bag to prevent loading full size images.
  - Have an option for adding another Product image size for mobile, or finding a solution for auto creating additional image sizes and saving in the database model for use in a view or template.
+ - Have an option for a user to downgrade their membership from Platinum to Gold.
  - Have an option when users cancel a membership, to get a refund or wait until the end of the billing period before their access gets cancelled.
  - Create a better way of ordering best seller marked products.
  - Put the items ordered into the email the user receives.
@@ -311,7 +312,7 @@ The Products only have one image size, as they are uploaded by the user, but hav
 
 ## Testing and Issues
 
-For detail on all my testing and issues I had to overcome see the [Testing Document](TESTING.md).
+For detail on how to test this web app, detail on all my manual and automated testing, and issues I had to overcome see the [Testing Document](TESTING.md).
 
 [Back to Table of Contents](#table-of-contents)
 

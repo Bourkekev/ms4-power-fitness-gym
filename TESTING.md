@@ -254,6 +254,46 @@ If you try to edit or delete a non existing message id, there will be a 404 page
 
 From the community page (where you can see all the topics), it is possible to start a new topic by clicking 'Add new topic' button. You are then presented with a page with a form for adding your topic subject and also the first message for the topic.
 
+### Signing up for a Membership subscription
+
+The point of the membership subscription section is to allow users to subscribe to one of 2 gym memberships, Gold or Platinum. Then the user can have access to the gym, and if they choose the Platinum membership they will get more benefits like workout and nutrition plans. Obviously the gym would need to be a physical location and there would need to be administration done on the gym's side to allow a new user access to such a location, but this site provides a mechanism for users to sign up online and monthly payments to the gym would be handled by Stripe.
+
+Click Memberships in the navigation menu, and you are brought to a public page with the details of both available membership plans. To actually subscribe to a membership a user must be registered. Click the 'Become a Member' button. 
+
+![Become member](README_resources/testing/become-member.png)
+
+If you are not registered you will be asked to sign in or register. Once logged, click the 'Become a Member' button or under 'Your Account' click 'View Membership' and you are brought to a page that shows membership details if you have already subscribed, or the 2 options to subscribe to if you have no current membership.
+
+Click on the 'Subscribe' button within the Gold Membership option.
+
+![subscribe](README_resources/testing/membership-subscribe.png)
+
+You are brought to a Stripe payment page, which shows the cost per month and card fields needed to subscribe. Fill in the fields with your email, test credit card details, again use '4242 4242 4242 4242' for the card number, any future date, any 3 numbers for CVC.
+
+![subscribe payment](README_resources/testing/stripe-subscribe-page.png)
+
+Click the 'Subscribe' button. After a few moments you will be returned to the Power Fitness website, where your should see your subscription was successful.
+
+![membership successful](README_resources/testing/membership-successful.png)
+
+Clicking on the 'Return to membership dashboard' link will return to the membership page but now you can see the details of the plan you just signed up for, including the date you signed up and the next renewal date.
+
+![active gold plan](README_resources/testing/active-gold-plan.png)
+
+#### Upgrade your membership
+
+When on a Gold Plan there is an option to Upgrade to the Platinum Plan. Click on the green 'Upgrade' button. A pop-up warns of the changes to the plan, with an option to cancel. To upgrade, click the 'Upgrade Membership' button. You will be notified that the Upgrade was successful.
+
+Now when you return to the membership dashboard, the plan has changed to Platinum, and below the plan, there are workout and nutrition plans and a classes timetable available for download which are only available for Platinum members.
+
+![Platinum benefits](README_resources/testing/platinum-benefits.png)
+
+The documents for download here only contain dummy content for the purposes of illustration.
+
+#### Cancel your membership
+
+From the membership dashboard you can also cancel your plan and will no longer be charged the monthly fee. Click the red 'Cancel' button in the plan details to cancel it. A pop-up warns of the cancellation to the plan, with an option to Not Cancel. To cancel, click the 'Cancel Membership' button. You will be notified that your membership was cancelled.
+
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
 
