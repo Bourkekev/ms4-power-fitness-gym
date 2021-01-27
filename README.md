@@ -4,7 +4,7 @@
 
 Power Fitness Gym is a website where users can search for and purchase fitness products via text search or categories. Users can create an account to save delivery information for future use, review their orders and logged in users are also able to leave reviews on products.
 
-A user can also subscribe to one of 2 gym memberships, Gold and Platinum. Then the user can have access to the gym, and if they choose the Platinum membership they will get more benefits like workout and nutrition plans. In real world use, there would need to be some administration done on the gym's side, such as organising a key card for new members, creating and updating workout and nutrition plans, as well as the classes timetable.
+A user can also subscribe to one of 2 gym memberships, Gold and Platinum. Then the user can have access to the gym, and if they choose the Platinum membership they will get more benefits like workout and nutrition plans. In real world use, there would need to be some administration done on the gym's side, such as organising a key card for new members, creating and updating workout and nutrition plans, as well as the classes timetable. This site provides a mechanism for users to sign up online and monthly payments to the gym would be handled by Stripe.
 
 Logged in users can also post short messages on a community message board, where they can post a topic for conversation and can respond to other users queries.
 
@@ -305,6 +305,7 @@ The Products only have one image size, as they are uploaded by the user, but hav
  - Have an option when users cancel a membership, to get a refund or wait until the end of the billing period before their access gets cancelled.
  - Create a better way of ordering best seller marked products.
  - Put the items ordered into the email the user receives.
+ - Pagination on the Message Board and Products page, so the pages are not too long if the number of Topics, Messages and Products increases substantially.
 
 [Back to Table of Contents](#table-of-contents)
 

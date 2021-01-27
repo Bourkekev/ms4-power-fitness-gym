@@ -201,6 +201,8 @@ To check your order history and default delivery information go to 'Your Account
 
 ![profile order history](README_resources/testing/profile-orders.png)
 
+You can also change some details on the delivery information and click 'Update Information' and the new information will be saved to your profile.
+
 ### Add and Edit a Product review
 
 Now that you have a user profile you can leave a review of a product. Go to any product's detail page and below the product information click 'Review this product' button. You are taken to a page with a simple form for leaving a review, where you can leave a review title and the review itself. Click 'Add Review' and the review will be added to the product. Now when you look below the Reviews you will see your new review:
@@ -212,11 +214,45 @@ As you may have numerous reviews and instead of having to search each individual
 
 ![your reviews](README_resources/testing/profile-reviews.png)
 
-### Try to edit another User's review
+#### Try to edit another User's review
 
-When you go to edit your review, you can see in the address bar the id of the review, like `/products/edit_review/5/`. A savy user might try to edit a different review by changing the number here. Change this number in the address bar to 1, so it reads `/products/edit_review/1/` and hit enter. You will be returned to the profile page with the error notification 'You cannot edit other people's reviews' popping up.
+When you go to edit your review, you can see in the address bar the id of the review, like `/products/edit_review/5/`. A savy user might try to edit a different review by changing the number here. I know review 1 belongs to a different user. Change this number in the address bar to 1, so it reads `/products/edit_review/1/` and hit enter. You will be returned to the profile page with the error notification 'You cannot edit other people's reviews' popping up.
 
 ![other review error](README_resources/testing/other-review-error.png)
+
+The same thing will happen if you try to delete another user's review in a similar fashion. When you click 'Delete' there is a pop-up warning you are about to delete this review. Hovering over the pop-up 'Delete' button allows you to see and copy (right-click and Copy link address) the url for the deletion of a review. It will be like `https://power-fitness.herokuapp.com/products/delete_review/5/`. If you paste this into the address bar and change the `/5/` to `/1/` and hit enter, you are returned to the profile page with the notification "You cannot delete other people's reviews!".
+
+If you try to edit or delete a non existing review id, there will be a 404 page not found.
+
+### Posting Messages in Community
+
+The community section allows logged in users to post Topics and Messages to the message board. Click on Community in the navigation menu. You are brought to the topics overview, where you can see a list of topics, who started them, the number of messages in a topic and the date and time of the last message.
+
+![Message board](README_resources/testing/message-board-click-topic.png)
+
+When viewing a topic's messages you can post a reply. Click the large 'Post a reply' button at the top of the messages list to add a message. On the reply page you can write in the message box at the top, and can also see the list of messages in the topic below for reference. Write a message and click 'Reply to Topic' button.
+
+![reply to topic](README_resources/testing/reply-to-topic.png)
+
+You are returned to the topic messages and your message appears at the bottom. You will notice that you have the option to Edit or Delete your message but not other user's messages:
+
+![](README_resources/testing/edit-delete-message.png)
+
+Deleting the message, will remove the message and a Success notification confirms this.
+
+#### Try to edit another User's message
+
+When you go to edit your message, you can see in the address bar the id of the topic and post, like `/topic/1/edit_post/21/`. Again, a savy user might think they can edit a different message by changing the number here. Change this number in the address bar to 1, so it reads `/topic/1/edit_post/1/` and hit enter. You will be returned to the topic page with the error notification 'This is not your post, you cannot edit it.' popping up.
+
+![other message error](README_resources/testing/not-your-post.png)
+
+The same thing will happen if you try to delete another user's message in a similar fashion, as was detailed under reviews above. 
+
+If you try to edit or delete a non existing message id, there will be a 404 page not found.
+
+#### Adding a new Topic
+
+From the community page (where you can see all the topics), it is possible to start a new topic by clicking 'Add new topic' button. You are then presented with a page with a form for adding your topic subject and also the first message for the topic.
 
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
@@ -262,3 +298,7 @@ I wanted to add JavaScript to the Django admin so I could hide the shoe or cloth
 ### Bag items show in toast notification when logging in
 
 If you have an item in the bag when you are doing something that sends another success message, like logging in or editing a product, the notification toast shows the contents of the bag as well as the success message. I would prefer the bag does not show when these type of events occur.
+
+### Adding an already existing Community Message Board Topic
+
+When adding a Community topic, if the topic exists, it will create another topic assigned to this user, but all messages from the first topic of the same name will appear here too. I tried adding a `unique=True` constraint to the MessageTopic model subject field but the migration would not work, and errored saying `UNIQUE constraint failed:`. So for now I have left this as it is as it does not error or fail, just duplicates the Topic.
