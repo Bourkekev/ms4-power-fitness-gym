@@ -19,7 +19,7 @@ I validated the rendered html of all pages with the [W3C Markup Validation Servi
  - On my custom product image upload widget there were duplicate ids on one input element. This was because the widget adds and id and class before rendering.
  - I had to remove a custom class that had been applied to the Product Form fields, as it was adding a second class attribute to the element.
  - On the add news page and edit news page I had forgotten to add an action value to the view. The form still worked probably because the same page's class based view handles GET and POST requests.
- - On the commity topic view I had to add a dynamic id (with `{{ message.id }}`) to the delete modal so there were no repeating IDs, and do change the aria-labelledby attribute.
+ - On the community topic view I had to add a dynamic id (with `{{ message.id }}`) to the delete modal so there were no repeating IDs, and do change the aria-labelledby attribute.
 
 #### HTML Issues not corrected yet
 
@@ -293,6 +293,32 @@ The documents for download here only contain dummy content for the purposes of i
 #### Cancel your membership
 
 From the membership dashboard you can also cancel your plan and will no longer be charged the monthly fee. Click the red 'Cancel' button in the plan details to cancel it. A pop-up warns of the cancellation to the plan, with an option to Not Cancel. To cancel, click the 'Cancel Membership' button. You will be notified that your membership was cancelled.
+
+### Test Contact Form
+
+Click Contact in the navigation menu. There is a form for submitting a message to the gym. Required fields are marked with *. If any of these fields are left blank the form will not be submitted and the user will get a message on the field "Please fill in this field."
+
+![contact form required](README_resources/testing/contact-required.png)
+
+With all required fields filled and using a real email address, click the 'Submit Message'. The form is submitted via ajax, and after a few seconds a notification appears on screen letting the user know their message has been submitted. The form fields are also cleared.
+
+![contact form submitted](README_resources/testing/contact-form-submitted.png)
+
+If you used a real email address you should also get an email thanking you for your submission. The site admin will also get an email notifying them of the submitted message, and the submissions are also stored in the back-end admin. See the [section below](#manage-contact-form-submissions) for how admin can manage submissions in the back-end.
+
+#### Test Contact Form without Javascript
+
+As the contact form submission relies on ajax, I also wanted a fall-back in case there were Javascript issues that prevent it from working. So the view will handle submissions if Javascript is not enabled. 
+
+This can be tested by disabling Javascript using [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) or a browser extension like Web Developer by Chris Pederick. Then navigate to the contact page again and submit the form. The page will reload and the form has been submitted. The same confirmation emails will be sent to the user and admin. The submission is also saved in the Django admin.
+
+### Front-end Staff Admin
+
+
+
+### Back-end Admin
+
+#### Manage Contact Form Submissions
 
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
