@@ -37,6 +37,28 @@ class NewsListView(ListView):
     paginate_by = 3
 
 
+class DraftNewsListView(AdminStaffRequiredMixin, ListView):
+    """
+    * Creates a page with a list view of draft News Posts
+
+    \n Arguments:
+    1. Djangos ListView
+
+    \n Attributes:
+    1. queryset: the set of database objects
+    2. The Model
+    3. template_name: template to be used
+    4. paginate_by: number of items to show before pagination
+
+    """
+    queryset = NewsPost.objects.filter(status=0)
+    model = NewsPost
+    template_name = 'news/news_drafts.html'
+    paginate_by = 3
+    permission_denied_message = 'Your access level does \
+        not allow you to view news drafts!'
+
+
 class NewsPostDetailView(DetailView):
     """
     * Creates a page for the detail of the News Post

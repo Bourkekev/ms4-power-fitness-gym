@@ -5,6 +5,7 @@ from .views import (
     NewsPostEditView,
     NewsPostDeleteView,
     NewsPostCreateView,
+    DraftNewsListView,
 )
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path('<int:pk>/', NewsPostDetailView.as_view(), name='news_post_detail'),
     path('new/', NewsPostCreateView.as_view(), name='news_post_create'),
     path('', NewsListView.as_view(), name='news_list'),
+    path('drafts/', DraftNewsListView.as_view(), name='news_drafts'),
 ]

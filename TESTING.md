@@ -354,7 +354,7 @@ From the new product's detail page, now click 'Delete Product'. A pop-up will ch
 
 #### Add a News Post
 
-When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Create News Post'.
+When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Create News Post'. This takes you to a page with a form for adding a new news post. Fill in the required fields and select the Status field as 'Draft'. Then click 'Add news post'
 
 
 ### Back-end Admin
@@ -364,52 +364,52 @@ When logged in as staff member, under 'Your Account' there are additional option
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
 
-## Issues I had to overcome
+# Issues I had to overcome
 
-### Allowing admin to set sizes
+## Allowing admin to set sizes
 I wanted the admin to be able to set different sizes on clothing and shoes, and the shoe sizes would be different from the clothing sizes. I tried using django's built in CharField choices, but this only allowed you select 1 from a dropdown list, where I needed to be able to set multiple sizes for a product. So I used the Django [MultiSelectField package](https://pypi.org/project/django-multiselectfield/). This allows the admin to select multiple options (set in the product model) in the form of checkboxes.
 
-### Getting multiple sizes to work in the bag app
+## Getting multiple sizes to work in the bag app
 I was able to get a single size attribute (e.g. shoe size) to be stored in the shopping bag session and listed in the bag page. But it proved more difficult to also get the clothing sizes to be stored. At first I tried just duplicating what I had done for the shoe sizes and checking for the clothing size. I had it that the bag app was assuming that if the item's dictionary value was not an integer, then look for the value of the shoe sizes or clothing size. But I was getting a KeyError for the clothing key. Finally I realised that the program was trying to get the shoe size and clothing size for all items, which of course is not possible. I needed to check which it was.
 
 So in the view, I had to check did shoe or clothing size exist in the POST object, check which one it was and then add (or increment) the item to the bag session. In the bag context file, I commented out the erroring code and worked out some simple if statements, so if the specific size key is in the bag item, print out what size is present and the value. I could see the dictionary that was being printed out and used [JSON Formatter](https://jsonformatter.org/) to view the structure clearer. This helped me determine how to access the correct key, value pairs. Once that was working I could place the code for adding the items to the bag within the 'if key' structure.
 
-### Unable to get Stripe CLI to run
+## Unable to get Stripe CLI to run
 For testing locally, Stripe recommends using Stripe CLI for testing webhook responses. But following installation instructions for Windows the program would just not run on my computer. If I tried running the .exe file it would open and then just close immediately (both 32 bit and 64 bit). I tried running it from the terminal, command line, moving the .exe file in to my project folder, my virtual environment, but nothing worked and I was unable to use the 'stripe login' command. Luckily the Ngrok program did work for me and allowed me to test webhooks in local development, but I had to manually create webhooks in the Stripe dashboard for the url that ngrok provided for me.
 
-### Get return domain url for Stripe Subscriptions Checkout
+## Get return domain url for Stripe Subscriptions Checkout
 I tried to get the return domain_url from the create_checkout_session view using the build_absolute_uri method and splitting it, in order to not have to set the variable DOMAIN_URL in settings. This worked locally, but testing in the likes of Gitpod only returned http://locahost:8000/ probably because of a proxy server, so this is not likely to work in all situations. I decided to leave the DOMAIN_URL as a setting to be changed upon deployment and made a note about it under the deployment section in the readme file.
 
-### Sending different Subscription Plan Prices
+## Sending different Subscription Plan Prices
 When I got one Subscription Plan set up and working, I wanted to add another plan as an option for customers to sign up to. I obviously wanted to not have to repeat the code in the create_checkout_session view, which at that point was getting the Stripe Price Id from the settings. I wanted it to work so that the button clicked (on memberships page) would send the price to the view. 
 
 I tried using JavaScript's Fetch api and sending the price_id, gotten from button's data attribute, via Fetch's POST method to the view but this required a POST method in the create_checkout_session view. I set up an `if request.method == 'POST'` and was able to get the price_id sent from the button by JavaScript. But I then realised I could not get the data/variable from the POST request to the GET request. It would also have caused a problem with the @csrf_excempt decorator on the view, as it would now require a csrf token. 
 
 So I had to think then if I cannot do it server side, then maybe Javascript can work out the correct price_id before it is retrieved by the create_checkout_session. At first I was thinking I could put it in the url as a parameter and get it from the view. But then I was thinking about how views pass data to each other and could I pass the variable through the fetch url. After some research this [question on stack overflow](https://stackoverflow.com/questions/50983150/how-to-pass-a-variable-with-url-on-javascript-fetch-method) suggested that a variable can be passed with Fetch by using template literals (or back-ticks). So I just needed to adjust my create_checkout_session view and url to look for a price_id and use that as my stripe price_id. Once I had a different event listener for each button, this worked so depending on which button was clicked, the subscription price would be different.
 
-### The community message board Edit Post urls
+## The community message board Edit Post urls
 When viewing a topic I have the url as something like `/community/topic/1/`. THe number is the topic id. But to allow the user to edit a message they have already posted, I first tried with just the url as `edit_post/1/`. This allowed me to edit the message but then I could not return the user to that topic because the view_topic view required a topic id. Also the url was not consistent, as it did not have `community/topic/` in it. I did not know if I could even pass the topic id as well as the message id through the template tag.
 But through trial an error I figured out how to do that and was able to get my edit message url to look like `community/topic/1/edit_post/6/` and return the user to the topic page.
 
-### Delete News Post without needing the confirmation template
+## Delete News Post without needing the confirmation template
 When using class based views for the news section I wanted to delete a post without needing the default _confirm_delete template, so it would match with how other items on the site are deleted, with a pop-up warning. - This post on [stackoverflow](https://stackoverflow.com/questions/17475324/django-deleteview-without-confirmation-template) helped me understand how to skip the _confirm_delete template when using DeleteView in a class based view.
 
-### Using slugs instead of ids in news posts urls
+## Using slugs instead of ids in news posts urls
 I have news posts in my project, and I had it all working (CRUD), but I wanted to change the url to use a slug based on the page title instead of just an id like /news/1/, as having numbers in a url is very dated. I had auto generation of the slug from the title working and could view the news post using the slug, but for some reason when I went to create a new post (front-end) I got a 404 page not found error, even though the slug url was only used when viewing the post detail. The id or slug is not passed to the NewsPostCreateView so I don't know why that happens. If I change the url for the NewsPostDetailView view to use <int:pk> instead of <slug:slug>, everything works fine. But for some reason the slug affects the NewsPostCreateView. There were no other errors in the terminal and I was unable to find an answer for this in a reasonable time, so due to time constraints had to move on so have just reverted to use the <int:pk>. I have left the slug field in the model in case I have time to revisit this again later.
 
-### Getting jQuery to work in the Django Admin
+## Getting jQuery to work in the Django Admin
 I wanted to add JavaScript to the Django admin so I could hide the shoe or clothing sizes options depending on the category selected in the add product page. Following 1 article [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false) and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects), showed how to load the JavaScript file, and it was loading because I could get a console.log to show on the page. But it would not select the element and instead was showing an `Uncaught TypeError: $ is not a function`. It seemed that jQuery was not loaded before my script file. I wanted to use jQuery because I had used it quite simply on the front-end Add Product page, and did not want to have to re-write the same in native JavaScript. So I finally found something that worked, this [Stack Overflow question](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message) showed how to not fire your JavaScript until Django's jQuery was defined.
 
-### Allowing Staff Access to Class based views
+## Allowing Staff Access to Class based views
 
 When testing if a staff user (non-admin) can create, edit or delete news posts, I discovered that I was getting the 403 Forbidden message. I had been testing these News class based views using my full admin super user previously and had the permission required to do so. I had just been using the `PermissionRequiredMixin` with `permission_required = 'user.is_staff'`, but this did not actually work for staff users. From this [Stack Overflow article](https://stackoverflow.com/questions/51284583/authentication-for-class-based-views-in-django) I learned a way to make your own mixin to test for is_staff, and using that on the required views.
 
-## Oustanding Bugs
+# Oustanding Bugs
 
-### Bag items show in toast notification when logging in
+## Bag items show in toast notification when logging in
 
 If you have an item in the bag when you are doing something that sends another success message, like logging in or editing a product, the notification toast shows the contents of the bag as well as the success message. I would prefer the bag does not show when these type of events occur.
 
-### Adding an already existing Community Message Board Topic
+## Adding an already existing Community Message Board Topic
 
 When adding a Community topic, if the topic exists, it will create another topic assigned to this user, but all messages from the first topic of the same name will appear here too. I tried adding a `unique=True` constraint to the MessageTopic model subject field but the migration would not work, and errored saying `UNIQUE constraint failed:`. So for now I have left this as it is as it does not error or fail, just duplicates the Topic.

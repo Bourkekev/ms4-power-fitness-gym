@@ -11,8 +11,12 @@
     <div class="container-fluid dark-overlay page-title-panel mb-5">
         <div class="row text-center content-section w-lg-75 mx-auto text-white">
             <div class="col-12">
-                <h1>Latest News</h1>
-                <p>Keep up to date with Power Fitness Gym news by checking back regularly.</p>
+                <h1>Latest News Drafts</h1>
+                {% if object_list|length > 0 %}
+                    <h4>There {% if object_list|length > 1 %}are{% else%}is{% endif %} {{object_list|length}} draft{% if object_list|length > 1 %}s.{% else%}.{% endif %}</h4>
+                {% else %}
+                    <p>There are currently no drafts.</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -22,24 +26,28 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-9">
-            {% for post in object_list %}
-                <div class="card mb-4 border border-secondary">
-                    <div class="card-header text-white bg-secondary">
-                        <i class="far fa-user-circle"></i>
-                        <span>{{ post.author }} on <i class="far fa-calendar-alt ml-4"></i> {{ post.created_on}}</span>
-                    </div>
-                    <div class="card-body">
-                        <h2 class="article-title"><a href="{% url 'news_post_detail' post.pk %}">{{ post.title }}</a></h2>
-                        <p>{{ post.body | truncatewords:50 }}</p>
-                        <a href="{% url 'news_post_detail' post.pk %}" class="btn btn-primary">Read more <i class="fas fa-chevron-circle-right"></i></a>
-                    </div>
-                    {% if request.user.is_staff %}
-                        <div class="card-footer text-muted">
-                            <a href="{% url 'news_post_edit' post.pk %}" class="btn btn-outline-primary">Edit</a>
+            {% if object_list|length > 0 %}
+                {% for post in object_list %}
+                    <div class="card mb-4 border border-secondary">
+                        <div class="card-header text-white bg-secondary">
+                            <i class="far fa-user-circle"></i>
+                            <span>{{ post.author }} on <i class="far fa-calendar-alt ml-4"></i> {{ post.created_on}}</span>
                         </div>
-                    {% endif %}
-                </div>
-            {% endfor %}
+                        <div class="card-body">
+                            <h2 class="article-title"><a href="{% url 'news_post_detail' post.pk %}">{{ post.title }}</a></h2>
+                            <p>{{ post.body | truncatewords:50 }}</p>
+                            <a href="{% url 'news_post_detail' post.pk %}" class="btn btn-primary">Read more <i class="fas fa-chevron-circle-right"></i></a>
+                        </div>
+                        {% if request.user.is_staff %}
+                            <div class="card-footer text-muted">
+                                <a href="{% url 'news_post_edit' post.pk %}" class="btn btn-outline-primary">Edit</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>There are currently no news drafts.</p>
+            {% endif %}
             <!-- Pagination links -->
             {% if is_paginated %}
                 <nav aria-label="Page navigation container">
