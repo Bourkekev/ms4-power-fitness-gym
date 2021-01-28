@@ -326,7 +326,36 @@ The following test staff user can be used to test this:
 
 #### Add a Product
 
-When logged in as staff member, now
+When logged in as staff member, now under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Add a Product'.
+
+![staff menu items](README_resources/testing/staff-menu-items.png)
+
+This takes you to a page with a form for adding a new product. The first field is the Category for the product to go into. Note here that selecting 'Clothing' or 'Footwear' will display Clothing Sizes or Shoes Sizes at the bottom of the form.
+
+![Category select and sizes](README_resources/testing/category-sizes.png)
+
+If a different category is selected then there are no size options. You can also see that only Name, Description and Price are required and are denoted by the *. Fill in all the fields including the Sale Price (lower than the price typically) and select an image for the product image. Click the 'Add Product' button at the bottom. The product will be added and you are taken to the new product's details page.
+
+![New product detail](README_resources/testing/new-product-detail.png)
+
+If you added a sale price you will see the original price is greyed and struck out, and the sale price highlighted with a yellow background. Because you are logged in as staff there are also options for editing and deleting this product.
+
+#### Edit a Product
+
+Click the 'Edit Product' button, and make changes to the new product. In this example I will switch the category to footwear and add available sizes. Now click 'Update Product'. Now the changes are visible on the product detail page, along with the new Select Shoe Size options.
+
+![Product edited](README_resources/testing/product-edited.png)
+
+#### Delete a Product
+
+From the new product's detail page, now click 'Delete Product'. A pop-up will checks that you do in fact want to delete this product. Click 'Delete' and the product will be deleted, and you will be returned to the products page and notified that this was successful.
+
+![delete product](README_resources/testing/delete-product.png)
+
+#### Add a News Post
+
+When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Create News Post'.
+
 
 ### Back-end Admin
 
@@ -370,6 +399,10 @@ I have news posts in my project, and I had it all working (CRUD), but I wanted t
 
 ### Getting jQuery to work in the Django Admin
 I wanted to add JavaScript to the Django admin so I could hide the shoe or clothing sizes options depending on the category selected in the add product page. Following 1 article [here](https://stackoverflow.com/questions/15978719/django-admin-show-field-only-if-checkbox-is-false) and the [django docs](https://docs.djangoproject.com/en/3.1/topics/forms/media/#media-objects), showed how to load the JavaScript file, and it was loading because I could get a console.log to show on the page. But it would not select the element and instead was showing an `Uncaught TypeError: $ is not a function`. It seemed that jQuery was not loaded before my script file. I wanted to use jQuery because I had used it quite simply on the front-end Add Product page, and did not want to have to re-write the same in native JavaScript. So I finally found something that worked, this [Stack Overflow question](https://stackoverflow.com/questions/58087470/django-jquery-is-not-a-function-message) showed how to not fire your JavaScript until Django's jQuery was defined.
+
+### Allowing Staff Access to Class based views
+
+When testing if a staff user (non-admin) can create, edit or delete news posts, I discovered that I was getting the 403 Forbidden message. I had been testing these News class based views using my full admin super user previously and had the permission required to do so. I had just been using the `PermissionRequiredMixin` with `permission_required = 'user.is_staff'`, but this did not actually work for staff users. From this [Stack Overflow article](https://stackoverflow.com/questions/51284583/authentication-for-class-based-views-in-django) I learned a way to make your own mixin to test for is_staff, and using that on the required views.
 
 ## Oustanding Bugs
 

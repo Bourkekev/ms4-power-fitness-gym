@@ -1,10 +1,20 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin)
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
     UpdateView, DeleteView, CreateView
 )
 from django.urls import reverse_lazy
 from .models import NewsPost
+
+
+class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+    """
+    * Tests whether the user is staff or a super user
+    """
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_staff
 
 
 class NewsListView(ListView):
@@ -43,7 +53,7 @@ class NewsPostDetailView(DetailView):
     template_name = 'news/news_post_detail.html'
 
 
-class NewsPostEditView(PermissionRequiredMixin, UpdateView):
+class NewsPostEditView(AdminStaffRequiredMixin, UpdateView):
     """
     * Creates a page for editing a News Post and sets the \
         permission required for this.
@@ -59,7 +69,6 @@ class NewsPostEditView(PermissionRequiredMixin, UpdateView):
     4. template_name: template to be used
 
     """
-    permission_required = 'user.is_staff'
     permission_denied_message = 'Your access level does \
         not allow you to edit a news item!'
     model = NewsPost
@@ -67,7 +76,7 @@ class NewsPostEditView(PermissionRequiredMixin, UpdateView):
     template_name = 'news/news_post_edit.html'
 
 
-class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
+class NewsPostDeleteView(AdminStaffRequiredMixin, DeleteView):
     """
     * Deletes a News Post and sets the \
         permission required for this.
@@ -82,14 +91,13 @@ class NewsPostDeleteView(PermissionRequiredMixin, DeleteView):
     3. success_url: Where to send the user after deletion
 
     """
-    permission_required = 'user.is_staff'
     permission_denied_message = 'Your access level does \
         not allow you to delete a news item!'
     model = NewsPost
     success_url = reverse_lazy('news_list')
 
 
-class NewsPostCreateView(PermissionRequiredMixin, CreateView):
+class NewsPostCreateView(AdminStaffRequiredMixin, CreateView):
     """
     * Creates a new News Post and sets the \
         permission required for this.
@@ -105,7 +113,6 @@ class NewsPostCreateView(PermissionRequiredMixin, CreateView):
     4. template_name: template to be used
 
     """
-    permission_required = 'user.is_staff'
     permission_denied_message = 'Your access level does \
         not allow you to add a news item!'
     model = NewsPost
