@@ -33,7 +33,7 @@
                         <p>{{ post.body | truncatewords:50 }}</p>
                         <a href="{% url 'news_post_detail' post.pk %}" class="btn btn-primary">Read more <i class="fas fa-chevron-circle-right"></i></a>
                     </div>
-                    {% if request.user.is_superuser %}
+                    {% if request.user.is_staff %}
                         <div class="card-footer text-muted">
                             <a href="{% url 'news_post_edit' post.pk %}" class="btn btn-outline-primary">Edit</a>
                         </div>

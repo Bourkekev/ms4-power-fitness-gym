@@ -312,9 +312,21 @@ As the contact form submission relies on ajax, I also wanted a fall-back in case
 
 This can be tested by disabling Javascript using [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) or a browser extension like Web Developer by Chris Pederick. Then navigate to the contact page again and submit the form. The page will reload and the form has been submitted. The same confirmation emails will be sent to the user and admin. The submission is also saved in the Django admin.
 
+Remember to re-enable Javascript after testing this.
+
 ### Front-end Staff Admin
 
+Staff members can be created that allows them to login on the front-end of the site, and gives them additional authorisation to create, edit or delete products, and create, edit or delete news posts. Staff could also be allowed back-end access if required.
 
+The following test staff user can be used to test this:
+
+- Username: Power-Fitness-Staff
+- Password: 
+
+
+#### Add a Product
+
+When logged in as staff member, now
 
 ### Back-end Admin
 

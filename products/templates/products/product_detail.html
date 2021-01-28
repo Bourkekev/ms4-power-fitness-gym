@@ -28,7 +28,7 @@
             <div class="product-details-container mb-5 mt-md-5">
                 <!-- Name and price -->
                 <h1 class="product-title">{{ product.name }}</h1>
-                {% if request.user.is_superuser %}
+                {% if request.user.is_staff %}
                     <a class="btn btn-small btn-outline-primary" href="{% url 'edit_product' product.id %}">Edit Product</a>
                     <!-- Delete trigger modal -->
                     <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteModal">
