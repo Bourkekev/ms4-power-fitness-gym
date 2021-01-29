@@ -13,6 +13,7 @@
         <div class="col-md-9 article-entry">
             <h1>{{ object.title }}</h1>
             <div class="article-meta my-3">
+                <!-- If draft -->
                 {% if object.status == 0 %}
                     <div class="badge badge-warning">Draft only</div>
                 {% endif %}

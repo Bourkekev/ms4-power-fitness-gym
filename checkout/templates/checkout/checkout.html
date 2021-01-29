@@ -19,6 +19,7 @@
             <div class="col">
                 <h1>Checkout</h1>
                 <div class="checkout-login-toggle">
+                    <!-- Check if logged in -->
                     {% if user.is_authenticated %}
                         <h3>Welcome </h3>
                     {% else %}
@@ -35,6 +36,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <!-- Order summery -->
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <div class="checkout-col-container">
                 <p class="text-uppercase">Your Order Summary ({{ product_count }} items)</p>
@@ -96,8 +98,9 @@
                 </div>
             </div>
         </div>
+        <!-- Order checkout form -->
         <div class="col-12 col-lg-6">
-            <div class="checkout-col-container">
+            <div class="checkout-col-container mb-5">
                 <p>Please fill out the form below to complete your order.</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -137,7 +140,7 @@
                         <!-- Pass the client secret to the view so we can get the payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
-
+                    <!-- next actions -->
                     <div class="submit-button text-right mt-5 mb-2">                    
                         <a href="{% url 'view_bag' %}" class="btn btn-lg btn-outline-secondary mt-3 w-100 w-sm-auto">
                             <i class="fas fa-chevron-left"></i>
@@ -157,6 +160,7 @@
         </div>
     </div>
 </div>
+<!-- spinning overlay -->
 <div id="processing-overlay">
     <h1 class="loading-spinner">
         <i class="fas fa-spinner fa-2x fa-spin"></i>

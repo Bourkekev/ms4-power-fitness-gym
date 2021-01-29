@@ -29,6 +29,7 @@
         <div class="col-12 col-md-8 offset-md-2">
             {% for message in topic_messages %}
                 <div class="card mb-2 {% if forloop.first %}border border-secondary{% endif %}">
+                    <!-- Add topic to first message header -->
                     {% if forloop.first %}
                         <div class="card-header text-white bg-secondary py-2 px-3">{{ topic.subject }}</div>
                     {% endif %}

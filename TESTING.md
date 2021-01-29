@@ -168,6 +168,35 @@ The Perfomance and Best Practices drop to 70 and 86 respectively for mobile, yet
 
 ![Lighthouse Report](README_resources/google-lighthouse-mobile-report.png)
 
+### Testing on Browsers, Screen sizes and Devices
+
+As well as testing with Dev Tools responsive views, I tested the website on the following browsers and devices:
+- Chrome on PC and Mac
+- Firefox on PC and Mac
+- Safari on Mac
+- Microsoft Edge V44
+- Chrome on Samsung Galaxy S8, Android V9
+- Firefox on Samsung Galaxy S8
+- Native Browser on Samsung Galaxy S8
+- Chrome on Lenovo 10" Tablet, Android V6
+
+Compatability was very good across all devices and responded as I intended.
+
+#### Testing other devices
+
+I ran the website through [Browser Stack](https://www.browserstack.com/) on a free account to test on real devices and screen sizes. This is not easy on the free (test) plan as it only gives you 1 minute per device, and it's also not so easy to zoom as on an actual device in your hand. I was able to live test the homepage, News pages, adding products to the bag, editing the bag, and testing the contact form fields are required on the following devices:
+
+ - Samsung Galaxy S10, Chrome
+ - Samsung Galaxy S20+, Chrome
+ - iPhone X, Safari
+ - iPhone 8, Safari
+ - iPad Pro 11 2018, Safari
+ - iPad 7th, Safari
+ - Google Pixel 4, Chrome
+ - Motorola, Moto G 2nd Gen
+
+Again, compatability was very good across all devices, and worked and responded as I intended.
+
 ## Manual Testing User Scenarios
 
 I also extensively manually tested all functionality of the site. The following steps can be used to test the site manually.

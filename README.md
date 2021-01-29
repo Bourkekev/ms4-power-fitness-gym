@@ -308,6 +308,7 @@ The Products only have one image size, as they are uploaded by the user, but hav
  - Create a better way of ordering best seller marked products.
  - Put the items ordered into the email the user receives.
  - Pagination on the Message Board and Products page, so the pages are not too long if the number of Topics, Messages and Products increases substantially.
+ - I would like to refactor the Stripe webhook handlers, I think it should be possible to just use one webhook endpoint for both Product Checkout and Membership subscription.
 
 [Back to Table of Contents](#table-of-contents)
 

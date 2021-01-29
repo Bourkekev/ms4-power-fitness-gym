@@ -66,6 +66,7 @@
                                             </p>
                                     </td>
                                     <td>
+                                        <!-- Edit Qty in Bag -->
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                             {% csrf_token %}
                                             <div class="form-group w-100 qty-btns">
@@ -96,6 +97,7 @@
                                         <a class="update-link text-info"><small>Update</small></a>
                                     </td>
                                     <td>
+                                        <!-- Subtotal -->
                                         <p class="my-0">€
                                             {% if item.product.sale_price %}
                                                 {{ item.product.sale_price | calc_subtotal:item.quantity }}
@@ -103,6 +105,7 @@
                                                 {{ item.product.price | calc_subtotal:item.quantity }}
                                             {% endif %}
                                         </p>
+                                        <!-- Delete item from bag -->
                                         <a class="remove-item text-danger float-right" 
                                         id="remove_{{ item.item_id }}" 
                                         {% if item.product.shoe_sizes %}
@@ -120,6 +123,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Totals -->
                 <div class="table-responsive mt-5">
                     <h2 class="text-center my-5">Shopping Bag Totals</h2>
                     <table class="table table-borderless bag-totals">
@@ -143,6 +147,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Next actions -->
                     <div class="container px-0">
                         <div class="row no-gutters py-3">
                             <div class="col-12 col-md-6 order-md-1 text-md-right">
@@ -159,6 +164,7 @@
                     </div>
                 </div>
             {% else %}
+                <!-- Bag is empty -->
                 <p class="lead mb-5">Your bag is empty.</p>
                 <a href="{% url 'products' %}" class="btn btn-primary rounded-0 btn-lg mb-5">
                     <i class="fas fa-chevron-left"></i>

@@ -12,6 +12,7 @@
         <div class="row text-center content-section w-lg-75 mx-auto text-white">
             <div class="col-12">
                 <h1>Latest News Drafts</h1>
+                <!-- single or plural depend on no posts -->
                 {% if object_list|length > 0 %}
                     <h4>There {% if object_list|length > 1 %}are{% else%}is{% endif %} {{object_list|length}} draft{% if object_list|length > 1 %}s.{% else%}.{% endif %}</h4>
                 {% else %}
@@ -46,6 +47,7 @@
                     </div>
                 {% endfor %}
             {% else %}
+                    <!-- No drafts -->
                 <p>There are currently no news drafts.</p>
             {% endif %}
             <!-- Pagination links -->

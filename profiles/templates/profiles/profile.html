@@ -34,6 +34,7 @@
 {% block content %}
 <div class="container my-5">
     <div class="row">
+        <!-- Default info -->
         <div class="col-12 col-lg-6">
             <h3>Default Delivery Information</h3>
             <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
@@ -42,6 +43,7 @@
                 <button class="btn btn-secondary float-right">Update Information</button>
             </form>
         </div>
+        <!-- Order History -->
         <div class="col-12 col-lg-6">
             <h3>Order History</h3>
             <div class="order-history table-responsive">
@@ -84,6 +86,7 @@
             </div>
         </div>
     </div>
+    <!-- Reviews -->
     <div class="row mt-5">
         <div class="col">
             <h2>Your Product Reviews</h2>

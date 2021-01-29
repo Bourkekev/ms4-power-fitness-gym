@@ -26,6 +26,7 @@
     </div>
     <div class="row mb-5">
         <div class="col-12 col-md-8 offset-md-2">
+            <!-- Reply form-->
             <form method="POST" action="{% url 'reply_post' topic.id %}" class="form mb-2">
                 {% csrf_token %}
                 {{ form | crispy }}
@@ -36,6 +37,7 @@
             </form>
         </div>
     </div>
+    <!-- Previous messaages -->
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
             {% for message in topic_messages %}
