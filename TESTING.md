@@ -1,5 +1,22 @@
 # Testing
 
+## Table of Contents
+
+1. [Validation](#validation)
+2. [Colour Contrast Checking](#colour-constrast-checking)
+3. [Automatic Testing](#automatic-testing)
+4. [Manual Testing User Scenarios](#manual-testing-user-scenarios)
+   - [Register for an Account](#register-for-an-account)
+   - [Purchasing Products](#purchasing-products)
+   - [Your profile](#check-your-profile)
+   - [Product Reviews](#add-and-edit-a-product-review)
+   - [Community Messages](#posting-messages-in-community)
+   - [Sign up for Membership](#signing-up-for-a-membership-subscription)
+   - [Test contact form](#test-contact-form)
+   - [Staff Add/Edit Product](#add-a-product)
+   - [Staff Add/Edit News Post](#add-a-news-post)
+5. [Back-end Admin](#back-end-admin)
+
 ## Validation
 
 ### Python
@@ -348,14 +365,37 @@ Click the 'Edit Product' button, and make changes to the new product. In this ex
 
 #### Delete a Product
 
-From the new product's detail page, now click 'Delete Product'. A pop-up will checks that you do in fact want to delete this product. Click 'Delete' and the product will be deleted, and you will be returned to the products page and notified that this was successful.
+From the new product's detail page, now click 'Delete Product'. A pop-up will check that you do in fact want to delete this product. Click 'Delete' and the product will be deleted, and you will be returned to the products page and notified that this was successful.
 
 ![delete product](README_resources/testing/delete-product.png)
 
 #### Add a News Post
 
-When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product', 'Create News Post' and 'View News Drafts'. Click on 'Create News Post'. This takes you to a page with a form for adding a new news post. Fill in the required fields and select the Status field as 'Draft'. Then click 'Add news post'. This adds the post as a draft and takes you to the detail view of this post.
+When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product', 'Create News Post' and 'View News Drafts'. Click on 'Create News Post'. This takes you to a page with a form for adding a new news post. Fill in the required fields and select the Status field as 'Draft'. Then click 'Add news post'. This adds the post as a draft and takes you to the detail view of this post. The post will be labelled draft, and there are options to edit or delete the post.
 
+![Draft news post](README_resources/testing/draft-news-post.png)
+
+#### Edit a News Post
+
+If you click on News in the navigation menu, you will see that the draft news post does not appear in the news list. Click on 'Your Account' and 'View News Drafts' and you will see the draft just created here. Click on 'Edit' under the draft news post and you will be brought to the edit news post page. Edit some content and set the 'Status' field to Published and click the 'Update news post' button. The post is published and you are taken to the post detail page. Now if you click 'News' you will see the new news post at the top of the list. If you then click 'Your Account' > 'View News Drafts', you will see the draft is gone, and if there are no other drafts it will say "There are currently no drafts".
+
+![no news drafts](README_resources/testing/news-no-drafts.png)
+
+#### Delete a News Post
+
+Click on News in the navigation and click on your new news post title or 'Read more' button. From the post detail page there is the option to delete this new post. You could also edit and set the status back to 'Draft' to remove it from the News listings. But if you click 'Delete', a pop-up will check that you do in fact want to delete this post. Click 'Yes, Delete news post' and the news post will be deleted, and you will be returned to the latest news page.
+
+#### News Pagination
+
+There is pagination on the Latest News posts so that this page does not get too long. It will only show the latest 3 posts and the pagination appears below that to allow you advance to the next page. You can also skip to the last or first page depending on your position in the pages.
+
+![news pagination](README_resources/testing/news-pagination.png)
+
+#### Test Forbidden 403 Access to new news posts
+
+If logged in as staff or super user you can obviously add, edit and delete news posts. If you are just logged in as a normal registered user you cannot access these. This can be tested by logging in as a normal registered user and trying to go to the url for adding a new post (https://power-fitness.herokuapp.com/news/new/). You will se you are not allowed to do that and the 403 template is rendered with a short message about why.
+
+![Forbidden 403](README_resources/testing/403-add-news.png)
 
 ### Back-end Admin
 
