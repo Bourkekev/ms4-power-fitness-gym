@@ -326,7 +326,7 @@ The following test staff user can be used to test this:
 
 #### Add a Product
 
-When logged in as staff member, now under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Add a Product'.
+When logged in as staff member, now under 'Your Account' there are additional options, 'Add a Product', 'Create News Post' and 'View News Drafts'. Click on 'Add a Product'.
 
 ![staff menu items](README_resources/testing/staff-menu-items.png)
 
@@ -354,7 +354,7 @@ From the new product's detail page, now click 'Delete Product'. A pop-up will ch
 
 #### Add a News Post
 
-When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product' and 'Create News Post'. Click on 'Create News Post'. This takes you to a page with a form for adding a new news post. Fill in the required fields and select the Status field as 'Draft'. Then click 'Add news post'
+When logged in as staff member, under 'Your Account' there are additional options, 'Add a Product', 'Create News Post' and 'View News Drafts'. Click on 'Create News Post'. This takes you to a page with a form for adding a new news post. Fill in the required fields and select the Status field as 'Draft'. Then click 'Add news post'. This adds the post as a draft and takes you to the detail view of this post.
 
 
 ### Back-end Admin
