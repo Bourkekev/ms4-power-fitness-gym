@@ -9,6 +9,12 @@ A user can also subscribe to one of 2 gym memberships, Gold and Platinum. Then t
 Logged in users can also post short messages on a community message board, where they can post a topic for conversation and can respond to other users queries.
 
 Gym staff members (with the appropriate access) can add, edit and delete products, and create news posts for keeping their members up to date with latest information.
+Staff members can be created that allows them to login on the front-end of the site, and gives them additional authorisation to create, edit or delete products, and create, edit or delete news posts. Staff could also be allowed back-end access if required.
+
+The following test staff user can be used to test this:
+
+- Username: Power-Fitness-Staff
+- Password: SyJFVTHG5jVi5UH
 
 The live deployed site can be found here - https://power-fitness.herokuapp.com/
 

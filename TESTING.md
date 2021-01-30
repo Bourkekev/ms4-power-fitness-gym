@@ -367,7 +367,7 @@ Staff members can be created that allows them to login on the front-end of the s
 The following test staff user can be used to test this:
 
 - Username: Power-Fitness-Staff
-- Password: 
+- Password: SyJFVTHG5jVi5UH
 
 
 #### Add a Product
