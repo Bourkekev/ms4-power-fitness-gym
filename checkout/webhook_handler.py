@@ -113,7 +113,7 @@ class StripeWH_Handler:
                         original_bag=bag,
                         stripe_pid=pid,
                     )
-                    order_exists - True
+                    order_exists = True
                     break
                 except Order.DoesNotExist:
                     attempt += 1
