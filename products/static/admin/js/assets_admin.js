@@ -4,7 +4,6 @@ window.addEventListener("load", function() {
     (function($) {
         // Hide sizes options depending on category selected
         const hideSizes = function(){
-            console.log($('#id_category').find(":selected").text());
             if ($('#id_category').find(":selected").text()=="clothing"){
                 $('.field-shoe_sizes').hide();
                 $('.field-clothing_sizes').show();

@@ -428,7 +428,33 @@ If logged in as staff or super user you can obviously add, edit and delete news 
 
 ### Back-end Admin
 
+All the user generated content can be edited from the Django Admin, such as Products, Community Messages and Contact Form submissions. This is to allow the admin full control over all content. A few points of note are as follows:
+
 #### Manage Contact Form Submissions
+
+Under the Pages app the admin can view contact form submissions. They cannot change the submitted content but they can mark a submission as 'Answered', so they can track what submissions have been responded to. This can be viewed from the list of submissions:
+
+![contact submissions list](README_resources/testing/contact-form-sub-list.png)
+
+And can be marked as answered by editing the submission and checking the 'Answered' box at the top:
+
+![contact submission answer checkbox](README_resources/testing/contact-sub-answer-box.png)
+
+#### Product Orders and Line items
+
+When viewing an individual order, the items order will appear at the bottom of the order page.
+
+![order line items](README_resources/testing/order-line-items.png)
+
+#### Product Reviews
+
+There are a couple of ways to view the product reviews. The admin can go to Products > Reviews and see a list of all reviews. THey can see from the list who the reviewer was and what product the review is for.
+
+![Review list](README_resources/testing/review-list.png)
+
+Also when editing a product the admin can see a list of the reviews for this product at the bottom of the page.
+
+![Product Reviews on product](README_resources/testing/product-reviews-on-product.png)
 
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.

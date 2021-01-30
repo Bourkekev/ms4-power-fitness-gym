@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from .models import Product, Category, Review
 
@@ -24,7 +25,7 @@ class ProductsAdmin(admin.ModelAdmin):
     ]
 
     class Media:
-        js = ('/static/admin/js/assets_admin.js',)
+        js = (settings.STATIC_URL + 'admin/js/assets_admin.js',)
 
 
 class CategoryAdmin(admin.ModelAdmin):
