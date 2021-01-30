@@ -456,6 +456,12 @@ Also when editing a product the admin can see a list of the reviews for this pro
 
 ![Product Reviews on product](README_resources/testing/product-reviews-on-product.png)
 
+#### Adding Product in back-end
+
+The Admin can add a product as expected, but there is also some Javascript on this page that controls the hiding and showing of clothing and shoe sizes depending on the category selected. This is to mimic what happens on the front-end.
+
+![Product admin sizes](README_resources/testing/admin-product-category-and-sizes.png)
+
 ### Testing Save info in webhook handler
 I commented out the form.submit() action in the checkout app's stripe_elements javascript file and placed an order with the save info box checked, while changing some profile information. This breaks the normal payment process (as the form is not submitted) and the fallback relies on the webhook handler to save the information. Checking the payments in Stripe dashboard shows the payment still succeeded. Then checking the orders in the site admin shows that the order was created and the profile details updated. Also, by checking the site front-end user profile, it shows that the order succeeded and the details were updated. Finally, going to the checkout page again with the same user shows their pre-filled details have been updated too.
 
